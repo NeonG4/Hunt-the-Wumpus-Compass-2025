@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,15 +9,13 @@ namespace Hunt_the_Wumpus_2025
 {
     public class GameControl : IGameControl
     {
-        public string BringHomeBacon()
+        public void StartGame(int map, int startingRoom)
         {
-            return "";
+            // should start up a game
         }
     }
     public interface IGameControl
     {
-        string BringHomeBacon(); // this brings home the bacon
-
-        void Maxim();
+        void StartGame(int map, int startingRoom);
     }
 }
