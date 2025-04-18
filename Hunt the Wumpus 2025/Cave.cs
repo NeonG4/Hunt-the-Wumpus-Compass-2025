@@ -35,7 +35,7 @@ namespace Hunt_the_Wumpus_2025
 
     public interface ICave
     {
-        //For UI to tell player which rooms are nearby
+        //For UI to tell player 1) which rooms are nearby, 2) which rooms nearby are valid to go to
 
         int[] GetNeighboringRooms(int room);
 
