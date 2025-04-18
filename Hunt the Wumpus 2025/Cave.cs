@@ -39,10 +39,10 @@ namespace Hunt_the_Wumpus_2025
 
         int[] GetNeighboringRooms(int room);
 
+        int[] GetReachableNeighboringRooms(int room, int caveIndex);
+
         //To be called by game control to see if moving in specified direction is valid
 
         bool IsValidMove(int room, int direction, int caveIndex);
-
-        int[] GetReachableNeighboringRooms(int room, int caveIndex);
     }
 }
