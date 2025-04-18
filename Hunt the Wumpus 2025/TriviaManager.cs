@@ -12,7 +12,7 @@ namespace Hunt_the_Wumpus_2025
     {
         private List<Trivia> TriviaList { get; set; }
 
-        TriviaManager() 
+        TriviaManager()
         {
             this.Deserialize();
         }
@@ -28,7 +28,7 @@ namespace Hunt_the_Wumpus_2025
         }
         public string[] getPosssibleAnswers(int i)
         {
-            return this.TriviaList[i].PosssibleAnswers;
+            return this.TriviaList[i].PossibleAnswers;
         }
         public string getCorrectAnswer(int i)
         {
@@ -38,7 +38,7 @@ namespace Hunt_the_Wumpus_2025
         public class Trivia // pretty sure i need to define the class in this class to get the json to work. I will delete this if i find out its useless
         {
             public string Question { get; set; }
-            public string[] PossibleAnswers { get; set; } 
+            public string[] PossibleAnswers { get; set; }
             public string CorrectAnswer { get; set; }
         }
 
@@ -57,18 +57,14 @@ namespace Hunt_the_Wumpus_2025
             }
 
         }
-        private void Deserialize() 
+        private void Deserialize()
         {
             string filePath = "TriviaQuestions.json";
             try
             {
                 string jsonString = File.ReadAllText(filePath);
-                this.TriviaList = JsonSerializer.Deserialize<List<Trivia>> TriviaList(jsonString);
+                this.TriviaList = JsonSerializer.Deserialize<List<Trivia>>(jsonString);
                 Console.WriteLine("List successfully deserialized:");
-                foreach (var item in deserializedList)
-                {
-                    Console.WriteLine($"- {item}");
-                }
             }
             catch (Exception ex)
             {
