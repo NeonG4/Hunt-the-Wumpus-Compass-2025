@@ -20,5 +20,6 @@ namespace Hunt_the_Wumpus_2025
             this.PossibleAnswers = possibleAnswer;
             this.CorrectAnswer = correctAnswer;
         }
+
     }
 }
