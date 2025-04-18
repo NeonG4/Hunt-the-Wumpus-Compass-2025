@@ -24,6 +24,13 @@ namespace Hunt_the_Wumpus_2025
 
             return true;
         }
+
+        public int[] GetReachableNeighboringRooms(int room, int caveIndex)
+        {
+            //placeholder
+
+            return [0, 0, 0];
+        }
     }
 
     public interface ICave
@@ -35,5 +42,7 @@ namespace Hunt_the_Wumpus_2025
         //To be called by game control to see if moving in specified direction is valid
 
         bool IsValidMove(int room, int direction, int caveIndex);
+
+        int[] GetReachableNeighboringRooms(int room, int caveIndex);
     }
 }
