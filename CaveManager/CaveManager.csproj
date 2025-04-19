@@ -44,13 +44,5 @@
     <Compile Include="CaveManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="adjacentRooms.csv" />
-    <None Include="caveA-validDirections.csv" />
-    <None Include="caveB-validDirections.csv" />
-    <None Include="caveC-validDirections.csv" />
-    <None Include="caveD-validDirections.csv" />
-    <None Include="caveE-validDirections.csv" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

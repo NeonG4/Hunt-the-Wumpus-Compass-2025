@@ -66,12 +66,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="adjacentRooms.csv" />
-    <None Include="caveA-validDirections.csv" />
-    <None Include="caveB-validDirections.csv" />
-    <None Include="caveC-validDirections.csv" />
-    <None Include="caveD-validDirections.csv" />
-    <None Include="caveE-validDirections.csv" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
