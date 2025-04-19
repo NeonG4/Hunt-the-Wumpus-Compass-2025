@@ -22,24 +22,31 @@ namespace _2030638_Choy_CaveTestUI
 
         private void buttonAdjacent_Click(object sender, EventArgs e)
         {
-            //Room number
-
-            int room = int.Parse(textBoxRoom.Text);
-
-            //Get adjacent rooms
-
-            int[] adjacentRooms = cave.GetAdjacentRooms(room);
-
-            //Output
-
-            string output = "";
-
-            foreach (int i in adjacentRooms)
+            try
             {
-                output += (i + ",");
-            }
+                //Room number
 
-            textBoxAdjacent.Text = output;
+                int room = int.Parse(textBoxRoom.Text);
+
+                //Get adjacent rooms
+
+                int[] adjacentRooms = cave.GetAdjacentRooms(room);
+
+                //Output
+
+                string output = "";
+
+                foreach (int i in adjacentRooms)
+                {
+                    output += (i + " ");
+                }
+
+                textBoxAdjacent.Text = output;
+            }
+            catch
+            {
+                MessageBox.Show("needs room number (0-29)");
+            }
         }
 
         private void buttonValid_Click(object sender, EventArgs e)
@@ -61,14 +68,14 @@ namespace _2030638_Choy_CaveTestUI
 
                 foreach (int i in reachableRooms)
                 {
-                    output += (i + ",");
+                    output += (i + " ");
                 }
 
                 textBoxValid.Text = output;
             }
             catch
             {
-                MessageBox.Show("enter valid values");
+                MessageBox.Show("needs room (0-29), cave index (0-4)");
                 return;
             }
         }
@@ -100,7 +107,7 @@ namespace _2030638_Choy_CaveTestUI
             }
             catch
             {
-                MessageBox.Show("enter valid values");
+                MessageBox.Show("needs room (0-29), direction (0-5), and cave index (0-4)");
                 return;
             }
         }

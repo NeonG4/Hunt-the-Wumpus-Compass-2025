@@ -183,7 +183,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "Form1";
-            this.Text = "Cave Test UI";
+            this.Text = "Nathan - Cave Test UI";
             this.ResumeLayout(false);
             this.PerformLayout();
 
