@@ -80,9 +80,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CaveManager\CaveManager.csproj">
+    <ProjectReference Include="..\CaveManager\Cave.csproj">
       <Project>{0113e458-ac4e-483a-b974-905b244cc2b9}</Project>
-      <Name>CaveManager</Name>
+      <Name>Cave</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

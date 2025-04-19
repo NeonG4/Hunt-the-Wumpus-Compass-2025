@@ -7,13 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using CaveManager;
+using Cave;
 
 namespace _2030638_Choy_CaveTestUI
 {
     public partial class Form1 : Form
     {
-        CaveActions cave = new CaveActions();
+        CaveManager cave = new CaveManager();
 
         public Form1()
         {
@@ -53,7 +53,7 @@ namespace _2030638_Choy_CaveTestUI
 
                 //Get valid rooms
 
-                int[] reachableRooms = cave.GetReachableNeighboringRooms(room, caveIndex);
+                int[] reachableRooms = cave.GetReachableAdjacentRooms(room, caveIndex);
 
                 //Output
 

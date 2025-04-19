@@ -5,13 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CaveManager
+namespace Cave
 {
-    public class CaveActions
+    public class CaveManager : ICave
     {
         //Constructor
 
-        public CaveActions() { }
+        public CaveManager() { }
 
         //File names
 
@@ -84,7 +84,7 @@ namespace CaveManager
             }
         }
 
-        public int[] GetReachableNeighboringRooms(int room, int caveIndex)
+        public int[] GetReachableAdjacentRooms(int room, int caveIndex)
         {
             if (0 <= room && room <= 29 &&
                 0 <= caveIndex && caveIndex <= 4)
@@ -158,5 +158,18 @@ namespace CaveManager
 
             return list;
         }
+    }
+
+    public interface ICave
+    {
+        //For UI to tell player 1) which rooms are nearby, 2) which rooms nearby are valid to go to
+
+        int[] GetAdjacentRooms(int room);
+
+        int[] GetReachableAdjacentRooms(int room, int caveIndex);
+
+        //To be called by game control to see if moving in specified direction is valid
+
+        bool IsValidMove(int room, int direction, int caveIndex);
     }
 }
