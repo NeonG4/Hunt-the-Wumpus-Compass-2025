@@ -17,14 +17,26 @@ namespace Hunt_the_Wumpus_2025
 
             return [0, 0, 0, 0, 0, 0];
         }
+
+        public bool IsValidMove(int room, int direction, int caveIndex)
+        {
+            //placeholder
+
+            return true;
+        }
+
+        public int[] GetReachableNeighboringRooms(int room, int caveIndex)
+        {
+            //placeholder
+
+            return [0, 0, 0];
+        }
     }
 
     public interface ICave
     {
-        //For UI to tell player which rooms are nearby
 
         int[] GetNeighboringRooms(int room);
 
-        //make new method
     }
 }
