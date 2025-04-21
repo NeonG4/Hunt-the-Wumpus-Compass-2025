@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Hunt_the_Wumpus_2025
+namespace Game_Control
 {
     public class GameControl : IGameControl
     {
