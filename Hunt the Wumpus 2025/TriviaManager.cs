@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Text.Json;
-using System.Random; 
+using static System.Random; 
 
 namespace Hunt_the_Wumpus_2025
 {
