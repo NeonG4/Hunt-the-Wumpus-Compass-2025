@@ -42,12 +42,15 @@
             this.textBoxCaveIndex = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.labelValid = new System.Windows.Forms.Label();
+            this.textBoxNewRoomNumber = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.buttonGetNewRoom = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(100, 165);
+            this.label1.Location = new System.Drawing.Point(63, 70);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(52, 20);
             this.label1.TabIndex = 0;
@@ -56,7 +59,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(283, 70);
+            this.label2.Location = new System.Drawing.Point(252, 70);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(127, 20);
             this.label2.TabIndex = 1;
@@ -65,7 +68,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(466, 70);
+            this.label3.Location = new System.Drawing.Point(252, 205);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(99, 20);
             this.label3.TabIndex = 2;
@@ -73,7 +76,7 @@
             // 
             // buttonAdjacent
             // 
-            this.buttonAdjacent.Location = new System.Drawing.Point(693, 60);
+            this.buttonAdjacent.Location = new System.Drawing.Point(512, 47);
             this.buttonAdjacent.Name = "buttonAdjacent";
             this.buttonAdjacent.Size = new System.Drawing.Size(200, 67);
             this.buttonAdjacent.TabIndex = 3;
@@ -83,7 +86,7 @@
             // 
             // buttonValid
             // 
-            this.buttonValid.Location = new System.Drawing.Point(693, 170);
+            this.buttonValid.Location = new System.Drawing.Point(512, 157);
             this.buttonValid.Name = "buttonValid";
             this.buttonValid.Size = new System.Drawing.Size(200, 67);
             this.buttonValid.TabIndex = 4;
@@ -93,28 +96,28 @@
             // 
             // textBoxRoom
             // 
-            this.textBoxRoom.Location = new System.Drawing.Point(104, 235);
+            this.textBoxRoom.Location = new System.Drawing.Point(67, 140);
             this.textBoxRoom.Name = "textBoxRoom";
             this.textBoxRoom.Size = new System.Drawing.Size(133, 26);
             this.textBoxRoom.TabIndex = 5;
             // 
             // textBoxAdjacent
             // 
-            this.textBoxAdjacent.Location = new System.Drawing.Point(217, 140);
+            this.textBoxAdjacent.Location = new System.Drawing.Point(256, 140);
             this.textBoxAdjacent.Name = "textBoxAdjacent";
-            this.textBoxAdjacent.Size = new System.Drawing.Size(203, 26);
+            this.textBoxAdjacent.Size = new System.Drawing.Size(164, 26);
             this.textBoxAdjacent.TabIndex = 6;
             // 
             // textBoxValid
             // 
-            this.textBoxValid.Location = new System.Drawing.Point(470, 140);
+            this.textBoxValid.Location = new System.Drawing.Point(256, 264);
             this.textBoxValid.Name = "textBoxValid";
             this.textBoxValid.Size = new System.Drawing.Size(187, 26);
             this.textBoxValid.TabIndex = 7;
             // 
             // buttonMoveValid
             // 
-            this.buttonMoveValid.Location = new System.Drawing.Point(693, 277);
+            this.buttonMoveValid.Location = new System.Drawing.Point(512, 264);
             this.buttonMoveValid.Name = "buttonMoveValid";
             this.buttonMoveValid.Size = new System.Drawing.Size(200, 67);
             this.buttonMoveValid.TabIndex = 8;
@@ -124,7 +127,7 @@
             // 
             // textBoxDirection
             // 
-            this.textBoxDirection.Location = new System.Drawing.Point(287, 323);
+            this.textBoxDirection.Location = new System.Drawing.Point(67, 264);
             this.textBoxDirection.Name = "textBoxDirection";
             this.textBoxDirection.Size = new System.Drawing.Size(133, 26);
             this.textBoxDirection.TabIndex = 11;
@@ -132,7 +135,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(283, 264);
+            this.label5.Location = new System.Drawing.Point(63, 205);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(72, 20);
             this.label5.TabIndex = 9;
@@ -140,7 +143,7 @@
             // 
             // textBoxCaveIndex
             // 
-            this.textBoxCaveIndex.Location = new System.Drawing.Point(459, 323);
+            this.textBoxCaveIndex.Location = new System.Drawing.Point(67, 386);
             this.textBoxCaveIndex.Name = "textBoxCaveIndex";
             this.textBoxCaveIndex.Size = new System.Drawing.Size(133, 26);
             this.textBoxCaveIndex.TabIndex = 13;
@@ -148,7 +151,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(455, 264);
+            this.label4.Location = new System.Drawing.Point(63, 327);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(88, 20);
             this.label4.TabIndex = 12;
@@ -157,17 +160,46 @@
             // labelValid
             // 
             this.labelValid.AutoSize = true;
-            this.labelValid.Location = new System.Drawing.Point(937, 300);
+            this.labelValid.Location = new System.Drawing.Point(756, 287);
             this.labelValid.Name = "labelValid";
             this.labelValid.Size = new System.Drawing.Size(55, 20);
             this.labelValid.TabIndex = 14;
             this.labelValid.Text = "Result";
             // 
+            // textBoxNewRoomNumber
+            // 
+            this.textBoxNewRoomNumber.Location = new System.Drawing.Point(256, 386);
+            this.textBoxNewRoomNumber.Name = "textBoxNewRoomNumber";
+            this.textBoxNewRoomNumber.Size = new System.Drawing.Size(187, 26);
+            this.textBoxNewRoomNumber.TabIndex = 16;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(252, 327);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(147, 20);
+            this.label6.TabIndex = 15;
+            this.label6.Text = "New Room Number";
+            // 
+            // buttonGetNewRoom
+            // 
+            this.buttonGetNewRoom.Location = new System.Drawing.Point(512, 373);
+            this.buttonGetNewRoom.Name = "buttonGetNewRoom";
+            this.buttonGetNewRoom.Size = new System.Drawing.Size(200, 67);
+            this.buttonGetNewRoom.TabIndex = 17;
+            this.buttonGetNewRoom.Text = "Get New Room #";
+            this.buttonGetNewRoom.UseVisualStyleBackColor = true;
+            this.buttonGetNewRoom.Click += new System.EventHandler(this.buttonGetNewRoom_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1089, 419);
+            this.ClientSize = new System.Drawing.Size(872, 491);
+            this.Controls.Add(this.buttonGetNewRoom);
+            this.Controls.Add(this.textBoxNewRoomNumber);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.labelValid);
             this.Controls.Add(this.textBoxCaveIndex);
             this.Controls.Add(this.label4);
@@ -205,6 +237,9 @@
         private System.Windows.Forms.TextBox textBoxCaveIndex;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label labelValid;
+        private System.Windows.Forms.TextBox textBoxNewRoomNumber;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button buttonGetNewRoom;
     }
 }
 
