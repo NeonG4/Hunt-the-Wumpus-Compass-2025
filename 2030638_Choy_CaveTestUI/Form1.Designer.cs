@@ -35,7 +35,7 @@
             this.buttonValid = new System.Windows.Forms.Button();
             this.textBoxRoom = new System.Windows.Forms.TextBox();
             this.textBoxAdjacent = new System.Windows.Forms.TextBox();
-            this.textBoxValid = new System.Windows.Forms.TextBox();
+            this.textBoxReachableDirections = new System.Windows.Forms.TextBox();
             this.buttonMoveValid = new System.Windows.Forms.Button();
             this.textBoxDirection = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -73,16 +73,16 @@
             this.label3.Location = new System.Drawing.Point(168, 133);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(80, 13);
+            this.label3.Size = new System.Drawing.Size(133, 13);
             this.label3.TabIndex = 2;
-            this.label3.Text = "Valid Directions";
+            this.label3.Text = "Directions 0-5 Reachable?";
             // 
             // buttonAdjacent
             // 
-            this.buttonAdjacent.Location = new System.Drawing.Point(341, 31);
+            this.buttonAdjacent.Location = new System.Drawing.Point(413, 30);
             this.buttonAdjacent.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonAdjacent.Name = "buttonAdjacent";
-            this.buttonAdjacent.Size = new System.Drawing.Size(133, 44);
+            this.buttonAdjacent.Size = new System.Drawing.Size(165, 44);
             this.buttonAdjacent.TabIndex = 3;
             this.buttonAdjacent.Text = "Get Adjacent Rooms";
             this.buttonAdjacent.UseVisualStyleBackColor = true;
@@ -90,12 +90,12 @@
             // 
             // buttonValid
             // 
-            this.buttonValid.Location = new System.Drawing.Point(341, 102);
+            this.buttonValid.Location = new System.Drawing.Point(413, 101);
             this.buttonValid.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonValid.Name = "buttonValid";
-            this.buttonValid.Size = new System.Drawing.Size(133, 44);
+            this.buttonValid.Size = new System.Drawing.Size(165, 44);
             this.buttonValid.TabIndex = 4;
-            this.buttonValid.Text = "Get Valid Rooms";
+            this.buttonValid.Text = "Directions 0-5 Reachable?";
             this.buttonValid.UseVisualStyleBackColor = true;
             this.buttonValid.Click += new System.EventHandler(this.buttonValid_Click);
             // 
@@ -115,20 +115,20 @@
             this.textBoxAdjacent.Size = new System.Drawing.Size(111, 20);
             this.textBoxAdjacent.TabIndex = 6;
             // 
-            // textBoxValid
+            // textBoxReachableDirections
             // 
-            this.textBoxValid.Location = new System.Drawing.Point(171, 172);
-            this.textBoxValid.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.textBoxValid.Name = "textBoxValid";
-            this.textBoxValid.Size = new System.Drawing.Size(126, 20);
-            this.textBoxValid.TabIndex = 7;
+            this.textBoxReachableDirections.Location = new System.Drawing.Point(171, 172);
+            this.textBoxReachableDirections.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxReachableDirections.Name = "textBoxReachableDirections";
+            this.textBoxReachableDirections.Size = new System.Drawing.Size(217, 20);
+            this.textBoxReachableDirections.TabIndex = 7;
             // 
             // buttonMoveValid
             // 
-            this.buttonMoveValid.Location = new System.Drawing.Point(341, 172);
+            this.buttonMoveValid.Location = new System.Drawing.Point(413, 171);
             this.buttonMoveValid.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonMoveValid.Name = "buttonMoveValid";
-            this.buttonMoveValid.Size = new System.Drawing.Size(133, 44);
+            this.buttonMoveValid.Size = new System.Drawing.Size(165, 44);
             this.buttonMoveValid.TabIndex = 8;
             this.buttonMoveValid.Text = "Is Move Valid?";
             this.buttonMoveValid.UseVisualStyleBackColor = true;
@@ -173,7 +173,7 @@
             // labelValid
             // 
             this.labelValid.AutoSize = true;
-            this.labelValid.Location = new System.Drawing.Point(504, 187);
+            this.labelValid.Location = new System.Drawing.Point(591, 187);
             this.labelValid.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelValid.Name = "labelValid";
             this.labelValid.Size = new System.Drawing.Size(37, 13);
@@ -200,10 +200,10 @@
             // 
             // buttonGetNewRoom
             // 
-            this.buttonGetNewRoom.Location = new System.Drawing.Point(341, 242);
+            this.buttonGetNewRoom.Location = new System.Drawing.Point(413, 241);
             this.buttonGetNewRoom.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonGetNewRoom.Name = "buttonGetNewRoom";
-            this.buttonGetNewRoom.Size = new System.Drawing.Size(133, 44);
+            this.buttonGetNewRoom.Size = new System.Drawing.Size(165, 44);
             this.buttonGetNewRoom.TabIndex = 17;
             this.buttonGetNewRoom.Text = "Get New Room #";
             this.buttonGetNewRoom.UseVisualStyleBackColor = true;
@@ -213,7 +213,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(581, 319);
+            this.ClientSize = new System.Drawing.Size(678, 319);
             this.Controls.Add(this.buttonGetNewRoom);
             this.Controls.Add(this.textBoxNewRoomNumber);
             this.Controls.Add(this.label6);
@@ -223,7 +223,7 @@
             this.Controls.Add(this.textBoxDirection);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.buttonMoveValid);
-            this.Controls.Add(this.textBoxValid);
+            this.Controls.Add(this.textBoxReachableDirections);
             this.Controls.Add(this.textBoxAdjacent);
             this.Controls.Add(this.textBoxRoom);
             this.Controls.Add(this.buttonValid);
@@ -248,7 +248,7 @@
         private System.Windows.Forms.Button buttonValid;
         private System.Windows.Forms.TextBox textBoxRoom;
         private System.Windows.Forms.TextBox textBoxAdjacent;
-        private System.Windows.Forms.TextBox textBoxValid;
+        private System.Windows.Forms.TextBox textBoxReachableDirections;
         private System.Windows.Forms.Button buttonMoveValid;
         private System.Windows.Forms.TextBox textBoxDirection;
         private System.Windows.Forms.Label label5;
