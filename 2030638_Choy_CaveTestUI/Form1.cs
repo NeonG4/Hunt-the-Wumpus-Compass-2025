@@ -64,20 +64,20 @@ namespace _2030638_Choy_CaveTestUI
                 if (0 <= room && room <= 29 &&
                 0 <= caveIndex && caveIndex <= 4)
                 {
-                    //Get valid rooms
+                    //Get valid directions bool array
 
-                    int[] validDirections = cave.GetValidDirections(room, caveIndex);
+                    bool[] directionsBoolArray = cave.GetDirectionsBoolArray(room, caveIndex);
 
                     //Output
 
                     string output = "";
 
-                    foreach (int i in validDirections)
+                    foreach (bool b in directionsBoolArray)
                     {
-                        output += (i + " ");
+                        output += (b + " ");
                     }
 
-                    textBoxValid.Text = output;
+                    textBoxReachableDirections.Text = output;
                 }
             }
             catch

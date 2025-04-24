@@ -47,7 +47,7 @@ namespace Cave
                 return null;
             }
         }
-        public int[] GetValidDirections(int room, int caveIndex)
+        public bool[] GetDirectionsBoolArray(int room, int caveIndex)
         {
             if (0 <= room && room <= 29 &&
                 0 <= caveIndex && caveIndex <= 4)
@@ -62,7 +62,25 @@ namespace Cave
                 else if (caveIndex == 3) { validDirections = validDirectionsD[room]; }
                 else { validDirections = validDirectionsE[room]; }
 
-                return validDirections;
+                //Define bool array
+
+                bool[] directionsBoolArray = new bool[6];
+
+                //Check if each direction 0-5 is in the array
+
+                for (int i = 0; i <= 5; i++)
+                {
+                    foreach (int direction in validDirections)
+                    {
+                        if (i == direction)
+                        {
+                            directionsBoolArray[i] = true;
+                            break;
+                        }
+                    }
+                }
+
+                return directionsBoolArray;
             }
             else
             {
@@ -168,7 +186,7 @@ namespace Cave
 
         //For UI to tell player which directions they can move
 
-        int[] GetValidDirections(int room, int caveIndex);
+        bool[] GetDirectionsBoolArray(int room, int caveIndex);
 
         //To get the new room number based on direction moved, to be used after IsValidMove bool
 
