@@ -12,9 +12,20 @@ namespace Game_Control
         {
             // should start up a game
         }
+        public void StopGame()
+        {
+            // stops the game
+        }
+        public void RestartGame(int map, int startingRoom)
+        {
+            // should restart the game
+        }
     }
     public interface IGameControl
     {
-        void StartGame(int map, int startingRoom);
+        public void StartGame(int map, int startingRoom);
+        public void StopGame();
+        public void RestartGame(int map, int startingRoom);
+        
     }
 }

@@ -7,7 +7,7 @@ using System.Drawing;
 using System.Windows.Forms;
 
 
-namespace Hunt_the_Wumpus_2025
+namespace UI_Class_Library
 {
     public class UIClassManager : IUIClassManager
     {
