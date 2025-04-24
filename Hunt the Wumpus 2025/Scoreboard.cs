@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.PerformanceData;
 using System.Linq;
 using System.Reflection.Metadata.Ecma335;
 using System.Text;
@@ -36,11 +37,23 @@ namespace Hunt_the_Wumpus_2025
 
             return scores;
         }
+        public int CalculateHighScore(int turns, int coins, int arrows, bool wumpus)
+        {
+            //TODO; implement stub, might have to change return value to an array/list
+            int score;
+            if (wumpus)
+            { score = (100 - turns + coins + (arrows * 5) + 50); }
+            else
+            { { score = (100 - turns + coins + (arrows * 5) + 50); } }
+            return score;
+        }
     }
     public interface IScoreboard
     {
         //sort high scores if a new entry scores high enough
         List<ScoreItem> SortHighScore(string highscoredatafile);
+        //calculates the high score using the various parameters.
+        int CalculateHighScore(int turns, int coins, int arrows, bool wumpus);
         
     }
 }
