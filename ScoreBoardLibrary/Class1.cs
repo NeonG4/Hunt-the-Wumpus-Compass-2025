@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Scoreboard
+namespace ScoreBoardLibrary
 {
-    private class Class1
+    public class Class1
     {
     }
 }
