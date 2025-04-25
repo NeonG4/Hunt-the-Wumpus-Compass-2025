@@ -28,20 +28,23 @@ namespace _2030638_Choy_CaveTestUI
 
                 int room = int.Parse(textBoxRoom.Text);
 
-                //Get adjacent rooms
-
-                int[] adjacentRooms = cave.GetAdjacentRooms(room);
-
-                //Output
-
-                string output = "";
-
-                foreach (int i in adjacentRooms)
+                if (0 <= room && room <= 29)
                 {
-                    output += (i + " ");
-                }
+                    //Get adjacent rooms
 
-                textBoxAdjacent.Text = output;
+                    int[] adjacentRooms = cave.GetAdjacentRooms(room);
+
+                    //Output
+
+                    string output = "";
+
+                    foreach (int i in adjacentRooms)
+                    {
+                        output += (i + " ");
+                    }
+
+                    textBoxAdjacent.Text = output;
+                }
             }
             catch
             {
@@ -58,20 +61,24 @@ namespace _2030638_Choy_CaveTestUI
                 int room = int.Parse(textBoxRoom.Text);
                 int caveIndex = int.Parse(textBoxCaveIndex.Text);
 
-                //Get valid rooms
-
-                int[] reachableRooms = cave.GetReachableAdjacentRooms(room, caveIndex);
-
-                //Output
-
-                string output = "";
-
-                foreach (int i in reachableRooms)
+                if (0 <= room && room <= 29 &&
+                0 <= caveIndex && caveIndex <= 4)
                 {
-                    output += (i + " ");
-                }
+                    //Get valid directions bool array
 
-                textBoxValid.Text = output;
+                    bool[] directionsBoolArray = cave.GetDirectionsBoolArray(room, caveIndex);
+
+                    //Output
+
+                    string output = "";
+
+                    foreach (bool b in directionsBoolArray)
+                    {
+                        output += (b + " ");
+                    }
+
+                    textBoxReachableDirections.Text = output;
+                }
             }
             catch
             {
@@ -90,24 +97,57 @@ namespace _2030638_Choy_CaveTestUI
                 int direction = int.Parse(textBoxDirection.Text);
                 int caveIndex = int.Parse(textBoxCaveIndex.Text);
 
-                //Get bool result
-
-                bool result = cave.IsValidMove(room, direction, caveIndex);
-
-                //Output
-
-                if (result)
+                if (0 <= room && room <= 29 &&
+                0 <= direction && direction <= 5 &&
+                0 <= caveIndex && caveIndex <= 4)
                 {
-                    labelValid.Text = "Yes";
-                }
-                else
-                {
-                    labelValid.Text = "No";
+                    //Get bool result
+
+                    bool result = cave.IsValidMove(room, direction, caveIndex);
+
+                    //Output
+
+                    if (result)
+                    {
+                        labelValid.Text = "Yes";
+                    }
+                    else
+                    {
+                        labelValid.Text = "No";
+                    }
                 }
             }
             catch
             {
                 MessageBox.Show("needs room (0-29), direction (0-5), and cave index (0-4)");
+                return;
+            }
+        }
+
+        private void buttonGetNewRoom_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //Info from UI
+
+                int room = int.Parse(textBoxRoom.Text);
+                int direction = int.Parse(textBoxDirection.Text);
+
+                if (0 <= room && room <= 29 &&
+                0 <= direction && direction <= 5)
+                {
+                    //Get new room
+
+                    int newRoom = cave.GetNewRoomNumber(room, direction);
+
+                    //Output
+
+                    textBoxNewRoomNumber.Text = newRoom.ToString();
+                }
+            }
+            catch
+            {
+                MessageBox.Show("needs room (0-29), direction (0-5)");
                 return;
             }
         }

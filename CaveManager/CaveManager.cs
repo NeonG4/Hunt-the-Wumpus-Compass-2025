@@ -47,6 +47,63 @@ namespace Cave
                 return null;
             }
         }
+        public bool[] GetDirectionsBoolArray(int room, int caveIndex)
+        {
+            if (0 <= room && room <= 29 &&
+                0 <= caveIndex && caveIndex <= 4)
+            {
+                //Read from valid directions data file corresponding to the cave index
+
+                int[] validDirections;
+
+                if (caveIndex == 0) { validDirections = validDirectionsA[room]; }
+                else if (caveIndex == 1) { validDirections = validDirectionsB[room]; }
+                else if (caveIndex == 2) { validDirections = validDirectionsC[room]; }
+                else if (caveIndex == 3) { validDirections = validDirectionsD[room]; }
+                else { validDirections = validDirectionsE[room]; }
+
+                //Define bool array
+
+                bool[] directionsBoolArray = new bool[6];
+
+                //Check if each direction 0-5 is in the array
+
+                for (int i = 0; i <= 5; i++)
+                {
+                    foreach (int direction in validDirections)
+                    {
+                        if (i == direction)
+                        {
+                            directionsBoolArray[i] = true;
+                            break;
+                        }
+                    }
+                }
+
+                return directionsBoolArray;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public int GetNewRoomNumber(int room, int direction)
+        {
+            if (0 <= room && room <= 29 &&
+                0 <= direction && direction <= 5)
+            {
+                //Return adjacent room of current room corresponding to direction
+
+                return adjacentRooms[room][direction];
+            }
+            else
+            {
+                //To ensure code doesn't break in test application
+
+                return 0;
+            }
+        }
 
         public bool IsValidMove(int room, int direction, int caveIndex)
         {
@@ -81,47 +138,6 @@ namespace Cave
             else
             {
                 return false;
-            }
-        }
-
-        public int[] GetReachableAdjacentRooms(int room, int caveIndex)
-        {
-            if (0 <= room && room <= 29 &&
-                0 <= caveIndex && caveIndex <= 4)
-            {
-                //Read from valid directions data file corresponding to the cave index
-
-                int[] validDirections;
-
-                if (caveIndex == 0) { validDirections = validDirectionsA[room]; }
-                else if (caveIndex == 1) { validDirections = validDirectionsB[room]; }
-                else if (caveIndex == 2) { validDirections = validDirectionsC[room]; }
-                else if (caveIndex == 3) { validDirections = validDirectionsD[room]; }
-                else { validDirections = validDirectionsE[room]; }
-
-                //Get the adjacent rooms corresponding to these valid directions
-
-                List<int> reachableRoomsList = new List<int>();
-
-                foreach (int i in validDirections)
-                {
-                    reachableRoomsList.Add(adjacentRooms[room][i]);
-                }
-
-                //Convert to array
-
-                int[] reachableRooms = new int[reachableRoomsList.Count];
-
-                for (int i = 0; i < reachableRoomsList.Count; i++)
-                {
-                    reachableRooms[i] = reachableRoomsList[i];
-                }
-
-                return reachableRooms;
-            }
-            else
-            {
-                return null;
             }
         }
 
@@ -162,13 +178,21 @@ namespace Cave
 
     public interface ICave
     {
-        //For UI to tell player 1) which rooms are nearby, 2) which rooms nearby are valid to go to
+        //Make sure GC uses the constructor so that the files are read from!
+
+        //For UI to tell player which rooms are around the player
 
         int[] GetAdjacentRooms(int room);
 
-        int[] GetReachableAdjacentRooms(int room, int caveIndex);
+        //For UI to tell player which directions they can move
 
-        //To be called by game control to see if moving in specified direction is valid
+        bool[] GetDirectionsBoolArray(int room, int caveIndex);
+
+        //To get the new room number based on direction moved, to be used after IsValidMove bool
+
+        int GetNewRoomNumber(int room, int direction);
+
+        //To be called by game control to make sure moving in specified direction is valid
 
         bool IsValidMove(int room, int direction, int caveIndex);
     }

@@ -5,13 +5,11 @@ VisualStudioVersion = 17.12.35707.178
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hunt the Wumpus 2025", "Hunt the Wumpus 2025\Hunt the Wumpus 2025.csproj", "{B6B740A8-AB13-41FE-87F7-1DF5F807ECF5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "132456_Donnelly_SoundDemo", "132456_Donnelly_SoundDemo\132456_Donnelly_SoundDemo.csproj", "{9B0CDE80-A8E1-4A10-A425-80841BD31A3F}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cave", "CaveManager\Cave.csproj", "{0113E458-AC4E-483A-B974-905B244CC2B9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaveTestUI", "2030638_Choy_CaveTestUI\CaveTestUI.csproj", "{1291C913-8105-453E-81D0-498EA7BC09F0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scoreboard", "Scoreboard\Scoreboard.csproj", "{00C56B78-71AD-4B64-9861-E1769727CE28}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Game Control", "Game Control\Game Control.csproj", "{9EB210B0-468F-4B63-998B-D64AA9DF0FE4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScoreBoardLibrary", "ScoreBoardLibrary\ScoreBoardLibrary.csproj", "{BAFE85AD-9746-4F73-AC6D-C3BBA85666D3}"
 EndProject
@@ -25,10 +23,6 @@ Global
 		{B6B740A8-AB13-41FE-87F7-1DF5F807ECF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B6B740A8-AB13-41FE-87F7-1DF5F807ECF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B6B740A8-AB13-41FE-87F7-1DF5F807ECF5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9B0CDE80-A8E1-4A10-A425-80841BD31A3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9B0CDE80-A8E1-4A10-A425-80841BD31A3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9B0CDE80-A8E1-4A10-A425-80841BD31A3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9B0CDE80-A8E1-4A10-A425-80841BD31A3F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0113E458-AC4E-483A-B974-905B244CC2B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0113E458-AC4E-483A-B974-905B244CC2B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0113E458-AC4E-483A-B974-905B244CC2B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -41,10 +35,6 @@ Global
 		{00C56B78-71AD-4B64-9861-E1769727CE28}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{00C56B78-71AD-4B64-9861-E1769727CE28}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{00C56B78-71AD-4B64-9861-E1769727CE28}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BAFE85AD-9746-4F73-AC6D-C3BBA85666D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BAFE85AD-9746-4F73-AC6D-C3BBA85666D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BAFE85AD-9746-4F73-AC6D-C3BBA85666D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BAFE85AD-9746-4F73-AC6D-C3BBA85666D3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

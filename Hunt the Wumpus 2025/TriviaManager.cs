@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Text.Json;
-using static System.Random; 
 
 namespace Hunt_the_Wumpus_2025
 {
-    internal class TriviaManager
+    public class TriviaManager
     {
         private List<Trivia> TriviaList { get; set; }
 

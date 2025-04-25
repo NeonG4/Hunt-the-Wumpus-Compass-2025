@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.PerformanceData;
 using System.Linq;
 using System.Reflection.Metadata.Ecma335;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -36,11 +38,38 @@ namespace Hunt_the_Wumpus_2025
 
             return scores;
         }
+        public int CalculateHighScore(int turns, int coins, int arrows, bool wumpus)
+        {
+            //TODO; implement stub, might have to change return value to an array/list
+            int score;
+            if (wumpus)
+            { score = (100 - turns + coins + (arrows * 5) + 50); }
+            else
+            { { score = (100 - turns + coins + (arrows * 5) + 50); } }
+            return score;
+        }
+        private string ReadToFile(string fileName)
+        {
+            //TODO this will read exisiting high scores from file
+            StreamReader reader = new StreamReader(fileName);
+            string line = reader.ReadLine();
+
+            List<int[]> list = new List<int[]>();
+            return "";
+
+        }
+        private string WriteTofile()
+        {
+            //todo write down new high scores
+            return "";
+        }
     }
     public interface IScoreboard
     {
         //sort high scores if a new entry scores high enough
         List<ScoreItem> SortHighScore(string highscoredatafile);
+        //calculates the high score using the various parameters.
+        int CalculateHighScore(int turns, int coins, int arrows, bool wumpus);
         
     }
 }
