@@ -10,7 +10,6 @@ namespace UI_Class_Library
 {
     public class UIClassManager : IUIClassManager
     {
-        public string _scene { get; set; } 
         public void RenderGame(PaintEventArgs e, bool[] doorsout)
         {
             e.Graphics.Clear(Color.FromArgb(0, 0, 0));
