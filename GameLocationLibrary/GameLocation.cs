@@ -22,7 +22,7 @@ namespace Hunt_the_Wumpus_2025
             for (int room = 0; room < 2; room++)
             {
                 do {
-                    number = random.Next(31);
+                    number = random.Next(30);
                 } while (newHazard.room == number);
                 h = "Pit";
                 hazards.Add(newHazard);
@@ -31,7 +31,7 @@ namespace Hunt_the_Wumpus_2025
             {
                 do
                 {
-                    number = random.Next(31);
+                    number = random.Next(30);
                 } while (newHazard.room == number);
                 h = "Bats";
                 hazards.Add(newHazard);
