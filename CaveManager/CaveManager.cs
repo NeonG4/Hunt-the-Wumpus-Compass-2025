@@ -9,7 +9,7 @@ namespace Cave
 {
     public class CaveManager : ICave
     {
-        //Constructor
+        //Constructor to be called by GameControl
 
         public CaveManager() { }
 
@@ -34,6 +34,8 @@ namespace Cave
         List<int[]> validDirectionsD = ReadFromFile(FILE_VALID_DIRECTIONS_D);
         List<int[]> validDirectionsE = ReadFromFile(FILE_VALID_DIRECTIONS_E);
 
+        //Method to get the 6 adjacent rooms for a given room
+
         public int[] GetAdjacentRooms(int room)
         {
             if (0 <= room && room <= 29)
@@ -47,6 +49,9 @@ namespace Cave
                 return null;
             }
         }
+
+        //Method to say whether each direction 0-5 is reachable
+
         public bool[] GetDirectionsBoolArray(int room, int caveIndex)
         {
             if (0 <= room && room <= 29 &&
@@ -80,6 +85,8 @@ namespace Cave
                     }
                 }
 
+                //Return the bool array of the 6 directions' reachabilities
+
                 return directionsBoolArray;
             }
             else
@@ -87,6 +94,8 @@ namespace Cave
                 return null;
             }
         }
+
+        //Method to get the room number reached when the player moves
 
         public int GetNewRoomNumber(int room, int direction)
         {
@@ -104,6 +113,8 @@ namespace Cave
                 return 0;
             }
         }
+
+        //Method to double check that a move a player makes is valid
 
         public bool IsValidMove(int room, int direction, int caveIndex)
         {
@@ -140,6 +151,8 @@ namespace Cave
                 return false;
             }
         }
+
+        //Method to read a csv file to a List of int arrays
 
         private static List<int[]> ReadFromFile(string fileName)
         {
