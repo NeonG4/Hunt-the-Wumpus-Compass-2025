@@ -1,3 +1,5 @@
+using _2030638_Choy_CaveTestUI;
+
 namespace Hunt_the_Wumpus_2025
 {
     public partial class FormLaucher : Form
@@ -10,6 +12,20 @@ namespace Hunt_the_Wumpus_2025
         {
             FormGame form = new FormGame();
             form.ShowDialog(); // creates a new game instance
+        }
+
+        private void buttonTestGameLocation_Click(object sender, EventArgs e)
+        {
+            // open hazardstest.cs
+            HazardsTest form = new HazardsTest();
+            form.ShowDialog();
+        }
+
+        private void buttonTestCave_Click(object sender, EventArgs e)
+        {
+            // open cave form
+            Form1 form = new Form1();
+            form.ShowDialog();
         }
     }
 }
