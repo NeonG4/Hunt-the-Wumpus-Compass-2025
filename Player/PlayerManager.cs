@@ -8,13 +8,29 @@ namespace Player
 {
     public class PlayerManager : IPlayer
     {
-        //Constructor to be called by Game Control
+        //Constructor to be called by GC
 
         public PlayerManager() { }
 
-        //Define the player
-
-        Player player = new Player();
+        //Properties
+        public int Arrows { get; set; }
+        public int GoldCoins { get; set; }
+        public int MoveCount { get; set; }
+        public bool KilledWumpusBool { get; set; }
+        public int Score
+        {
+            get
+            {
+                if (KilledWumpusBool)
+                {
+                    return 10000 + 200 * GoldCoins + 750 * Arrows + 10000;
+                }
+                else
+                {
+                    return 10000 + 200 * GoldCoins + 750 * Arrows;
+                }
+            }
+        }
 
         //Method to add or subtract arrows
 
@@ -22,7 +38,7 @@ namespace Player
         {
             //If subtracting too much, return false to tell GC player cannot use arrows
 
-            if (!isAddition && (amount > player.Arrows))
+            if (!isAddition && (amount > Arrows))
             {
                 return false;
             }
@@ -33,12 +49,12 @@ namespace Player
 
                 if (isAddition)
                 {
-                    player.Arrows += amount;
+                    Arrows += amount;
                 }
 
                 else
                 {
-                    player.Arrows -= amount;
+                    Arrows -= amount;
                 }
 
                 //Return true to return and continue the game
@@ -53,7 +69,7 @@ namespace Player
         {
             //If subtracting too much, return false to tell GC player lost the game
 
-            if (!isAddition && (amount > player.GoldCoins))
+            if (!isAddition && (amount > GoldCoins))
             {
                 return false;
             }
@@ -64,12 +80,12 @@ namespace Player
 
                 if (isAddition)
                 {
-                    player.GoldCoins += amount;
+                    GoldCoins += amount;
                 }
 
                 else
                 {
-                    player.GoldCoins -= amount;
+                    GoldCoins -= amount;
                 }
 
                 //Return true to return and continue the game
@@ -82,18 +98,25 @@ namespace Player
 
         public void IncrementMoveCount()
         {
-            player.MoveCount++;
+            MoveCount++;
+        }
+
+        //Method to indicate wumpus was killed in player class
+
+        public void KilledWumpus()
+        {
+            KilledWumpusBool = true;
         }
 
         //Method to calculate ending score
 
-        public int GetEndingScore(bool killedWumpus)
+        public int GetEndingScore()
         {
-            int score = 100 - player.MoveCount + player.GoldCoins + (5 * player.Arrows);
+            int score = 100 - MoveCount + GoldCoins + (5 * Arrows);
 
             //Add 50 if wumpus was killed
 
-            if (killedWumpus)
+            if (KilledWumpusBool)
             {
                 score += 50;
             }
@@ -118,8 +141,12 @@ namespace Player
 
         void IncrementMoveCount();
 
+        //Method to tell Player class that the wumpus has been killed
+
+        void KilledWumpus();
+
         //Method to compute ending score
 
-        int GetEndingScore(bool killedWumpus);
+        int GetEndingScore();
     }
 }
