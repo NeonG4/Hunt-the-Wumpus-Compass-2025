@@ -9,9 +9,16 @@ namespace Cave
 {
     public class CaveManager : ICave
     {
+        //Cave index variable
+
+        public int CaveIndex { get; set; }
+
         //Constructor
 
-        public CaveManager() { }
+        public CaveManager(int caveIndex)
+        {
+            CaveIndex = caveIndex;
+        }
 
         //Method to get the 6 adjacent rooms for a given room
 
@@ -33,19 +40,19 @@ namespace Cave
 
         //Method to say whether each direction 0-5 is reachable
 
-        public bool[] GetDirectionsBoolArray(int room, int caveIndex)
+        public bool[] GetDirectionsBoolArray(int room)
         {
             if (0 <= room && room <= 29 &&
-                0 <= caveIndex && caveIndex <= 4)
+                0 <= CaveIndex && CaveIndex <= 4)
             {
                 //Read from valid directions data file corresponding to the cave index
 
                 int[] validDirections;
 
-                if (caveIndex == 0) { validDirections = reader.validDirectionsA[room]; }
-                else if (caveIndex == 1) { validDirections = reader.validDirectionsB[room]; }
-                else if (caveIndex == 2) { validDirections = reader.validDirectionsC[room]; }
-                else if (caveIndex == 3) { validDirections = reader.validDirectionsD[room]; }
+                if (CaveIndex == 0) { validDirections = reader.validDirectionsA[room]; }
+                else if (CaveIndex == 1) { validDirections = reader.validDirectionsB[room]; }
+                else if (CaveIndex == 2) { validDirections = reader.validDirectionsC[room]; }
+                else if (CaveIndex == 3) { validDirections = reader.validDirectionsD[room]; }
                 else { validDirections = reader.validDirectionsE[room]; }
 
                 //Define bool array
@@ -97,20 +104,20 @@ namespace Cave
 
         //Method to double check that a move a player makes is valid
 
-        public bool IsValidMove(int room, int direction, int caveIndex)
+        public bool IsValidMove(int room, int direction)
         {
             if (0 <= room && room <= 29 && 
                 0 <= direction && direction <= 5 && 
-                0 <= caveIndex && caveIndex <= 4)
+                0 <= CaveIndex && CaveIndex <= 4)
             {
                 //Read from valid directions data file corresponding to the cave index
 
                 int[] validDirections;
 
-                if (caveIndex == 0) { validDirections = reader.validDirectionsA[room]; }
-                else if (caveIndex == 1) { validDirections = reader.validDirectionsB[room]; }
-                else if (caveIndex == 2) { validDirections = reader.validDirectionsC[room]; }
-                else if (caveIndex == 3) { validDirections = reader.validDirectionsD[room]; }
+                if (CaveIndex == 0) { validDirections = reader.validDirectionsA[room]; }
+                else if (CaveIndex == 1) { validDirections = reader.validDirectionsB[room]; }
+                else if (CaveIndex == 2) { validDirections = reader.validDirectionsC[room]; }
+                else if (CaveIndex == 3) { validDirections = reader.validDirectionsD[room]; }
                 else { validDirections = reader.validDirectionsE[room]; }
 
                 //Return true if direction is present in the valid directions array for this room index
@@ -144,7 +151,7 @@ namespace Cave
 
         //For UI to tell player which directions they can move
 
-        bool[] GetDirectionsBoolArray(int room, int caveIndex);
+        bool[] GetDirectionsBoolArray(int room);
 
         //To get the new room number based on direction moved, to be used after IsValidMove bool
 
@@ -152,6 +159,6 @@ namespace Cave
 
         //To be called by game control to make sure moving in specified direction is valid
 
-        bool IsValidMove(int room, int direction, int caveIndex);
+        bool IsValidMove(int room, int direction);
     }
 }

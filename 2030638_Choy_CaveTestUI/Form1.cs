@@ -13,7 +13,9 @@ namespace _2030638_Choy_CaveTestUI
 {
     public partial class Form1 : Form
     {
-        CaveManager cave = new CaveManager();
+        //Initialize at first cave # for now
+
+        CaveManager cave = new CaveManager(0);
 
         public Form1()
         {
@@ -66,7 +68,8 @@ namespace _2030638_Choy_CaveTestUI
                 {
                     //Get valid directions bool array
 
-                    bool[] directionsBoolArray = cave.GetDirectionsBoolArray(room, caveIndex);
+                    cave.CaveIndex = caveIndex;
+                    bool[] directionsBoolArray = cave.GetDirectionsBoolArray(room);
 
                     //Output
 
@@ -103,7 +106,7 @@ namespace _2030638_Choy_CaveTestUI
                 {
                     //Get bool result
 
-                    bool result = cave.IsValidMove(room, direction, caveIndex);
+                    bool result = cave.IsValidMove(room, direction);
 
                     //Output
 

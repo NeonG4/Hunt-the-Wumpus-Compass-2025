@@ -50,39 +50,35 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(42, 46);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(63, 71);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.Size = new System.Drawing.Size(52, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Room";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(168, 46);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(252, 71);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(85, 13);
+            this.label2.Size = new System.Drawing.Size(127, 20);
             this.label2.TabIndex = 1;
             this.label2.Text = "Adjacent Rooms";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(168, 133);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Location = new System.Drawing.Point(252, 205);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(133, 13);
+            this.label3.Size = new System.Drawing.Size(197, 20);
             this.label3.TabIndex = 2;
             this.label3.Text = "Directions 0-5 Reachable?";
             // 
             // buttonAdjacent
             // 
-            this.buttonAdjacent.Location = new System.Drawing.Point(413, 30);
-            this.buttonAdjacent.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonAdjacent.Location = new System.Drawing.Point(620, 46);
             this.buttonAdjacent.Name = "buttonAdjacent";
-            this.buttonAdjacent.Size = new System.Drawing.Size(165, 44);
+            this.buttonAdjacent.Size = new System.Drawing.Size(248, 68);
             this.buttonAdjacent.TabIndex = 3;
             this.buttonAdjacent.Text = "Get Adjacent Rooms";
             this.buttonAdjacent.UseVisualStyleBackColor = true;
@@ -90,10 +86,9 @@
             // 
             // buttonValid
             // 
-            this.buttonValid.Location = new System.Drawing.Point(413, 101);
-            this.buttonValid.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonValid.Location = new System.Drawing.Point(620, 155);
             this.buttonValid.Name = "buttonValid";
-            this.buttonValid.Size = new System.Drawing.Size(165, 44);
+            this.buttonValid.Size = new System.Drawing.Size(248, 68);
             this.buttonValid.TabIndex = 4;
             this.buttonValid.Text = "Directions 0-5 Reachable?";
             this.buttonValid.UseVisualStyleBackColor = true;
@@ -101,34 +96,30 @@
             // 
             // textBoxRoom
             // 
-            this.textBoxRoom.Location = new System.Drawing.Point(45, 91);
-            this.textBoxRoom.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxRoom.Location = new System.Drawing.Point(68, 140);
             this.textBoxRoom.Name = "textBoxRoom";
-            this.textBoxRoom.Size = new System.Drawing.Size(90, 20);
+            this.textBoxRoom.Size = new System.Drawing.Size(133, 26);
             this.textBoxRoom.TabIndex = 5;
             // 
             // textBoxAdjacent
             // 
-            this.textBoxAdjacent.Location = new System.Drawing.Point(171, 91);
-            this.textBoxAdjacent.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxAdjacent.Location = new System.Drawing.Point(256, 140);
             this.textBoxAdjacent.Name = "textBoxAdjacent";
-            this.textBoxAdjacent.Size = new System.Drawing.Size(111, 20);
+            this.textBoxAdjacent.Size = new System.Drawing.Size(164, 26);
             this.textBoxAdjacent.TabIndex = 6;
             // 
             // textBoxReachableDirections
             // 
-            this.textBoxReachableDirections.Location = new System.Drawing.Point(171, 172);
-            this.textBoxReachableDirections.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxReachableDirections.Location = new System.Drawing.Point(256, 265);
             this.textBoxReachableDirections.Name = "textBoxReachableDirections";
-            this.textBoxReachableDirections.Size = new System.Drawing.Size(217, 20);
+            this.textBoxReachableDirections.Size = new System.Drawing.Size(324, 26);
             this.textBoxReachableDirections.TabIndex = 7;
             // 
             // buttonMoveValid
             // 
-            this.buttonMoveValid.Location = new System.Drawing.Point(413, 171);
-            this.buttonMoveValid.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonMoveValid.Location = new System.Drawing.Point(620, 263);
             this.buttonMoveValid.Name = "buttonMoveValid";
-            this.buttonMoveValid.Size = new System.Drawing.Size(165, 44);
+            this.buttonMoveValid.Size = new System.Drawing.Size(248, 68);
             this.buttonMoveValid.TabIndex = 8;
             this.buttonMoveValid.Text = "Is Move Valid?";
             this.buttonMoveValid.UseVisualStyleBackColor = true;
@@ -136,74 +127,67 @@
             // 
             // textBoxDirection
             // 
-            this.textBoxDirection.Location = new System.Drawing.Point(45, 172);
-            this.textBoxDirection.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxDirection.Location = new System.Drawing.Point(68, 265);
             this.textBoxDirection.Name = "textBoxDirection";
-            this.textBoxDirection.Size = new System.Drawing.Size(90, 20);
+            this.textBoxDirection.Size = new System.Drawing.Size(133, 26);
             this.textBoxDirection.TabIndex = 11;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(42, 133);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Location = new System.Drawing.Point(63, 205);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(49, 13);
+            this.label5.Size = new System.Drawing.Size(72, 20);
             this.label5.TabIndex = 9;
             this.label5.Text = "Direction";
             // 
             // textBoxCaveIndex
             // 
-            this.textBoxCaveIndex.Location = new System.Drawing.Point(45, 251);
-            this.textBoxCaveIndex.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxCaveIndex.Location = new System.Drawing.Point(68, 386);
             this.textBoxCaveIndex.Name = "textBoxCaveIndex";
-            this.textBoxCaveIndex.Size = new System.Drawing.Size(90, 20);
+            this.textBoxCaveIndex.Size = new System.Drawing.Size(133, 26);
             this.textBoxCaveIndex.TabIndex = 13;
+            this.textBoxCaveIndex.Text = "0";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(42, 213);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Location = new System.Drawing.Point(63, 328);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(61, 13);
+            this.label4.Size = new System.Drawing.Size(88, 20);
             this.label4.TabIndex = 12;
             this.label4.Text = "Cave Index";
             // 
             // labelValid
             // 
             this.labelValid.AutoSize = true;
-            this.labelValid.Location = new System.Drawing.Point(591, 187);
-            this.labelValid.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelValid.Location = new System.Drawing.Point(886, 288);
             this.labelValid.Name = "labelValid";
-            this.labelValid.Size = new System.Drawing.Size(37, 13);
+            this.labelValid.Size = new System.Drawing.Size(55, 20);
             this.labelValid.TabIndex = 14;
             this.labelValid.Text = "Result";
             // 
             // textBoxNewRoomNumber
             // 
-            this.textBoxNewRoomNumber.Location = new System.Drawing.Point(171, 251);
-            this.textBoxNewRoomNumber.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxNewRoomNumber.Location = new System.Drawing.Point(256, 386);
             this.textBoxNewRoomNumber.Name = "textBoxNewRoomNumber";
-            this.textBoxNewRoomNumber.Size = new System.Drawing.Size(126, 20);
+            this.textBoxNewRoomNumber.Size = new System.Drawing.Size(187, 26);
             this.textBoxNewRoomNumber.TabIndex = 16;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(168, 213);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Location = new System.Drawing.Point(252, 328);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(100, 13);
+            this.label6.Size = new System.Drawing.Size(147, 20);
             this.label6.TabIndex = 15;
             this.label6.Text = "New Room Number";
             // 
             // buttonGetNewRoom
             // 
-            this.buttonGetNewRoom.Location = new System.Drawing.Point(413, 241);
-            this.buttonGetNewRoom.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonGetNewRoom.Location = new System.Drawing.Point(620, 371);
             this.buttonGetNewRoom.Name = "buttonGetNewRoom";
-            this.buttonGetNewRoom.Size = new System.Drawing.Size(165, 44);
+            this.buttonGetNewRoom.Size = new System.Drawing.Size(248, 68);
             this.buttonGetNewRoom.TabIndex = 17;
             this.buttonGetNewRoom.Text = "Get New Room #";
             this.buttonGetNewRoom.UseVisualStyleBackColor = true;
@@ -211,9 +195,9 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(678, 319);
+            this.ClientSize = new System.Drawing.Size(1017, 491);
             this.Controls.Add(this.buttonGetNewRoom);
             this.Controls.Add(this.textBoxNewRoomNumber);
             this.Controls.Add(this.label6);
@@ -231,7 +215,6 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Form1";
             this.Text = "Nathan - Cave Test UI";
             this.ResumeLayout(false);
