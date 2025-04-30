@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using System.IO;
 
-namespace Hunt_the_Wumpus_2025
+namespace ScoreBoardLibrary
 {
     public class Scoreboard : IScoreboard
     {
@@ -24,7 +24,7 @@ namespace Hunt_the_Wumpus_2025
             return scores;
         }
 
-        private List<ScoreItem> forTestOnlyGetFourNames()
+        public List<ScoreItem> forTestOnlyGetFourNames()
         {
             List<ScoreItem> scores = new List<ScoreItem>();
 
@@ -40,6 +40,12 @@ namespace Hunt_the_Wumpus_2025
 
             return scores;
         }
+        public List<ScoreItem> GetHighScores()
+        {
+
+            return null;
+        }
+
         public int CalculateHighScore(int turns, int coins, int arrows, bool wumpus)
         {
             //TODO; implement stub, might have to change return value to an array/list
@@ -85,6 +91,6 @@ namespace Hunt_the_Wumpus_2025
         //track highscore in memory. not check
         //save highscore. chechk
         //getting highscores from. file check
-        
+        List<ScoreItem> GetHighScores();
     }
 }

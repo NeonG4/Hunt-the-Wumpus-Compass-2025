@@ -5,7 +5,7 @@ using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Hunt_the_Wumpus_2025
+namespace ScoreBoardLibrary
 {
     public class ScoreItem
     {
