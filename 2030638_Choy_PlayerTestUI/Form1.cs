@@ -91,7 +91,7 @@ namespace _2030638_Choy_PlayerTestUI
         {
             //Call method
 
-            int score = playerManager.GetEndingScore();
+            int score = playerManager.Score;
 
             //Display to UI
 
