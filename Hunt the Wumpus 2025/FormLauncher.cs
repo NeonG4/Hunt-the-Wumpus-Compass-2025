@@ -1,4 +1,5 @@
 using _2030638_Choy_CaveTestUI;
+using GameLocationLibrary;
 
 namespace Hunt_the_Wumpus_2025
 {
