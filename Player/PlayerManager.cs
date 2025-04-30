@@ -10,24 +10,31 @@ namespace Player
     {
         //Constructor to be called by GC
 
-        public PlayerManager() { }
+        public PlayerManager() 
+        {
+            Arrows = 0;
+            GoldCoins = 0;
+            MoveCount = 0;
+            KilledWumpus = false;
+        }
 
         //Properties
+
         public int Arrows { get; set; }
         public int GoldCoins { get; set; }
         public int MoveCount { get; set; }
-        public bool KilledWumpusBool { get; set; }
+        public bool KilledWumpus { get; set; }
         public int Score
         {
             get
             {
-                if (KilledWumpusBool)
+                if (KilledWumpus)
                 {
-                    return 10000 + 200 * GoldCoins + 750 * Arrows + 10000;
+                    return 1000 + 25 * GoldCoins + 75 * Arrows - 50 * MoveCount + 1000;
                 }
                 else
                 {
-                    return 10000 + 200 * GoldCoins + 750 * Arrows;
+                    return 1000 + 25 * GoldCoins + 75 * Arrows - 50 * MoveCount;
                 }
             }
         }
@@ -101,29 +108,11 @@ namespace Player
             MoveCount++;
         }
 
-        //Method to indicate wumpus was killed in player class
-
-        public void KilledWumpus()
-        {
-            KilledWumpusBool = true;
-        }
-
-        //Method to calculate ending score
+        //Method to calculate ending score - uses get property Score
 
         public int GetEndingScore()
         {
-            int score = 100 - MoveCount + GoldCoins + (5 * Arrows);
-
-            //Add 50 if wumpus was killed
-
-            if (KilledWumpusBool)
-            {
-                score += 50;
-            }
-
-            //Return the score
-
-            return score;
+            return Score;
         }
     }
 
@@ -140,10 +129,6 @@ namespace Player
         //Method to increment number of moves
 
         void IncrementMoveCount();
-
-        //Method to tell Player class that the wumpus has been killed
-
-        void KilledWumpus();
 
         //Method to compute ending score
 
