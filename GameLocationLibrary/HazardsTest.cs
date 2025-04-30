@@ -32,10 +32,20 @@ namespace GameLocationLibrary
         {
             int number = random.Next(1, 31);
             Hazards newHazard = new Hazards(hazard, number);
-            hazards.Add(newHazard);
-            listBox1.Items.Add(newHazard);
+            for (int i = 0; i < listBox1.Items.Count; i++)
+            {
+                var item = listBox1.Items[i];
+                if (item.ToString() == number.ToString())
+                {
+                    
+                }
+                else
+                {
+                    
+                }
+            }
         }
-
+            
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {

@@ -37,9 +37,14 @@ namespace GameLocationLibrary
                 hazards.Add(newHazard);
             }
         }
+
+        public List<Hazards> GetHazards()
+        {
+            return new List<Hazards>();
+        }
     }
     public interface IGameLocation
     {
-
+        public List<Hazards> GetHazards();
     }
 }

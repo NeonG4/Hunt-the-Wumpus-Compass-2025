@@ -37,6 +37,7 @@
             // 
             listBox1.FormattingEnabled = true;
             listBox1.ItemHeight = 15;
+            listBox1.Items.AddRange(new object[] { "1", "2", "3", "4", "5" });
             listBox1.Location = new Point(45, 24);
             listBox1.Name = "listBox1";
             listBox1.Size = new Size(195, 229);
