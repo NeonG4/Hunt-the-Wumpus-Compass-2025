@@ -65,6 +65,12 @@ namespace Hunt_the_Wumpus_2025
             //todo write down new high scores
             return "";
         }
+        public string AddHighScore()
+        {
+
+            // to do
+            return null;
+        }
     }
     public interface IScoreboard
     {
@@ -72,6 +78,13 @@ namespace Hunt_the_Wumpus_2025
         List<ScoreItem> SortHighScore(string highscoredatafile);
         //calculates the high score using the various parameters.
         int CalculateHighScore(int turns, int coins, int arrows, bool wumpus);
+
+        string AddHighScore();
+        //add higschore. check
+        // sort highscore. check
+        //track highscore in memory. not check
+        //save highscore. chechk
+        //getting highscores from. file check
         
     }
 }
