@@ -9,9 +9,9 @@ namespace ScoreBoardLibrary
 {
     public class ScoreItem
     {
-        private string Name { get; set; }
-        private int Score { get; set; } 
-        private string CaveType { get; set; }
+        public string Name { get; set; }
+        public int Score { get; set; } 
+        public string CaveType { get; set; }
 
         public ScoreItem(string name, int score, string cave)
         {

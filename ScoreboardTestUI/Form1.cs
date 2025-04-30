@@ -7,6 +7,7 @@ namespace ScoreboardTestUI
         {
             InitializeComponent();
         }
+       
         List<ScoreItem> items = new List<ScoreItem>();
         Scoreboard scoreboard = new Scoreboard();
         private void Form1_Load(object sender, EventArgs e)
@@ -19,7 +20,7 @@ namespace ScoreboardTestUI
             items = scoreboard.forTestOnlyGetFourNames();
             foreach (ScoreItem item in items)
             {
-                scorebox.Items.Add(items);
+                scorebox.Items.Add(item.Name + " " +  item.Score + " " + item.CaveType);
             }
         }
     }
