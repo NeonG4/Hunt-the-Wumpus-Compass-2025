@@ -1,4 +1,4 @@
-﻿namespace Hunt_the_Wumpus_2025
+﻿namespace GameLocationLibrary
 {
     partial class HazardsTest
     {
