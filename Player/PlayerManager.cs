@@ -107,17 +107,17 @@ namespace Player
         {
             MoveCount++;
         }
-
-        //Method to calculate ending score - uses get property Score
-
-        public int GetEndingScore()
-        {
-            return Score;
-        }
     }
 
     public interface IPlayer
     {
+        //Properties for arrows, coins, turns for use by GC, high score
+
+        int Arrows { get; set; }
+        int GoldCoins { get; set; }
+        int MoveCount { get; set; }
+        int Score { get; }
+
         //Methods to change player inventory
         //IMPORTANT: Returns true or false for whether you can pay/use arrows or not
         //False for gold coins would mean you lose the game!!
@@ -129,9 +129,5 @@ namespace Player
         //Method to increment number of moves
 
         void IncrementMoveCount();
-
-        //Method to compute ending score
-
-        int GetEndingScore();
     }
 }

@@ -10,6 +10,39 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="adjacentRooms.csv" />
+    <None Remove="caveA-validDirections.csv" />
+    <None Remove="caveB-validDirections.csv" />
+    <None Remove="caveC-validDirections.csv" />
+    <None Remove="caveD-validDirections.csv" />
+    <None Remove="caveE-validDirections.csv" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="adjacentRooms.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="caveA-validDirections.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="caveB-validDirections.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="caveC-validDirections.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="caveD-validDirections.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="caveE-validDirections.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\2030638_Choy_CaveTestUI\CaveTestUI.csproj" />
     <ProjectReference Include="..\CaveManager\Cave.csproj" />
     <ProjectReference Include="..\Game Control\Game Control.csproj" />

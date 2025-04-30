@@ -48,10 +48,9 @@
             // 
             // buttonArrows
             // 
-            this.buttonArrows.Location = new System.Drawing.Point(458, 168);
-            this.buttonArrows.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.buttonArrows.Location = new System.Drawing.Point(305, 109);
             this.buttonArrows.Name = "buttonArrows";
-            this.buttonArrows.Size = new System.Drawing.Size(270, 77);
+            this.buttonArrows.Size = new System.Drawing.Size(180, 50);
             this.buttonArrows.TabIndex = 0;
             this.buttonArrows.Text = "Add or Subtract Arrows";
             this.buttonArrows.UseVisualStyleBackColor = true;
@@ -59,10 +58,9 @@
             // 
             // buttonCoins
             // 
-            this.buttonCoins.Location = new System.Drawing.Point(458, 254);
-            this.buttonCoins.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.buttonCoins.Location = new System.Drawing.Point(305, 165);
             this.buttonCoins.Name = "buttonCoins";
-            this.buttonCoins.Size = new System.Drawing.Size(270, 77);
+            this.buttonCoins.Size = new System.Drawing.Size(180, 50);
             this.buttonCoins.TabIndex = 1;
             this.buttonCoins.Text = "Add or Subtract Coins";
             this.buttonCoins.UseVisualStyleBackColor = true;
@@ -70,10 +68,9 @@
             // 
             // buttonIncrement
             // 
-            this.buttonIncrement.Location = new System.Drawing.Point(458, 340);
-            this.buttonIncrement.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.buttonIncrement.Location = new System.Drawing.Point(305, 221);
             this.buttonIncrement.Name = "buttonIncrement";
-            this.buttonIncrement.Size = new System.Drawing.Size(270, 77);
+            this.buttonIncrement.Size = new System.Drawing.Size(180, 50);
             this.buttonIncrement.TabIndex = 2;
             this.buttonIncrement.Text = "Increment Move Count";
             this.buttonIncrement.UseVisualStyleBackColor = true;
@@ -84,20 +81,18 @@
             this.checkBoxIsAddition.AutoSize = true;
             this.checkBoxIsAddition.Checked = true;
             this.checkBoxIsAddition.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxIsAddition.Location = new System.Drawing.Point(93, 115);
-            this.checkBoxIsAddition.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.checkBoxIsAddition.Location = new System.Drawing.Point(62, 75);
             this.checkBoxIsAddition.Name = "checkBoxIsAddition";
-            this.checkBoxIsAddition.Size = new System.Drawing.Size(119, 24);
+            this.checkBoxIsAddition.Size = new System.Drawing.Size(81, 17);
             this.checkBoxIsAddition.TabIndex = 3;
             this.checkBoxIsAddition.Text = "Is Addition?";
             this.checkBoxIsAddition.UseVisualStyleBackColor = true;
             // 
             // buttonGetScore
             // 
-            this.buttonGetScore.Location = new System.Drawing.Point(458, 426);
-            this.buttonGetScore.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.buttonGetScore.Location = new System.Drawing.Point(305, 277);
             this.buttonGetScore.Name = "buttonGetScore";
-            this.buttonGetScore.Size = new System.Drawing.Size(270, 77);
+            this.buttonGetScore.Size = new System.Drawing.Size(180, 50);
             this.buttonGetScore.TabIndex = 4;
             this.buttonGetScore.Text = "Get Ending Score";
             this.buttonGetScore.UseVisualStyleBackColor = true;
@@ -106,10 +101,9 @@
             // checkBoxKilledWumpus
             // 
             this.checkBoxKilledWumpus.AutoSize = true;
-            this.checkBoxKilledWumpus.Location = new System.Drawing.Point(258, 115);
-            this.checkBoxKilledWumpus.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.checkBoxKilledWumpus.Location = new System.Drawing.Point(172, 75);
             this.checkBoxKilledWumpus.Name = "checkBoxKilledWumpus";
-            this.checkBoxKilledWumpus.Size = new System.Drawing.Size(148, 24);
+            this.checkBoxKilledWumpus.Size = new System.Drawing.Size(102, 17);
             this.checkBoxKilledWumpus.TabIndex = 5;
             this.checkBoxKilledWumpus.Text = "Killed Wumpus?";
             this.checkBoxKilledWumpus.UseVisualStyleBackColor = true;
@@ -118,105 +112,95 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(88, 197);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(59, 128);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 20);
+            this.label1.Size = new System.Drawing.Size(39, 13);
             this.label1.TabIndex = 6;
             this.label1.Text = "Arrows";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(88, 254);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(59, 165);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(87, 20);
+            this.label2.Size = new System.Drawing.Size(58, 13);
             this.label2.TabIndex = 7;
             this.label2.Text = "Gold Coins";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(88, 311);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(59, 202);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(55, 20);
+            this.label3.Size = new System.Drawing.Size(39, 13);
             this.label3.TabIndex = 8;
             this.label3.Text = "Moves";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(88, 369);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(59, 240);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(51, 20);
+            this.label4.Size = new System.Drawing.Size(35, 13);
             this.label4.TabIndex = 9;
             this.label4.Text = "Score";
             // 
             // textBoxArrows
             // 
-            this.textBoxArrows.Location = new System.Drawing.Point(202, 192);
-            this.textBoxArrows.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBoxArrows.Location = new System.Drawing.Point(135, 125);
             this.textBoxArrows.Name = "textBoxArrows";
             this.textBoxArrows.ReadOnly = true;
-            this.textBoxArrows.Size = new System.Drawing.Size(148, 26);
+            this.textBoxArrows.Size = new System.Drawing.Size(100, 20);
             this.textBoxArrows.TabIndex = 10;
             this.textBoxArrows.Text = "0";
             // 
             // textBoxCoins
             // 
-            this.textBoxCoins.Location = new System.Drawing.Point(202, 249);
-            this.textBoxCoins.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBoxCoins.Location = new System.Drawing.Point(135, 162);
             this.textBoxCoins.Name = "textBoxCoins";
             this.textBoxCoins.ReadOnly = true;
-            this.textBoxCoins.Size = new System.Drawing.Size(148, 26);
+            this.textBoxCoins.Size = new System.Drawing.Size(100, 20);
             this.textBoxCoins.TabIndex = 11;
             this.textBoxCoins.Text = "0";
             // 
             // textBoxMoves
             // 
-            this.textBoxMoves.Location = new System.Drawing.Point(202, 306);
-            this.textBoxMoves.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBoxMoves.Location = new System.Drawing.Point(135, 199);
             this.textBoxMoves.Name = "textBoxMoves";
             this.textBoxMoves.ReadOnly = true;
-            this.textBoxMoves.Size = new System.Drawing.Size(148, 26);
+            this.textBoxMoves.Size = new System.Drawing.Size(100, 20);
             this.textBoxMoves.TabIndex = 12;
             this.textBoxMoves.Text = "0";
             // 
             // textBoxScore
             // 
-            this.textBoxScore.Location = new System.Drawing.Point(202, 365);
-            this.textBoxScore.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBoxScore.Location = new System.Drawing.Point(135, 237);
             this.textBoxScore.Name = "textBoxScore";
             this.textBoxScore.ReadOnly = true;
-            this.textBoxScore.Size = new System.Drawing.Size(148, 26);
+            this.textBoxScore.Size = new System.Drawing.Size(100, 20);
             this.textBoxScore.TabIndex = 13;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(88, 455);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(59, 296);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(87, 20);
+            this.label5.Size = new System.Drawing.Size(60, 13);
             this.label5.TabIndex = 14;
             this.label5.Text = "Amount +/-";
             // 
             // textBoxAmount
             // 
-            this.textBoxAmount.Location = new System.Drawing.Point(202, 451);
-            this.textBoxAmount.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBoxAmount.Location = new System.Drawing.Point(135, 293);
             this.textBoxAmount.Name = "textBoxAmount";
-            this.textBoxAmount.Size = new System.Drawing.Size(148, 26);
+            this.textBoxAmount.Size = new System.Drawing.Size(100, 20);
             this.textBoxAmount.TabIndex = 15;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(808, 608);
+            this.ClientSize = new System.Drawing.Size(539, 395);
             this.Controls.Add(this.textBoxAmount);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.textBoxScore);
@@ -233,9 +217,8 @@
             this.Controls.Add(this.buttonIncrement);
             this.Controls.Add(this.buttonCoins);
             this.Controls.Add(this.buttonArrows);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Nathan - Player Test UI";
             this.ResumeLayout(false);
             this.PerformLayout();
 
