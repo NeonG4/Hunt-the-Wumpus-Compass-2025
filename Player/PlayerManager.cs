@@ -30,7 +30,7 @@ namespace Player
             {
                 if (KilledWumpus)
                 {
-                    return 1000 + 25 * GoldCoins + 75 * Arrows - 50 * MoveCount + 1000;
+                    return (int)((1000 + 25 * GoldCoins + 75 * Arrows - 50 * MoveCount) * 1.5);
                 }
                 else
                 {
