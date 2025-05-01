@@ -66,10 +66,21 @@ namespace ScoreBoardLibrary
             return "";
 
         }
-        private string WriteTofile()
+        private void WriteTofile(string datafile, ScoreItem score)
         {
-            //todo write down new high scores
-            return "";
+            List<ScoreItem> scores = new List<ScoreItem>(); // placeholder
+            StreamWriter streamwriter = new StreamWriter(datafile);
+            
+           foreach (ScoreItem contact in scores)
+            {
+               
+                string record = contact.Name + ": " + contact.Score + " " + contact.CaveType;
+                streamwriter.WriteLine(record);
+
+            }
+            streamwriter.Flush();
+            streamwriter.Close();
+
         }
         public string AddHighScore()
         {
