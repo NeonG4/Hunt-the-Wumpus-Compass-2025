@@ -9,11 +9,11 @@ namespace Cave
 {
     public class CaveManager : ICave
     {
-        //Cave index variable
+        //Cave index property
 
         public int CaveIndex { get; set; }
 
-        //Constructor
+        //Constructor inputting cave index, to be called when starting game
 
         public CaveManager(int caveIndex)
         {
