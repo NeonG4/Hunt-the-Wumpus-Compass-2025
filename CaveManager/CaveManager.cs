@@ -145,11 +145,11 @@ namespace Cave
     {
         //Make sure GC uses the constructor so that the files are read from!
 
-        //For UI to tell player which rooms are around the player
+        //For UI to tell player which rooms are around the player (directions 0-5)
 
         int[] GetAdjacentRooms(int room);
 
-        //For UI to tell player which directions they can move
+        //For UI to tell player which directions they can move (directions 0-5)
 
         bool[] GetDirectionsBoolArray(int room);
 

@@ -119,14 +119,15 @@ namespace Player
         int Score { get; }
 
         //Methods to change player inventory
-        //IMPORTANT: Returns true or false for whether you can pay/use arrows or not
+        //IMPORTANT: Returns true or false for whether you can pay/use arrows/coins or not
+        //isAddition parameter: input true if you're adding arrows/coins, false if removing them
         //False for gold coins would mean you lose the game!!
 
         bool AddOrSubtractArrows(bool isAddition, int amount);
 
         bool AddOrSubtractGoldCoins(bool isAddition, int amount);
 
-        //Method to increment number of moves
+        //Method to increment number of moves (use every time player moves)
 
         void IncrementMoveCount();
     }
