@@ -44,11 +44,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\2030638_Choy_CaveTestUI\CaveTestUI.csproj" />
-    <ProjectReference Include="..\CaveManager\Cave.csproj" />
-    <ProjectReference Include="..\Game Control\Game Control.csproj" />
+    <ProjectReference Include="..\2030638_Choy_PlayerTestUI\PlayerTestUI.csproj" />
     <ProjectReference Include="..\GameLocationLibrary\GameLocationLibrary.csproj" />
-    <ProjectReference Include="..\ScoreBoardLibrary\ScoreBoardLibrary.csproj" />
-    <ProjectReference Include="..\UI Library\UI Library.csproj" />
+    <ProjectReference Include="..\ScoreboardTestUI\ScoreboardTestUI.csproj" />
   </ItemGroup>
 
 </Project>

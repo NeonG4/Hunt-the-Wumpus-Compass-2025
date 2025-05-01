@@ -42,9 +42,16 @@ namespace GameLocationLibrary
         {
             return new List<Hazards>();
         }
+
+        public int GetPlayerLocation()
+        {
+            throw new NotImplementedException();
+        }
     }
     public interface IGameLocation
     {
         public List<Hazards> GetHazards();
+
+        public int GetPlayerLocation();
     }
 }

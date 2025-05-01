@@ -22,27 +22,25 @@ namespace GameLocationLibrary
 
         private void button1_Click(object sender, EventArgs e)
         {
-            addHazard("Pit");
-            addHazard("Pit");
-            addHazard("Bats");
-            addHazard("Bats");
+            while (listBox1.Items.Count < 2)
+            {
+                addHazard("Pit");
+            }
+            while (listBox1.Items.Count < 4)
+            {
+                addHazard("Bats");
+            }
+            
         }
 
         private void addHazard(string hazard)
         {
             int number = random.Next(1, 31);
             Hazards newHazard = new Hazards(hazard, number);
-            for (int i = 0; i < listBox1.Items.Count; i++)
+            if (!listBox1.Items.Contains(number))
             {
-                var item = listBox1.Items[i];
-                if (item.ToString() == number.ToString())
-                {
-                    
-                }
-                else
-                {
-                    
-                }
+                hazards.Add(newHazard);
+                listBox1.Items.Add(newHazard.room);
             }
         }
             
