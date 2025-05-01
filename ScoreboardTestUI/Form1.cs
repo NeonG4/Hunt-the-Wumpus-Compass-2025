@@ -26,7 +26,7 @@ namespace ScoreboardTestUI
 
         private void Addnewscore_Click(object sender, EventArgs e)
         {
-
+            
         }
     }
 }
