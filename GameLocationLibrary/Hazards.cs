@@ -19,7 +19,7 @@ namespace GameLocationLibrary
 
         public override string ToString()
         {
-            return hazard;
+            return room.ToString();
         }
     }
 }
