@@ -57,6 +57,7 @@
             scorebox.Name = "scorebox";
             scorebox.Size = new Size(221, 169);
             scorebox.TabIndex = 1;
+            scorebox.SelectedIndexChanged += scorebox_SelectedIndexChanged;
             // 
             // label1
             // 

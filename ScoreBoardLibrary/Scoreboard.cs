@@ -13,7 +13,7 @@ namespace ScoreBoardLibrary
 {
     public class Scoreboard : IScoreboard
     {
-       
+        List<ScoreItem> items = new List<ScoreItem>();
         public List<ScoreItem> SortHighScore(string highscoredatafile)
         {
             List<ScoreItem> scores = new List<ScoreItem>();
@@ -42,8 +42,8 @@ namespace ScoreBoardLibrary
         }
         public List<ScoreItem> GetHighScores()
         {
-
-            return null;
+            items.Sort((s1,s2) => s1.Score.CompareTo(s2.Score));
+            return items;
         }
 
         public int CalculateHighScore(int turns, int coins, int arrows, bool wumpus)
@@ -78,7 +78,7 @@ namespace ScoreBoardLibrary
 
 
         }
-        private void WriteTofile(string datafile, ScoreItem score)
+        private void SaveTofile(string datafile, ScoreItem score)
         {
             List<ScoreItem> scores = new List<ScoreItem>(); // placeholder
             StreamWriter streamwriter = new StreamWriter(datafile);
@@ -115,5 +115,6 @@ namespace ScoreBoardLibrary
         //save highscore. chechk
         //getting highscores from. file check
         List<ScoreItem> GetHighScores();
+        
     }
 }
