@@ -21,11 +21,7 @@ namespace ScoreboardTestUI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            items = scoreboard.forTestOnlyGetFourNames();
-            foreach (ScoreItem item in items)
-            {
-                scorebox.Items.Add(item.Name + " " + item.Score + " " + item.CaveType);
-            }
+            
         }
 
         private void Addnewscore_Click(object sender, EventArgs e)
