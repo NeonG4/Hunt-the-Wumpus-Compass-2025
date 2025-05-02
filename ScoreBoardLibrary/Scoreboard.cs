@@ -13,7 +13,7 @@ namespace ScoreBoardLibrary
 {
     public class Scoreboard : IScoreboard
     {
-        const string ScoreData = "Scores.csv";//this is where im gonna store all the scores !
+       
         public List<ScoreItem> SortHighScore(string highscoredatafile)
         {
             List<ScoreItem> scores = new List<ScoreItem>();
@@ -56,10 +56,10 @@ namespace ScoreBoardLibrary
             { { score = (100 - turns + coins + (arrows * 5) + 50); } }
             return score;
         }
-        private List<ScoreItem> ReadFromFile()
+        private List<ScoreItem> ReadFromFile(string datafile)
         {
             List<ScoreItem> list = new List<ScoreItem>();
-            StreamReader streamReader = new StreamReader(ScoreData);
+            StreamReader streamReader = new StreamReader(datafile);
             string line = streamReader.ReadLine();
 
             while (line != null)

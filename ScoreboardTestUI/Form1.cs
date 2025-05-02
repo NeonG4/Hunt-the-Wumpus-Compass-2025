@@ -12,9 +12,10 @@ namespace ScoreboardTestUI
 
         List<ScoreItem> items = new List<ScoreItem>();
         Scoreboard scoreboard = new Scoreboard();
+        const string ScoreData = "Scores.csv";//this is where im gonna store all the scores !
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
