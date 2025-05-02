@@ -5,9 +5,11 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Net.NetworkInformation;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Accessibility;
 
 namespace GameLocationLibrary
 {
@@ -22,25 +24,36 @@ namespace GameLocationLibrary
 
         private void button1_Click(object sender, EventArgs e)
         {
-            while (listBox1.Items.Count < 2)
+            if (hazards.Count > 4)
             {
-                addHazard("Pit");
-            }
-            while (listBox1.Items.Count < 4)
-            {
-                addHazard("Bats");
+                AddHazard("Pit");
+                AddHazard("Pit");
+                AddHazard("Bats");
+                AddHazard("Bats");
             }
             
         }
-
-        private void addHazard(string hazard)
+        private void AddHazard(string hazard)
         {
-            int number = random.Next(1, 31);
-            Hazards newHazard = new Hazards(hazard, number);
-            if (!listBox1.Items.Contains(number))
+            while (true)
             {
-                hazards.Add(newHazard);
-                listBox1.Items.Add(newHazard);
+                int number = random.Next(0, 30);
+                Hazards newHazard = new Hazards(hazard, number);
+                bool tmp = true;
+                for (int i = 0; i < hazards.Count; i++)
+                {
+                    if (hazards[i].room == number)
+                    {
+                        tmp = false;
+                        i = hazards.Count();
+                    }
+                }
+                if (tmp)
+                {
+                    hazards.Add(newHazard);
+                    listBox1.Items.Add(newHazard);
+                    return;
+                }
             }
         }
             
