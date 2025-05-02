@@ -40,7 +40,7 @@ namespace GameLocationLibrary
             if (!listBox1.Items.Contains(number))
             {
                 hazards.Add(newHazard);
-                listBox1.Items.Add(newHazard.room);
+                listBox1.Items.Add(newHazard);
             }
         }
             
@@ -49,7 +49,7 @@ namespace GameLocationLibrary
         {
             if (listBox1.SelectedItem is Hazards selectedHazard)
             {
-                label1.Text = selectedHazard.room.ToString();
+                label1.Text = selectedHazard.hazard.ToString();
             }
         }
     }
