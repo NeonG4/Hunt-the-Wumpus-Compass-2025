@@ -56,14 +56,26 @@ namespace ScoreBoardLibrary
             { { score = (100 - turns + coins + (arrows * 5) + 50); } }
             return score;
         }
-        private string ReadToFile(string fileName)
+        private List<ScoreItem> ReadFromFile()
         {
-            //TODO this will read exisiting high scores from file
-            StreamReader reader = new StreamReader(fileName);
-            string line = reader.ReadLine();
+            List<ScoreItem> list = new List<ScoreItem>();
+            StreamReader streamReader = new StreamReader(ScoreData);
+            string line = streamReader.ReadLine();
 
-            List<int[]> list = new List<int[]>();
-            return "";
+            while (line != null)
+            {
+                string[] record = line.Split(',');
+                ScoreItem contact = new ScoreItem(record[0], int.Parse(record[2]), record[1]);
+
+                list.Add(contact);
+                line = streamReader.ReadLine();
+            }
+
+
+            streamReader.Close();
+            return list;
+            
+
 
         }
         private void WriteTofile(string datafile, ScoreItem score)
