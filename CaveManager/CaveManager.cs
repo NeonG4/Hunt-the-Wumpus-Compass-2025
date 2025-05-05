@@ -19,6 +19,10 @@ namespace Cave
         {
             CaveIndex = caveIndex;
         }
+        public CaveManager()
+        {
+
+        }
 
         //Method to get the 6 adjacent rooms for a given room
 
