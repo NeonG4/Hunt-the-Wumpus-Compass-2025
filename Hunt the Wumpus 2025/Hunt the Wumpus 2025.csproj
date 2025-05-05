@@ -43,6 +43,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\2030638_Choy_CaveTestUI\CaveTestUI.csproj" />
     <ProjectReference Include="..\2030638_Choy_PlayerTestUI\PlayerTestUI.csproj" />
     <ProjectReference Include="..\GameLocationLibrary\GameLocationLibrary.csproj" />
