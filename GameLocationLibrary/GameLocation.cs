@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace GameLocationLibrary
 {
@@ -12,37 +13,71 @@ namespace GameLocationLibrary
         public List<Hazards> hazards = new List<Hazards>();
         Random random = new Random();
 
-        public GameLocation()
-        {
-            // places hazards in 4 random rooms (2 rooms for pits, 2 for bats)
-            string h = string.Empty;
-            int r = 0;
-            Hazards newHazard = new Hazards(h, r);
-            int number;
-            for (int room = 0; room < 2; room++)
-            {
-                do {
-                    number = random.Next(30);
-                } while (newHazard.room == number);
-                h = "Pit";
-                hazards.Add(newHazard);
-            }
-            for (int room = 0; room < 2; room++)
-            {
-                do
-                {
-                    number = random.Next(30);
-                } while (newHazard.room == number);
-                h = "Bats";
-                hazards.Add(newHazard);
-            }
-        }
-
+        //Method that returns a list of hazards/the room they are located in
         public List<Hazards> GetHazards()
         {
+        //If there are no hazards, add 4 hazards (2 pits and 2 bats)
+            if (hazards.Count == 0)
+            {
+                AddHazard("Pit");
+                AddHazard("Pit");
+                AddHazard("Bats");
+                AddHazard("Bats");
+            }
+            //Return the hazards list
             return new List<Hazards>();
         }
 
+        //Adds a new hazard of a specified type
+        public void AddHazard(string hazard)
+        {
+            while (true)
+            {
+                int number = random.Next(0, 30);
+                //Generates a random integer that represents a random room 
+                Hazards newHazard = new Hazards(hazard, number);
+                bool tmp = true;
+                //Cycles through the hazards list until the random room is a unique value
+                for (int i = 0; i < hazards.Count; i++)
+                {
+                    if (hazards[i].room == number)
+                    {
+                        tmp = false;
+                        i = hazards.Count();
+                    }
+                }
+                // If the number generated is unique, add the new hazard
+                if (tmp)
+                {
+                    hazards.Add(newHazard);
+                    return;
+                }
+            }
+        }
+        //Spawns the player into an empty room
+        public int SpawnPlayer()
+        {
+            while (true)
+            {
+                int startingroom = random.Next(0, 30);
+                //Generates a random integer that represents a random room 
+                bool tmp = true;
+                //Cycles through the hazards list until the random room is a unique value
+                for (int i = 0; i < hazards.Count; i++)
+                {
+                    if (hazards[i].room == startingroom)
+                    {
+                        tmp = false;
+                        i = hazards.Count();
+                    }
+                }
+                // If the number generated is unique, return the chosen starting room of the player
+                if (tmp)
+                {
+                    return startingroom;
+                }
+            }
+        }
         public int GetPlayerLocation()
         {
             throw new NotImplementedException();
@@ -51,6 +86,8 @@ namespace GameLocationLibrary
     public interface IGameLocation
     {
         public List<Hazards> GetHazards();
+
+        public int SpawnPlayer();
 
         public int GetPlayerLocation();
     }
