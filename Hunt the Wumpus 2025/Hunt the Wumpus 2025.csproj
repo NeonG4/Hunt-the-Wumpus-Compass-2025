@@ -47,7 +47,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CaveLibrary\CaveLibrary.csproj" />
     <ProjectReference Include="..\Game Control\Game Control.csproj" />
+    <ProjectReference Include="..\PlayerLibrary\PlayerLibrary.csproj" />
   </ItemGroup>
 
 </Project>
