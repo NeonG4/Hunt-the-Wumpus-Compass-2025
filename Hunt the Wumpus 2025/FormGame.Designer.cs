@@ -28,12 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "FormGame";
+            components = new System.ComponentModel.Container();
+            timerTicker = new System.Windows.Forms.Timer(components);
+            SuspendLayout();
+            // 
+            // timerTicker
+            // 
+            timerTicker.Enabled = true;
+            timerTicker.Interval = 50;
+            timerTicker.Tick += timerTicker_Tick;
+            // 
+            // FormGame
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Name = "FormGame";
+            Text = "FormGame";
+            Paint += FormGame_Paint;
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private System.Windows.Forms.Timer timerTicker;
     }
 }

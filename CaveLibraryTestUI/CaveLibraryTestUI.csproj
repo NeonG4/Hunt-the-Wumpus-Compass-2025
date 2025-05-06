@@ -3,28 +3,15 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net8.0-windows</TargetFramework>
-    <RootNamespace>Hunt_the_Wumpus_2025</RootNamespace>
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="adjacentRooms.csv" />
-    <None Remove="caveA-validDirections.csv" />
-    <None Remove="caveB-validDirections.csv" />
-    <None Remove="caveC-validDirections.csv" />
-    <None Remove="caveD-validDirections.csv" />
-    <None Remove="caveE-validDirections.csv" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Include="adjacentRooms.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Include="caveA-validDirections.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -43,11 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Game Control\Game Control.csproj" />
+    <ProjectReference Include="..\CaveLibrary\CaveLibrary.csproj" />
   </ItemGroup>
 
 </Project>

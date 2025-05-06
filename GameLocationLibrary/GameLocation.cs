@@ -5,18 +5,20 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Cave;
 
 namespace GameLocationLibrary
 {
     public class GameLocation : IGameLocation
     {
         public List<Hazards> hazards = new List<Hazards>();
+        public List<Hazards> allSpawnables = new List<Hazards>();
         Random random = new Random();
 
         //Method that returns a list of hazards/the room they are located in
         public List<Hazards> GetHazards()
         {
-        //If there are no hazards, add 4 hazards (2 pits and 2 bats)
+            //If there are no hazards, add 4 hazards (2 pits and 2 bats)
             if (hazards.Count == 0)
             {
                 AddHazard("Pit");
@@ -60,27 +62,46 @@ namespace GameLocationLibrary
             while (true)
             {
                 int startingroom = random.Next(0, 30);
-                //Generates a random integer that represents a random room 
+                Hazards newHazard = new Hazards("Player", startingroom);
                 bool tmp = true;
-                //Cycles through the hazards list until the random room is a unique value
-                for (int i = 0; i < hazards.Count; i++)
+                for (int i = 0; i < allSpawnables.Count; i++)
                 {
-                    if (hazards[i].room == startingroom)
+                    if (allSpawnables[i].room == startingroom)
                     {
                         tmp = false;
-                        i = hazards.Count();
+                        i = allSpawnables.Count();
                     }
                 }
-                // If the number generated is unique, return the chosen starting room of the player
                 if (tmp)
                 {
+                    allSpawnables.Add(newHazard);
                     return startingroom;
                 }
             }
+
         }
-        public int GetPlayerLocation()
+        //Spawns the wumpus into an empty room
+        public int SpawnWumpus()
         {
-            throw new NotImplementedException();
+            while (true)
+            {
+                int wumpusspawn = random.Next(0, 30);
+                Hazards newHazard = new Hazards("Wumpus", wumpusspawn);
+                bool tmp = true;
+                for (int i = 0; i < allSpawnables.Count; i++)
+                {
+                    if (allSpawnables[i].room == wumpusspawn)
+                    {
+                        tmp = false;
+                        i = allSpawnables.Count();
+                    }
+                }
+                if (tmp)
+                {
+                    allSpawnables.Add(newHazard);
+                    return wumpusspawn;
+                }
+            }
         }
     }
     public interface IGameLocation
@@ -89,6 +110,6 @@ namespace GameLocationLibrary
 
         public int SpawnPlayer();
 
-        public int GetPlayerLocation();
+        public int SpawnWumpus();
     }
 }
