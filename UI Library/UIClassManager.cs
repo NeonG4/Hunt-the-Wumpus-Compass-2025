@@ -22,12 +22,13 @@ namespace UI_Class_Library
         {
             e.Graphics.Clear(Color.FromArgb(0, 0, 0));
         }
-        public void GetInputs(ref bool[] controls)
+        public bool[] GetInputs()
         {
-            controls = new bool[3];
+            bool[] controls = new bool[3];
             controls[0] = true;
             controls[1] = false;
             controls[2] = true;
+            return controls;
         }
     }
     public interface IUIClassManager
@@ -35,6 +36,6 @@ namespace UI_Class_Library
         public void RenderGame(PaintEventArgs e, bool[] doorsout); // requires PaintEventArgs to draw to the win form
         public void RenderGameUI(PaintEventArgs e); // requires PaintEventArgs to draw to the win form
         public void RenderMainMenu(PaintEventArgs e);
-        public void GetInputs(ref bool[] controls); // returns an array of binary values, 0 if pressed, 1 if 0. Changes depending on scene
+        public bool[] GetInputs(); // returns an array of binary values, 0 if pressed, 1 if 0. Changes depending on scene
     }
 }
