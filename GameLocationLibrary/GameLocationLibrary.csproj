@@ -8,7 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CaveManager\Cave.csproj" />
+    <ProjectReference Include="..\CaveLibrary\CaveLibrary.csproj" />
+    <ProjectReference Include="..\PlayerLibrary\PlayerLibrary.csproj" />
   </ItemGroup>
 
 </Project>
