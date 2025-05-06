@@ -63,8 +63,9 @@ namespace Game_Control
         {
             // should restart the game, this means to reset all data
         }
-        public void Tick(bool[] inputs, PaintEventArgs e)
+        public void Tick(PaintEventArgs e)
         {
+            bool[] inputs = _UIClassManager.GetInputs();
             // progress the game based on the input array
             // inputs changes based on the game state
             switch (gameState) 
