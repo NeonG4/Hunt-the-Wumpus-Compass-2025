@@ -94,12 +94,20 @@ namespace ScoreBoardLibrary
             streamwriter.Close();
 
         }
-        public string AddHighScore()
+        public void AddHighScore(string name, int score, string cave_type)
         {
+           
+            items.Add(new ScoreItem(name, score, cave_type));
+           
+            
 
-            // to do
-            return null;
+
+
+
+            
         }
+        public List<ScoreItem> GetList() { return items; }
+            
     }
     public interface IScoreboard
     {
@@ -108,7 +116,7 @@ namespace ScoreBoardLibrary
         //calculates the high score using the various parameters.
         int CalculateHighScore(int turns, int coins, int arrows, bool wumpus);
 
-        string AddHighScore();
+        void AddHighScore(string name, int score, string cave_type);
         //add higschore. check
         // sort highscore. check
         //track highscore in memory. not check

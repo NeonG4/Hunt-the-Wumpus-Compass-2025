@@ -5,6 +5,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Cave;
 
 namespace GameLocationLibrary
 {
@@ -78,17 +79,11 @@ namespace GameLocationLibrary
                 }
             }
         }
-        public int GetPlayerLocation()
-        {
-            throw new NotImplementedException();
-        }
     }
     public interface IGameLocation
     {
         public List<Hazards> GetHazards();
 
         public int SpawnPlayer();
-
-        public int GetPlayerLocation();
     }
 }

@@ -21,18 +21,18 @@ namespace ScoreboardTestUI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+            scorebox.Items.Clear();
+            items = scoreboard.GetList();
+            foreach(ScoreItem i in items)
+            {
+                scorebox.Items.Add(i.Name);
+            }
         }
 
         private void Addnewscore_Click(object sender, EventArgs e)
         {
-            ScoreItem contact;
-
-
-
-            contact = new ScoreItem(Playername.Text, int.Parse(scoretext.Text), CaveNames.Text);
-            items.Add(contact);
-            scorebox.Items.Add(contact.Name);
+            scoreboard.AddHighScore(Playername.Text, int.Parse(scoretext.Text), CaveNames.Text);
+            
 
         }
 
@@ -40,7 +40,7 @@ namespace ScoreboardTestUI
         {
             if (scorebox.SelectedIndex == -1) { return; }
             int index = scorebox.SelectedIndex;
-           Playername.Text = items[index].Name;
+            Playername.Text = items[index].Name;
             scoretext.Text = items[index].Score.ToString();
             CaveNames.Text = items[index].CaveType;
         }

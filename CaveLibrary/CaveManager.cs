@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Cave
+namespace CaveLibrary
 {
     public class CaveManager : ICave
     {
@@ -110,8 +109,8 @@ namespace Cave
 
         public bool IsValidMove(int room, int direction)
         {
-            if (0 <= room && room <= 29 && 
-                0 <= direction && direction <= 5 && 
+            if (0 <= room && room <= 29 &&
+                0 <= direction && direction <= 5 &&
                 0 <= CaveIndex && CaveIndex <= 4)
             {
                 //Read from valid directions data file corresponding to the cave index
