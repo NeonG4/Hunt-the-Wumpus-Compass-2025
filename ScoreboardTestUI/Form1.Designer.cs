@@ -37,6 +37,7 @@
             label2 = new Label();
             label3 = new Label();
             Playername = new TextBox();
+            Scoreodrer = new Button();
             SuspendLayout();
             // 
             // button1
@@ -117,11 +118,22 @@
             Playername.Size = new Size(100, 23);
             Playername.TabIndex = 8;
             // 
+            // Scoreodrer
+            // 
+            Scoreodrer.Location = new Point(498, 332);
+            Scoreodrer.Name = "Scoreodrer";
+            Scoreodrer.Size = new Size(155, 53);
+            Scoreodrer.TabIndex = 9;
+            Scoreodrer.Text = "Order Score";
+            Scoreodrer.UseVisualStyleBackColor = true;
+            Scoreodrer.Click += Scoreodrer_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(Scoreodrer);
             Controls.Add(Playername);
             Controls.Add(label3);
             Controls.Add(label2);
@@ -149,5 +161,6 @@
         private Label label2;
         private Label label3;
         private TextBox Playername;
+        private Button Scoreodrer;
     }
 }

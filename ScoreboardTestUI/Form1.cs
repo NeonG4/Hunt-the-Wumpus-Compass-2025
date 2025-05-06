@@ -11,7 +11,7 @@ namespace ScoreboardTestUI
             InitializeComponent();
         }
 
-        List<ScoreItem> items = new List<ScoreItem>();
+       
         Scoreboard scoreboard = new Scoreboard();
         const string ScoreData = "Scores.csv";//this is where im gonna store all the scores !
         private void Form1_Load(object sender, EventArgs e)
@@ -22,8 +22,8 @@ namespace ScoreboardTestUI
         private void button1_Click(object sender, EventArgs e)
         {
             scorebox.Items.Clear();
-            items = scoreboard.GetList();
-            foreach(ScoreItem i in items)
+            scoreboard.items = scoreboard.GetList();
+            foreach (ScoreItem i in scoreboard.items)
             {
                 scorebox.Items.Add(i.Name);
             }
@@ -32,7 +32,7 @@ namespace ScoreboardTestUI
         private void Addnewscore_Click(object sender, EventArgs e)
         {
             scoreboard.AddHighScore(Playername.Text, int.Parse(scoretext.Text), CaveNames.Text);
-            
+
 
         }
 
@@ -40,9 +40,16 @@ namespace ScoreboardTestUI
         {
             if (scorebox.SelectedIndex == -1) { return; }
             int index = scorebox.SelectedIndex;
-            Playername.Text = items[index].Name;
-            scoretext.Text = items[index].Score.ToString();
-            CaveNames.Text = items[index].CaveType;
+            Playername.Text = scoreboard.items[index].Name;
+            scoretext.Text = scoreboard.items[index].Score.ToString();
+            CaveNames.Text = scoreboard.items[index].CaveType;
+        }
+
+        private void Scoreodrer_Click(object sender, EventArgs e)
+        {
+            scoreboard.forTestOnlyGetFourNames();
+            scoreboard.SortHighScore();
+            
         }
     }
 }

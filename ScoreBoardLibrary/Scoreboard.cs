@@ -13,32 +13,47 @@ namespace ScoreBoardLibrary
 {
     public class Scoreboard : IScoreboard
     {
-        List<ScoreItem> items = new List<ScoreItem>();
-        public List<ScoreItem> SortHighScore(string highscoredatafile)
+       public List<ScoreItem> items = new List<ScoreItem>();
+        public void SortHighScore()
         {
-            List<ScoreItem> scores = new List<ScoreItem>();
+            for (int i = 0; i < items.Count; i++) 
+            {
+                for (int j = 0; j < items.Count - 1; j++)
+                {
+                    ScoreItem item1 = items[j];
+                    ScoreItem item2 = items[j + 1]; 
+                   
+                    if (item1.Score < item2.Score)
+                    {
+                        items[j] = item2;
+                        items[j + 1] = item1;
 
-            scores = forTestOnlyGetFourNames();
-            //TODO: implement stub
+                    }
+                    
+                }
+            }
 
-            return scores;
+
+
+
+            
         }
 
-        public List<ScoreItem> forTestOnlyGetFourNames()
+        public void forTestOnlyGetFourNames()
         {
             List<ScoreItem> scores = new List<ScoreItem>();
 
-            ScoreItem score1 = new ScoreItem("a", 5, "g");
-            ScoreItem score2 = new ScoreItem("b", 4, "g");
+            ScoreItem score1 = new ScoreItem("a", 4, "g");
+            ScoreItem score2 = new ScoreItem("b", 5, "g");
             ScoreItem score3 = new ScoreItem("c", 3, "g");
-            ScoreItem score4 = new ScoreItem("d", 1, "g");
+            ScoreItem score4 = new ScoreItem("d", 2, "g");
 
             scores.Add(score1);
             scores.Add(score2);
             scores.Add(score3);
             scores.Add(score4);
 
-            return scores;
+            items = scores;
         }
         public List<ScoreItem> GetHighScores()
         {
@@ -96,8 +111,11 @@ namespace ScoreBoardLibrary
         }
         public void AddHighScore(string name, int score, string cave_type)
         {
+            if (score > items[items.Count - 1].Score || items.Count < 10)
+            {
+                items.Add(new ScoreItem(name, score, cave_type));
+            }
            
-            items.Add(new ScoreItem(name, score, cave_type));
            
             
 
@@ -106,13 +124,16 @@ namespace ScoreBoardLibrary
 
             
         }
-        public List<ScoreItem> GetList() { return items; }
+        public List<ScoreItem> GetList() 
+        {
+            return items; 
+        }
             
     }
     public interface IScoreboard
     {
         //sort high scores if a new entry scores high enough
-        List<ScoreItem> SortHighScore(string highscoredatafile);
+        void SortHighScore();
         //calculates the high score using the various parameters.
         int CalculateHighScore(int turns, int coins, int arrows, bool wumpus);
 
