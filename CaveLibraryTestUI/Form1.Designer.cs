@@ -50,113 +50,128 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(36, 44);
+            label1.Location = new Point(51, 73);
+            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(39, 15);
+            label1.Size = new Size(60, 25);
             label1.TabIndex = 0;
             label1.Text = "Room";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(146, 44);
+            label2.Location = new Point(209, 73);
+            label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(94, 15);
+            label2.Size = new Size(142, 25);
             label2.TabIndex = 1;
             label2.Text = "Adjacent Rooms";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(36, 156);
+            label3.Location = new Point(51, 260);
+            label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
-            label3.Size = new Size(55, 15);
+            label3.Size = new Size(83, 25);
             label3.TabIndex = 2;
             label3.Text = "Direction";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(146, 156);
+            label4.Location = new Point(209, 260);
+            label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
-            label4.Size = new Size(146, 15);
+            label4.Size = new Size(222, 25);
             label4.TabIndex = 3;
             label4.Text = "Valid Directions Bool Array";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(36, 269);
+            label5.Location = new Point(51, 448);
+            label5.Margin = new Padding(4, 0, 4, 0);
             label5.Name = "label5";
-            label5.Size = new Size(65, 15);
+            label5.Size = new Size(98, 25);
             label5.TabIndex = 4;
             label5.Text = "Cave Index";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(146, 269);
+            label6.Location = new Point(209, 448);
+            label6.Margin = new Padding(4, 0, 4, 0);
             label6.Name = "label6";
-            label6.Size = new Size(113, 15);
+            label6.Size = new Size(170, 25);
             label6.TabIndex = 5;
             label6.Text = "New Room Number";
             // 
             // labelValid
             // 
             labelValid.AutoSize = true;
-            labelValid.Location = new Point(550, 209);
+            labelValid.Location = new Point(786, 348);
+            labelValid.Margin = new Padding(4, 0, 4, 0);
             labelValid.Name = "labelValid";
-            labelValid.Size = new Size(39, 15);
+            labelValid.Size = new Size(59, 25);
             labelValid.TabIndex = 6;
             labelValid.Text = "Result";
             // 
             // textBoxRoom
             // 
-            textBoxRoom.Location = new Point(36, 75);
+            textBoxRoom.Location = new Point(51, 125);
+            textBoxRoom.Margin = new Padding(4, 5, 4, 5);
             textBoxRoom.Name = "textBoxRoom";
-            textBoxRoom.Size = new Size(84, 23);
+            textBoxRoom.Size = new Size(118, 31);
             textBoxRoom.TabIndex = 7;
+            textBoxRoom.TextChanged += textBoxRoom_TextChanged;
             // 
             // textBoxDirection
             // 
-            textBoxDirection.Location = new Point(36, 189);
+            textBoxDirection.Location = new Point(51, 315);
+            textBoxDirection.Margin = new Padding(4, 5, 4, 5);
             textBoxDirection.Name = "textBoxDirection";
-            textBoxDirection.Size = new Size(84, 23);
+            textBoxDirection.Size = new Size(118, 31);
             textBoxDirection.TabIndex = 8;
             // 
             // textBoxCaveIndex
             // 
-            textBoxCaveIndex.Location = new Point(36, 302);
+            textBoxCaveIndex.Location = new Point(51, 503);
+            textBoxCaveIndex.Margin = new Padding(4, 5, 4, 5);
             textBoxCaveIndex.Name = "textBoxCaveIndex";
-            textBoxCaveIndex.Size = new Size(84, 23);
+            textBoxCaveIndex.Size = new Size(118, 31);
             textBoxCaveIndex.TabIndex = 9;
             // 
             // textBoxAdjacent
             // 
-            textBoxAdjacent.Location = new Point(146, 75);
+            textBoxAdjacent.Location = new Point(209, 125);
+            textBoxAdjacent.Margin = new Padding(4, 5, 4, 5);
             textBoxAdjacent.Name = "textBoxAdjacent";
-            textBoxAdjacent.Size = new Size(195, 23);
+            textBoxAdjacent.Size = new Size(277, 31);
             textBoxAdjacent.TabIndex = 10;
             // 
             // textBoxReachableDirections
             // 
-            textBoxReachableDirections.Location = new Point(146, 189);
+            textBoxReachableDirections.Location = new Point(209, 315);
+            textBoxReachableDirections.Margin = new Padding(4, 5, 4, 5);
             textBoxReachableDirections.Name = "textBoxReachableDirections";
-            textBoxReachableDirections.Size = new Size(195, 23);
+            textBoxReachableDirections.Size = new Size(277, 31);
             textBoxReachableDirections.TabIndex = 11;
             // 
             // textBoxNewRoomNumber
             // 
-            textBoxNewRoomNumber.Location = new Point(146, 302);
+            textBoxNewRoomNumber.Location = new Point(209, 503);
+            textBoxNewRoomNumber.Margin = new Padding(4, 5, 4, 5);
             textBoxNewRoomNumber.Name = "textBoxNewRoomNumber";
-            textBoxNewRoomNumber.Size = new Size(195, 23);
+            textBoxNewRoomNumber.Size = new Size(277, 31);
             textBoxNewRoomNumber.TabIndex = 12;
             // 
             // buttonAdjacent
             // 
-            buttonAdjacent.Location = new Point(365, 44);
+            buttonAdjacent.Location = new Point(521, 73);
+            buttonAdjacent.Margin = new Padding(4, 5, 4, 5);
             buttonAdjacent.Name = "buttonAdjacent";
-            buttonAdjacent.Size = new Size(158, 54);
+            buttonAdjacent.Size = new Size(226, 90);
             buttonAdjacent.TabIndex = 13;
             buttonAdjacent.Text = "Get Adjacent Rooms";
             buttonAdjacent.UseVisualStyleBackColor = true;
@@ -164,9 +179,10 @@
             // 
             // buttonValid
             // 
-            buttonValid.Location = new Point(365, 117);
+            buttonValid.Location = new Point(521, 195);
+            buttonValid.Margin = new Padding(4, 5, 4, 5);
             buttonValid.Name = "buttonValid";
-            buttonValid.Size = new Size(158, 54);
+            buttonValid.Size = new Size(226, 90);
             buttonValid.TabIndex = 14;
             buttonValid.Text = "Directions 0-5 Reachable?";
             buttonValid.UseVisualStyleBackColor = true;
@@ -174,9 +190,10 @@
             // 
             // buttonMoveValid
             // 
-            buttonMoveValid.Location = new Point(365, 189);
+            buttonMoveValid.Location = new Point(521, 315);
+            buttonMoveValid.Margin = new Padding(4, 5, 4, 5);
             buttonMoveValid.Name = "buttonMoveValid";
-            buttonMoveValid.Size = new Size(158, 54);
+            buttonMoveValid.Size = new Size(226, 90);
             buttonMoveValid.TabIndex = 15;
             buttonMoveValid.Text = "Is Move Valid?";
             buttonMoveValid.UseVisualStyleBackColor = true;
@@ -184,9 +201,10 @@
             // 
             // buttonGetNewRoom
             // 
-            buttonGetNewRoom.Location = new Point(365, 261);
+            buttonGetNewRoom.Location = new Point(521, 435);
+            buttonGetNewRoom.Margin = new Padding(4, 5, 4, 5);
             buttonGetNewRoom.Name = "buttonGetNewRoom";
-            buttonGetNewRoom.Size = new Size(158, 54);
+            buttonGetNewRoom.Size = new Size(226, 90);
             buttonGetNewRoom.TabIndex = 16;
             buttonGetNewRoom.Text = "Get New Room #";
             buttonGetNewRoom.UseVisualStyleBackColor = true;
@@ -194,9 +212,9 @@
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(618, 369);
+            ClientSize = new Size(883, 615);
             Controls.Add(buttonGetNewRoom);
             Controls.Add(buttonMoveValid);
             Controls.Add(buttonValid);
@@ -214,6 +232,7 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
+            Margin = new Padding(4, 5, 4, 5);
             Name = "Form1";
             Text = "Nathan - Cave Test UI";
             ResumeLayout(false);
