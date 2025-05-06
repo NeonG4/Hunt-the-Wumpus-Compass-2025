@@ -1,4 +1,3 @@
-using _2030638_Choy_CaveTestUI;
 using GameLocationLibrary;
 
 namespace Hunt_the_Wumpus_2025
@@ -18,15 +17,15 @@ namespace Hunt_the_Wumpus_2025
         private void buttonTestGameLocation_Click(object sender, EventArgs e)
         {
             // open hazardstest.cs
-            HazardsTest form = new HazardsTest();
+            GameLocationTest form = new GameLocationTest();
             form.ShowDialog();
         }
 
         private void buttonTestCave_Click(object sender, EventArgs e)
         {
             // open cave form
-            Form1 form = new Form1();
-            form.ShowDialog();
+            //Form1 form = new Form1();
+            //form.ShowDialog();
         }
     }
 }

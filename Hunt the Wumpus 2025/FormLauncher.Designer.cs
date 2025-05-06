@@ -153,10 +153,11 @@
             // 
             // buttonStartWumpus
             // 
-            buttonStartWumpus.Location = new Point(214, 16);
+            buttonStartWumpus.Font = new Font("Stencil", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            buttonStartWumpus.Location = new Point(214, 29);
             buttonStartWumpus.Margin = new Padding(3, 2, 3, 2);
             buttonStartWumpus.Name = "buttonStartWumpus";
-            buttonStartWumpus.Size = new Size(154, 46);
+            buttonStartWumpus.Size = new Size(154, 201);
             buttonStartWumpus.TabIndex = 8;
             buttonStartWumpus.Text = "Start Wumpus Game";
             buttonStartWumpus.UseVisualStyleBackColor = true;
@@ -166,7 +167,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(398, 255);
             Controls.Add(buttonStartWumpus);
             Controls.Add(groupBoxTesting);
             Controls.Add(label1);
