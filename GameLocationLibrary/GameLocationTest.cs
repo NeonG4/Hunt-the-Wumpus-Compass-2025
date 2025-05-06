@@ -11,14 +11,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Accessibility;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace GameLocationLibrary
 {
-    public partial class HazardsTest : Form
+    public partial class GameLocationTest : Form
     {
         public List<Hazards> hazards = new List<Hazards>();
+        public List<Hazards> allHazards = new List<Hazards>();
         Random random = new Random();
-        public HazardsTest()
+        public GameLocationTest()
         {
             InitializeComponent();
         }
@@ -53,20 +55,13 @@ namespace GameLocationLibrary
                 if (tmp)
                 {
                     hazards.Add(newHazard);
-                    listBoxHazards.Items.Add(newHazard);
+                    allHazards.Add(newHazard);
+                    listBoxHazards.Items.Add("Room " + newHazard + ": " + hazard).ToString();
                     return;
                 }
             }
         }
-
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (listBoxHazards.SelectedItem is Hazards selectedHazard)
-            {
-                textBoxData.Text = selectedHazard.hazard.ToString();
-            }
-        }
-
+    
         private void button2_Click(object sender, EventArgs e)
         {
             SpawnPlayer();
@@ -78,19 +73,51 @@ namespace GameLocationLibrary
             while (true)
             {
                 int startingroom = random.Next(0, 30);
+                Hazards newHazard = new Hazards("Player", startingroom);
                 bool tmp = true;
-                for (int i = 0; i < hazards.Count; i++)
+                for (int i = 0; i < allHazards.Count; i++)
                 {
-                    if (hazards[i].room == startingroom)
+                    if (allHazards[i].room == startingroom)
                     {
                         tmp = false;
-                        i = hazards.Count();
+                        i = allHazards.Count();
                     }
                 }
                 if (tmp)
                 {
-                    textBoxData.Text = startingroom.ToString();
+                    allHazards.Add(newHazard);
+                    listBoxHazards.Items.Add("Room " + newHazard + ": Player").ToString();
                     return startingroom;
+                }
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            SpawnWumpus();
+            button3.Enabled = false;
+        }
+
+        public int SpawnWumpus()
+        {
+            while (true)
+            {
+                int wumpusspawn = random.Next(0, 30);
+                Hazards newHazard = new Hazards("Wumpus", wumpusspawn);
+                bool tmp = true;
+                for (int i = 0; i < allHazards.Count; i++)
+                {
+                    if (allHazards[i].room == wumpusspawn)
+                    {
+                        tmp = false;
+                        i = allHazards.Count();
+                    }
+                }
+                if (tmp)
+                {
+                    allHazards.Add(newHazard);
+                    listBoxHazards.Items.Add("Room " + newHazard + ": Wumpus").ToString();
+                    return wumpusspawn;
                 }
             }
         }

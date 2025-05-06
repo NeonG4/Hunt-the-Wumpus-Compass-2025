@@ -18,7 +18,7 @@ namespace Hunt_the_Wumpus_2025
         private void buttonTestGameLocation_Click(object sender, EventArgs e)
         {
             // open hazardstest.cs
-            HazardsTest form = new HazardsTest();
+            GameLocationTest form = new GameLocationTest();
             form.ShowDialog();
         }
 
