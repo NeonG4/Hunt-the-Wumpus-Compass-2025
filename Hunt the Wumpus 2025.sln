@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaveLibrary", "CaveLibrary\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaveLibraryTestUI", "CaveLibraryTestUI\CaveLibraryTestUI.csproj", "{0F7822BC-4014-4A46-A172-5FFBD5D5A0FC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlayerLibrary", "PlayerLibrary\PlayerLibrary.csproj", "{8DA700F0-BB66-43A4-B454-5126D9BB7DB8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,10 @@ Global
 		{0F7822BC-4014-4A46-A172-5FFBD5D5A0FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F7822BC-4014-4A46-A172-5FFBD5D5A0FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0F7822BC-4014-4A46-A172-5FFBD5D5A0FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DA700F0-BB66-43A4-B454-5126D9BB7DB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DA700F0-BB66-43A4-B454-5126D9BB7DB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DA700F0-BB66-43A4-B454-5126D9BB7DB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DA700F0-BB66-43A4-B454-5126D9BB7DB8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
