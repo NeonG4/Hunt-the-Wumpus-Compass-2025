@@ -8,31 +8,28 @@ namespace CaveLibrary
 {
     public class CaveManager : ICave
     {
-        //Cave index and room property
+        //Cave index
 
         public int CaveIndex { get; set; }
 
-        public int Room { get; set; }
-
         //Constructor inputting cave index, to be called when starting game
 
-        public CaveManager(int caveIndex, int startingRoom)
+        public CaveManager(int caveIndex)
         {
             CaveIndex = caveIndex;
-            Room = startingRoom;
         }
 
         //Method to get the 6 adjacent rooms for a given room
 
         FileReader reader = new FileReader();
 
-        public int[] GetAdjacentRooms()
+        public int[] GetAdjacentRooms(int room)
         {
-            if (0 <= Room && Room <= 29)
+            if (0 <= room && room <= 29)
             {
                 //Get the int[] of adjacent rooms for this room
 
-                return reader.adjacentRooms[Room];
+                return reader.adjacentRooms[room];
             }
             else
             {
@@ -42,20 +39,20 @@ namespace CaveLibrary
 
         //Method to say whether each direction 0-5 is reachable
 
-        public bool[] GetDirectionsBoolArray()
+        public bool[] GetDirectionsBoolArray(int room)
         {
-            if (0 <= Room && Room <= 29 &&
+            if (0 <= room && room <= 29 &&
                 0 <= CaveIndex && CaveIndex <= 4)
             {
                 //Read from valid directions data file corresponding to the cave index
 
                 int[] validDirections;
 
-                if (CaveIndex == 0) { validDirections = reader.validDirectionsA[Room]; }
-                else if (CaveIndex == 1) { validDirections = reader.validDirectionsB[Room]; }
-                else if (CaveIndex == 2) { validDirections = reader.validDirectionsC[Room]; }
-                else if (CaveIndex == 3) { validDirections = reader.validDirectionsD[Room]; }
-                else { validDirections = reader.validDirectionsE[Room]; }
+                if (CaveIndex == 0) { validDirections = reader.validDirectionsA[room]; }
+                else if (CaveIndex == 1) { validDirections = reader.validDirectionsB[room]; }
+                else if (CaveIndex == 2) { validDirections = reader.validDirectionsC[room]; }
+                else if (CaveIndex == 3) { validDirections = reader.validDirectionsD[room]; }
+                else { validDirections = reader.validDirectionsE[room]; }
 
                 //Define bool array
 
@@ -87,14 +84,14 @@ namespace CaveLibrary
 
         //Method to get the room number reached when the player moves
 
-        public int GetNewRoomNumber(int direction)
+        public int GetNewRoomNumber(int room, int direction)
         {
-            if (0 <= Room && Room <= 29 &&
+            if (0 <= room && room <= 29 &&
                 0 <= direction && direction <= 5)
             {
                 //Return adjacent room of current room corresponding to direction
 
-                return reader.adjacentRooms[Room][direction];
+                return reader.adjacentRooms[room][direction];
             }
             else
             {
@@ -106,9 +103,9 @@ namespace CaveLibrary
 
         //Method to double check that a move a player makes is valid
 
-        public bool IsValidMove(int direction)
+        public bool IsValidMove(int room, int direction)
         {
-            if (0 <= Room && Room <= 29 &&
+            if (0 <= room && room <= 29 &&
                 0 <= direction && direction <= 5 &&
                 0 <= CaveIndex && CaveIndex <= 4)
             {
@@ -116,11 +113,11 @@ namespace CaveLibrary
 
                 int[] validDirections;
 
-                if (CaveIndex == 0) { validDirections = reader.validDirectionsA[Room]; }
-                else if (CaveIndex == 1) { validDirections = reader.validDirectionsB[Room]; }
-                else if (CaveIndex == 2) { validDirections = reader.validDirectionsC[Room]; }
-                else if (CaveIndex == 3) { validDirections = reader.validDirectionsD[Room]; }
-                else { validDirections = reader.validDirectionsE[Room]; }
+                if (CaveIndex == 0) { validDirections = reader.validDirectionsA[room]; }
+                else if (CaveIndex == 1) { validDirections = reader.validDirectionsB[room]; }
+                else if (CaveIndex == 2) { validDirections = reader.validDirectionsC[room]; }
+                else if (CaveIndex == 3) { validDirections = reader.validDirectionsD[room]; }
+                else { validDirections = reader.validDirectionsE[room]; }
 
                 //Return true if direction is present in the valid directions array for this room index
 
@@ -147,26 +144,24 @@ namespace CaveLibrary
     {
         //Make sure GC uses the constructor so that the files are read from
 
-        //Properties for cave index and room
+        //Properties for cave index
 
         int CaveIndex { get; set; }
 
-        int Room { get; set; }
-
         //For UI to tell player which rooms are around the player (directions 0-5)
 
-        int[] GetAdjacentRooms();
+        int[] GetAdjacentRooms(int room);
 
         //For UI to tell player which directions they can move (directions 0-5)
 
-        bool[] GetDirectionsBoolArray();
+        bool[] GetDirectionsBoolArray(int room);
 
         //To get the new room number based on direction moved, to be used after IsValidMove bool
 
-        int GetNewRoomNumber(int direction);
+        int GetNewRoomNumber(int room, int direction);
 
         //To be called by game control to make sure moving in specified direction is valid
 
-        bool IsValidMove(int direction);
+        bool IsValidMove(int room, int direction);
     }
 }

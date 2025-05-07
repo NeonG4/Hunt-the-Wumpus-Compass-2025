@@ -4,7 +4,7 @@ namespace PlayerLibraryTestUI
 {
     public partial class Form1 : Form
     {
-        PlayerManager playerManager = new PlayerManager();
+        PlayerManager playerManager = new PlayerManager(0);
 
         public Form1()
         {

@@ -6,7 +6,7 @@ namespace CaveLibraryTestUI
     {
         //Initialize at first cave # for now
 
-        CaveManager cave = new CaveManager(0, 0);
+        CaveManager cave = new CaveManager(0);
 
         public Form1()
         {
@@ -25,7 +25,7 @@ namespace CaveLibraryTestUI
                 {
                     //Get adjacent rooms
 
-                    int[] adjacentRooms = cave.GetAdjacentRooms();
+                    int[] adjacentRooms = cave.GetAdjacentRooms(room);
 
                     //Output
 
@@ -60,7 +60,7 @@ namespace CaveLibraryTestUI
                     //Get valid directions bool array
 
                     cave.CaveIndex = caveIndex;
-                    bool[] directionsBoolArray = cave.GetDirectionsBoolArray();
+                    bool[] directionsBoolArray = cave.GetDirectionsBoolArray(room);
 
                     //Output
 
@@ -97,7 +97,7 @@ namespace CaveLibraryTestUI
                 {
                     //Get bool result
 
-                    bool result = cave.IsValidMove(direction);
+                    bool result = cave.IsValidMove(room, direction);
 
                     //Output
 
@@ -132,7 +132,7 @@ namespace CaveLibraryTestUI
                 {
                     //Get new room
 
-                    int newRoom = cave.GetNewRoomNumber(direction);
+                    int newRoom = cave.GetNewRoomNumber(room, direction);
 
                     //Output
 
@@ -143,26 +143,6 @@ namespace CaveLibraryTestUI
             {
                 MessageBox.Show("needs room (0-29), direction (0-5)");
                 return;
-            }
-        }
-
-        private void textBoxRoom_TextChanged(object sender, EventArgs e)
-        {
-            try 
-            {
-                cave.Room = int.Parse(textBoxRoom.Text);
-
-                if (!(0 <= cave.Room && cave.Room <= 29))
-                {
-                    MessageBox.Show("Room must be between 0-29 inclusive");
-                }
-            }
-            catch
-            {
-                if (!(textBoxRoom.Text == ""))
-                {
-                    MessageBox.Show("Invalid room");
-                }
             }
         }
     }

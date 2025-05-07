@@ -124,7 +124,6 @@
             textBoxRoom.Name = "textBoxRoom";
             textBoxRoom.Size = new Size(118, 31);
             textBoxRoom.TabIndex = 7;
-            textBoxRoom.TextChanged += textBoxRoom_TextChanged;
             // 
             // textBoxDirection
             // 

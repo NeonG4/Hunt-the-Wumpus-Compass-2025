@@ -10,15 +10,21 @@ namespace PlayerLibrary
     {
         //Constructor to be called by GC
 
-        public PlayerManager()
+        public PlayerManager(int startingRoom)
         {
             Arrows = 0;
             GoldCoins = 0;
             MoveCount = 0;
             KilledWumpus = false;
+
+            CurrentRoom = startingRoom;
         }
 
-        //Properties
+        //Current Room Number Property
+
+        public int CurrentRoom { get; set; }
+
+        //Other Properties
 
         public int Arrows { get; set; }
         public int GoldCoins { get; set; }
@@ -111,6 +117,10 @@ namespace PlayerLibrary
 
     public interface IPlayer
     {
+        //Current Room
+
+        int CurrentRoom { get; set; }
+
         //Properties for arrows, coins, turns for use by GC, high score
 
         int Arrows { get; set; }
