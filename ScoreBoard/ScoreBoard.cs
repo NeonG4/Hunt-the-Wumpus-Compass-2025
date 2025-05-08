@@ -14,6 +14,7 @@ namespace ScoreBoard
 {
     public class Scoreboard : IScoreboard
     {
+        string HighScoresData = "Highscore.csv";
         public List<ScoreItem> items = new List<ScoreItem>();
         public void SortHighScore()
         {
@@ -57,10 +58,10 @@ namespace ScoreBoard
             { { score = (100 - turns + coins + (arrows * 5) + 50); } }
             return score;
         }
-        public List<ScoreItem> ReadFromFile(string datafile)
+        public void ReadFromFile()
         {
-            List<ScoreItem> list = new List<ScoreItem>();
-            StreamReader streamReader = new StreamReader(datafile);
+           
+            StreamReader streamReader = new StreamReader(HighScoresData);
             string line = streamReader.ReadLine();
 
             while (line != null)
@@ -75,26 +76,26 @@ namespace ScoreBoard
                 contact.Arrows = int.Parse(record[5]);
                 contact.WumpusDead = bool.Parse(record[6]);
 
-                list.Add(contact);
+                items.Add(contact);
                 line = streamReader.ReadLine();
             }
 
 
             streamReader.Close();
-            return list;
+           
 
 
 
         }
-      public void SaveTofile(string datafile, ScoreItem score)
+      public void SaveTofile()
         {
-            List<ScoreItem> scores = new List<ScoreItem>(); // placeholder
-            StreamWriter streamwriter = new StreamWriter(datafile);
+         
+            StreamWriter streamwriter = new StreamWriter(HighScoresData);
 
-            foreach (ScoreItem contact in scores)
+            foreach (ScoreItem contact in items)
             {
 
-                string record = contact.Name + ": " + contact.Score + " " + contact.CaveType;
+                string record = contact.Name + "," + contact.Score + "," + contact.CaveType + "," + contact.Turns + "," + contact.Gold + "," + contact.Arrows + "," + contact.WumpusDead;
                 streamwriter.WriteLine(record);
 
             }
@@ -105,13 +106,13 @@ namespace ScoreBoard
         public void AddHighScore(string name, string cave_type, int turns, int gold, int arrows, bool wumpus)
         {
             int score = CalculateHighScore(turns, gold, arrows, wumpus);
-            if (score > items[items.Count - 1].Score || items.Count < 10)
-            {
+           //if (score > items[items.Count - 1].Score || items.Count < 10)
+           // {
 
                 items.Add(new ScoreItem(name, score, cave_type,turns, gold, arrows, wumpus));
-            }
+           // }
 
-            
+            SortHighScore();
 
 
 

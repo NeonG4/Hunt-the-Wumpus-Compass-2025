@@ -152,11 +152,12 @@
             listBoxScores.Name = "listBoxScores";
             listBoxScores.Size = new Size(120, 94);
             listBoxScores.TabIndex = 12;
+            listBoxScores.SelectedIndexChanged += listBoxScores_SelectedIndexChanged;
             // 
             // Wumpusdead
             // 
             Wumpusdead.AutoSize = true;
-            Wumpusdead.Location = new Point(109, 272);
+            Wumpusdead.Location = new Point(83, 302);
             Wumpusdead.Name = "Wumpusdead";
             Wumpusdead.Size = new Size(123, 19);
             Wumpusdead.TabIndex = 13;
