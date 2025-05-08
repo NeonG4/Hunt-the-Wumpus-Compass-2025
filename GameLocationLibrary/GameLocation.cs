@@ -66,7 +66,7 @@ namespace GameLocationLibrary
                 bool tmp = true;
                 for (int i = 0; i < allSpawnables.Count; i++)
                 {
-                    if (allSpawnables[i].room == startingroom)
+                    if (allSpawnables[i].room == startingroom||startingroom + allSpawnables[i].room < 7||startingroom - allSpawnables[i].room < 7)
                     {
                         tmp = false;
                         i = allSpawnables.Count();
@@ -107,9 +107,7 @@ namespace GameLocationLibrary
     public interface IGameLocation
     {
         public List<Hazards> GetHazards();
-
         public int SpawnPlayer();
-
         public int SpawnWumpus();
     }
 }
