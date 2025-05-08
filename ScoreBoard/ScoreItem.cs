@@ -12,16 +12,24 @@ namespace ScoreBoard
         public string Name { get; set; }
         public int Score { get; set; }
         public string CaveType { get; set; }
+        public int Turns { get; set; }  
+        public int Gold {  get; set; }
+        public int Arrows {  get; set; }
+        public bool WumpusDead {  get; set; }
 
-        public ScoreItem(string name, int score, string cave)
+        public ScoreItem(string name, int score, string cave, int turns, int gold, int arrows, bool wumpusDead)
         {
 
 
             this.Name = name;
             this.Score = score;
             this.CaveType = cave;
+            Turns = turns;
+            Gold = gold;
+            Arrows = arrows;
+            WumpusDead = wumpusDead;
         }
-
+        public ScoreItem() { }
 
     }
 }

@@ -40,22 +40,7 @@ namespace ScoreBoard
 
         }
 
-        public void forTestOnlyGetFourNames()
-        {
-            List<ScoreItem> scores = new List<ScoreItem>();
-
-            ScoreItem score1 = new ScoreItem("a", 4, "g");
-            ScoreItem score2 = new ScoreItem("b", 5, "g");
-            ScoreItem score3 = new ScoreItem("c", 3, "g");
-            ScoreItem score4 = new ScoreItem("d", 2, "g");
-
-            scores.Add(score1);
-            scores.Add(score2);
-            scores.Add(score3);
-            scores.Add(score4);
-
-            items = scores;
-        }
+      
         public List<ScoreItem> GetHighScores()
         {
             items.Sort((s1, s2) => s1.Score.CompareTo(s2.Score));
@@ -72,7 +57,7 @@ namespace ScoreBoard
             { { score = (100 - turns + coins + (arrows * 5) + 50); } }
             return score;
         }
-        private List<ScoreItem> ReadFromFile(string datafile)
+        public List<ScoreItem> ReadFromFile(string datafile)
         {
             List<ScoreItem> list = new List<ScoreItem>();
             StreamReader streamReader = new StreamReader(datafile);
@@ -81,7 +66,14 @@ namespace ScoreBoard
             while (line != null)
             {
                 string[] record = line.Split(',');
-                ScoreItem contact = new ScoreItem(record[0], int.Parse(record[2]), record[1]);
+                ScoreItem contact = new ScoreItem();
+                contact.Name = record[0];
+                contact.Score = int.Parse(record[1]);
+                contact.CaveType = record[2];
+                contact.Turns = int.Parse(record[3]);
+                contact.Gold = int.Parse(record[4]);
+                contact.Arrows = int.Parse(record[5]);
+                contact.WumpusDead = bool.Parse(record[6]);
 
                 list.Add(contact);
                 line = streamReader.ReadLine();
@@ -94,7 +86,7 @@ namespace ScoreBoard
 
 
         }
-        private void SaveTofile(string datafile, ScoreItem score)
+      public void SaveTofile(string datafile, ScoreItem score)
         {
             List<ScoreItem> scores = new List<ScoreItem>(); // placeholder
             StreamWriter streamwriter = new StreamWriter(datafile);
@@ -110,14 +102,16 @@ namespace ScoreBoard
             streamwriter.Close();
 
         }
-        public void AddHighScore(string name, int score, string cave_type)
+        public void AddHighScore(string name, string cave_type, int turns, int gold, int arrows, bool wumpus)
         {
+            int score = CalculateHighScore(turns, gold, arrows, wumpus);
             if (score > items[items.Count - 1].Score || items.Count < 10)
             {
-                items.Add(new ScoreItem(name, score, cave_type));
+
+                items.Add(new ScoreItem(name, score, cave_type,turns, gold, arrows, wumpus));
             }
 
-
+            
 
 
 
@@ -138,7 +132,7 @@ namespace ScoreBoard
         //calculates the high score using the various parameters.
         int CalculateHighScore(int turns, int coins, int arrows, bool wumpus);
 
-        void AddHighScore(string name, int score, string cave_type);
+        void AddHighScore(string name, string cave_type, int turns, int gold, int arrows, bool wumpus);
         //add higschore. check
         // sort highscore. check
         //track highscore in memory. not check
