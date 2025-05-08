@@ -5,11 +5,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Drawing.Text;
 
 namespace UI_Class_Library
 {
     public class UIClassManager : IUIClassManager
     {
+        int width, height;
+        public UIClassManager()
+        {
+            // standard size of a google slide, same size that this game is
+            width = 960;
+            height = 540; 
+        }
         public void RenderGame(PaintEventArgs e, bool[] doorsOut)
         {
             e.Graphics.Clear(Color.FromArgb(0, 0, 0));
@@ -20,7 +28,11 @@ namespace UI_Class_Library
         }
         public void RenderMainMenu(PaintEventArgs e)
         {
-            e.Graphics.Clear(Color.FromArgb(0, 0, 0));
+            e.Graphics.Clear(Color.FromArgb(76, 76, 76));
+            Font comfertaa = new Font("Comfortaa", 41);
+            SolidBrush textBrush = new SolidBrush(Color.FromArgb(255, 255, 255));
+            e.Graphics.DrawString("Hunt the Wumpus", comfertaa, textBrush, new Point(100, 100));
+            
         }
         public bool[] GetInputs()
         {

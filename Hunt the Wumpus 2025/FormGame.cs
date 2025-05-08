@@ -13,22 +13,30 @@ namespace Hunt_the_Wumpus_2025
 {
     public partial class FormGame : Form
     {
+        private bool ready = false;
         private GameControl gc;
         public FormGame()
         {
             InitializeComponent();
             gc = new GameControl();
+            ready = true;
         }
         private void FormGame_Paint(object sender, PaintEventArgs e)
         {
-            // ticks the game control
-            gc.Tick(e);
+            if (ready)
+            {
+                // ticks the game control
+                gc.Tick(e);
+            }
         }
 
         private void timerTicker_Tick(object sender, EventArgs e)
         {
-            // tick should be called here, but currently tick is called in the draw method
-            this.Refresh(); 
+            if (ready)
+            {
+                // tick should be called here, but currently tick is called in the draw method
+                this.Refresh();
+            }
         }
     }
 }

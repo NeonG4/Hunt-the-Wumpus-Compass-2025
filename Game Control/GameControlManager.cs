@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Cave;
 using GameLocationLibrary;
-using Player;
+using PlayerLibrary;
 using UI_Class_Library;
 using ScoreBoardLibrary;
 using System.Windows.Forms;
@@ -15,17 +15,7 @@ namespace Game_Control
     public class GameControl : IGameControl
     {
         public bool debugMode = false;
-        GameState gameState 
-        {
-            get
-            {
-                return gameState;
-            }
-            set 
-            { 
-                gameState = value; 
-            }
-        }
+        GameState gameState { get; set; }
         GameLocation _gameLocations;
         CaveManager _cave;
         Scoreboard _scoreboard;
@@ -37,7 +27,8 @@ namespace Game_Control
              _gameLocations = new GameLocation(); // randomly generated positions
             _scoreboard = new Scoreboard();
             _UIClassManager = new UIClassManager();
-            _playerManager = new PlayerManager();
+            // CHANGE THIS SOMETIME
+            _playerManager = new PlayerManager(1); // use _gamelocations to get a valid spot to place the player 
         }
         public void StartGame(int map, int startingRoom)
         {
@@ -72,9 +63,10 @@ namespace Game_Control
             {
                 case GameState.MainMenu:
                 {
+                        /*
                         if (inputs.Length != 6)
                         {
-                            throw new Exception($"Wrong count of inputs, expected 6, got {inputs.Length}");
+                            //throw new Exception($"Wrong count of inputs, expected 6, got {inputs.Length}");
                         }
                         // should process inputs based on main menu
                         // 0 if debug mode is clicked
@@ -96,6 +88,7 @@ namespace Game_Control
                             _cave = new CaveManager(caveNumber); // pass in the room number
                             gameState = GameState.PlayingGame; // add a gamestate here for cutscenes
                         }
+                        */
                         // renders main menu
                         _UIClassManager.RenderMainMenu(e);
                         break;
@@ -104,7 +97,7 @@ namespace Game_Control
                 {
                         // should render the game
                         // should process inputs based on game
-                        int pPosition = _gameLocations.GetPlayerLocation();
+                        int pPosition = _playerManager.CurrentRoom;
                         bool[] rooms = _cave.GetDirectionsBoolArray(pPosition);
                         _UIClassManager.RenderGame(e, rooms);
                         break;
@@ -122,7 +115,7 @@ namespace Game_Control
         public void StartGame(int map, int startingRoom);
         public void StopGame();
         public void RestartGame(int map, int startingRoom);
-        public void Tick(bool[] inputs, PaintEventArgs e);
+        public void Tick(PaintEventArgs e);
 
 
     }
