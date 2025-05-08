@@ -12,12 +12,18 @@ namespace UI_Class_Library
     public class UIClassManager : IUIClassManager
     {
         int width, height;
+        PrivateFontCollection comfortaaCollection = new PrivateFontCollection();
+        Font comfortaa;
+        // Provide the path to the font on the filesystem
         public UIClassManager()
         {
             // standard size of a google slide, same size that this game is
             width = 960;
-            height = 540; 
+            height = 540;
+            comfortaaCollection.AddFontFile("Comfortaa-Light.ttf");
+            comfortaa = new Font((FontFamily)comfortaaCollection.Families[0], 41f);
         }
+        
         public void RenderGame(PaintEventArgs e, bool[] doorsOut)
         {
             e.Graphics.Clear(Color.FromArgb(0, 0, 0));
@@ -29,9 +35,8 @@ namespace UI_Class_Library
         public void RenderMainMenu(PaintEventArgs e)
         {
             e.Graphics.Clear(Color.FromArgb(76, 76, 76));
-            Font comfertaa = new Font("Comfortaa", 41);
             SolidBrush textBrush = new SolidBrush(Color.FromArgb(255, 255, 255));
-            e.Graphics.DrawString("Hunt the Wumpus", comfertaa, textBrush, new Point(100, 100));
+            e.Graphics.DrawString("Hunt the Wumpus", comfortaa, textBrush, new Point(100, 100));
             
         }
         public bool[] GetInputs()
