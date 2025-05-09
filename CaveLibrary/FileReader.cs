@@ -10,6 +10,9 @@ namespace CaveLibrary
     {
         //Constructor
 
+        /// <summary>
+        /// Create an instance of the file reader
+        /// </summary>
         public FileReader() { }
 
         //File names
@@ -23,6 +26,9 @@ namespace CaveLibrary
 
         //Read from adjacent rooms data file
 
+        /// <summary>
+        /// CSV file for rooms adjacent to each room
+        /// </summary>
         public List<int[]> adjacentRooms
         {
             get
@@ -33,6 +39,9 @@ namespace CaveLibrary
 
         //Read from valid directions files
 
+        /// <summary>
+        /// CSV file for valid directions for each room in cave A
+        /// </summary>
         public List<int[]> validDirectionsA
         {
             get
@@ -40,6 +49,10 @@ namespace CaveLibrary
                 return ReadFromFile(FILE_VALID_DIRECTIONS_A);
             }
         }
+
+        /// <summary>
+        /// CSV file for valid directions for each room in cave B
+        /// </summary>
         public List<int[]> validDirectionsB
         {
             get
@@ -47,6 +60,10 @@ namespace CaveLibrary
                 return ReadFromFile(FILE_VALID_DIRECTIONS_B);
             }
         }
+
+        /// <summary>
+        /// CSV file for valid directions for each room in cave C
+        /// </summary>
         public List<int[]> validDirectionsC
         {
             get
@@ -54,6 +71,10 @@ namespace CaveLibrary
                 return ReadFromFile(FILE_VALID_DIRECTIONS_C);
             }
         }
+
+        /// <summary>
+        /// CSV file for valid directions for each room in cave D
+        /// </summary>
         public List<int[]> validDirectionsD
         {
             get
@@ -61,6 +82,10 @@ namespace CaveLibrary
                 return ReadFromFile(FILE_VALID_DIRECTIONS_D);
             }
         }
+
+        /// <summary>
+        /// CSV file for valid directions for each room in cave E
+        /// </summary>
         public List<int[]> validDirectionsE
         {
             get
