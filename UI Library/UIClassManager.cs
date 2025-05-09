@@ -13,17 +13,18 @@ namespace UI_Class_Library
     {
         int width, height;
         PrivateFontCollection comfortaaCollection = new PrivateFontCollection();
-        Font comfortaa;
-        // Provide the path to the font on the filesystem
         public UIClassManager()
         {
             // standard size of a google slide, same size that this game is
             width = 960;
             height = 540;
             comfortaaCollection.AddFontFile("Comfortaa-Light.ttf"); // adds the font file
-            comfortaa = new Font((FontFamily)comfortaaCollection.Families[0], 41f);
         }
-        
+        /// <summary>
+        /// Renders the game state
+        /// </summary>
+        /// <param name="e">PaintEventArgs passed through Paint Form Event</param>
+        /// <param name="doorsOut">The valid doors out of the room</param>
         public void RenderGame(PaintEventArgs e, bool[] doorsOut)
         {
             e.Graphics.Clear(Color.FromArgb(0, 0, 0));
@@ -32,24 +33,47 @@ namespace UI_Class_Library
         {
             e.Graphics.Clear(Color.FromArgb(0, 0, 0));
         }
+        /// <summary>
+        /// Renders the title screen where the user starts
+        /// </summary>
+        /// <param name="e">PaintEventArgs passed through Paint Form Event</param>
         public void RenderMainMenu(PaintEventArgs e)
         {
-            SolidBrush textBrush = new SolidBrush(Color.FromArgb(255, 255, 255));
-            SolidBrush shapeBrush = new SolidBrush(Color.FromArgb(127, 127, 127));
+            SolidBrush shapeBrush = new SolidBrush(Color.FromArgb(217, 217, 217));
+            Pen outlineBrush = new Pen(Color.FromArgb(0, 0, 0), 4);
             e.Graphics.Clear(Color.FromArgb(76, 76, 76));
-            DebugOnlyRenderGridPoints(e, 20); // makes it easy to draw on the screen
             
-           e.Graphics.FillPolygon(shapeBrush, Hexagon(500, 100, 40, new Point(width / 2, 200)));
-            e.Graphics.DrawString("Hunt the Wumpus", comfortaa, textBrush, new Point(100, 100));
+            DebugOnlyRenderGridPoints(e, 20); // makes it easy to draw on the screen
+
+            Point titlePosition = new Point(width / 2, 100);
+            Point[] titleHexagon = Hexagon(600, 100, 40, titlePosition);
+            e.Graphics.FillPolygon(shapeBrush, titleHexagon);
+            e.Graphics.DrawPolygon(outlineBrush, titleHexagon);
+            DrawText(e, "Hunt the Wumpus", 41, titlePosition, Color.FromArgb(0, 0, 0));
+        }
+        private void DrawText(PaintEventArgs e, string text, int size, Point position, Color c)
+        {
+            Font font = new Font(comfortaaCollection.Families[0], size);
+            SolidBrush textBrush = new SolidBrush(c);
+            float height = font.GetHeight();
+            float width = e.Graphics.MeasureString(text, font).Width;
+            e.Graphics.DrawString(text, font, textBrush, new Point((int)(position.X - width / 2), (int)(position.Y - height/2)));
         }
         private Point[] Hexagon(int width, int height, int padding, Point position)
         {
             List<Point> points = new List<Point>();
             int x = position.X;
             int y = position.Y;
-            points.Add(new Point(width / 2 - x, y));
-            points.Add(new Point(width / 2 - x + padding, height / 2 - y));
-            points.Add(new Point(width / 2 + x - padding, height / 2 - y));
+            int leftMostPoint = x - (width / 2); // leftmost point on hexagon
+            int rightMostPoint = x + (width / 2); // rightmost point on hexagon
+            int topLevel = y - (height / 2); // highest point on hexagon
+            int bottomLevel = y + (height / 2); // lowest point on hexagon
+            points.Add(new Point(leftMostPoint, y));
+            points.Add(new Point(leftMostPoint + padding, bottomLevel));
+            points.Add(new Point(rightMostPoint - padding, bottomLevel));
+            points.Add(new Point(rightMostPoint, y));
+            points.Add(new Point(rightMostPoint - padding, topLevel));
+            points.Add(new Point(leftMostPoint + padding, topLevel));
             return points.ToArray();
         }
         private void DebugOnlyRenderGridPoints(PaintEventArgs e, int size)
@@ -64,6 +88,10 @@ namespace UI_Class_Library
                 }
             }
         }
+        /// <summary>
+        /// Gets the inputs for the current rendered state
+        /// </summary>
+        /// <returns>Returns a dynamic-length bool array of inputs</returns>
         public bool[] GetInputs()
         {
             bool[] controls = new bool[3];
