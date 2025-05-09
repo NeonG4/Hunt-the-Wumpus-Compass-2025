@@ -10,10 +10,17 @@ namespace CaveLibrary
     {
         //Cave index
 
+        /// <summary>
+        /// Current cave index from 0-4
+        /// </summary>
         public int CaveIndex { get; set; }
 
         //Constructor inputting cave index, to be called when starting game
 
+        /// <summary>
+        /// Create an instance of the cave manager
+        /// </summary>
+        /// <param name="caveIndex">Cave index from 0-4 based on user's choice</param>
         public CaveManager(int caveIndex)
         {
             CaveIndex = caveIndex;
@@ -23,6 +30,11 @@ namespace CaveLibrary
 
         FileReader reader = new FileReader();
 
+        /// <summary>
+        /// Returns the rooms adjacent to the player's current room
+        /// </summary>
+        /// <param name="room">Current room number</param>
+        /// <returns>Int array of adjacent room number in each direction (0-5)</returns>
         public int[] GetAdjacentRooms(int room)
         {
             if (0 <= room && room <= 29)
@@ -39,6 +51,11 @@ namespace CaveLibrary
 
         //Method to say whether each direction 0-5 is reachable
 
+        /// <summary>
+        /// Returns whether each adjacent room is reachable
+        /// </summary>
+        /// <param name="room">Current room number</param>
+        /// <returns>Bool array of whether player can go in each direction (0-5)</returns>
         public bool[] GetDirectionsBoolArray(int room)
         {
             if (0 <= room && room <= 29 &&
@@ -84,6 +101,12 @@ namespace CaveLibrary
 
         //Method to get the room number reached when the player moves
 
+        /// <summary>
+        /// Returns the number of the new room upon moving
+        /// </summary>
+        /// <param name="room">Current room number</param>
+        /// <param name="direction">Direction (0-5) of the player's move</param>
+        /// <returns>Int value for the player's new room</returns>
         public int GetNewRoomNumber(int room, int direction)
         {
             if (0 <= room && room <= 29 &&
@@ -103,6 +126,12 @@ namespace CaveLibrary
 
         //Method to double check that a move a player makes is valid
 
+        /// <summary>
+        /// Returns whether a move in a certain direction is valid
+        /// </summary>
+        /// <param name="room">Current room number</param>
+        /// <param name="direction">Direction (0-5) player wishes to move</param>
+        /// <returns>Bool for whether the move is valid</returns>
         public bool IsValidMove(int room, int direction)
         {
             if (0 <= room && room <= 29 &&

@@ -10,6 +10,10 @@ namespace PlayerLibrary
     {
         //Constructor to be called by GC
 
+        /// <summary>
+        /// Create an instance of the player manager
+        /// </summary>
+        /// <param name="startingRoom">Room from which the player starts (from GL)</param>
         public PlayerManager(int startingRoom)
         {
             Arrows = 0;
@@ -22,14 +26,36 @@ namespace PlayerLibrary
 
         //Current Room Number Property
 
+        /// <summary>
+        /// Current room number
+        /// </summary>
         public int CurrentRoom { get; set; }
 
         //Other Properties
 
+        /// <summary>
+        /// Number of arrows in inventory
+        /// </summary>
         public int Arrows { get; set; }
+
+        /// <summary>
+        /// Number of gold coins in inventory
+        /// </summary>
         public int GoldCoins { get; set; }
+
+        /// <summary>
+        /// Number of moves made during this game
+        /// </summary>
         public int MoveCount { get; set; }
+
+        /// <summary>
+        /// Bool for whether the wumpus has been killed or not
+        /// </summary>
         public bool KilledWumpus { get; set; }
+
+        /// <summary>
+        /// Returns the current score
+        /// </summary>
         public int Score
         {
             get
@@ -47,6 +73,12 @@ namespace PlayerLibrary
 
         //Method to add or subtract arrows
 
+        /// <summary>
+        /// Adds or subtracts arrows from player inventory
+        /// </summary>
+        /// <param name="isAddition">Input true if addition, false if subtraction</param>
+        /// <param name="amount">Absolute value of the amount to add or subtract</param>
+        /// <returns>Bool for whether the action was successful</returns>
         public bool AddOrSubtractArrows(bool isAddition, int amount)
         {
             //If subtracting too much, return false to tell GC player cannot use arrows
@@ -78,6 +110,12 @@ namespace PlayerLibrary
 
         //Method to add or subtract gold coins
 
+        /// <summary>
+        /// Adds or subtracts coins from player inventory
+        /// </summary>
+        /// <param name="isAddition">Input true if addition, false if subtraction</param>
+        /// <param name="amount">Absolute value of the amount to add or subtract</param>
+        /// <returns>Bool for whether the action was successful</returns>
         public bool AddOrSubtractGoldCoins(bool isAddition, int amount)
         {
             //If subtracting too much, return false to tell GC player lost the game
@@ -109,6 +147,9 @@ namespace PlayerLibrary
 
         //Method to increase move count by 1
 
+        /// <summary>
+        /// Increases move count by 1
+        /// </summary>
         public void IncrementMoveCount()
         {
             MoveCount++;
