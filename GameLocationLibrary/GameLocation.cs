@@ -14,6 +14,8 @@ namespace GameLocationLibrary
         public List<Hazards> hazards = new List<Hazards>();
         public List<Hazards> allSpawnables = new List<Hazards>();
         Random random = new Random();
+        int wumpusspawn = 31;
+        int playerspawn = 31;
 
         //Method that returns a list of hazards/the room they are located in
         public List<Hazards> GetHazards()
@@ -61,12 +63,12 @@ namespace GameLocationLibrary
         {
             while (true)
             {
-                int startingroom = random.Next(0, 30);
-                Hazards newHazard = new Hazards("Player", startingroom);
+                int playerstart = random.Next(0, 30);
+                Hazards newHazard = new Hazards("Player", playerstart);
                 bool tmp = true;
                 for (int i = 0; i < allSpawnables.Count; i++)
                 {
-                    if (allSpawnables[i].room == startingroom||startingroom + allSpawnables[i].room < 7||startingroom - allSpawnables[i].room < 7)
+                    if (allSpawnables[i].room == playerstart)
                     {
                         tmp = false;
                         i = allSpawnables.Count();
@@ -75,7 +77,8 @@ namespace GameLocationLibrary
                 if (tmp)
                 {
                     allSpawnables.Add(newHazard);
-                    return startingroom;
+                    playerspawn = playerstart;
+                    return playerstart;
                 }
             }
 
@@ -85,21 +88,19 @@ namespace GameLocationLibrary
         {
             while (true)
             {
-                int wumpusspawn = random.Next(0, 30);
-                Hazards newHazard = new Hazards("Wumpus", wumpusspawn);
+                int wumpusstart = random.Next(0, 30);
+                Hazards newHazard = new Hazards("Wumpus", wumpusstart);
                 bool tmp = true;
-                for (int i = 0; i < allSpawnables.Count; i++)
+                if (playerspawn == wumpusstart)
                 {
-                    if (allSpawnables[i].room == wumpusspawn)
-                    {
-                        tmp = false;
-                        i = allSpawnables.Count();
-                    }
+                    tmp = false;
+
                 }
                 if (tmp)
                 {
                     allSpawnables.Add(newHazard);
-                    return wumpusspawn;
+                    wumpusspawn = wumpusstart;
+                    return wumpusstart;
                 }
             }
         }
