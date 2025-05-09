@@ -4,6 +4,7 @@ namespace Hunt_the_Wumpus_2025
 {
     public partial class FormLaucher : Form
     {
+        // switch from a form to a splash screen
         public FormLaucher()
         {
             InitializeComponent();

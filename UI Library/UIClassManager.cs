@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Drawing.Text;
+using System.Windows.Forms.VisualStyles;
 
 namespace UI_Class_Library
 {
@@ -43,13 +44,28 @@ namespace UI_Class_Library
             Pen outlineBrush = new Pen(Color.FromArgb(0, 0, 0), 4);
             e.Graphics.Clear(Color.FromArgb(76, 76, 76));
             
-            DebugOnlyRenderGridPoints(e, 20); // makes it easy to draw on the screen
+            //DebugOnlyRenderGridPoints(e, 20); // makes it easy to draw on the screen
 
+            // renders title header
             Point titlePosition = new Point(width / 2, 100);
-            Point[] titleHexagon = Hexagon(600, 100, 40, titlePosition);
+            Point[] titleHexagon = HexagonH(600, 100, 40, titlePosition);
             e.Graphics.FillPolygon(shapeBrush, titleHexagon);
             e.Graphics.DrawPolygon(outlineBrush, titleHexagon);
             DrawText(e, "Hunt the Wumpus", 41, titlePosition, Color.FromArgb(0, 0, 0));
+            // renders subtext
+            DrawText(e, "David Stall / Nathan Choy / Camilla Meija / Maxim Delyagin / Azeem Egizi", 12, new Point(width / 2, 200), Color.FromArgb(255, 255, 255));
+            DrawText(e, "Made for Microsoft’s 2025 Hunt the Wumpus Challenge", 18, new Point(width / 2, 250), Color.FromArgb(255, 255, 255));
+            int spacing = 80;
+            // render maps
+            Point[] purpleHexagon = HexagonV(150, 400, 50, new Point(75, height));
+            SolidBrush purpleBrush = new SolidBrush(Color.FromArgb(142, 124, 195));
+            e.Graphics.FillPolygon(purpleBrush, purpleHexagon);
+            e.Graphics.DrawPolygon(outlineBrush, purpleHexagon);
+
+            Point[] greenHexagon = HexagonV(150, 400, 50, new Point(150+spacing+75, height));
+            SolidBrush greenBrush = new SolidBrush(Color.FromArgb(147, 196, 125));
+            e.Graphics.FillPolygon(greenBrush, greenHexagon);
+            e.Graphics.DrawPolygon(outlineBrush, greenHexagon);
         }
         private void DrawText(PaintEventArgs e, string text, int size, Point position, Color c)
         {
@@ -59,7 +75,15 @@ namespace UI_Class_Library
             float width = e.Graphics.MeasureString(text, font).Width;
             e.Graphics.DrawString(text, font, textBrush, new Point((int)(position.X - width / 2), (int)(position.Y - height/2)));
         }
-        private Point[] Hexagon(int width, int height, int padding, Point position)
+        /// <summary>
+        /// A hexagon with a flat top
+        /// </summary>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
+        /// <param name="padding"></param>
+        /// <param name="position"></param>
+        /// <returns>A point array of hexagon boarder points</returns>
+        private Point[] HexagonH(int width, int height, int padding, Point position)
         {
             List<Point> points = new List<Point>();
             int x = position.X;
@@ -74,6 +98,31 @@ namespace UI_Class_Library
             points.Add(new Point(rightMostPoint, y));
             points.Add(new Point(rightMostPoint - padding, topLevel));
             points.Add(new Point(leftMostPoint + padding, topLevel));
+            return points.ToArray();
+        }
+        /// <summary>
+        /// A hexagon with a vertical top
+        /// </summary>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
+        /// <param name="padding"></param>
+        /// <param name="position"></param>
+        /// <returns>A point array of hexagon boarder points</returns>
+        private Point[] HexagonV(int width, int height, int padding, Point position)
+        {
+            List<Point> points = new List<Point>();
+            int x = position.X;
+            int y = position.Y;
+            int leftLevel = x - (width / 2); // leftmost point on hexagon
+            int rightLevel = x + (width / 2); // rightmost point on hexagon
+            int topMostPoint = y - (height / 2); // highest point on hexagon
+            int bottomMostPoint = y + (height / 2); // lowest point on hexagon
+            points.Add(new Point(x, topMostPoint));
+            points.Add(new Point(rightLevel, topMostPoint + padding));
+            points.Add(new Point(rightLevel, bottomMostPoint - padding));
+            points.Add(new Point(x, bottomMostPoint));
+            points.Add(new Point(leftLevel, bottomMostPoint - padding));
+            points.Add(new Point(leftLevel, topMostPoint + padding));
             return points.ToArray();
         }
         private void DebugOnlyRenderGridPoints(PaintEventArgs e, int size)
