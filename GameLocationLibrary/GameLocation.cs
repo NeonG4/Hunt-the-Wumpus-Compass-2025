@@ -64,8 +64,10 @@ namespace GameLocationLibrary
             while (true)
             {
                 int playerstart = random.Next(0, 30);
+                //Generates a random integer that represents a random room 
                 Hazards newHazard = new Hazards("Player", playerstart);
                 bool tmp = true;
+                //Cycles through the list of hazards/wumpus until the random room is a unique value
                 for (int i = 0; i < allSpawnables.Count; i++)
                 {
                     if (allSpawnables[i].room == playerstart)
@@ -74,6 +76,7 @@ namespace GameLocationLibrary
                         i = allSpawnables.Count();
                     }
                 }
+                // If the number generated is unique, spawn the player
                 if (tmp)
                 {
                     allSpawnables.Add(newHazard);
@@ -83,19 +86,22 @@ namespace GameLocationLibrary
             }
 
         }
-        //Spawns the wumpus into an empty room
+        //Spawns the Wumpus into an room not containing the player
         public int SpawnWumpus()
         {
             while (true)
             {
                 int wumpusstart = random.Next(0, 30);
+                //Generates a random integer that represents a random room 
                 Hazards newHazard = new Hazards("Wumpus", wumpusstart);
                 bool tmp = true;
+                //Checks for uniqeness between the player's starting room and the Wumpus's starting room
                 if (playerspawn == wumpusstart)
                 {
                     tmp = false;
 
                 }
+                // If the number generated is unique from the player's, spawn the Wumpus
                 if (tmp)
                 {
                     allSpawnables.Add(newHazard);
