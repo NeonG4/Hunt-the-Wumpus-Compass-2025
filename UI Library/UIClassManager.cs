@@ -6,6 +6,8 @@ namespace UI_Class_Library
     {
         static float aspectRatio = 16f / 9f;
         public int width, height;
+        public Point mouse = new Point();
+        public bool mouseDown = false;
         PrivateFontCollection comfortaaCollection = new PrivateFontCollection();
         public UIClassManager()
         {
@@ -56,17 +58,67 @@ namespace UI_Class_Library
             SolidBrush tealBrush = new SolidBrush(Color.FromArgb(111, 168, 220));
             SolidBrush cyanBrush = new SolidBrush(Color.FromArgb(118, 165, 175));
             SolidBrush blackBrush = new SolidBrush(Color.FromArgb(67, 67, 67));
-            Brush[] brushes = [purpleBrush, greenBrush, tealBrush, cyanBrush, blackBrush];
+            SolidBrush[] brushes = [purpleBrush, greenBrush, tealBrush, cyanBrush, blackBrush];
             int spacing = (int)(80 * scaleFactor);
             int mapWidth = (int)((width / 5f)-(spacing*(4f/5f)));
             for (int i = 0; i < 5; i++)
             {
                 Point position = new Point(i * (mapWidth + spacing) + (mapWidth / 2), height);
                 Point[] hexagon = HexagonV(mapWidth, (int) (height * 0.8), (int)(height * 0.08), position);
-                e.Graphics.FillPolygon(brushes[i], hexagon);
-                e.Graphics.DrawPolygon(outlineBrush, hexagon);
-                DrawText(e, mapNames[i], (int) (scaleFactor * 6), new Point(position.X, (int) (position.Y - 80)), Color.FromArgb(255, 255, 255));
+                if (PointInShape(mouse, hexagon))
+                {
+                    int r, g, b;
+                    r = brushes[i].Color.R;
+                    g = brushes[i].Color.G;
+                    b = brushes[i].Color.B;
+                    r += 40;
+                    g += 40;
+                    b += 40;
+                    if (r > 255) { r = 255; }
+                    if (g > 255) { g = 255; }
+                    if (b > 255) { b = 255; }
+                    SolidBrush brush = new SolidBrush(Color.FromArgb(r, g, b));
+                    e.Graphics.FillPolygon(brush, hexagon);
+                    e.Graphics.DrawPolygon(outlineBrush, hexagon);
                 }
+                else
+                {
+                    e.Graphics.FillPolygon(brushes[i], hexagon);
+                    e.Graphics.DrawPolygon(outlineBrush, hexagon);
+                }
+                DrawText(e, mapNames[i], (int) (scaleFactor * 7), new Point(position.X, (int) (position.Y - 80)), Color.FromArgb(255, 255, 255));
+            }
+        }
+        private bool PointInShape(Point p, Point[] polygon)
+        {
+            // PiP problem
+            double minX = polygon[0].X;
+            double maxX = polygon[0].X;
+            double minY = polygon[0].Y;
+            double maxY = polygon[0].Y;
+            for (int i = 1; i < polygon.Length; i++)
+            {
+                Point q = polygon[i];
+                minX = Math.Min(q.X, minX);
+                maxX = Math.Max(q.X, maxX);
+                minY = Math.Min(q.Y, minY);
+                maxY = Math.Max(q.Y, maxY);
+            }
+            if (p.X < minX || p.X > maxX || p.Y < minY || p.Y > maxY)
+            {
+                return false;
+            }
+            bool inside = false;
+            for (int i = 0, j = polygon.Length - 1; i < polygon.Length; j = i++)
+            {
+                if ((polygon[i].Y > p.Y) != (polygon[j].Y > p.Y) &&
+                     p.X < (polygon[j].X - polygon[i].X) * (p.Y - polygon[i].Y) / (polygon[j].Y - polygon[i].Y) + polygon[i].X)
+                {
+                    inside = !inside;
+                }
+            }
+
+            return inside;
         }
         private void DrawText(PaintEventArgs e, string text, int size, Point position, Color c)
         {
@@ -165,6 +217,16 @@ namespace UI_Class_Library
                 this.height = 540;
             }
         }
+        /// <summary>
+        /// Updates the data about the mouse
+        /// </summary>
+        /// <param name="mouse">The position as a Point where the mouse is</param>
+        /// <param name="clicked">True if clicked</param>
+        public void UpdateMouse(Point mouse, bool clicked)
+        {
+            this.mouse = mouse;
+            this.mouseDown = clicked;
+        }
     }
     public interface IUIClassManager
     {
@@ -173,5 +235,6 @@ namespace UI_Class_Library
         public void RenderMainMenu(PaintEventArgs e);
         public bool[] GetInputs(); // returns an array of binary values, 0 if pressed, 1 if 0. Changes depending on scene
         public void UpdateScreenSize(int width, int height);
+        public void UpdateMouse(Point mouse, bool clicked);
     }
 }
