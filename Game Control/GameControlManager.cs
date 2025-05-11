@@ -90,7 +90,12 @@ namespace Game_Control
                         }
                         */
                         // renders main menu
-                        _UIClassManager.RenderMainMenu(e);
+                        bool change = _UIClassManager.RenderMainMenu(e);
+                        if (change)
+                        {
+                            gameState = GameState.PlayingGame;
+                            _cave = new CaveManager(_UIClassManager.map);
+                        }
                         break;
                 }
                 case GameState.PlayingGame:

@@ -48,7 +48,9 @@
             Name = "FormGame";
             Text = "FormGame";
             Paint += FormGame_Paint;
+            MouseDown += FormGame_MouseDown;
             MouseMove += FormGame_MouseMove;
+            MouseUp += FormGame_MouseUp;
             ResumeLayout(false);
         }
 

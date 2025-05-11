@@ -44,7 +44,17 @@ namespace Hunt_the_Wumpus_2025
 
         private void FormGame_MouseMove(object sender, MouseEventArgs e)
         {
-            gc._UIClassManager.UpdateMouse(e.Location, e.Button == MouseButtons.Left);
+            gc._UIClassManager.UpdateMousePosition(e.Location);
+        }
+
+        private void FormGame_MouseDown(object sender, MouseEventArgs e)
+        {
+            gc._UIClassManager.UpdateMouseClicked(true);
+        }
+
+        private void FormGame_MouseUp(object sender, MouseEventArgs e)
+        {
+            gc._UIClassManager.UpdateMouseClicked(false);
         }
     }
 }

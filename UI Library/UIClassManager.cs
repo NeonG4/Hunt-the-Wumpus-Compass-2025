@@ -9,6 +9,7 @@ namespace UI_Class_Library
         public Point mouse = new Point();
         public bool mouseDown = false;
         PrivateFontCollection comfortaaCollection = new PrivateFontCollection();
+        public int map = -1;
         public UIClassManager()
         {
             // standard size of a google slide, same size that this game is
@@ -21,9 +22,10 @@ namespace UI_Class_Library
         /// </summary>
         /// <param name="e">PaintEventArgs passed through Paint Form Event</param>
         /// <param name="doorsOut">The valid doors out of the room</param>
-        public void RenderGame(PaintEventArgs e, bool[] doorsOut)
+        public bool RenderGame(PaintEventArgs e, bool[] doorsOut)
         {
             e.Graphics.Clear(Color.FromArgb(0, 0, 0));
+            return true;
         }
         public void RenderGameUI(PaintEventArgs e)
         {
@@ -33,7 +35,7 @@ namespace UI_Class_Library
         /// Renders the title screen where the user starts
         /// </summary>
         /// <param name="e">PaintEventArgs passed through Paint Form Event</param>
-        public void RenderMainMenu(PaintEventArgs e)
+        public bool RenderMainMenu(PaintEventArgs e)
         {
             float scaleFactor = width / 940f;
             SolidBrush shapeBrush = new SolidBrush(Color.FromArgb(217, 217, 217));
@@ -80,6 +82,10 @@ namespace UI_Class_Library
                     SolidBrush brush = new SolidBrush(Color.FromArgb(r, g, b));
                     e.Graphics.FillPolygon(brush, hexagon);
                     e.Graphics.DrawPolygon(outlineBrush, hexagon);
+                    if (mouseDown)
+                    {
+                        map = i;
+                    }
                 }
                 else
                 {
@@ -88,6 +94,11 @@ namespace UI_Class_Library
                 }
                 DrawText(e, mapNames[i], (int) (scaleFactor * 7), new Point(position.X, (int) (position.Y - 80)), Color.FromArgb(255, 255, 255));
             }
+            if (map != -1)
+            {
+                return true;
+            }
+            return false;
         }
         private bool PointInShape(Point p, Point[] polygon)
         {
@@ -221,20 +232,23 @@ namespace UI_Class_Library
         /// Updates the data about the mouse
         /// </summary>
         /// <param name="mouse">The position as a Point where the mouse is</param>
-        /// <param name="clicked">True if clicked</param>
-        public void UpdateMouse(Point mouse, bool clicked)
+        public void UpdateMousePosition(Point mouse)
         {
             this.mouse = mouse;
+        }
+        public void UpdateMouseClicked(bool clicked)
+        {
             this.mouseDown = clicked;
         }
     }
     public interface IUIClassManager
     {
-        public void RenderGame(PaintEventArgs e, bool[] doorsout); // requires PaintEventArgs to draw to the win form
+        public bool RenderGame(PaintEventArgs e, bool[] doorsout); // requires PaintEventArgs to draw to the win form
         public void RenderGameUI(PaintEventArgs e); // requires PaintEventArgs to draw to the win form
-        public void RenderMainMenu(PaintEventArgs e);
+        public bool RenderMainMenu(PaintEventArgs e);
         public bool[] GetInputs(); // returns an array of binary values, 0 if pressed, 1 if 0. Changes depending on scene
         public void UpdateScreenSize(int width, int height);
-        public void UpdateMouse(Point mouse, bool clicked);
+        public void UpdateMousePosition(Point mouse);
+        public void UpdateMouseClicked(bool clicked);
     }
 }
