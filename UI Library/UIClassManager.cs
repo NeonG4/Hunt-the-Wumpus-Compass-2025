@@ -1,18 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
-using System.Windows.Forms;
-using System.Drawing.Text;
-using System.Windows.Forms.VisualStyles;
+﻿using System.Drawing.Text;
 
 namespace UI_Class_Library
 {
     public class UIClassManager : IUIClassManager
     {
-        int width, height;
+        static float aspectRatio = 16f / 9f;
+        public int width, height;
         PrivateFontCollection comfortaaCollection = new PrivateFontCollection();
         public UIClassManager()
         {
@@ -40,32 +33,38 @@ namespace UI_Class_Library
         /// <param name="e">PaintEventArgs passed through Paint Form Event</param>
         public void RenderMainMenu(PaintEventArgs e)
         {
+            float scaleFactor = width / 940f;
             SolidBrush shapeBrush = new SolidBrush(Color.FromArgb(217, 217, 217));
             Pen outlineBrush = new Pen(Color.FromArgb(0, 0, 0), 4);
             e.Graphics.Clear(Color.FromArgb(76, 76, 76));
-            
+
             //DebugOnlyRenderGridPoints(e, 20); // makes it easy to draw on the screen
 
             // renders title header
             Point titlePosition = new Point(width / 2, 100);
-            Point[] titleHexagon = HexagonH(600, 100, 40, titlePosition);
+            Point[] titleHexagon = HexagonH(800, 100, 40, titlePosition);
             e.Graphics.FillPolygon(shapeBrush, titleHexagon);
             e.Graphics.DrawPolygon(outlineBrush, titleHexagon);
             DrawText(e, "Hunt the Wumpus", 41, titlePosition, Color.FromArgb(0, 0, 0));
             // renders subtext
             DrawText(e, "David Stall / Nathan Choy / Camilla Meija / Maxim Delyagin / Azeem Egizi", 12, new Point(width / 2, 200), Color.FromArgb(255, 255, 255));
             DrawText(e, "Made for Microsoft’s 2025 Hunt the Wumpus Challenge", 18, new Point(width / 2, 250), Color.FromArgb(255, 255, 255));
-            int spacing = 80;
             // render maps
-            Point[] purpleHexagon = HexagonV(150, 400, 50, new Point(75, height));
             SolidBrush purpleBrush = new SolidBrush(Color.FromArgb(142, 124, 195));
-            e.Graphics.FillPolygon(purpleBrush, purpleHexagon);
-            e.Graphics.DrawPolygon(outlineBrush, purpleHexagon);
-
-            Point[] greenHexagon = HexagonV(150, 400, 50, new Point(150+spacing+75, height));
             SolidBrush greenBrush = new SolidBrush(Color.FromArgb(147, 196, 125));
-            e.Graphics.FillPolygon(greenBrush, greenHexagon);
-            e.Graphics.DrawPolygon(outlineBrush, greenHexagon);
+            SolidBrush tealBrush = new SolidBrush(Color.FromArgb(111, 168, 220));
+            SolidBrush cyanBrush = new SolidBrush(Color.FromArgb(118, 165, 175));
+            SolidBrush blackBrush = new SolidBrush(Color.FromArgb(67, 67, 67));
+            Brush[] brushes = [purpleBrush, greenBrush, tealBrush, cyanBrush, blackBrush];
+            int spacing = (int)(80 * scaleFactor);
+            int mapWidth = (int)((width / 5f)-(spacing*(4f/5f)));
+            for (int i = 0; i < 5; i++)
+            {
+                Point[] hexagon = HexagonV(mapWidth, (int) (height * 0.8), (int)(height * 0.08), new Point(i * (mapWidth + spacing) + (mapWidth / 2), height));
+                e.Graphics.FillPolygon(brushes[i], hexagon);
+                e.Graphics.DrawPolygon(outlineBrush, hexagon);
+
+            }
         }
         private void DrawText(PaintEventArgs e, string text, int size, Point position, Color c)
         {
@@ -149,6 +148,21 @@ namespace UI_Class_Library
             controls[2] = true;
             return controls;
         }
+        /// <summary>
+        /// Gets the width, and updates the screen size
+        /// </summary>
+        /// <param name="width">The width in pixels of the form</param>
+        /// <param name="height">The height in pixels of the form</param>
+        public void UpdateScreenSize(int width, int height)
+        {
+            this.width = width;
+            this.height = (int) (width * (1/aspectRatio));
+            if (width < 960 || height < 540)
+            {
+                this.width = 960;
+                this.height = 540;
+            }
+        }
     }
     public interface IUIClassManager
     {
@@ -156,5 +170,6 @@ namespace UI_Class_Library
         public void RenderGameUI(PaintEventArgs e); // requires PaintEventArgs to draw to the win form
         public void RenderMainMenu(PaintEventArgs e);
         public bool[] GetInputs(); // returns an array of binary values, 0 if pressed, 1 if 0. Changes depending on scene
+        public void UpdateScreenSize(int width, int height);
     }
 }

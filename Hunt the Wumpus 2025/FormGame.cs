@@ -27,6 +27,9 @@ namespace Hunt_the_Wumpus_2025
             {
                 // ticks the game control
                 gc.Tick(e);
+                gc._UIClassManager.UpdateScreenSize(this.Width, this.Height);
+                this.Width = gc._UIClassManager.width;
+                this.Height = gc._UIClassManager.height;
             }
         }
 

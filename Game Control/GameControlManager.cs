@@ -19,7 +19,7 @@ namespace Game_Control
         GameLocation _gameLocations;
         CaveManager _cave;
         Scoreboard _scoreboard;
-        UIClassManager _UIClassManager;
+        public UIClassManager _UIClassManager;
         PlayerManager _playerManager;
         public GameControl()
         {
