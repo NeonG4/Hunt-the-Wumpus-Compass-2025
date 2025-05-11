@@ -50,6 +50,7 @@ namespace UI_Class_Library
             DrawText(e, "David Stall / Nathan Choy / Camilla Meija / Maxim Delyagin / Azeem Egizi", 12, new Point(width / 2, 200), Color.FromArgb(255, 255, 255));
             DrawText(e, "Made for Microsoft’s 2025 Hunt the Wumpus Challenge", 18, new Point(width / 2, 250), Color.FromArgb(255, 255, 255));
             // render maps
+            string[] mapNames = ["Purple Lagoon", "Green Grotto", "Teal Tunnel", "Cyan Cavity", "Black Borehole"];
             SolidBrush purpleBrush = new SolidBrush(Color.FromArgb(142, 124, 195));
             SolidBrush greenBrush = new SolidBrush(Color.FromArgb(147, 196, 125));
             SolidBrush tealBrush = new SolidBrush(Color.FromArgb(111, 168, 220));
@@ -60,11 +61,12 @@ namespace UI_Class_Library
             int mapWidth = (int)((width / 5f)-(spacing*(4f/5f)));
             for (int i = 0; i < 5; i++)
             {
-                Point[] hexagon = HexagonV(mapWidth, (int) (height * 0.8), (int)(height * 0.08), new Point(i * (mapWidth + spacing) + (mapWidth / 2), height));
+                Point position = new Point(i * (mapWidth + spacing) + (mapWidth / 2), height);
+                Point[] hexagon = HexagonV(mapWidth, (int) (height * 0.8), (int)(height * 0.08), position);
                 e.Graphics.FillPolygon(brushes[i], hexagon);
                 e.Graphics.DrawPolygon(outlineBrush, hexagon);
-
-            }
+                DrawText(e, mapNames[i], (int) (scaleFactor * 6), new Point(position.X, (int) (position.Y - 80)), Color.FromArgb(255, 255, 255));
+                }
         }
         private void DrawText(PaintEventArgs e, string text, int size, Point position, Color c)
         {
