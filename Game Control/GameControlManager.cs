@@ -97,7 +97,7 @@ namespace Game_Control
                         // should process inputs based on game
                         int pPosition = _playerManager.CurrentRoom;
                         bool[] rooms = _cave.GetDirectionsBoolArray(pPosition);
-                        _UIClassManager.RenderGame(e, rooms);
+                        _UIClassManager.RenderGame(e, rooms, 0, 0, 0);
                         break;
                 }
             }

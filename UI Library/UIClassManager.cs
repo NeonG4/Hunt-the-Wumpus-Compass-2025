@@ -31,7 +31,10 @@ namespace UI_Class_Library
         /// </summary>
         /// <param name="e">PaintEventArgs passed through Paint Form Event</param>
         /// <param name="doorsOut">The valid doors out of the room</param>
-        public void RenderGame(PaintEventArgs e, bool[] doorsOut)
+        /// <param name="arrows">The number of arrows the player has</param> 
+        /// <param name="coins">The number of coins the player has</param>
+        /// <param name="compassDirection">The direction where the wumpus is</param>
+        public void RenderGame(PaintEventArgs e, bool[] doorsOut, int arrows, int coins, int compassDirection)
         {
             map = 0; // delete when more maps are added
             Color bgColor = gameColors[map, 0];
@@ -44,10 +47,18 @@ namespace UI_Class_Library
             SolidBrush hexagonBrush = new SolidBrush(mainColor);
             int radius = (int)(width * 0.2);
             e.Graphics.FillPolygon(hexagonBrush, HexagonPerfect(radius, new Point((int) (width * (1f/3f)), (int) (height / 2f))));
-        }
-        public void RenderGameUI(PaintEventArgs e)
-        {
-            e.Graphics.Clear(Color.FromArgb(0, 0, 0));
+            // render the right panel
+            SolidBrush bgBrush = new SolidBrush(Color.FromArgb(238, 238, 238));
+            Rectangle headerRect = new Rectangle((int) (width * (2f/3f) + 20), 20, (int) (width * (1f/3f) - 60), (int) (height * (2f/20f)));
+            Rectangle subHeaderRect = new Rectangle((int)(width * (2f / 3f) + 20), 25 + (int)(height * (2f / 20f)), (int)(width * (1f / 3f) - 60), (int)(height * (1f / 20f)));
+            Rectangle mapPanelRect = new Rectangle((int)(width * (2f / 3f) + 20) + 10 + (int)(width * 2f / 20f), 35 + (int)(height * (3f / 20f)), (int)(width * (1f / 3f) - 60) - (int)(width * 2f / 20f) - 10, (int)(height * 0.3));
+            Rectangle leftMapPanelRect = new Rectangle((int)(width * (2f / 3f) + 20), 35 + (int)(height * (3f / 20f)), (int) (width * 2f/20f), (int) (height * 0.3));
+            Rectangle chatBoxRect = new Rectangle((int)(width * (2f / 3f) + 20), (int) (height * 0.75) - 20, (int)(width * (1f / 3f) - 60), (int)(height * 0.25));
+            e.Graphics.FillRectangle(bgBrush, headerRect);
+            e.Graphics.FillRectangle(bgBrush, subHeaderRect);
+            e.Graphics.FillRectangle(bgBrush, leftMapPanelRect);
+            e.Graphics.FillRectangle(bgBrush, mapPanelRect);
+            e.Graphics.FillRectangle(bgBrush, chatBoxRect);
         }
         /// <summary>
         /// Renders the title screen where the user starts
@@ -263,8 +274,7 @@ namespace UI_Class_Library
     }
     public interface IUIClassManager
     {
-        public void RenderGame(PaintEventArgs e, bool[] doorsout); // requires PaintEventArgs to draw to the win form
-        public void RenderGameUI(PaintEventArgs e); // requires PaintEventArgs to draw to the win form
+        public void RenderGame(PaintEventArgs e, bool[] doorsOut, int arrows, int coins, int compassDirection); // requires PaintEventArgs to draw to the win form
         public void RenderMainMenu(PaintEventArgs e);
         public bool[] GetInputs(); // returns an array of binary values, 0 if pressed, 1 if 0. Changes depending on scene
         public void UpdateScreenSize(int width, int height);
