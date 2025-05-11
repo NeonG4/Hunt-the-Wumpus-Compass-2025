@@ -10,6 +10,15 @@ namespace UI_Class_Library
         public bool mouseDown = false;
         PrivateFontCollection comfortaaCollection = new PrivateFontCollection();
         public int map = -1;
+        private List<bool> inputs = new List<bool>();
+        Color[,] gameColors =
+        {
+            { // testing map colors
+                Color.FromArgb(7, 20, 40), // background color
+                Color.FromArgb(103, 78, 167), // center color
+                Color.FromArgb(7, 55, 99) // side panel color
+            }
+        };
         public UIClassManager()
         {
             // standard size of a google slide, same size that this game is
@@ -22,10 +31,19 @@ namespace UI_Class_Library
         /// </summary>
         /// <param name="e">PaintEventArgs passed through Paint Form Event</param>
         /// <param name="doorsOut">The valid doors out of the room</param>
-        public bool RenderGame(PaintEventArgs e, bool[] doorsOut)
+        public void RenderGame(PaintEventArgs e, bool[] doorsOut)
         {
-            e.Graphics.Clear(Color.FromArgb(0, 0, 0));
-            return true;
+            map = 0; // delete when more maps are added
+            Color bgColor = gameColors[map, 0];
+            Color mainColor = gameColors[map, 1];
+            Color sidePanel = gameColors[map, 2];
+            e.Graphics.Clear(bgColor);
+            Rectangle rect = new Rectangle((int)(width * (2f / 3f)), 0, (int)(width * (2f / 3f)), height);
+            SolidBrush brush = new SolidBrush(sidePanel);
+            e.Graphics.FillRectangle(brush, rect);
+            SolidBrush hexagonBrush = new SolidBrush(mainColor);
+            int radius = (int)(width * 0.2);
+            e.Graphics.FillPolygon(hexagonBrush, HexagonPerfect(radius, new Point((int) (width * (1f/3f)), (int) (height / 2f))));
         }
         public void RenderGameUI(PaintEventArgs e)
         {
@@ -35,8 +53,10 @@ namespace UI_Class_Library
         /// Renders the title screen where the user starts
         /// </summary>
         /// <param name="e">PaintEventArgs passed through Paint Form Event</param>
-        public bool RenderMainMenu(PaintEventArgs e)
+        public void RenderMainMenu(PaintEventArgs e)
         {
+            inputs.Clear();
+            for (int i = 0; i < 6; i++) { inputs.Add(false); }
             float scaleFactor = width / 940f;
             SolidBrush shapeBrush = new SolidBrush(Color.FromArgb(217, 217, 217));
             Pen outlineBrush = new Pen(Color.FromArgb(0, 0, 0), 4);
@@ -96,9 +116,8 @@ namespace UI_Class_Library
             }
             if (map != -1)
             {
-                return true;
+                inputs[map] = true;
             }
-            return false;
         }
         private bool PointInShape(Point p, Point[] polygon)
         {
@@ -138,6 +157,23 @@ namespace UI_Class_Library
             float height = font.GetHeight();
             float width = e.Graphics.MeasureString(text, font).Width;
             e.Graphics.DrawString(text, font, textBrush, new Point((int)(position.X - width / 2), (int)(position.Y - height/2)));
+        }
+        /// <summary>
+        /// Returns the 6 verticies of a hexagon
+        /// </summary>
+        /// <param name="radius">The distance each point is from the center</param>
+        /// <param name="position">The location of the hexagon</param>
+        /// <returns></returns>
+        private Point[] HexagonPerfect(int radius, Point position)
+        {
+            Point[] points = new Point[6];
+            for (int i = 0; i < 6; i++)
+            {
+                int x = position.X + (int)(radius * Math.Cos(i * (Math.PI / 3f)));
+                int y = position.Y + (int)(radius * Math.Sin(i * (Math.PI / 3f)));
+                points[i] = new Point(x, y);
+            }
+            return points;
         }
         /// <summary>
         /// A hexagon with a flat top
@@ -189,29 +225,13 @@ namespace UI_Class_Library
             points.Add(new Point(leftLevel, topMostPoint + padding));
             return points.ToArray();
         }
-        private void DebugOnlyRenderGridPoints(PaintEventArgs e, int size)
-        {
-            SolidBrush b = new SolidBrush(Color.FromArgb(255, 0, 0));
-            for (int i = 0; i < width; i+= size)
-            {
-                for (int j = 0; j < height; j += size)
-                {
-                    Rectangle rect = new Rectangle(i - 1, j - 1, 2, 2);
-                    e.Graphics.FillRectangle(b, rect);
-                }
-            }
-        }
         /// <summary>
         /// Gets the inputs for the current rendered state
         /// </summary>
         /// <returns>Returns a dynamic-length bool array of inputs</returns>
         public bool[] GetInputs()
         {
-            bool[] controls = new bool[3];
-            controls[0] = true;
-            controls[1] = false;
-            controls[2] = true;
-            return controls;
+            return inputs.ToArray();
         }
         /// <summary>
         /// Gets the width, and updates the screen size
@@ -243,9 +263,9 @@ namespace UI_Class_Library
     }
     public interface IUIClassManager
     {
-        public bool RenderGame(PaintEventArgs e, bool[] doorsout); // requires PaintEventArgs to draw to the win form
+        public void RenderGame(PaintEventArgs e, bool[] doorsout); // requires PaintEventArgs to draw to the win form
         public void RenderGameUI(PaintEventArgs e); // requires PaintEventArgs to draw to the win form
-        public bool RenderMainMenu(PaintEventArgs e);
+        public void RenderMainMenu(PaintEventArgs e);
         public bool[] GetInputs(); // returns an array of binary values, 0 if pressed, 1 if 0. Changes depending on scene
         public void UpdateScreenSize(int width, int height);
         public void UpdateMousePosition(Point mouse);

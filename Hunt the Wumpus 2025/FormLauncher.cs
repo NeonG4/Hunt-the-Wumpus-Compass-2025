@@ -11,8 +11,10 @@ namespace Hunt_the_Wumpus_2025
         }
         public void StartGame(object sender, EventArgs e)
         {
+            this.Hide();
             FormGame form = new FormGame();
             form.ShowDialog(); // creates a new game instance
+            this.Show();
         }
 
         private void buttonTestGameLocation_Click(object sender, EventArgs e)

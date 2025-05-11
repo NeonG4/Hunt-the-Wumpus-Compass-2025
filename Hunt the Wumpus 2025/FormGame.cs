@@ -29,7 +29,7 @@ namespace Hunt_the_Wumpus_2025
                 gc.Tick(e);
                 gc._UIClassManager.UpdateScreenSize(this.Width, this.Height);
                 this.Width = gc._UIClassManager.width;
-                this.Height = gc._UIClassManager.height;
+                this.Height = gc._UIClassManager.height + (this.RectangleToScreen(this.ClientRectangle).Top - this.Top); // accounts for windows bar
             }
         }
 

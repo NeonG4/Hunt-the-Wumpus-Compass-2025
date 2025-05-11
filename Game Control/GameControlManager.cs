@@ -63,39 +63,32 @@ namespace Game_Control
             {
                 case GameState.MainMenu:
                 {
-                        /*
-                        if (inputs.Length != 6)
+                        if (inputs.Length == 6)
                         {
-                            //throw new Exception($"Wrong count of inputs, expected 6, got {inputs.Length}");
+                            // should process inputs based on main menu
+                            // 0 if debug mode is clicked
+                            // 1 -5 which map is selected
+                            if (inputs[0])
+                            {
+                                // activate debug mode
+                                debugMode = true;
+                            }
+                            if (inputs[1] || inputs[2] || inputs[3] || inputs[4] || inputs[5])
+                            {
+                                // a map is selected, choose and change the scene, load the map from memory, and start the game
+                                int caveNumber;
+                                if (inputs[1]) { caveNumber = 0; }
+                                else if (inputs[2]) { caveNumber = 1; }
+                                else if (inputs[3]) { caveNumber = 2; }
+                                else if (inputs[4]) { caveNumber = 3; }
+                                else { caveNumber = 4; }
+                                _cave = new CaveManager(caveNumber); // pass in the room number
+                                gameState = GameState.PlayingGame; // add a gamestate here for cutscenes
+                            }
                         }
-                        // should process inputs based on main menu
-                        // 0 if debug mode is clicked
-                        // 1 -5 which map is selected
-                        if (inputs[0])
-                        {
-                            // activate debug mode
-                            debugMode = true;
-                        }
-                        if (inputs[1] || inputs[2] || inputs[3] || inputs[4] || inputs[5])
-                        {
-                            // a map is selected, choose and change the scene, load the map from memory, and start the game
-                            int caveNumber;
-                            if (inputs[1]) { caveNumber = 0; }
-                            else if (inputs[2]) { caveNumber = 1; }
-                            else if (inputs[3]) { caveNumber = 2; }
-                            else if (inputs[4]) { caveNumber = 3; }
-                            else{ caveNumber = 4; }
-                            _cave = new CaveManager(caveNumber); // pass in the room number
-                            gameState = GameState.PlayingGame; // add a gamestate here for cutscenes
-                        }
-                        */
+                        
                         // renders main menu
-                        bool change = _UIClassManager.RenderMainMenu(e);
-                        if (change)
-                        {
-                            gameState = GameState.PlayingGame;
-                            _cave = new CaveManager(_UIClassManager.map);
-                        }
+                        _UIClassManager.RenderMainMenu(e);
                         break;
                 }
                 case GameState.PlayingGame:
