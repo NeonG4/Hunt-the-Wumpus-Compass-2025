@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using System.IO;
+using System.Runtime.InteropServices;
 
 namespace ScoreBoard
 {
@@ -16,8 +17,26 @@ namespace ScoreBoard
     {
         string HighScoresData = "Highscore.csv";
         public List<ScoreItem> items = new List<ScoreItem>();
+        public Scoreboard() 
+        {
+            //initial implementation shows default scores or top scores
+            FileInfo fileinfo = new FileInfo(HighScoresData);
+            if (fileinfo.Exists)
+            {
+                ReadFromFile();
+            }
+            else 
+            { 
+            items.Add(new ScoreItem("David",0,"Cave1",0,0,0,false));
+            items.Add(new ScoreItem("Mila", 0, "Cave1", 0, 0, 0, false));
+            items.Add(new ScoreItem("Nathan", 0, "Cave1", 0, 0, 0, false));
+            items.Add(new ScoreItem("Maxim", 0, "Cave1", 0, 0, 0, false));
+            items.Add(new ScoreItem("Azeem", 0, "Cave1", 0, 0, 0, false));
+            }
+        }
         public void SortHighScore()
         {
+            //sorts high scores
             for (int i = 0; i < items.Count; i++)
             {
                 for (int j = 0; j < items.Count - 1; j++)
@@ -42,15 +61,18 @@ namespace ScoreBoard
         }
 
       
-        public List<ScoreItem> GetHighScores()
-        {
-            items.Sort((s1, s2) => s1.Score.CompareTo(s2.Score));
-            return items;
-        }
+       /// <summary>
+       /// 
+       /// </summary>
+       /// <param name="turns"> the amount of turns the game lasted</param>
+       /// <param name="coins">how many coins you end with</param>
+       /// <param name="arrows">how many arrows you end with</param>
+       /// <param name="wumpus">bool checks whether wumpus died or not</param>
+       /// <returns></returns>
 
         public int CalculateHighScore(int turns, int coins, int arrows, bool wumpus)
         {
-            //TODO; implement stub, might have to change return value to an array/list
+            //calculates score based on each parameter
             int score;
             if (wumpus)
             { score = (100 - turns + coins + (arrows * 5) + 50); }
@@ -60,7 +82,7 @@ namespace ScoreBoard
         }
         public void ReadFromFile()
         {
-           
+           //reads from file
             StreamReader streamReader = new StreamReader(HighScoresData);
             string line = streamReader.ReadLine();
 
@@ -89,7 +111,7 @@ namespace ScoreBoard
         }
       public void SaveTofile()
         {
-         
+         //saves new entries to file
             StreamWriter streamwriter = new StreamWriter(HighScoresData);
 
             foreach (ScoreItem contact in items)
@@ -103,18 +125,36 @@ namespace ScoreBoard
             streamwriter.Close();
 
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name">Name of player</param>
+        /// <param name="cave_type">The cave in which the game was played</param>
+        /// <param name="turns">the amount of turns the game lasted</param>
+        /// <param name="gold">how many coins you end with</param>
+        /// <param name="arrows">how many arrows you end with</param>
+        /// <param name="wumpus">bool checks whether wumpus died or not</param>
         public void AddHighScore(string name, string cave_type, int turns, int gold, int arrows, bool wumpus)
         {
-            int score = CalculateHighScore(turns, gold, arrows, wumpus);
-           //if (score > items[items.Count - 1].Score || items.Count < 10)
-           // {
+            //adds high scores to wherver you want to store them in the ui
+            //first we calculate the high scores
+           int score = CalculateHighScore(turns, gold, arrows, wumpus);
+            //see if we need to add it
+           if (score > items[items.Count - 1].Score || items.Count < 10)
+            {
 
                 items.Add(new ScoreItem(name, score, cave_type,turns, gold, arrows, wumpus));
-           // }
-
-            SortHighScore();
-
-
+                SortHighScore();
+                
+            }
+           //removes extra entries if needed
+            if (items.Count > 10)
+            { 
+                items.RemoveAt(items.Count - 1); 
+            }
+            
+            
+            SaveTofile();
 
 
 
@@ -122,6 +162,7 @@ namespace ScoreBoard
         }
         public List<ScoreItem> GetList()
         {
+            //gets u the list of stuff
             return items;
         }
 
@@ -134,12 +175,8 @@ namespace ScoreBoard
         int CalculateHighScore(int turns, int coins, int arrows, bool wumpus);
 
         void AddHighScore(string name, string cave_type, int turns, int gold, int arrows, bool wumpus);
-        //add higschore. check
-        // sort highscore. check
-        //track highscore in memory. not check
-        //save highscore. chechk
-        //getting highscores from. file check
-        List<ScoreItem> GetHighScores();
+      
+      
 
     }
 }
