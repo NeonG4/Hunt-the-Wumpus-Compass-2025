@@ -27,11 +27,11 @@ namespace ScoreBoard
             }
             else 
             { 
-            items.Add(new ScoreItem("David",0,"Cave1",0,0,0,false));
-            items.Add(new ScoreItem("Mila", 0, "Cave1", 0, 0, 0, false));
-            items.Add(new ScoreItem("Nathan", 0, "Cave1", 0, 0, 0, false));
-            items.Add(new ScoreItem("Maxim", 0, "Cave1", 0, 0, 0, false));
-            items.Add(new ScoreItem("Azeem", 0, "Cave1", 0, 0, 0, false));
+            items.Add(new ScoreItem("David",0,"CaveA",0,0,0,false));
+            items.Add(new ScoreItem("Mila", 0, "CaveA", 0, 0, 0, false));
+            items.Add(new ScoreItem("Nathan", 0, "CaveA", 0, 0, 0, false));
+            items.Add(new ScoreItem("Maxim", 0, "CaveA", 0, 0, 0, false));
+            items.Add(new ScoreItem("Azeem", 0, "CaveA", 0, 0, 0, false));
             }
         }
         public void SortHighScore()
