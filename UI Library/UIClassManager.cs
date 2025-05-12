@@ -8,6 +8,7 @@ namespace UI_Class_Library
         public int width, height;
         public Point mouse = new Point();
         public bool mouseDown = false;
+        public bool mouseDownBuffer = false;
         PrivateFontCollection comfortaaCollection = new PrivateFontCollection();
         public int map = -1;
         private List<bool> inputs = new List<bool>();
@@ -34,7 +35,7 @@ namespace UI_Class_Library
         /// <param name="arrows">The number of arrows the player has</param> 
         /// <param name="coins">The number of coins the player has</param>
         /// <param name="compassDirection">The direction where the wumpus is</param>
-        public void RenderGame(PaintEventArgs e, bool[] doorsOut, int arrows, int coins, int compassDirection)
+        public bool[] RenderGame(PaintEventArgs e, bool[] doorsOut, int arrows, int coins, int compassDirection)
         {
             map = 0; // delete when more maps are added
             Color bgColor = gameColors[map, 0];
@@ -46,7 +47,8 @@ namespace UI_Class_Library
             e.Graphics.FillRectangle(brush, rect);
             SolidBrush hexagonBrush = new SolidBrush(mainColor);
             int radius = (int)(width * 0.2);
-            e.Graphics.FillPolygon(hexagonBrush, HexagonPerfect(radius, new Point((int) (width * (1f/3f)), (int) (height / 2f))));
+            Point centerHexagonPosition = new Point((int)(width * (1f / 3f)), (int)(height / 2f));
+            e.Graphics.FillPolygon(hexagonBrush, HexagonPerfect(radius, centerHexagonPosition));
             // render the right panel
             SolidBrush bgBrush = new SolidBrush(Color.FromArgb(238, 238, 238));
             Rectangle headerRect = new Rectangle((int) (width * (2f/3f) + 20), 20, (int) (width * (1f/3f) - 60), (int) (height * (2f/20f)));
@@ -59,6 +61,25 @@ namespace UI_Class_Library
             e.Graphics.FillRectangle(bgBrush, leftMapPanelRect);
             e.Graphics.FillRectangle(bgBrush, mapPanelRect);
             e.Graphics.FillRectangle(bgBrush, chatBoxRect);
+            Size roomSize = new Size(40, 40);
+            SolidBrush roomBrush = new SolidBrush(Color.FromArgb(255, 255, 255));
+            bool[] doorsClicked = [false, false, false, false, false, false];
+            // render the rooms around the hexagon
+            for (int i = 0; i < 6; i++)
+            {
+                if (doorsOut[i])
+                {
+                    Rectangle rectRoom = new Rectangle(new Point((int)(centerHexagonPosition.X + radius * Math.Cos((-2 + i) * Math.PI / 3 + Math.PI / 6)), (int)(centerHexagonPosition.Y + radius * Math.Sin((-2 + i) * Math.PI / 3 + Math.PI / 6))), roomSize);
+                    e.Graphics.FillEllipse(roomBrush, rectRoom);
+                    float distance = (float)Math.Sqrt((mouse.X - (rectRoom.X + 20)) * (mouse.X - (rectRoom.X + 20)) + (mouse.Y - (rectRoom.Y + 20)) * (mouse.Y - (rectRoom.Y + 20)));
+                    if (distance < 20 && mouseDown)
+                    {
+                        mouseDownBuffer = false;
+                        doorsClicked[i] = true;
+                    }
+                }
+            }
+            return doorsClicked;
         }
         /// <summary>
         /// Renders the title screen where the user starts
@@ -113,8 +134,9 @@ namespace UI_Class_Library
                     SolidBrush brush = new SolidBrush(Color.FromArgb(r, g, b));
                     e.Graphics.FillPolygon(brush, hexagon);
                     e.Graphics.DrawPolygon(outlineBrush, hexagon);
-                    if (mouseDown)
+                    if (mouseDown && mouseDownBuffer)
                     {
+                        mouseDownBuffer = false;
                         map = i;
                     }
                 }
@@ -127,7 +149,7 @@ namespace UI_Class_Library
             }
             if (map != -1)
             {
-                inputs[map] = true;
+                inputs[map + 1] = true;
             }
         }
         private bool PointInShape(Point p, Point[] polygon)
@@ -270,11 +292,15 @@ namespace UI_Class_Library
         public void UpdateMouseClicked(bool clicked)
         {
             this.mouseDown = clicked;
+            if (mouseDown)
+            {
+                this.mouseDownBuffer = true;
+            }
         }
     }
     public interface IUIClassManager
     {
-        public void RenderGame(PaintEventArgs e, bool[] doorsOut, int arrows, int coins, int compassDirection); // requires PaintEventArgs to draw to the win form
+        public bool[] RenderGame(PaintEventArgs e, bool[] doorsOut, int arrows, int coins, int compassDirection); // requires PaintEventArgs to draw to the win form
         public void RenderMainMenu(PaintEventArgs e);
         public bool[] GetInputs(); // returns an array of binary values, 0 if pressed, 1 if 0. Changes depending on scene
         public void UpdateScreenSize(int width, int height);

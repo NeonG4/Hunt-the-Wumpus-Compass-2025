@@ -28,7 +28,7 @@ namespace Game_Control
             _scoreboard = new Scoreboard();
             _UIClassManager = new UIClassManager();
             // CHANGE THIS SOMETIME
-            _playerManager = new PlayerManager(1); // use _gamelocations to get a valid spot to place the player 
+            _playerManager = new PlayerManager(0); // use _gamelocations to get a valid spot to place the player 
         }
         public void StartGame(int map, int startingRoom)
         {
@@ -97,7 +97,14 @@ namespace Game_Control
                         // should process inputs based on game
                         int pPosition = _playerManager.CurrentRoom;
                         bool[] rooms = _cave.GetDirectionsBoolArray(pPosition);
-                        _UIClassManager.RenderGame(e, rooms, 0, 0, 0);
+                        bool[] moved = _UIClassManager.RenderGame(e, rooms, 0, 0, 0);
+                        for (int i = 0; i < 6; i++)
+                        {
+                            if (moved[i])
+                            {
+                                _playerManager.CurrentRoom = _cave.GetNewRoomNumber(pPosition, i);
+                            }
+                        }
                         break;
                 }
             }
