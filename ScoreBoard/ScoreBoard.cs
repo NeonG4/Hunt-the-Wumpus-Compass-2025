@@ -131,6 +131,7 @@ namespace ScoreBoard
                 SortHighScore();
                 
             }
+           //removes extra entries if needed
             if (items.Count > 10)
             { 
                 items.RemoveAt(items.Count - 1); 
@@ -145,6 +146,7 @@ namespace ScoreBoard
         }
         public List<ScoreItem> GetList()
         {
+            //gets u the list of stuff
             return items;
         }
 
