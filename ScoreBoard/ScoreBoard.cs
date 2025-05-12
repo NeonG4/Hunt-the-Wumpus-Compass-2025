@@ -61,7 +61,14 @@ namespace ScoreBoard
         }
 
       
-       
+       /// <summary>
+       /// 
+       /// </summary>
+       /// <param name="turns"> the amount of turns the game lasted</param>
+       /// <param name="coins">how many coins you end with</param>
+       /// <param name="arrows">how many arrows you end with</param>
+       /// <param name="wumpus">bool checks whether wumpus died or not</param>
+       /// <returns></returns>
 
         public int CalculateHighScore(int turns, int coins, int arrows, bool wumpus)
         {
@@ -118,6 +125,15 @@ namespace ScoreBoard
             streamwriter.Close();
 
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name">Name of player</param>
+        /// <param name="cave_type">The cave in which the game was played</param>
+        /// <param name="turns">the amount of turns the game lasted</param>
+        /// <param name="gold">how many coins you end with</param>
+        /// <param name="arrows">how many arrows you end with</param>
+        /// <param name="wumpus">bool checks whether wumpus died or not</param>
         public void AddHighScore(string name, string cave_type, int turns, int gold, int arrows, bool wumpus)
         {
             //adds high scores to wherver you want to store them in the ui
