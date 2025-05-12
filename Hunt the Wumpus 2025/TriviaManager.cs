@@ -68,6 +68,12 @@ namespace Hunt_the_Wumpus_2025
             public string Question { get; set; }
             public string[] PossibleAnswers { get; set; }
             public string CorrectAnswer { get; set; }
+            public Trivia(string question, string[] possibleAnswers, string correctAnswer)
+            {
+                Question = question;
+                PossibleAnswers = possibleAnswers;
+                CorrectAnswer = correctAnswer;
+            }
         }
 
         private void Serialize()
@@ -105,61 +111,61 @@ namespace Hunt_the_Wumpus_2025
         {
 
             string[] answers1 = { "Luigi", "Mario", "Wario", "Toad" };
-            triviaList.Add(new Trivia("What is the name of the main character in the original 'Super Mario Bros.'?", answers1, "Mario"));
+            TriviaList.Add(new Trivia("What is the name of the main character in the original 'Super Mario Bros.'?", answers1, "Mario"));
 
             string[] answers2 = { "Peach", "Daisy", "Zelda", "Rosalina" };
-            triviaList.Add(new Trivia("In 'The Legend of Zelda', what is the name of the princess?", answers2, "Zelda"));
+            TriviaList.Add(new Trivia("In 'The Legend of Zelda', what is the name of the princess?", answers2, "Zelda"));
 
             string[] answers3 = { "Pong", "Pac-Man", "Space Invaders", "Donkey Kong" };
-            triviaList.Add(new Trivia("What was the first commercially successful arcade video game?", answers3, "Pong"));
+            TriviaList.Add(new Trivia("What was the first commercially successful arcade video game?", answers3, "Pong"));
 
             string[] answers4 = { "Koopa Troopa", "Ghost", "Creeper", "Space Invader" };
-            triviaList.Add(new Trivia("Which creature is the primary antagonist in the 'Pac-Man' arcade game?", answers4, "Ghost"));
+            TriviaList.Add(new Trivia("Which creature is the primary antagonist in the 'Pac-Man' arcade game?", answers4, "Ghost"));
 
             string[] answers5 = { "Samus Aran", "Link", "Mega Man", "Pit" };
-            triviaList.Add(new Trivia("What is the name of the hero in the 'Metroid' series?", answers5, "Samus Aran"));
+            TriviaList.Add(new Trivia("What is the name of the hero in the 'Metroid' series?", answers5, "Samus Aran"));
 
             string[] answers6 = { "Plumber", "Carpenter", "Electrician", "Chef" };
-            triviaList.Add(new Trivia("In 'Donkey Kong', what does Mario (Jumpman) do for a living?", answers6, "Carpenter"));
+            TriviaList.Add(new Trivia("In 'Donkey Kong', what does Mario (Jumpman) do for a living?", answers6, "Carpenter"));
 
             string[] answers7 = { "Knuckles", "Tails", "Amy", "Shadow" };
-            triviaList.Add(new Trivia("What is the name of Sonic the Hedgehog's best friend?", answers7, "Tails"));
+            TriviaList.Add(new Trivia("What is the name of Sonic the Hedgehog's best friend?", answers7, "Tails"));
 
             string[] answers8 = { "Uncharted", "Prince of Persia", "Tomb Raider", "Indiana Jones" };
-            triviaList.Add(new Trivia("Which game introduced the character Lara Croft?", answers8, "Tomb Raider"));
+            TriviaList.Add(new Trivia("Which game introduced the character Lara Croft?", answers8, "Tomb Raider"));
 
             string[] answers9 = { "Fire-type", "Water-type", "Electric-type", "Grass-type" };
-            triviaList.Add(new Trivia("What type of creature is Pikachu in the 'Pokémon' franchise?", answers9, "Electric-type"));
+            TriviaList.Add(new Trivia("What type of creature is Pikachu in the 'Pokémon' franchise?", answers9, "Electric-type"));
 
             string[] answers10 = { "Millennium Falcon", "Enterprise", "Rockethip", "There is no named ship" };
-            triviaList.Add(new Trivia("What is the name of the spaceship in 'Asteroids'?", answers10, "There is no named ship"));
+            TriviaList.Add(new Trivia("What is the name of the spaceship in 'Asteroids'?", answers10, "There is no named ship"));
 
             string[] answers11 = { "Destroy Earth", "Steal resources", "Communicate with humans", "Just fly around" };
-            triviaList.Add(new Trivia("In 'Space Invaders', what are the enemies trying to do?", answers11, "Destroy Earth"));
+            TriviaList.Add(new Trivia("In 'Space Invaders', what are the enemies trying to do?", answers11, "Destroy Earth"));
 
             string[] answers12 = { "Sword", "Gun", "Buster", "Whip" };
-            triviaList.Add(new Trivia("What is the primary weapon of Mega Man?", answers12, "Buster"));
+            TriviaList.Add(new Trivia("What is the primary weapon of Mega Man?", answers12, "Buster"));
 
             string[] answers13 = { "Galaga", "Centipede", "Pac-Man", "Frogger" };
-            triviaList.Add(new Trivia("Which classic arcade game involves eating dots and avoiding ghosts in a maze?", answers13, "Pac-Man"));
+            TriviaList.Add(new Trivia("Which classic arcade game involves eating dots and avoiding ghosts in a maze?", answers13, "Pac-Man"));
 
             string[] answers14 = { "Rex", "Yoshi", "Wart", "Birdo" };
-            triviaList.Add(new Trivia("What is the name of the green dinosaur in the 'Super Mario' series?", answers14, "Yoshi"));
+            TriviaList.Add(new Trivia("What is the name of the green dinosaur in the 'Super Mario' series?", answers14, "Yoshi"));
 
             string[] answers15 = { "Harp", "Flute", "Ocarina", "Drums" };
-            triviaList.Add(new Trivia("In 'The Legend of Zelda: Ocarina of Time', what is Link's primary instrument?", answers15, "Ocarina"));
+            TriviaList.Add(new Trivia("In 'The Legend of Zelda: Ocarina of Time', what is Link's primary instrument?", answers15, "Ocarina"));
 
             string[] answers16 = { "Atari", "Nintendo", "Sega", "Namco" };
-            triviaList.Add(new Trivia("What company developed the 'Donkey Kong' arcade game?", answers16, "Nintendo"));
+            TriviaList.Add(new Trivia("What company developed the 'Donkey Kong' arcade game?", answers16, "Nintendo"));
 
             string[] answers17 = { "Goombas", "Koopa Troopas", "Spinies", "Piranha Plants" };
-            triviaList.Add(new Trivia("What is the name of the spiky-shelled enemies in the 'Super Mario' series?", answers17, "Spinies"));
+            TriviaList.Add(new Trivia("What is the name of the spiky-shelled enemies in the 'Super Mario' series?", answers17, "Spinies"));
 
             string[] answers18 = { "Castlevania", "Contra", "Ninja Gaiden", "Ghosts 'n Goblins" };
-            triviaList.Add(new Trivia("Which game features a character named Simon Belmont?", answers18, "Castlevania"));
+            TriviaList.Add(new Trivia("Which game features a character named Simon Belmont?", answers18, "Castlevania"));
 
             string[] answers19 = { "Cars", "Planes", "Boats", "Tanks" };
-            triviaList.Add(new Trivia("What type of vehicle does Frogger try to cross in the classic game 'Frogger'?", answers19, "Cars"));
+            TriviaList.Add(new Trivia("What type of vehicle does Frogger try to cross in the classic game 'Frogger'?", answers19, "Cars"));
 
             string[] answers20 = { "Adam Malkovich", "Justin Bailey", "Samus Aran", "Sylux" };
        
