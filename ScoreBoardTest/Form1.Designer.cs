@@ -46,6 +46,8 @@
             loadtofile = new Button();
             Savetofile = new Button();
             addscore = new Button();
+            addscoretobox = new Button();
+            textBox1 = new TextBox();
             SuspendLayout();
             // 
             // label1
@@ -204,11 +206,29 @@
             addscore.UseVisualStyleBackColor = true;
             addscore.Click += addscore_Click;
             // 
+            // addscoretobox
+            // 
+            addscoretobox.Location = new Point(12, 353);
+            addscoretobox.Name = "addscoretobox";
+            addscoretobox.Size = new Size(75, 23);
+            addscoretobox.TabIndex = 18;
+            addscoretobox.Text = "Addscoretobox";
+            addscoretobox.UseVisualStyleBackColor = true;
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(52, 391);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(100, 23);
+            textBox1.TabIndex = 19;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(textBox1);
+            Controls.Add(addscoretobox);
             Controls.Add(addscore);
             Controls.Add(Savetofile);
             Controls.Add(loadtofile);
@@ -254,5 +274,7 @@
         private Button loadtofile;
         private Button Savetofile;
         private Button addscore;
+        private Button addscoretobox;
+        private TextBox textBox1;
     }
 }
