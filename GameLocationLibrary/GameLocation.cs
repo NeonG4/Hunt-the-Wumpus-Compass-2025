@@ -18,8 +18,15 @@ namespace GameLocationLibrary
         int playerspawn = 31;
 
         //Method that returns a list of hazards/the room they are located in
-        public List<Hazards> GetHazards()
+        public GameLocation()
         {
+            AddHazard("Pit");
+            AddHazard("Pit");
+            AddHazard("Bats");
+            AddHazard("Bats");
+            SpawnWumpus();
+            SpawnPlayer();
+            /*
             //If there are no hazards, add 4 hazards (2 pits and 2 bats)
             if (hazards.Count == 0)
             {
@@ -30,6 +37,7 @@ namespace GameLocationLibrary
             }
             //Return the hazards list
             return new List<Hazards>();
+            */
         }
 
         //Adds a new hazard of a specified type
@@ -113,7 +121,6 @@ namespace GameLocationLibrary
     }
     public interface IGameLocation
     {
-        public List<Hazards> GetHazards();
         public int SpawnPlayer();
         public int SpawnWumpus();
     }

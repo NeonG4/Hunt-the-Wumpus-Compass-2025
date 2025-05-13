@@ -95,9 +95,10 @@ namespace Game_Control
                 {
                         // should render the game
                         // should process inputs based on game
+                        bool[] hazards = new bool[6];
                         int pPosition = _playerManager.CurrentRoom;
                         bool[] rooms = _cave.GetDirectionsBoolArray(pPosition);
-                        bool[] moved = _UIClassManager.RenderGame(e, rooms, 0, 0, 0);
+                        bool[] moved = _UIClassManager.RenderGame(e, rooms, hazards, 0, 0, 0);
                         for (int i = 0; i < 6; i++)
                         {
                             if (moved[i])

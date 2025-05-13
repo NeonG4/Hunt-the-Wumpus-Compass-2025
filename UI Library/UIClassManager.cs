@@ -35,7 +35,8 @@ namespace UI_Class_Library
         /// <param name="arrows">The number of arrows the player has</param> 
         /// <param name="coins">The number of coins the player has</param>
         /// <param name="compassDirection">The direction where the wumpus is</param>
-        public bool[] RenderGame(PaintEventArgs e, bool[] doorsOut, int arrows, int coins, int compassDirection)
+        /// <param name="hazards">Hazards is an array with six items (wumpus, bat, pit, wumpus close, bat close, pit close) </param>
+        public bool[] RenderGame(PaintEventArgs e, bool[] doorsOut, bool[] hazards, int arrows, int coins, int compassDirection)
         {
             map = 0; // delete when more maps are added
             Color bgColor = gameColors[map, 0];
@@ -79,6 +80,7 @@ namespace UI_Class_Library
                     }
                 }
             }
+            // also needs to render hazards
             return doorsClicked;
         }
         /// <summary>
@@ -308,7 +310,7 @@ namespace UI_Class_Library
     }
     public interface IUIClassManager
     {
-        public bool[] RenderGame(PaintEventArgs e, bool[] doorsOut, int arrows, int coins, int compassDirection); // requires PaintEventArgs to draw to the win form
+        public bool[] RenderGame(PaintEventArgs e, bool[] doorsOut, bool[] hazards, int arrows, int coins, int compassDirection); // requires PaintEventArgs to draw to the win form
         public void RenderMainMenu(PaintEventArgs e);
         public bool[] GetInputs(); // returns an array of binary values, 0 if pressed, 1 if 0. Changes depending on scene
         public void UpdateScreenSize(int width, int height);
