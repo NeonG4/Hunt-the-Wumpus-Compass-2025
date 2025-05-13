@@ -74,8 +74,8 @@ namespace UI_Class_Library
                     float distance = (float)Math.Sqrt((mouse.X - (rectRoom.X + 20)) * (mouse.X - (rectRoom.X + 20)) + (mouse.Y - (rectRoom.Y + 20)) * (mouse.Y - (rectRoom.Y + 20)));
                     if (distance < 20 && mouseDown)
                     {
-                        mouseDownBuffer = false;
                         doorsClicked[i] = true;
+                        mouseDown = false;
                     }
                 }
             }
@@ -134,10 +134,10 @@ namespace UI_Class_Library
                     SolidBrush brush = new SolidBrush(Color.FromArgb(r, g, b));
                     e.Graphics.FillPolygon(brush, hexagon);
                     e.Graphics.DrawPolygon(outlineBrush, hexagon);
-                    if (mouseDown && mouseDownBuffer)
+                    if (mouseDown)
                     {
-                        mouseDownBuffer = false;
                         map = i;
+                        mouseDown = false;
                     }
                 }
                 else
@@ -289,13 +289,21 @@ namespace UI_Class_Library
         {
             this.mouse = mouse;
         }
+        /// <summary>
+        /// Sets if the mouse is down or up
+        /// </summary>
+        /// <param name="clicked">A boolean representing the mouse down (true = down, false = up)</param>
         public void UpdateMouseClicked(bool clicked)
         {
-            this.mouseDown = clicked;
-            if (mouseDown)
+            if (clicked && !mouseDownBuffer)
             {
-                this.mouseDownBuffer = true;
+                mouseDown = true;
             }
+            else
+            {
+                mouseDown = false;
+            }
+            mouseDownBuffer = clicked; // from the last frame
         }
     }
     public interface IUIClassManager
