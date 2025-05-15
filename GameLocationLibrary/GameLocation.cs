@@ -51,6 +51,7 @@ namespace GameLocationLibrary
                 if (tmp)
                 {
                     hazards.Add(newHazard);
+                    allSpawnables.Add(newHazard);
                     return;
                 }
             }
@@ -62,7 +63,7 @@ namespace GameLocationLibrary
             {
                 int playerstart = random.Next(0, 30);
                 //Generates a random integer that represents a random room 
-                Hazards newHazard = new Hazards("Player", playerstart);
+                Hazards newPlayer = new Hazards("Player", playerstart);
                 bool tmp = true;
                 //Cycles through the list of hazards/wumpus until the random room is a unique value
                 for (int i = 0; i < allSpawnables.Count; i++)
@@ -76,7 +77,6 @@ namespace GameLocationLibrary
                 // If the number generated is unique, spawn the player
                 if (tmp)
                 {
-                    allSpawnables.Add(newHazard);
                     playerspawn = playerstart;
                     return playerstart;
                 }
@@ -90,18 +90,17 @@ namespace GameLocationLibrary
             {
                 int wumpusstart = random.Next(0, 30);
                 //Generates a random integer that represents a random room 
-                Hazards newHazard = new Hazards("Wumpus", wumpusstart);
+                Hazards newWumpus = new Hazards("Wumpus", wumpusstart);
                 bool tmp = true;
                 //Checks for uniqeness between the player's starting room and the Wumpus's starting room
                 if (playerspawn == wumpusstart)
                 {
                     tmp = false;
-
                 }
                 // If the number generated is unique from the player's, spawn the Wumpus
                 if (tmp)
                 {
-                    allSpawnables.Add(newHazard);
+                    allSpawnables.Add(newWumpus);
                     wumpusspawn = wumpusstart;
                     return wumpusstart;
                 }
@@ -112,19 +111,19 @@ namespace GameLocationLibrary
         {
             int currentRoom = playerManager.CurrentRoom;
             bool[] hazardChecker = [false, false, false];
-            for (int i = 0; i < hazards.Count; i++)
+            for (int i = 0; i < allSpawnables.Count; i++)
             {
-                if (hazards[i].room == currentRoom)
+                if (allSpawnables[i].room == currentRoom)
                 {
-                    if (hazards[i].hazard == "Wumpus")
+                    if (allSpawnables[i].hazard == "Wumpus")
                     {
                         hazardChecker[0] = true;
                     }
-                    if (hazards[i].hazard == "Bats")
+                    if (allSpawnables[i].hazard == "Bats")
                     {
                         hazardChecker[1] = true;
                     }
-                    if (hazards[i].hazard == "Pit")
+                    if (allSpawnables[i].hazard == "Pit")
                     {
                         hazardChecker[2] = true;
                     }
@@ -140,19 +139,19 @@ namespace GameLocationLibrary
             bool[] hazardChecker = [false, false, false];
             for (int i = 0; i < adjacentRooms.Length; i++)
             {
-                for (int i2 = 0; i2 < hazards.Count; i2++)
+                for (int i2 = 0; i2 < allSpawnables.Count; i2++)
                 {
-                    if (hazards[i2].room == adjacentRooms[i])
+                    if (allSpawnables[i2].room == adjacentRooms[i])
                     {
-                        if (hazards[i2].hazard == "Wumpus")
+                        if (allSpawnables[i2].hazard == "Wumpus")
                         {
                             hazardChecker[0] = true;
                         }
-                        if (hazards[i2].hazard == "Bats")
+                        if (allSpawnables[i2].hazard == "Bats")
                         {
                             hazardChecker[1] = true;
                         }
-                        if (hazards[i2].hazard == "Pit")
+                        if (allSpawnables[i2].hazard == "Pit")
                         {
                             hazardChecker[2] = true;
                         }

@@ -33,18 +33,20 @@
             button1 = new Button();
             button2 = new Button();
             button3 = new Button();
+            textBox1 = new TextBox();
+            button4 = new Button();
             SuspendLayout();
             // 
             // listBoxHazards
             // 
-            resources.ApplyResources(listBoxHazards, "listBoxHazards");
             listBoxHazards.FormattingEnabled = true;
+            resources.ApplyResources(listBoxHazards, "listBoxHazards");
             listBoxHazards.Name = "listBoxHazards";
             // 
             // button1
             // 
-            resources.ApplyResources(button1, "button1");
             button1.BackColor = SystemColors.ButtonHighlight;
+            resources.ApplyResources(button1, "button1");
             button1.ForeColor = Color.FromArgb(192, 0, 0);
             button1.Name = "button1";
             button1.UseVisualStyleBackColor = false;
@@ -52,8 +54,8 @@
             // 
             // button2
             // 
-            resources.ApplyResources(button2, "button2");
             button2.BackColor = SystemColors.ButtonHighlight;
+            resources.ApplyResources(button2, "button2");
             button2.ForeColor = Color.Navy;
             button2.Name = "button2";
             button2.UseVisualStyleBackColor = false;
@@ -61,18 +63,32 @@
             // 
             // button3
             // 
-            resources.ApplyResources(button3, "button3");
             button3.BackColor = SystemColors.ButtonHighlight;
+            resources.ApplyResources(button3, "button3");
             button3.ForeColor = Color.Green;
             button3.Name = "button3";
             button3.UseVisualStyleBackColor = false;
             button3.Click += button3_Click;
+            // 
+            // textBox1
+            // 
+            resources.ApplyResources(textBox1, "textBox1");
+            textBox1.Name = "textBox1";
+            // 
+            // button4
+            // 
+            button4.ForeColor = Color.Black;
+            resources.ApplyResources(button4, "button4");
+            button4.Name = "button4";
+            button4.UseVisualStyleBackColor = true;
             // 
             // GameLocationTest
             // 
             resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Gainsboro;
+            Controls.Add(button4);
+            Controls.Add(textBox1);
             Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(button1);
@@ -81,6 +97,7 @@
             FormBorderStyle = FormBorderStyle.Fixed3D;
             Name = "GameLocationTest";
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -89,5 +106,7 @@
         private Button button1;
         private Button button2;
         private Button button3;
+        private TextBox textBox1;
+        private Button button4;
     }
 }

@@ -18,8 +18,10 @@ namespace GameLocationLibrary
     public partial class GameLocationTest : Form
     {
         public List<Hazards> hazards = new List<Hazards>();
-        public List<Hazards> allHazards = new List<Hazards>();
+        public List<Hazards> allSpawnables = new List<Hazards>();
         Random random = new Random();
+        int wumpusspawn = 31;
+        int playerspawn = 31;
         public GameLocationTest()
         {
             InitializeComponent();
@@ -42,8 +44,10 @@ namespace GameLocationLibrary
             while (true)
             {
                 int number = random.Next(0, 30);
+                //Generates a random integer that represents a random room 
                 Hazards newHazard = new Hazards(hazard, number);
                 bool tmp = true;
+                //Cycles through the hazards list until the random room is a unique value
                 for (int i = 0; i < hazards.Count; i++)
                 {
                     if (hazards[i].room == number)
@@ -52,10 +56,11 @@ namespace GameLocationLibrary
                         i = hazards.Count();
                     }
                 }
+                // If the number generated is unique, add the new hazard
                 if (tmp)
                 {
                     hazards.Add(newHazard);
-                    allHazards.Add(newHazard);
+                    allSpawnables.Add(newHazard);
                     listBoxHazards.Items.Add("Room " + newHazard + ": " + hazard).ToString();
                     return;
                 }
@@ -72,22 +77,25 @@ namespace GameLocationLibrary
         {
             while (true)
             {
-                int startingroom = random.Next(0, 30);
-                Hazards newHazard = new Hazards("Player", startingroom);
+                int playerstart = random.Next(0, 30);
+                //Generates a random integer that represents a random room 
+                Hazards newHazard = new Hazards("Player", playerstart);
                 bool tmp = true;
-                for (int i = 0; i < allHazards.Count; i++)
+                //Cycles through the list of hazards/wumpus until the random room is a unique value
+                for (int i = 0; i < allSpawnables.Count; i++)
                 {
-                    if (allHazards[i].room == startingroom)
+                    if (allSpawnables[i].room == playerstart)
                     {
                         tmp = false;
-                        i = allHazards.Count();
+                        i = allSpawnables.Count();
                     }
                 }
+                // If the number generated is unique, spawn the player
                 if (tmp)
                 {
-                    allHazards.Add(newHazard);
+                    playerspawn = playerstart;
                     listBoxHazards.Items.Add("Room " + newHazard + ": Player").ToString();
-                    return startingroom;
+                    return playerstart;
                 }
             }
         }
@@ -102,22 +110,23 @@ namespace GameLocationLibrary
         {
             while (true)
             {
-                int wumpusspawn = random.Next(0, 30);
-                Hazards newHazard = new Hazards("Wumpus", wumpusspawn);
+                int wumpusstart = random.Next(0, 30);
+                //Generates a random integer that represents a random room 
+                Hazards newHazard = new Hazards("Wumpus", wumpusstart);
                 bool tmp = true;
-                for (int i = 0; i < allHazards.Count; i++)
+                //Checks for uniqeness between the player's starting room and the Wumpus's starting room
+                if (playerspawn == wumpusstart)
                 {
-                    if (allHazards[i].room == wumpusspawn)
-                    {
-                        tmp = false;
-                        i = allHazards.Count();
-                    }
+                    tmp = false;
+
                 }
+                // If the number generated is unique from the player's, spawn the Wumpus
                 if (tmp)
                 {
-                    allHazards.Add(newHazard);
+                    allSpawnables.Add(newHazard);
+                    wumpusspawn = wumpusstart;
                     listBoxHazards.Items.Add("Room " + newHazard + ": Wumpus").ToString();
-                    return wumpusspawn;
+                    return wumpusstart;
                 }
             }
         }
