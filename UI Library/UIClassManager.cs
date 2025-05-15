@@ -81,6 +81,31 @@ namespace UI_Class_Library
                 }
             }
             // also needs to render hazards
+            if (hazards[0]) // wumpus in room
+            {
+                DrawText(e, "Wumpus", 20, centerHexagonPosition, Color.FromArgb(255, 255, 255));
+            }
+            if (hazards[1]) // bat in room
+            {
+                DrawText(e, "Bat", 20, centerHexagonPosition, Color.FromArgb(255, 255, 255));
+
+            }
+            if (hazards[2]) // pit in room
+            {
+                DrawText(e, "Pit", 20, centerHexagonPosition, Color.FromArgb(255, 255, 255));
+            }
+            if (hazards[3]) // wumpus nearby
+            {
+                DrawText(e, "Nearby Wump", 20, centerHexagonPosition, Color.FromArgb(255, 255, 255));
+            }
+            if (hazards[4]) // bat nearby
+            {
+                DrawText(e, "Nearby Bat", 20, centerHexagonPosition, Color.FromArgb(255, 255, 255));
+            }
+            if (hazards[5]) // pit nearby
+            {
+                DrawText(e, "Nearby Pit", 20, centerHexagonPosition, Color.FromArgb(255, 255, 255));
+            }
             return doorsClicked;
         }
         /// <summary>
