@@ -13,6 +13,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\PlayerLibrary\PlayerLibrary.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="Comfortaa-Light.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
