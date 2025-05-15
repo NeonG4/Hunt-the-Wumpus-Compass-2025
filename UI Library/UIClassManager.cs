@@ -37,7 +37,7 @@ namespace UI_Class_Library
         /// <param name="doorsOut">bool[6] of valid exits</param>
         /// <param name="hazards">bool[6] of hazards</param>
         /// <param name="player">the current player</param>
-        /// <returns></returns>
+        /// <returns>Returns the inputs as well as if you encountered any hazards</returns>
         public bool[] RenderGame(PaintEventArgs e, bool[] doorsOut, bool[] hazards, PlayerManager player)
         {
             int currentRoom = player.CurrentRoom;
@@ -97,30 +97,18 @@ namespace UI_Class_Library
             {
                 DrawText(e, "Pit", 20, centerHexagonPosition, Color.FromArgb(255, 255, 255));
             }
-            if (hazards[3]) // wumpus nearby
-            {
-                nearbyHazards[0] = true;
-            }
-            if (hazards[4]) // bat nearby
-            {
-                nearbyHazards[1] = true;
-            }
-            if (hazards[5]) // pit nearby
-            {
-                nearbyHazards[2] = true;
-            }
             if (lastMapLocation != currentRoom) 
             {
                 lastMapLocation = currentRoom;
-                if (nearbyHazards[0])
+                if (hazards[3])
                 {
                     textBox.Add("Wumpus");
                 }
-                if (nearbyHazards[1])
+                if (hazards[4])
                 {
                     textBox.Add("Bat");
                 }
-                if (nearbyHazards[2])
+                if (hazards[5])
                 {
                     textBox.Add("Pit");
                 }
@@ -139,7 +127,7 @@ namespace UI_Class_Library
                 SolidBrush fontBrush = new SolidBrush(Color.FromArgb(((i+1) * 25) + 100, ((i + 1) * 25) + 100, ((i + 1) * 25) + 100));
                 e.Graphics.DrawString(textBox[i], font, fontBrush, new Point(100, i * 30));
             }
-            return doorsClicked;
+            return doorsClicked.Concat<bool>([hazards[0], hazards[1], hazards[2]]).ToArray<bool>();
         }
         /// <summary>
         /// Renders the title screen where the user starts
