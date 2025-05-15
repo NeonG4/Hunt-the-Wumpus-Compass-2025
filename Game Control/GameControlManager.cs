@@ -9,6 +9,7 @@ using PlayerLibrary;
 using UI_Class_Library;
 using ScoreBoardLibrary;
 using System.Windows.Forms;
+using System.Media;
 
 namespace Game_Control
 {
@@ -44,7 +45,7 @@ namespace Game_Control
                 Random random = new Random();
                 g = random.Next(0, 29);
             }
-            
+
         }
         public void StopGame()
         {
@@ -95,10 +96,10 @@ namespace Game_Control
                 {
                         // should render the game
                         // should process inputs based on game
-                        bool[] hazards = new bool[6];
+                        bool[] hazards = [true, false, false, false, false, true];
                         int pPosition = _playerManager.CurrentRoom;
                         bool[] rooms = _cave.GetDirectionsBoolArray(pPosition);
-                        bool[] moved = _UIClassManager.RenderGame(e, rooms, hazards, 0, 0, 0);
+                        bool[] moved = _UIClassManager.RenderGame(e, rooms, hazards, _playerManager);
                         for (int i = 0; i < 6; i++)
                         {
                             if (moved[i])

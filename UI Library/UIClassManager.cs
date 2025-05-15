@@ -1,5 +1,5 @@
 ﻿using System.Drawing.Text;
-
+using PlayerLibrary;
 namespace UI_Class_Library
 {
     public class UIClassManager : IUIClassManager
@@ -10,6 +10,8 @@ namespace UI_Class_Library
         public bool mouseDown = false;
         public bool mouseDownBuffer = false;
         PrivateFontCollection comfortaaCollection = new PrivateFontCollection();
+        List<string> textBox = new List<string>(); // should be capped at 5 items
+        int lastMapLocation;
         public int map = -1;
         private List<bool> inputs = new List<bool>();
         Color[,] gameColors =
@@ -28,17 +30,17 @@ namespace UI_Class_Library
             comfortaaCollection.AddFontFile("Comfortaa-Light.ttf"); // adds the font file
         }
         /// <summary>
-        /// Renders the game state
+        /// Renders the game state, returns the inputs
         /// </summary>
-        /// <param name="e">PaintEventArgs passed through Paint Form Event</param>
-        /// <param name="doorsOut">The valid doors out of the room</param>
-        /// <param name="arrows">The number of arrows the player has</param> 
-        /// <param name="coins">The number of coins the player has</param>
-        /// <param name="compassDirection">The direction where the wumpus is</param>
-        /// <param name="hazards">Hazards is an array with six items (wumpus, bat, pit, wumpus close, bat close, pit close) </param>
-        public bool[] RenderGame(PaintEventArgs e, bool[] doorsOut, bool[] hazards, int arrows, int coins, int compassDirection)
+        /// <param name="e">PaintEventArgs e</param>
+        /// <param name="doorsOut">bool[6] of valid exits</param>
+        /// <param name="hazards">bool[6] of hazards</param>
+        /// <param name="player">the current player</param>
+        /// <returns></returns>
+        public bool[] RenderGame(PaintEventArgs e, bool[] doorsOut, bool[] hazards, PlayerManager player)
         {
-            map = 0; // delete when more maps are added
+            int currentRoom = player.CurrentRoom;
+            map = 0; 
             Color bgColor = gameColors[map, 0];
             Color mainColor = gameColors[map, 1];
             Color sidePanel = gameColors[map, 2];
@@ -80,7 +82,60 @@ namespace UI_Class_Library
                     }
                 }
             }
+            bool[] nearbyHazards = [false, false, false];
             // also needs to render hazards
+            if (hazards[0]) // wumpus in room
+            {
+                DrawText(e, "Wumpus", 20, centerHexagonPosition, Color.FromArgb(255, 255, 255));
+            }
+            if (hazards[1]) // bat in room
+            {
+                DrawText(e, "Bat", 20, centerHexagonPosition, Color.FromArgb(255, 255, 255));
+            }
+            if (hazards[2]) // pit in room
+            {
+                DrawText(e, "Pit", 20, centerHexagonPosition, Color.FromArgb(255, 255, 255));
+            }
+            if (hazards[3]) // wumpus nearby
+            {
+                nearbyHazards[0] = true;
+            }
+            if (hazards[4]) // bat nearby
+            {
+                nearbyHazards[1] = true;
+            }
+            if (hazards[5]) // pit nearby
+            {
+                nearbyHazards[2] = true;
+            }
+            if (lastMapLocation != currentRoom) 
+            {
+                lastMapLocation = currentRoom;
+                if (nearbyHazards[0])
+                {
+                    textBox.Add("Wumpus");
+                }
+                if (nearbyHazards[1])
+                {
+                    textBox.Add("Bat");
+                }
+                if (nearbyHazards[2])
+                {
+                    textBox.Add("Pit");
+                }
+                if (textBox.Count > 5)
+                {
+                    while (textBox.Count > 5)
+                    {
+                        textBox.RemoveAt(0);
+                    }
+                }
+            }
+            // renders the textbox 
+            for (int i = 0; i < textBox.Count(); i++)
+            {
+                DrawText(e, textBox[i], 24, new Point(100, i * 30), Color.FromArgb(255, 255, 255)); 
+            }
             return doorsClicked;
         }
         /// <summary>
@@ -310,7 +365,7 @@ namespace UI_Class_Library
     }
     public interface IUIClassManager
     {
-        public bool[] RenderGame(PaintEventArgs e, bool[] doorsOut, bool[] hazards, int arrows, int coins, int compassDirection); // requires PaintEventArgs to draw to the win form
+        public bool[] RenderGame(PaintEventArgs e, bool[] doorsOut, bool[] hazards, PlayerManager player);
         public void RenderMainMenu(PaintEventArgs e);
         public bool[] GetInputs(); // returns an array of binary values, 0 if pressed, 1 if 0. Changes depending on scene
         public void UpdateScreenSize(int width, int height);
