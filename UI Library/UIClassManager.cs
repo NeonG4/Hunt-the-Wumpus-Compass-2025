@@ -1,4 +1,5 @@
-﻿using System.Drawing.Text;
+﻿using System.Drawing;
+using System.Drawing.Text;
 using PlayerLibrary;
 namespace UI_Class_Library
 {
@@ -123,18 +124,20 @@ namespace UI_Class_Library
                 {
                     textBox.Add("Pit");
                 }
-                if (textBox.Count > 5)
+            }
+            if (textBox.Count > 5)
+            {
+                while (textBox.Count > 5)
                 {
-                    while (textBox.Count > 5)
-                    {
-                        textBox.RemoveAt(0);
-                    }
+                    textBox.RemoveAt(0);
                 }
             }
             // renders the textbox 
             for (int i = 0; i < textBox.Count(); i++)
             {
-                DrawText(e, textBox[i], 24, new Point(100, i * 30), Color.FromArgb(255, 255, 255)); 
+                Font font = new Font(comfortaaCollection.Families[0], 14);
+                SolidBrush fontBrush = new SolidBrush(Color.FromArgb(((i+1) * 25) + 100, ((i + 1) * 25) + 100, ((i + 1) * 25) + 100));
+                e.Graphics.DrawString(textBox[i], font, fontBrush, new Point(100, i * 30));
             }
             return doorsClicked;
         }
