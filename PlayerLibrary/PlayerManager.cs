@@ -24,6 +24,8 @@ namespace PlayerLibrary
             CurrentRoom = startingRoom;
         }
 
+        public PlayerManager() { }
+
         //Current Room Number Property
 
         /// <summary>

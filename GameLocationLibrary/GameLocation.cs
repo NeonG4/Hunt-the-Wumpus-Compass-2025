@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CaveLibrary;
+using PlayerLibrary;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace GameLocationLibrary
 {
@@ -26,20 +28,7 @@ namespace GameLocationLibrary
             AddHazard("Bats");
             SpawnWumpus();
             SpawnPlayer();
-            /*
-            //If there are no hazards, add 4 hazards (2 pits and 2 bats)
-            if (hazards.Count == 0)
-            {
-                AddHazard("Pit");
-                AddHazard("Pit");
-                AddHazard("Bats");
-                AddHazard("Bats");
-            }
-            //Return the hazards list
-            return new List<Hazards>();
-            */
         }
-
         //Adds a new hazard of a specified type
         public void AddHazard(string hazard)
         {
@@ -118,10 +107,38 @@ namespace GameLocationLibrary
                 }
             }
         }
+        //returns a bool array of what hazards are in the current room (wumpus, bats, pit)
+        public bool[] CheckForHazard()
+        {
+            PlayerManager playerManager = new PlayerManager();
+            int currentRoom = playerManager.CurrentRoom;
+            bool[] hazardChecker = [false, false, false];
+            for (int i = 0; i < hazards.Count; i++)
+            {
+                if (hazards[i].room == currentRoom)
+                {
+                    if (hazards[i].hazard == "Wumpus")
+                    {
+                        hazardChecker[0] = true;
+                    }
+                    if (hazards[i].hazard == "Bats")
+                    {
+                        hazardChecker[1] = true;
+                    }
+                    if (hazards[i].hazard == "Pit")
+                    {
+                        hazardChecker[2] = true;
+                    }
+                }
+            }
+            return hazardChecker;
+        }
+
     }
     public interface IGameLocation
     {
         public int SpawnPlayer();
         public int SpawnWumpus();
+        public bool[] CheckForHazard();
     }
 }
