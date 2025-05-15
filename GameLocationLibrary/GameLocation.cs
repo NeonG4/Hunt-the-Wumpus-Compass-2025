@@ -136,6 +136,14 @@ namespace GameLocationLibrary
         public bool[] CheckForNearbyHazards(PlayerManager playerManager, CaveManager caveManager)
         {
             int[] adjacentRooms = caveManager.GetAdjacentRooms(playerManager.CurrentRoom);
+            bool[] validDirections = caveManager.GetDirectionsBoolArray(playerManager.CurrentRoom);
+            for (int d = 0; d < adjacentRooms.Length; d++)
+            {
+                if (validDirections[d] == true)
+                {
+                    adjacentRooms[d] = 31;
+                }
+            }
             bool[] hazardChecker = [false, false, false];
             for (int i = 0; i < adjacentRooms.Length; i++)
             {

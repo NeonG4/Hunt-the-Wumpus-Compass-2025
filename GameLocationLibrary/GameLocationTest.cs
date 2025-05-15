@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Accessibility;
+using PlayerLibrary;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace GameLocationLibrary
@@ -66,7 +67,7 @@ namespace GameLocationLibrary
                 }
             }
         }
-    
+
         private void button2_Click(object sender, EventArgs e)
         {
             SpawnPlayer();
@@ -129,6 +130,43 @@ namespace GameLocationLibrary
                     return wumpusstart;
                 }
             }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int room = int.Parse(textBox1.Text);
+                CheckForHazard(room);
+            }
+            catch
+            {
+                MessageBox.Show("Please enter a number");
+            }
+        }
+
+        public bool[] CheckForHazard(int currentRoom)
+        {
+            bool[] hazardChecker = [false, false, false];
+            for (int i = 0; i < allSpawnables.Count; i++)
+            {
+                if (allSpawnables[i].room == currentRoom)
+                {
+                    if (allSpawnables[i].hazard == "Wumpus")
+                    {
+                        hazardChecker[0] = true;
+                    }
+                    if (allSpawnables[i].hazard == "Bats")
+                    {
+                        hazardChecker[1] = true;
+                    }
+                    if (allSpawnables[i].hazard == "Pit")
+                    {
+                        hazardChecker[2] = true;
+                    }
+                }
+            }
+            return hazardChecker;
         }
     }
 }
