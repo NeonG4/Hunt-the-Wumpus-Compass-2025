@@ -107,6 +107,18 @@ namespace Game_Control
                                 _playerManager.CurrentRoom = _cave.GetNewRoomNumber(pPosition, i);
                             }
                         }
+                        if (moved[6])
+                        {
+                            // user encountered wumpus, ask 5 questions, and make sure that at least 3 are correct
+                        }
+                        if (moved[7])
+                        {
+                            // user encountered bat
+                        }
+                        if (moved[8])
+                        {
+                            // user encountered pit
+                        }
                         break;
                 }
             }
