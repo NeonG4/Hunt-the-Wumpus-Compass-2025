@@ -108,9 +108,8 @@ namespace GameLocationLibrary
             }
         }
         //returns a bool array of what hazards are in the current room (wumpus, bats, pit)
-        public bool[] CheckForHazard()
+        public bool[] CheckForHazard(PlayerManager playerManager)
         {
-            PlayerManager playerManager = new PlayerManager();
             int currentRoom = playerManager.CurrentRoom;
             bool[] hazardChecker = [false, false, false];
             for (int i = 0; i < hazards.Count; i++)
@@ -134,11 +133,41 @@ namespace GameLocationLibrary
             return hazardChecker;
         }
 
+        //returns a bool array of what hazards are in at least 1 adjacent rooms (wumpus, bats, pit)
+        public bool[] CheckForNearbyHazards(PlayerManager playerManager, CaveManager caveManager)
+        {
+            int[] adjacentRooms = caveManager.GetAdjacentRooms(playerManager.CurrentRoom);
+            bool[] hazardChecker = [false, false, false];
+            for (int i = 0; i < adjacentRooms.Length; i++)
+            {
+                for (int i2 = 0; i2 < hazards.Count; i2++)
+                {
+                    if (hazards[i2].room == adjacentRooms[i])
+                    {
+                        if (hazards[i2].hazard == "Wumpus")
+                        {
+                            hazardChecker[0] = true;
+                        }
+                        if (hazards[i2].hazard == "Bats")
+                        {
+                            hazardChecker[1] = true;
+                        }
+                        if (hazards[i2].hazard == "Pit")
+                        {
+                            hazardChecker[2] = true;
+                        }
+                    }
+                }
+            }
+            return hazardChecker;
+        }
+
     }
     public interface IGameLocation
     {
         public int SpawnPlayer();
         public int SpawnWumpus();
-        public bool[] CheckForHazard();
+        public bool[] CheckForHazard(PlayerManager playerManager);
+        public bool[] CheckForNearbyHazards(PlayerManager playerManager, CaveManager caveManager);
     }
 }
