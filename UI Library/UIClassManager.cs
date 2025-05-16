@@ -206,8 +206,10 @@ namespace UI_Class_Library
             map = 0;
             Color bgColor = gameColors[map, 0];
             e.Graphics.Clear(bgColor);
-            
-            return null;
+            Point[] hexagonPoints = HexagonH(100, 100, 25, new Point(200, 200));
+            Pen pen = new Pen(Color.FromArgb(255, 255, 255));
+            e.Graphics.DrawPolygon(pen, hexagonPoints);
+            return [false];
         }
         private bool PointInShape(Point p, Point[] polygon)
         {

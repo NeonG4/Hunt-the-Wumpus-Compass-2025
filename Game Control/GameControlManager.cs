@@ -97,6 +97,7 @@ namespace Game_Control
                     }
                 case GameState.PlayingGame:
                     {
+                       
                         // should render the game
                         // should process inputs based on game
                         int pPosition = _playerManager.CurrentRoom;
@@ -131,10 +132,11 @@ namespace Game_Control
                     }
                 case GameState.GetTrivia:
                     {
-                        string triviaQuestion = _triviaManager.getQuestion(triviaQuestionIndex);
-                        string[] triviaAnswers = _triviaManager.getPosssibleAnswers(triviaQuestionIndex);
+
+                        string triviaQuestion = "";// _triviaManager.getQuestion(triviaQuestionIndex);
+                        string[] triviaAnswers = [""];//_triviaManager.getPosssibleAnswers(triviaQuestionIndex);
                         triviaQuestionIndex++;
-                        bool[] answers = _UIClassManager.RenderTrivia(e);
+                        bool[] answers = _UIClassManager.RenderTrivia(e, triviaQuestion,triviaAnswers);
                         if (answers.Contains<bool>(true))
                         {
 
