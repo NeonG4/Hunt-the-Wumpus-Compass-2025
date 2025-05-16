@@ -200,6 +200,12 @@ namespace UI_Class_Library
                 inputs[map + 1] = true;
             }
         }
+        public bool[] RenderTrivia(PaintEventArgs e)
+        {
+            //Stub for triva UI
+            inputs.Clear();
+            return null;
+        }
         private bool PointInShape(Point p, Point[] polygon)
         {
             // PiP problem
@@ -358,6 +364,7 @@ namespace UI_Class_Library
     {
         public bool[] RenderGame(PaintEventArgs e, bool[] doorsOut, bool[] hazards, PlayerManager player);
         public void RenderMainMenu(PaintEventArgs e);
+        public bool[] RenderTrivia(PaintEventArgs e);
         public bool[] GetInputs(); // returns an array of binary values, 0 if pressed, 1 if 0. Changes depending on scene
         public void UpdateScreenSize(int width, int height);
         public void UpdateMousePosition(Point mouse);
