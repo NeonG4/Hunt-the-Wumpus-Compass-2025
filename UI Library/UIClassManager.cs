@@ -202,7 +202,10 @@ namespace UI_Class_Library
         }
         public bool[] RenderTrivia(PaintEventArgs e)
         {
-            //Stub for triva UI
+            //Renders Trivia Screen, needs lots of work
+            map = 0;
+            Color bgColor = gameColors[map, 0];
+            e.Graphics.Clear(bgColor);
             inputs.Clear();
             return null;
         }
