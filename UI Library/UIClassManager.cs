@@ -21,7 +21,7 @@ namespace UI_Class_Library
                 Color.FromArgb(7, 20, 40), // background color
                 Color.FromArgb(103, 78, 167), // center color
                 Color.FromArgb(7, 55, 99) // side panel color
-            }
+            },
         };
         public UIClassManager()
         {
@@ -206,7 +206,7 @@ namespace UI_Class_Library
             map = 0;
             Color bgColor = gameColors[map, 0];
             e.Graphics.Clear(bgColor);
-            inputs.Clear();
+            
             return null;
         }
         private bool PointInShape(Point p, Point[] polygon)
