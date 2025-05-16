@@ -9,13 +9,17 @@ namespace Hunt_the_Wumpus_2025
     {
         private List<Trivia> TriviaList { get; set; }
 
-        TriviaManager()
+        public TriviaManager()
         {
             this.Deserialize();
         }
 
         public Trivia getTriviaData(int i)
         {
+            if (i > TriviaList.Count - 1)
+            {
+                return this.TriviaList[1];
+            }
             return this.TriviaList[i];
         }
 

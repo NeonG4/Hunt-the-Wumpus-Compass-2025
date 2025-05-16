@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Hunt_the_Wumpus_2025
 {
-    internal class Trivia
+    public class Trivia
     {
         public string Question { get; set; } 
         public string[] PossibleAnswers { get; set; } // not sure how many possible answers we want so figured I wouldn't set an amount
