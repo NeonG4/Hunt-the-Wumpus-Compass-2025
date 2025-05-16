@@ -10,6 +10,7 @@ using UI_Class_Library;
 using ScoreBoardLibrary;
 using System.Windows.Forms;
 using System.Media;
+using Hunt_the_Wumpus_2025;
 
 namespace Game_Control
 {
@@ -20,15 +21,17 @@ namespace Game_Control
         GameLocation _gameLocations;
         CaveManager _cave;
         Scoreboard _scoreboard;
+        TriviaManager _triviaManager;
         public UIClassManager _UIClassManager;
         PlayerManager _playerManager;
+        int triviaQuestionIndex = 0;
         public GameControl()
         {
             gameState = GameState.MainMenu;
              _gameLocations = new GameLocation(); // randomly generated positions
             _scoreboard = new Scoreboard();
             _UIClassManager = new UIClassManager();
-            // CHANGE THIS SOMETIME
+            _triviaManager = new TriviaManager();
             _playerManager = new PlayerManager(0); // use _gamelocations to get a valid spot to place the player 
         }
         public void StartGame(int map, int startingRoom)
@@ -60,10 +63,10 @@ namespace Game_Control
             bool[] inputs = _UIClassManager.GetInputs();
             // progress the game based on the input array
             // inputs changes based on the game state
-            switch (gameState) 
+            switch (gameState)
             {
                 case GameState.MainMenu:
-                {
+                    {
                         if (inputs.Length == 6)
                         {
                             // should process inputs based on main menu
@@ -87,18 +90,18 @@ namespace Game_Control
                                 gameState = GameState.PlayingGame; // add a gamestate here for cutscenes
                             }
                         }
-                        
+
                         // renders main menu
                         _UIClassManager.RenderMainMenu(e);
                         break;
-                }
+                    }
                 case GameState.PlayingGame:
-                {
+                    {
                         // should render the game
                         // should process inputs based on game
                         int pPosition = _playerManager.CurrentRoom;
                         bool[] rooms = _cave.GetDirectionsBoolArray(pPosition);
-                        bool[] hazards = _gameLocations.CheckForHazard(_playerManager).Concat<bool>(_gameLocations.CheckForNearbyHazards(_playerManager, _cave)).ToArray<bool>(); 
+                        bool[] hazards = _gameLocations.CheckForHazard(_playerManager).Concat<bool>(_gameLocations.CheckForNearbyHazards(_playerManager, _cave)).ToArray<bool>();
                         bool[] moved = _UIClassManager.RenderGame(e, rooms, hazards, _playerManager);
                         for (int i = 0; i < 6; i++)
                         {
@@ -110,17 +113,34 @@ namespace Game_Control
                         if (moved[6])
                         {
                             // user encountered wumpus, ask 5 questions, and make sure that at least 3 are correct
+                            // throw new Exception("You have hit the wumpus");
+                            gameState = GameState.GetTrivia;
                         }
                         if (moved[7])
                         {
                             // user encountered bat
+                            throw new Exception("You have hit a bat");
                         }
                         if (moved[8])
                         {
                             // user encountered pit
+                            // throw new Exception("You have hit a pit");
+                            gameState = GameState.GetTrivia;
                         }
                         break;
-                }
+                    }
+                case GameState.GetTrivia:
+                    {
+                        string triviaQuestion = _triviaManager.getQuestion(triviaQuestionIndex);
+                        string[] triviaAnswers = _triviaManager.getPosssibleAnswers(triviaQuestionIndex);
+                        triviaQuestionIndex++;
+                        bool[] answers = _UIClassManager.RenderTrivia(e);
+                        if (answers.Contains<bool>(true))
+                        {
+
+                        }
+                        break;
+                    }
             }
         }
     }
@@ -128,6 +148,7 @@ namespace Game_Control
     {
         MainMenu,
         PlayingGame,
+        GetTrivia,
     }
     public interface IGameControl
     {
