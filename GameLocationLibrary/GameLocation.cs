@@ -47,7 +47,7 @@ namespace GameLocationLibrary
                         i = hazards.Count();
                     }
                 }
-                // If the number generated is unique, add the new hazard
+                // If the number generated is unique, add the hazard
                 if (tmp)
                 {
                     hazards.Add(newHazard);
@@ -74,7 +74,7 @@ namespace GameLocationLibrary
                         i = allSpawnables.Count();
                     }
                 }
-                // If the number generated is unique, spawn the player
+                // If the number generated is unique, return a valid room the player can spawn in
                 if (tmp)
                 {
                     playerspawn = playerstart;
@@ -97,7 +97,7 @@ namespace GameLocationLibrary
                 {
                     tmp = false;
                 }
-                // If the number generated is unique from the player's, spawn the Wumpus
+                // If the number generated is unique from the player's, return a valid room the wumpus can spawn in
                 if (tmp)
                 {
                     allSpawnables.Add(newWumpus);
@@ -109,8 +109,10 @@ namespace GameLocationLibrary
         //returns a bool array of what hazards are in the current room (wumpus, bats, pit)
         public bool[] CheckForHazard(PlayerManager playerManager)
         {
+            //gets the current room the player is in
             int currentRoom = playerManager.CurrentRoom;
             bool[] hazardChecker = [false, false, false];
+            //cycles through the list allSpawnables (contains hazards + the wumpus)
             for (int i = 0; i < allSpawnables.Count; i++)
             {
                 if (allSpawnables[i].room == currentRoom)
@@ -135,18 +137,25 @@ namespace GameLocationLibrary
         //returns a bool array of what hazards are in at least 1 adjacent rooms (wumpus, bats, pit)
         public bool[] CheckForNearbyHazards(PlayerManager playerManager, CaveManager caveManager)
         {
+            //gets an array of adjacent rooms based on the current room of the player
             int[] adjacentRooms = caveManager.GetAdjacentRooms(playerManager.CurrentRoom);
+            //gets an array of valid directions based on the curernt room of the player
             bool[] validDirections = caveManager.GetDirectionsBoolArray(playerManager.CurrentRoom);
+            //cycles through the array of adjacent rooms to remove adjacent rooms that aren't valid directoins
             for (int d = 0; d < adjacentRooms.Length; d++)
             {
+                //checks if the direction matching the current adjacent room in the array is valid
                 if (validDirections[d] == false)
                 {
+                    //sets the invalid room to a value no hazards/wumpus could be in
                     adjacentRooms[d] = 31;
                 }
             }
             bool[] hazardChecker = [false, false, false];
+            //cycles through each of the adjacent rooms
             for (int i = 0; i < adjacentRooms.Length; i++)
             {
+                //cycles through the list allSpawnables (contains hazards + the wumpus)
                 for (int i2 = 0; i2 < allSpawnables.Count; i2++)
                 {
                     if (allSpawnables[i2].room == adjacentRooms[i])

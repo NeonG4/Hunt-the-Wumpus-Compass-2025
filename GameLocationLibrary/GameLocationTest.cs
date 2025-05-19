@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Accessibility;
+using CaveLibrary;
 using PlayerLibrary;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
@@ -137,7 +138,8 @@ namespace GameLocationLibrary
             try
             {
                 int room = int.Parse(textBox1.Text);
-                CheckForHazard(room);
+                bool[] hazardChecker = CheckForHazard(room);
+                textBox2.Text = ("Wumpus: " + hazardChecker[0] + ", Bats: " + hazardChecker[1] + ", Pit: " + hazardChecker[2]).ToString();
             }
             catch
             {
@@ -167,6 +169,20 @@ namespace GameLocationLibrary
                 }
             }
             return hazardChecker;
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int room = int.Parse(textBox1.Text);
+                bool[] hazardChecker = CheckForHazard(room);
+                textBox2.Text = ("Wumpus: " + hazardChecker[0] + ", Bats: " + hazardChecker[1] + ", Pit: " + hazardChecker[2]).ToString();
+            }
+            catch
+            {
+                MessageBox.Show("Please enter a number");
+            }
         }
     }
 }
