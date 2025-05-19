@@ -21,7 +21,7 @@ namespace UI_Class_Library
                 Color.FromArgb(7, 20, 40), // background color
                 Color.FromArgb(103, 78, 167), // center color
                 Color.FromArgb(7, 55, 99) // side panel color
-            }
+            },
         };
         public UIClassManager()
         {
@@ -200,6 +200,17 @@ namespace UI_Class_Library
                 inputs[map + 1] = true;
             }
         }
+        public bool[] RenderTrivia(PaintEventArgs e, string question, string[] trivia)
+        {
+            //Renders Trivia Screen, needs lots of work
+            map = 0;
+            Color bgColor = gameColors[map, 0];
+            e.Graphics.Clear(bgColor);
+            Point[] hexagonPoints = HexagonH(100, 100, 25, new Point(200, 200));
+            Pen pen = new Pen(Color.FromArgb(255, 255, 255));
+            e.Graphics.DrawPolygon(pen, hexagonPoints);
+            return [false];
+        }
         private bool PointInShape(Point p, Point[] polygon)
         {
             // PiP problem
@@ -358,6 +369,7 @@ namespace UI_Class_Library
     {
         public bool[] RenderGame(PaintEventArgs e, bool[] doorsOut, bool[] hazards, PlayerManager player);
         public void RenderMainMenu(PaintEventArgs e);
+        public bool[] RenderTrivia(PaintEventArgs e, string question, string[] trivia);
         public bool[] GetInputs(); // returns an array of binary values, 0 if pressed, 1 if 0. Changes depending on scene
         public void UpdateScreenSize(int width, int height);
         public void UpdateMousePosition(Point mouse);

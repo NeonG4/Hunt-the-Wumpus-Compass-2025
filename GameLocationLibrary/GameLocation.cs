@@ -139,7 +139,7 @@ namespace GameLocationLibrary
             bool[] validDirections = caveManager.GetDirectionsBoolArray(playerManager.CurrentRoom);
             for (int d = 0; d < adjacentRooms.Length; d++)
             {
-                if (validDirections[d] == true)
+                if (validDirections[d] == false)
                 {
                     adjacentRooms[d] = 31;
                 }
