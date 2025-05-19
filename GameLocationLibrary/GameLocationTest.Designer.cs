@@ -35,6 +35,7 @@
             button3 = new Button();
             textBox1 = new TextBox();
             button4 = new Button();
+            textBox2 = new TextBox();
             SuspendLayout();
             // 
             // listBoxHazards
@@ -83,11 +84,18 @@
             button4.UseVisualStyleBackColor = true;
             button4.Click += button4_Click;
             // 
+            // textBox2
+            // 
+            resources.ApplyResources(textBox2, "textBox2");
+            textBox2.Name = "textBox2";
+            textBox2.ReadOnly = true;
+            // 
             // GameLocationTest
             // 
             resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Gainsboro;
+            Controls.Add(textBox2);
             Controls.Add(button4);
             Controls.Add(textBox1);
             Controls.Add(button3);
@@ -109,5 +117,6 @@
         private Button button3;
         private TextBox textBox1;
         private Button button4;
+        private TextBox textBox2;
     }
 }

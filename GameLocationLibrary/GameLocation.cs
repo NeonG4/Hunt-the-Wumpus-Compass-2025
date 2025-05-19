@@ -74,7 +74,7 @@ namespace GameLocationLibrary
                         i = allSpawnables.Count();
                     }
                 }
-                // If the number generated is unique, spawn the player
+                // If the number generated is unique, return a valid room the player can spawn in
                 if (tmp)
                 {
                     playerspawn = playerstart;
