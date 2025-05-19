@@ -7,14 +7,15 @@ namespace Hunt_the_Wumpus_2025
 {
     public class TriviaManager
     {
-        private List<Trivia> TriviaList { get; set; }
+        private List<TriviaQuestion> TriviaList { get; set; }
 
+        string filePath = "TriviaQuestions.json";
         public TriviaManager()
         {
             this.Deserialize();
         }
 
-        public Trivia getTriviaData(int i)
+        public TriviaQuestion getTriviaData(int i)
         {
             if (i > TriviaList.Count - 1)
             {
@@ -25,27 +26,19 @@ namespace Hunt_the_Wumpus_2025
 
         public string getQuestion(int i)
         {
-            return this.TriviaList[i].Question;
+            return this.TriviaList[i].question;
         }
-        public string[] getPosssibleAnswers(int i)
+        public string[] getPossibleAnswers(int i)
         {
-            return this.TriviaList[i].PossibleAnswers;
+            return this.TriviaList[i].possibleAnswers;
         }
         public string getCorrectAnswer(int i)
         {
-            return this.TriviaList[i].CorrectAnswer;
-        }
-
-        public class Trivia // pretty sure i need to define the class in this class to get the json to work. I will delete this if i find out its useless
-        {
-            public string Question { get; set; }
-            public string[] PossibleAnswers { get; set; }
-            public string CorrectAnswer { get; set; }
+            return this.TriviaList[i].correctAnswer;
         }
 
         private void Serialize()
         {
-            string filePath = "TriviaQuestions.json";
             try
             {
                 string jsonString = JsonSerializer.Serialize(this.TriviaList);
@@ -60,17 +53,30 @@ namespace Hunt_the_Wumpus_2025
         }
         private void Deserialize()
         {
-            string filePath = "TriviaQuestions.json";
             try
             {
                 string jsonString = File.ReadAllText(filePath);
-                this.TriviaList = JsonSerializer.Deserialize<List<Trivia>>(jsonString);
+                this.TriviaList = JsonSerializer.Deserialize<List<TriviaQuestion>>(jsonString);
                 Console.WriteLine("List successfully deserialized:");
             }
             catch (Exception ex)
             {
+                throw ex;
                 Console.WriteLine($"An error occurred during deserialization: {ex.Message}");
             }
+        }
+    }
+
+    public class TriviaQuestion 
+    {
+        public string question { get; set; }
+        public string[] possibleAnswers { get; set; }
+        public string correctAnswer { get; set; }
+        public TriviaQuestion(string question, string[] possibleAnswers, string correctAnswer)
+        {
+            this.question = question;
+            this.possibleAnswers = possibleAnswers;
+            this.correctAnswer = correctAnswer;
         }
     }
 }

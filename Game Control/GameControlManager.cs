@@ -25,6 +25,7 @@ namespace Game_Control
         public UIClassManager _UIClassManager;
         PlayerManager _playerManager;
         int triviaQuestionIndex = 0;
+        int triviaCount = 0;
         public GameControl()
         {
             gameState = GameState.MainMenu;
@@ -88,6 +89,7 @@ namespace Game_Control
                                 else { caveNumber = 4; }
                                 _cave = new CaveManager(caveNumber); // pass in the room number
                                 gameState = GameState.PlayingGame; // add a gamestate here for cutscenes
+                                _playerManager.CurrentRoom = _gameLocations.SpawnPlayer();
                             }
                         }
 
@@ -97,6 +99,7 @@ namespace Game_Control
                     }
                 case GameState.PlayingGame:
                     {
+                        triviaCount = 0;
                         
                         // should render the game
                         // should process inputs based on game
@@ -133,13 +136,13 @@ namespace Game_Control
                 case GameState.GetTrivia:
                     {
 
-                        string triviaQuestion = "";// _triviaManager.getQuestion(triviaQuestionIndex);
-                        string[] triviaAnswers = [""];//_triviaManager.getPosssibleAnswers(triviaQuestionIndex);
-                        triviaQuestionIndex++;
+                        string triviaQuestion = _triviaManager.getQuestion(triviaQuestionIndex);
+                        string[] triviaAnswers = _triviaManager.getPossibleAnswers(triviaQuestionIndex);
                         bool[] answers = _UIClassManager.RenderTrivia(e, triviaQuestion,triviaAnswers);
                         if (answers.Contains<bool>(true))
                         {
-
+                            triviaCount++; // we want to move to the next question after the current question is answered
+                            triviaQuestionIndex++;
                         }
                         break;
                     }
