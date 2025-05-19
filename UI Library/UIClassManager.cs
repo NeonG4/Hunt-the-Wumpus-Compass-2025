@@ -204,11 +204,19 @@ namespace UI_Class_Library
         {
             //Renders Trivia Screen, needs lots of work
             map = 0;
+            Point titlePosition = new Point(width / 2, 100);
             Color bgColor = gameColors[map, 0];
             e.Graphics.Clear(bgColor);
-            Point[] hexagonPoints = HexagonH(100, 100, 25, new Point(200, 200));
+            DrawText(e, "Question: blah blah blah", 41, titlePosition, Color.FromArgb(255, 255, 255));
+            Point[] hexagonPoints = HexagonH((int)(width/2.4f), height/10, 10, new Point((int)(width/3.97f), (int)(height/2.1f)));
+            Point[] hexagonPoints1 = HexagonH((int)(width / 2.4f), height / 10, 10, new Point((int)(width / 1.35f), (int)(height / 2.1f)));
+            Point[] hexagonPoints2 = HexagonH((int)(width / 2.4f), height / 10, 10, new Point((int)(width / 3.97f), (int)(height / 1.4f)));
+            Point[] hexagonPoints3 = HexagonH((int)(width / 2.4f), height / 10, 10, new Point((int)(width / 1.35f), (int)(height / 1.4f)));
             Pen pen = new Pen(Color.FromArgb(255, 255, 255));
             e.Graphics.DrawPolygon(pen, hexagonPoints);
+            e.Graphics.DrawPolygon(pen, hexagonPoints1);
+            e.Graphics.DrawPolygon(pen, hexagonPoints2);
+            e.Graphics.DrawPolygon(pen, hexagonPoints3);
             return [false];
         }
         private bool PointInShape(Point p, Point[] polygon)
