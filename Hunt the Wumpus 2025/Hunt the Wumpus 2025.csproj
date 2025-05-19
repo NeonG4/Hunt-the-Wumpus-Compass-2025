@@ -52,4 +52,10 @@
     <ProjectReference Include="..\PlayerLibrary\PlayerLibrary.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="TriviaQuestions.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
