@@ -11,6 +11,8 @@ using ScoreBoardLibrary;
 using System.Windows.Forms;
 using System.Media;
 using Hunt_the_Wumpus_2025;
+using System.Diagnostics.Contracts;
+using Microsoft.VisualBasic;
 
 namespace Game_Control
 {
@@ -26,6 +28,8 @@ namespace Game_Control
         PlayerManager _playerManager;
         int triviaQuestionIndex = 0;
         int triviaCount = 0;
+        int triviaCorrect = 0;
+        int triviaTotalQuestions = 0;
         public GameControl()
         {
             gameState = GameState.MainMenu;
@@ -99,8 +103,27 @@ namespace Game_Control
                     }
                 case GameState.PlayingGame:
                     {
+                        TriState passed = TriState.UseDefault;
                         triviaCount = 0;
-                        
+                        if (triviaTotalQuestions > 0)
+                        {
+                            // just got back from trivia questions
+                            if (triviaTotalQuestions == 5)
+                            {
+                                if (triviaCorrect > 2)
+                                {
+                                    passed = TriState.True;
+                                }
+                                else
+                                {
+                                    passed = TriState.False;
+                                }
+                            }
+                        }
+                        if (passed == TriState.False)
+                        {
+                            gameState = GameState.Died;
+                        }
                         // should render the game
                         // should process inputs based on game
                         int pPosition = _playerManager.CurrentRoom;
@@ -130,6 +153,9 @@ namespace Game_Control
                             // user encountered pit
                             // throw new Exception("You have hit a pit");
                             gameState = GameState.GetTrivia;
+                            triviaTotalQuestions = 5;
+                            triviaCount = 5;
+                            triviaCorrect = 0;
                         }
                         break;
                     }
@@ -138,12 +164,30 @@ namespace Game_Control
 
                         string triviaQuestion = _triviaManager.getQuestion(triviaQuestionIndex);
                         string[] triviaAnswers = _triviaManager.getPossibleAnswers(triviaQuestionIndex);
+                        string correctAnswer = _triviaManager.getCorrectAnswer(triviaQuestionIndex);
                         bool[] answers = _UIClassManager.RenderTrivia(e, triviaQuestion,triviaAnswers);
                         if (answers.Contains<bool>(true))
                         {
-                            triviaCount++; // we want to move to the next question after the current question is answered
+                            triviaCount--; // we want to move to the next question after the current question is answered
                             triviaQuestionIndex++;
+                            for (int i = 0; i < triviaAnswers.Length; i++)
+                            {
+                                if (triviaAnswers[i] == correctAnswer && answers[i])
+                                {
+                                    triviaCorrect++;
+                                    i = 4;
+                                }
+                            }
                         }
+                        if (triviaCount == 0)
+                        {
+                            gameState = GameState.PlayingGame;
+                        }
+                        break;
+                    }
+                case GameState.Died:
+                    {
+                        // needs to render a game over screen
                         break;
                     }
             }
@@ -154,6 +198,7 @@ namespace Game_Control
         MainMenu,
         PlayingGame,
         GetTrivia,
+        Died,
     }
     public interface IGameControl
     {
@@ -161,7 +206,5 @@ namespace Game_Control
         public void StopGame();
         public void RestartGame(int map, int startingRoom);
         public void Tick(PaintEventArgs e);
-
-
     }
 }

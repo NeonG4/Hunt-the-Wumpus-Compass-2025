@@ -154,7 +154,7 @@ namespace UI_Class_Library
             DrawText(e, "David Stall / Nathan Choy / Camilla Meija / Maxim Delyagin / Azeem Egizi", 12, new Point(width / 2, 200), Color.FromArgb(255, 255, 255));
             DrawText(e, "Made for Microsoft’s 2025 Hunt the Wumpus Challenge", 18, new Point(width / 2, 250), Color.FromArgb(255, 255, 255));
             // render maps
-            string[] mapNames = ["Purple Lagoon", "Green Grotto", "Teal Tunnel", "Cyan Cavity", "Black Borehole"];
+            string[] mapNames = ["Amethyst Abyss", "Green Grotto", "Teal Tunnel", "Diamond Dungeon", "Black Borehole"];
             SolidBrush purpleBrush = new SolidBrush(Color.FromArgb(142, 124, 195));
             SolidBrush greenBrush = new SolidBrush(Color.FromArgb(147, 196, 125));
             SolidBrush tealBrush = new SolidBrush(Color.FromArgb(111, 168, 220));
