@@ -1,2002 +1,2027 @@
 [
-    {
-        "question": "What is the capital of France?",
-        "possibleAnswers": [
-            "Paris",
-            "Berlin",
-            "Madrid",
-            "Rome"
-        ],
-        "correctAnswer": "Paris"
-    },
-    {
-        "question": "What is the largest planet in our solar system?",
-        "possibleAnswers": [
-            "Earth",
-            "Saturn",
-            "Jupiter",
-            "Mars"
-        ],
-        "correctAnswer": "Jupiter"
-    },
+    //ART
     {
         "question": "Who painted the Mona Lisa?",
         "possibleAnswers": [
             "Leonardo da Vinci",
             "Michelangelo",
-            "Raphael",
-            "Van Gogh"
+            "Vincent van Gogh",
+            "Pablo Picasso"
         ],
         "correctAnswer": "Leonardo da Vinci"
     },
     {
-        "question": "In what year did World War II end?",
+        "question": "Which art movement is Salvador Dalí associated with?",
+        "possibleAnswers": [
+            "Surrealism",
+            "Impressionism",
+            "Cubism",
+            "Realism"
+        ],
+        "correctAnswer": "Surrealism"
+    },
+    {
+        "question": "The sculpture 'David' was created by which artist?",
+        "possibleAnswers": [
+            "Michelangelo",
+            "Donatello",
+            "Bernini",
+            "Rodin"
+        ],
+        "correctAnswer": "Michelangelo"
+    },
+    {
+        "question": "Which artist is famous for cutting off part of his ear?",
+        "possibleAnswers": [
+            "Vincent van Gogh",
+            "Claude Monet",
+            "Edvard Munch",
+            "Paul Cézanne"
+        ],
+        "correctAnswer": "Vincent van Gogh"
+    },
+    {
+        "question": "What is the art technique of painting dots called?",
+        "possibleAnswers": [
+            "Pointillism",
+            "Impressionism",
+            "Cubism",
+            "Fauvism"
+        ],
+        "correctAnswer": "Pointillism"
+    },
+    {
+        "question": "Which artist painted 'The Starry Night'?",
+        "possibleAnswers": [
+            "Vincent van Gogh",
+            "Pablo Picasso",
+            "Claude Monet",
+            "Salvador Dalí"
+        ],
+        "correctAnswer": "Vincent van Gogh"
+    },
+    {
+        "question": "Who painted the ceiling of the Sistine Chapel?",
+        "possibleAnswers": [
+            "Michelangelo",
+            "Raphael",
+            "Leonardo da Vinci",
+            "Titian"
+        ],
+        "correctAnswer": "Michelangelo"
+    },
+    {
+        "question": "Cubism was pioneered by which two artists?",
+        "possibleAnswers": [
+            "Pablo Picasso and Georges Braque",
+            "Claude Monet and Edgar Degas",
+            "Vincent van Gogh and Paul Gauguin",
+            "Salvador Dalí and René Magritte"
+        ],
+        "correctAnswer": "Pablo Picasso and Georges Braque"
+    },
+    {
+        "question": "What type of paint is used in frescoes?",
+        "possibleAnswers": [
+            "Water-based paint applied on wet plaster",
+            "Oil paint on canvas",
+            "Acrylic paint on wood",
+            "Tempera on paper"
+        ],
+        "correctAnswer": "Water-based paint applied on wet plaster"
+    },
+    {
+        "question": "Which artist is known for the painting 'Guernica'?",
+        "possibleAnswers": [
+            "Pablo Picasso",
+            "Henri Matisse",
+            "Jackson Pollock",
+            "Edvard Munch"
+        ],
+        "correctAnswer": "Pablo Picasso"
+    },
+    {
+        "question": "What is the primary color not used in the RGB color model?",
+        "possibleAnswers": [
+            "Yellow",
+            "Red",
+            "Green",
+            "Blue"
+        ],
+        "correctAnswer": "Yellow"
+    },
+    {
+        "question": "Which style of art focuses on light and color, often painted outdoors?",
+        "possibleAnswers": [
+            "Impressionism",
+            "Surrealism",
+            "Baroque",
+            "Romanticism"
+        ],
+        "correctAnswer": "Impressionism"
+    },
+    {
+        "question": "Who is known as the 'Father of Modern Art'?",
+        "possibleAnswers": [
+            "Paul Cézanne",
+            "Vincent van Gogh",
+            "Claude Monet",
+            "Pablo Picasso"
+        ],
+        "correctAnswer": "Paul Cézanne"
+    },
+    {
+        "question": "Which artist created the 'Campbell's Soup Cans' artwork?",
+        "possibleAnswers": [
+            "Andy Warhol",
+            "Roy Lichtenstein",
+            "Keith Haring",
+            "Jean-Michel Basquiat"
+        ],
+        "correctAnswer": "Andy Warhol"
+    },
+    {
+        "question": "Which medium uses pigment mixed with egg yolk?",
+        "possibleAnswers": [
+            "Tempera",
+            "Oil paint",
+            "Acrylic",
+            "Watercolor"
+        ],
+        "correctAnswer": "Tempera"
+    },
+    {
+        "question": "The 'Persistence of Memory' features what unusual objects?",
+        "possibleAnswers": [
+            "Melting clocks",
+            "Flying birds",
+            "Burning candles",
+            "Giant eyes"
+        ],
+        "correctAnswer": "Melting clocks"
+    },
+    {
+        "question": "Which artist is famous for drip painting?",
+        "possibleAnswers": [
+            "Jackson Pollock",
+            "Mark Rothko",
+            "Wassily Kandinsky",
+            "Georges Seurat"
+        ],
+        "correctAnswer": "Jackson Pollock"
+    },
+    {
+        "question": "Which era immediately followed the Renaissance?",
+        "possibleAnswers": [
+            "Baroque",
+            "Medieval",
+            "Romantic",
+            "Modern"
+        ],
+        "correctAnswer": "Baroque"
+    },
+    {
+        "question": "Which sculptor created 'The Thinker'?",
+        "possibleAnswers": [
+            "Auguste Rodin",
+            "Michelangelo",
+            "Henry Moore",
+            "Donatello"
+        ],
+        "correctAnswer": "Auguste Rodin"
+    },
+    {
+        "question": "What is the term for art created from found objects?",
+        "possibleAnswers": [
+            "Assemblage",
+            "Collage",
+            "Fresco",
+            "Mosaic"
+        ],
+        "correctAnswer": "Assemblage"
+    },
+    //TECHNOLOGY
+    {
+        "question": "What does CPU stand for?",
+        "possibleAnswers": [
+            "Central Processing Unit",
+            "Computer Personal Unit",
+            "Central Performance Utility",
+            "Control Processing Unit"
+        ],
+        "correctAnswer": "Central Processing Unit"
+    },
+    {
+        "question": "Who is known as the father of the computer?",
+        "possibleAnswers": [
+            "Charles Babbage",
+            "Alan Turing",
+            "Bill Gates",
+            "Steve Jobs"
+        ],
+        "correctAnswer": "Charles Babbage"
+    },
+    {
+        "question": "What does RAM stand for in computers?",
+        "possibleAnswers": [
+            "Random Access Memory",
+            "Read Access Memory",
+            "Run Active Memory",
+            "Rapid Access Module"
+        ],
+        "correctAnswer": "Random Access Memory"
+    },
+    {
+        "question": "Which programming language is known for its snake logo?",
+        "possibleAnswers": [
+            "Python",
+            "Java",
+            "Ruby",
+            "C++"
+        ],
+        "correctAnswer": "Python"
+    },
+    {
+        "question": "What year was the World Wide Web invented?",
+        "possibleAnswers": [
+            "1989",
+            "1995",
+            "2000",
+            "1975"
+        ],
+        "correctAnswer": "1989"
+    },
+    {
+        "question": "What is the name of Apple's virtual assistant?",
+        "possibleAnswers": [
+            "Siri",
+            "Alexa",
+            "Cortana",
+            "Google Assistant"
+        ],
+        "correctAnswer": "Siri"
+    },
+    {
+        "question": "What technology does Bitcoin use?",
+        "possibleAnswers": [
+            "Blockchain",
+            "Cloud Computing",
+            "Artificial Intelligence",
+            "Quantum Computing"
+        ],
+        "correctAnswer": "Blockchain"
+    },
+    {
+        "question": "What does HTML stand for?",
+        "possibleAnswers": [
+            "HyperText Markup Language",
+            "Hyperlink Text Management Language",
+            "Hyper Tool Multi Language",
+            "Hyperlink Markup Language"
+        ],
+        "correctAnswer": "HyperText Markup Language"
+    },
+    {
+        "question": "Which company developed the Windows operating system?",
+        "possibleAnswers": [
+            "Microsoft",
+            "Apple",
+            "Google",
+            "IBM"
+        ],
+        "correctAnswer": "Microsoft"
+    },
+    {
+        "question": "What does 'USB' stand for?",
+        "possibleAnswers": [
+            "Universal Serial Bus",
+            "Universal System Board",
+            "User Service Bus",
+            "United Serial Bus"
+        ],
+        "correctAnswer": "Universal Serial Bus"
+    },
+    {
+        "question": "Which programming language is primarily used for iOS app development?",
+        "possibleAnswers": [
+            "Swift",
+            "Java",
+            "C#",
+            "Python"
+        ],
+        "correctAnswer": "Swift"
+    },
+    {
+        "question": "What kind of device is a Fitbit?",
+        "possibleAnswers": [
+            "Fitness tracker",
+            "Smartphone",
+            "Tablet",
+            "Laptop"
+        ],
+        "correctAnswer": "Fitness tracker"
+    },
+    {
+        "question": "Which company owns YouTube?",
+        "possibleAnswers": [
+            "Google",
+            "Microsoft",
+            "Facebook",
+            "Apple"
+        ],
+        "correctAnswer": "Google"
+    },
+    {
+        "question": "What does AI stand for?",
+        "possibleAnswers": [
+            "Artificial Intelligence",
+            "Automated Input",
+            "Active Interface",
+            "Advanced Integration"
+        ],
+        "correctAnswer": "Artificial Intelligence"
+    },
+    {
+        "question": "What is the name of the first electronic general-purpose computer?",
+        "possibleAnswers": [
+            "ENIAC",
+            "UNIVAC",
+            "IBM PC",
+            "Z3"
+        ],
+        "correctAnswer": "ENIAC"
+    },
+    {
+        "question": "Which social media platform is known for 'tweets'?",
+        "possibleAnswers": [
+            "Twitter",
+            "Facebook",
+            "Instagram",
+            "Snapchat"
+        ],
+        "correctAnswer": "Twitter"
+    },
+    {
+        "question": "Which company created the video game Fortnite?",
+        "possibleAnswers": [
+            "Epic Games",
+            "Activision",
+            "Electronic Arts",
+            "Ubisoft"
+        ],
+        "correctAnswer": "Epic Games"
+    },
+    {
+        "question": "What does GPS stand for?",
+        "possibleAnswers": [
+            "Global Positioning System",
+            "General Packet System",
+            "Global Performance Service",
+            "Geographic Positioning Signal"
+        ],
+        "correctAnswer": "Global Positioning System"
+    },
+    {
+        "question": "What is the main function of an operating system?",
+        "possibleAnswers": [
+            "Manage hardware and software resources",
+            "Run applications only",
+            "Store data",
+            "Connect to the internet"
+        ],
+        "correctAnswer": "Manage hardware and software resources"
+    },
+    {
+        "question": "Which company developed the PlayStation gaming console?",
+        "possibleAnswers": [
+            "Sony",
+            "Microsoft",
+            "Nintendo",
+            "Sega"
+        ],
+        "correctAnswer": "Sony"
+    },
+    //SPORTS
+    {
+        "question": "Which country won the FIFA World Cup in 2018?",
+        "possibleAnswers": [
+            "France",
+            "Croatia",
+            "Brazil",
+            "Germany"
+        ],
+        "correctAnswer": "France"
+    },
+    {
+        "question": "How many players are on a basketball team on the court at once?",
+        "possibleAnswers": [
+            "5",
+            "6",
+            "7",
+            "11"
+        ],
+        "correctAnswer": "5"
+    },
+    {
+        "question": "In which sport is the term 'home run' used?",
+        "possibleAnswers": [
+            "Baseball",
+            "Cricket",
+            "Football",
+            "Tennis"
+        ],
+        "correctAnswer": "Baseball"
+    },
+    {
+        "question": "Who holds the record for most goals in World Cup history?",
+        "possibleAnswers": [
+            "Miroslav Klose",
+            "Pelé",
+            "Ronaldo",
+            "Lionel Messi"
+        ],
+        "correctAnswer": "Miroslav Klose"
+    },
+    {
+        "question": "Which sport uses the terms 'scrum' and 'try'?",
+        "possibleAnswers": [
+            "Rugby",
+            "Soccer",
+            "American Football",
+            "Hockey"
+        ],
+        "correctAnswer": "Rugby"
+    },
+    {
+        "question": "In tennis, what is a score of zero called?",
+        "possibleAnswers": [
+            "Love",
+            "Zero",
+            "Nil",
+            "Blank"
+        ],
+        "correctAnswer": "Love"
+    },
+    {
+        "question": "Which country is famous for sumo wrestling?",
+        "possibleAnswers": [
+            "Japan",
+            "China",
+            "South Korea",
+            "Thailand"
+        ],
+        "correctAnswer": "Japan"
+    },
+    {
+        "question": "In which sport would you perform a slam dunk?",
+        "possibleAnswers": [
+            "Basketball",
+            "Volleyball",
+            "Football",
+            "Handball"
+        ],
+        "correctAnswer": "Basketball"
+    },
+    {
+        "question": "Which athlete is known as 'The Greatest' in boxing?",
+        "possibleAnswers": [
+            "Muhammad Ali",
+            "Mike Tyson",
+            "Floyd Mayweather",
+            "Manny Pacquiao"
+        ],
+        "correctAnswer": "Muhammad Ali"
+    },
+    {
+        "question": "What is the standard length of an Olympic swimming pool?",
+        "possibleAnswers": [
+            "50 meters",
+            "25 meters",
+            "100 meters",
+            "75 meters"
+        ],
+        "correctAnswer": "50 meters"
+    },
+    {
+        "question": "Which country hosted the 2016 Summer Olympics?",
+        "possibleAnswers": [
+            "Brazil",
+            "China",
+            "United Kingdom",
+            "Russia"
+        ],
+        "correctAnswer": "Brazil"
+    },
+    {
+        "question": "What is the name of the championship game of the NFL?",
+        "possibleAnswers": [
+            "Super Bowl",
+            "World Series",
+            "Stanley Cup",
+            "NBA Finals"
+        ],
+        "correctAnswer": "Super Bowl"
+    },
+    {
+        "question": "In which sport do players compete for the Stanley Cup?",
+        "possibleAnswers": [
+            "Ice Hockey",
+            "Basketball",
+            "Baseball",
+            "Football"
+        ],
+        "correctAnswer": "Ice Hockey"
+    },
+    {
+        "question": "Which sport features a pommel horse event?",
+        "possibleAnswers": [
+            "Gymnastics",
+            "Equestrian",
+            "Diving",
+            "Track and Field"
+        ],
+        "correctAnswer": "Gymnastics"
+    },
+    {
+        "question": "Which sport is known as 'the beautiful game'?",
+        "possibleAnswers": [
+            "Soccer",
+            "Basketball",
+            "Tennis",
+            "Baseball"
+        ],
+        "correctAnswer": "Soccer"
+    },
+    {
+        "question": "How many holes are played in a standard round of golf?",
+        "possibleAnswers": [
+            "18",
+            "9",
+            "12",
+            "24"
+        ],
+        "correctAnswer": "18"
+    },
+    {
+        "question": "Which country has won the most Olympic gold medals overall?",
+        "possibleAnswers": [
+            "United States",
+            "Russia",
+            "China",
+            "Germany"
+        ],
+        "correctAnswer": "United States"
+    },
+    {
+        "question": "Which sport uses a shuttlecock?",
+        "possibleAnswers": [
+            "Badminton",
+            "Tennis",
+            "Volleyball",
+            "Table Tennis"
+        ],
+        "correctAnswer": "Badminton"
+    },
+    {
+        "question": "In which sport do you use a bow and arrow?",
+        "possibleAnswers": [
+            "Archery",
+            "Shooting",
+            "Fencing",
+            "Javelin"
+        ],
+        "correctAnswer": "Archery"
+    },
+    {
+        "question": "What color jersey does the leader wear in the Tour de France?",
+        "possibleAnswers": [
+            "Yellow",
+            "Green",
+            "Red",
+            "Blue"
+        ],
+        "correctAnswer": "Yellow"
+    },
+    //HISTORY
+    {
+        "question": "Who was the first President of the United States?",
+        "possibleAnswers": [
+            "George Washington",
+            "Thomas Jefferson",
+            "John Adams",
+            "Benjamin Franklin"
+        ],
+        "correctAnswer": "George Washington"
+    },
+    {
+        "question": "In which year did World War II end?",
         "possibleAnswers": [
             "1945",
             "1939",
             "1918",
-            "1963"
+            "1950"
         ],
         "correctAnswer": "1945"
     },
     {
-        "question": "Which element has the chemical symbol O?",
+        "question": "Who was the British Prime Minister during most of World War II?",
         "possibleAnswers": [
-            "Oxygen",
-            "Gold",
-            "Osmium",
-            "Oganesson"
+            "Winston Churchill",
+            "Neville Chamberlain",
+            "Clement Attlee",
+            "Margaret Thatcher"
         ],
-        "correctAnswer": "Oxygen"
+        "correctAnswer": "Winston Churchill"
     },
     {
-        "question": "Which U.S. state is known as the Sunshine State?",
+        "question": "Which ancient civilization built Machu Picchu?",
         "possibleAnswers": [
-            "Florida",
-            "California",
-            "Texas",
-            "Hawaii"
+            "Inca",
+            "Aztec",
+            "Maya",
+            "Olmec"
         ],
-        "correctAnswer": "Florida"
+        "correctAnswer": "Inca"
     },
     {
-        "question": "What is the square root of 64?",
+        "question": "Who was the Egyptian queen famous for her alliances with Julius Caesar and Mark Antony?",
         "possibleAnswers": [
-            "8",
-            "6",
-            "7",
-            "9"
+            "Cleopatra",
+            "Nefertiti",
+            "Hatshepsut",
+            "Isis"
         ],
-        "correctAnswer": "8"
+        "correctAnswer": "Cleopatra"
     },
     {
-        "question": "Who wrote 'Hamlet'?",
+        "question": "The fall of the Berlin Wall happened in which year?",
         "possibleAnswers": [
-            "William Shakespeare",
-            "Jane Austen",
-            "Mark Twain",
-            "Charles Dickens"
+            "1989",
+            "1991",
+            "1980",
+            "1995"
         ],
-        "correctAnswer": "William Shakespeare"
+        "correctAnswer": "1989"
     },
     {
-        "question": "Which planet has rings?",
+        "question": "Who wrote the Declaration of Independence?",
         "possibleAnswers": [
-            "Saturn",
+            "Thomas Jefferson",
+            "George Washington",
+            "James Madison",
+            "John Hancock"
+        ],
+        "correctAnswer": "Thomas Jefferson"
+    },
+    {
+        "question": "What empire was ruled by Genghis Khan?",
+        "possibleAnswers": [
+            "Mongol Empire",
+            "Roman Empire",
+            "Persian Empire",
+            "Byzantine Empire"
+        ],
+        "correctAnswer": "Mongol Empire"
+    },
+    {
+        "question": "Which war was fought between the North and South regions in the United States?",
+        "possibleAnswers": [
+            "American Civil War",
+            "World War I",
+            "Revolutionary War",
+            "War of 1812"
+        ],
+        "correctAnswer": "American Civil War"
+    },
+    {
+        "question": "What year did the Titanic sink?",
+        "possibleAnswers": [
+            "1912",
+            "1905",
+            "1898",
+            "1923"
+        ],
+        "correctAnswer": "1912"
+    },
+    {
+        "question": "Who was the first man to step on the moon?",
+        "possibleAnswers": [
+            "Neil Armstrong",
+            "Buzz Aldrin",
+            "Michael Collins",
+            "Yuri Gagarin"
+        ],
+        "correctAnswer": "Neil Armstrong"
+    },
+    {
+        "question": "Which country was formerly known as Persia?",
+        "possibleAnswers": [
+            "Iran",
+            "Iraq",
+            "Afghanistan",
+            "Turkey"
+        ],
+        "correctAnswer": "Iran"
+    },
+    {
+        "question": "Who was the leader of the Soviet Union during World War II?",
+        "possibleAnswers": [
+            "Joseph Stalin",
+            "Vladimir Lenin",
+            "Nikita Khrushchev",
+            "Leon Trotsky"
+        ],
+        "correctAnswer": "Joseph Stalin"
+    },
+    {
+        "question": "What year did the American Revolutionary War begin?",
+        "possibleAnswers": [
+            "1775",
+            "1783",
+            "1760",
+            "1791"
+        ],
+        "correctAnswer": "1775"
+    },
+    {
+        "question": "Who was the famous civil rights leader who gave the 'I Have a Dream' speech?",
+        "possibleAnswers": [
+            "Martin Luther King Jr.",
+            "Malcolm X",
+            "Rosa Parks",
+            "Frederick Douglass"
+        ],
+        "correctAnswer": "Martin Luther King Jr."
+    },
+    {
+        "question": "What empire was known for the Colosseum?",
+        "possibleAnswers": [
+            "Roman Empire",
+            "Greek Empire",
+            "Ottoman Empire",
+            "Egyptian Empire"
+        ],
+        "correctAnswer": "Roman Empire"
+    },
+    {
+        "question": "What year did the French Revolution begin?",
+        "possibleAnswers": [
+            "1789",
+            "1776",
+            "1804",
+            "1799"
+        ],
+        "correctAnswer": "1789"
+    },
+    {
+        "question": "Who was the famous female pilot who disappeared over the Pacific Ocean?",
+        "possibleAnswers": [
+            "Amelia Earhart",
+            "Harriet Quimby",
+            "Bessie Coleman",
+            "Sally Ride"
+        ],
+        "correctAnswer": "Amelia Earhart"
+    },
+    {
+        "question": "Which treaty ended World War I?",
+        "possibleAnswers": [
+            "Treaty of Versailles",
+            "Treaty of Paris",
+            "Treaty of Ghent",
+            "Treaty of Tordesillas"
+        ],
+        "correctAnswer": "Treaty of Versailles"
+    },
+    {
+        "question": "Who was the first female Prime Minister of the United Kingdom?",
+        "possibleAnswers": [
+            "Margaret Thatcher",
+            "Theresa May",
+            "Angela Merkel",
+            "Indira Gandhi"
+        ],
+        "correctAnswer": "Margaret Thatcher"
+    },
+    //MUSIC
+    {
+        "question": "Who composed the score for the movie 'Inception'?",
+        "possibleAnswers": [
+            "Hans Zimmer",
+            "John Williams",
+            "James Newton Howard",
+            "Danny Elfman"
+        ],
+        "correctAnswer": "Hans Zimmer"
+    },
+    {
+        "question": "Which instrument has 88 keys?",
+        "possibleAnswers": [
+            "Piano",
+            "Organ",
+            "Harpsichord",
+            "Accordion"
+        ],
+        "correctAnswer": "Piano"
+    },
+    {
+        "question": "What is the term for gradually getting louder in music?",
+        "possibleAnswers": [
+            "Crescendo",
+            "Decrescendo",
+            "Staccato",
+            "Legato"
+        ],
+        "correctAnswer": "Crescendo"
+    },
+    {
+        "question": "Who is known as the 'King of Pop'?",
+        "possibleAnswers": [
+            "Michael Jackson",
+            "Prince",
+            "Elvis Presley",
+            "Freddie Mercury"
+        ],
+        "correctAnswer": "Michael Jackson"
+    },
+    {
+        "question": "Which composer is famous for the 'Fifth Symphony'?",
+        "possibleAnswers": [
+            "Ludwig van Beethoven",
+            "Wolfgang Amadeus Mozart",
+            "Johann Sebastian Bach",
+            "Franz Schubert"
+        ],
+        "correctAnswer": "Ludwig van Beethoven"
+    },
+    {
+        "question": "Which musical period came first?",
+        "possibleAnswers": [
+            "Baroque",
+            "Classical",
+            "Romantic",
+            "Modern"
+        ],
+        "correctAnswer": "Baroque"
+    },
+    {
+        "question": "Which instrument is a woodwind but does not use a reed?",
+        "possibleAnswers": [
+            "Flute",
+            "Clarinet",
+            "Oboe",
+            "Saxophone"
+        ],
+        "correctAnswer": "Flute"
+    },
+    {
+        "question": "What does 'forte' mean in music notation?",
+        "possibleAnswers": [
+            "Loud",
+            "Soft",
+            "Fast",
+            "Slow"
+        ],
+        "correctAnswer": "Loud"
+    },
+    {
+        "question": "Who wrote the opera 'The Magic Flute'?",
+        "possibleAnswers": [
+            "Wolfgang Amadeus Mozart",
+            "Giuseppe Verdi",
+            "Richard Wagner",
+            "Pyotr Ilyich Tchaikovsky"
+        ],
+        "correctAnswer": "Wolfgang Amadeus Mozart"
+    },
+    {
+        "question": "Which instrument is known as the 'king of instruments'?",
+        "possibleAnswers": [
+            "Pipe organ",
+            "Grand piano",
+            "Violin",
+            "French horn"
+        ],
+        "correctAnswer": "Pipe organ"
+    },
+    {
+        "question": "Which composer is known for the ballet 'The Nutcracker'?",
+        "possibleAnswers": [
+            "Pyotr Ilyich Tchaikovsky",
+            "Igor Stravinsky",
+            "Claude Debussy",
+            "Sergei Rachmaninoff"
+        ],
+        "correctAnswer": "Pyotr Ilyich Tchaikovsky"
+    },
+    {
+        "question": "What is the term for the speed of music?",
+        "possibleAnswers": [
+            "Tempo",
+            "Pitch",
+            "Timbre",
+            "Rhythm"
+        ],
+        "correctAnswer": "Tempo"
+    },
+    {
+        "question": "Which musical symbol indicates a pause or rest?",
+        "possibleAnswers": [
+            "Fermata",
+            "Accent",
+            "Slur",
+            "Tie"
+        ],
+        "correctAnswer": "Fermata"
+    },
+    {
+        "question": "Which artist is known for the album 'Thriller'?",
+        "possibleAnswers": [
+            "Michael Jackson",
+            "Madonna",
+            "Prince",
+            "David Bowie"
+        ],
+        "correctAnswer": "Michael Jackson"
+    },
+    {
+        "question": "Which instrument family does the trumpet belong to?",
+        "possibleAnswers": [
+            "Brass",
+            "Woodwind",
+            "Percussion",
+            "Strings"
+        ],
+        "correctAnswer": "Brass"
+    },
+    {
+        "question": "Which composer wrote 'Clair de Lune'?",
+        "possibleAnswers": [
+            "Claude Debussy",
+            "Frédéric Chopin",
+            "Johannes Brahms",
+            "Antonio Vivaldi"
+        ],
+        "correctAnswer": "Claude Debussy"
+    },
+    {
+        "question": "What is the musical term for gradually slowing down?",
+        "possibleAnswers": [
+            "Ritardando",
+            "Accelerando",
+            "Legato",
+            "Staccato"
+        ],
+        "correctAnswer": "Ritardando"
+    },
+    {
+        "question": "Which band released the album 'Dark Side of the Moon'?",
+        "possibleAnswers": [
+            "Pink Floyd",
+            "The Beatles",
+            "The Rolling Stones",
+            "Led Zeppelin"
+        ],
+        "correctAnswer": "Pink Floyd"
+    },
+    {
+        "question": "Which composer is known for 'The Four Seasons'?",
+        "possibleAnswers": [
+            "Antonio Vivaldi",
+            "Johann Sebastian Bach",
+            "George Frideric Handel",
+            "Ludwig van Beethoven"
+        ],
+        "correctAnswer": "Antonio Vivaldi"
+    },
+    {
+        "question": "What does 'allegro' mean in music?",
+        "possibleAnswers": [
+            "Fast and lively",
+            "Slow and solemn",
+            "Moderate tempo",
+            "Soft and gentle"
+        ],
+        "correctAnswer": "Fast and lively"
+    },
+    //MOVIES
+    {
+        "question": "Who directed 'Jaws'?",
+        "possibleAnswers": [
+            "Steven Spielberg",
+            "James Cameron",
+            "George Lucas",
+            "Alfred Hitchcock"
+        ],
+        "correctAnswer": "Steven Spielberg"
+    },
+    {
+        "question": "Which movie features the character 'Forrest Gump'?",
+        "possibleAnswers": [
+            "Forrest Gump",
+            "Cast Away",
+            "Saving Private Ryan",
+            "The Green Mile"
+        ],
+        "correctAnswer": "Forrest Gump"
+    },
+    {
+        "question": "Which movie won Best Picture at the 2020 Oscars?",
+        "possibleAnswers": [
+            "Parasite",
+            "1917",
+            "Joker",
+            "Once Upon a Time in Hollywood"
+        ],
+        "correctAnswer": "Parasite"
+    },
+    {
+        "question": "Who played Jack Dawson in 'Titanic'?",
+        "possibleAnswers": [
+            "Leonardo DiCaprio",
+            "Brad Pitt",
+            "Johnny Depp",
+            "Tom Cruise"
+        ],
+        "correctAnswer": "Leonardo DiCaprio"
+    },
+    {
+        "question": "Which franchise features the character 'Darth Vader'?",
+        "possibleAnswers": [
+            "Star Wars",
+            "Star Trek",
+            "The Matrix",
+            "Guardians of the Galaxy"
+        ],
+        "correctAnswer": "Star Wars"
+    },
+    {
+        "question": "Who directed 'Inception'?",
+        "possibleAnswers": [
+            "Christopher Nolan",
+            "Quentin Tarantino",
+            "Steven Spielberg",
+            "James Cameron"
+        ],
+        "correctAnswer": "Christopher Nolan"
+    },
+    {
+        "question": "Which movie features the song 'My Heart Will Go On'?",
+        "possibleAnswers": [
+            "Titanic",
+            "The Bodyguard",
+            "Frozen",
+            "The Lion King"
+        ],
+        "correctAnswer": "Titanic"
+    },
+    {
+        "question": "What is the highest-grossing film of all time?",
+        "possibleAnswers": [
+            "Avatar",
+            "Avengers: Endgame",
+            "Titanic",
+            "Star Wars: The Force Awakens"
+        ],
+        "correctAnswer": "Avatar"
+    },
+    {
+        "question": "Who played the Joker in 'The Dark Knight'?",
+        "possibleAnswers": [
+            "Heath Ledger",
+            "Joaquin Phoenix",
+            "Jack Nicholson",
+            "Jared Leto"
+        ],
+        "correctAnswer": "Heath Ledger"
+    },
+    {
+        "question": "What year was 'The Godfather' released?",
+        "possibleAnswers": [
+            "1972",
+            "1980",
+            "1965",
+            "1975"
+        ],
+        "correctAnswer": "1972"
+    },
+    {
+        "question": "Which movie is about a wizard school called Hogwarts?",
+        "possibleAnswers": [
+            "Harry Potter",
+            "The Lord of the Rings",
+            "Percy Jackson",
+            "The Chronicles of Narnia"
+        ],
+        "correctAnswer": "Harry Potter"
+    },
+    {
+        "question": "Who directed 'Pulp Fiction'?",
+        "possibleAnswers": [
+            "Quentin Tarantino",
+            "Martin Scorsese",
+            "Steven Spielberg",
+            "James Cameron"
+        ],
+        "correctAnswer": "Quentin Tarantino"
+    },
+    {
+        "question": "Which film features the character 'Indiana Jones'?",
+        "possibleAnswers": [
+            "Indiana Jones",
+            "National Treasure",
+            "Tomb Raider",
+            "Pirates of the Caribbean"
+        ],
+        "correctAnswer": "Indiana Jones"
+    },
+    {
+        "question": "Who starred as 'Rocky Balboa'?",
+        "possibleAnswers": [
+            "Sylvester Stallone",
+            "Arnold Schwarzenegger",
+            "Dolph Lundgren",
+            "Jean-Claude Van Damme"
+        ],
+        "correctAnswer": "Sylvester Stallone"
+    },
+    {
+        "question": "Which movie is based on a novel by Stephen King?",
+        "possibleAnswers": [
+            "The Shining",
+            "The Silence of the Lambs",
+            "Se7en",
+            "Fight Club"
+        ],
+        "correctAnswer": "The Shining"
+    },
+    {
+        "question": "What is the main setting of the movie 'Avatar'?",
+        "possibleAnswers": [
+            "Pandora",
             "Mars",
-            "Venus",
-            "Mercury"
-        ],
-        "correctAnswer": "Saturn"
-    },
-    {
-        "question": "What is the fastest land animal?",
-        "possibleAnswers": [
-            "Cheetah",
-            "Leopard",
-            "Lion",
-            "Tiger"
-        ],
-        "correctAnswer": "Cheetah"
-    },
-    {
-        "question": "What is the largest planet in our solar system?",
-        "possibleAnswers": [
-            "Mars",
-            "Jupiter",
-            "Saturn",
-            "Earth"
-        ],
-        "correctAnswer": "Jupiter"
-    },
-    {
-        "question": "What is the fastest land animal?",
-        "possibleAnswers": [
-            "Cheetah",
-            "Tiger",
-            "Lion",
-            "Leopard"
-        ],
-        "correctAnswer": "Cheetah"
-    },
-    {
-        "question": "Which U.S. state is known as the Sunshine State?",
-        "possibleAnswers": [
-            "Hawaii",
-            "Florida",
-            "Texas",
-            "California"
-        ],
-        "correctAnswer": "Florida"
-    },
-    {
-        "question": "What is the capital of France?",
-        "possibleAnswers": [
-            "Madrid",
-            "Rome",
-            "Paris",
-            "Berlin"
-        ],
-        "correctAnswer": "Paris"
-    },
-    {
-        "question": "What is the fastest land animal?",
-        "possibleAnswers": [
-            "Leopard",
-            "Cheetah",
-            "Lion",
-            "Tiger"
-        ],
-        "correctAnswer": "Cheetah"
-    },
-    {
-        "question": "Which planet has rings?",
-        "possibleAnswers": [
-            "Mercury",
-            "Venus",
-            "Mars",
-            "Saturn"
-        ],
-        "correctAnswer": "Saturn"
-    },
-    {
-        "question": "What is the capital of France?",
-        "possibleAnswers": [
-            "Rome",
-            "Madrid",
-            "Paris",
-            "Berlin"
-        ],
-        "correctAnswer": "Paris"
-    },
-    {
-        "question": "What is the fastest land animal?",
-        "possibleAnswers": [
-            "Leopard",
-            "Cheetah",
-            "Lion",
-            "Tiger"
-        ],
-        "correctAnswer": "Cheetah"
-    },
-    {
-        "question": "Which planet has rings?",
-        "possibleAnswers": [
-            "Venus",
-            "Mars",
-            "Saturn",
-            "Mercury"
-        ],
-        "correctAnswer": "Saturn"
-    },
-    {
-        "question": "Which U.S. state is known as the Sunshine State?",
-        "possibleAnswers": [
-            "Texas",
-            "Hawaii",
-            "Florida",
-            "California"
-        ],
-        "correctAnswer": "Florida"
-    },
-    {
-        "question": "What is the fastest land animal?",
-        "possibleAnswers": [
-            "Lion",
-            "Cheetah",
-            "Leopard",
-            "Tiger"
-        ],
-        "correctAnswer": "Cheetah"
-    },
-    {
-        "question": "Who painted the Mona Lisa?",
-        "possibleAnswers": [
-            "Raphael",
-            "Van Gogh",
-            "Leonardo da Vinci",
-            "Michelangelo"
-        ],
-        "correctAnswer": "Leonardo da Vinci"
-    },
-    {
-        "question": "Which U.S. state is known as the Sunshine State?",
-        "possibleAnswers": [
-            "Texas",
-            "California",
-            "Hawaii",
-            "Florida"
-        ],
-        "correctAnswer": "Florida"
-    },
-    {
-        "question": "What is the fastest land animal?",
-        "possibleAnswers": [
-            "Lion",
-            "Tiger",
-            "Cheetah",
-            "Leopard"
-        ],
-        "correctAnswer": "Cheetah"
-    },
-    {
-        "question": "Which U.S. state is known as the Sunshine State?",
-        "possibleAnswers": [
-            "Florida",
-            "Hawaii",
-            "California",
-            "Texas"
-        ],
-        "correctAnswer": "Florida"
-    },
-    {
-        "question": "Which planet has rings?",
-        "possibleAnswers": [
-            "Mars",
-            "Venus",
-            "Saturn",
-            "Mercury"
-        ],
-        "correctAnswer": "Saturn"
-    },
-    {
-        "question": "What is the fastest land animal?",
-        "possibleAnswers": [
-            "Lion",
-            "Tiger",
-            "Cheetah",
-            "Leopard"
-        ],
-        "correctAnswer": "Cheetah"
-    },
-    {
-        "question": "Which planet has rings?",
-        "possibleAnswers": [
-            "Mars",
-            "Saturn",
-            "Venus",
-            "Mercury"
-        ],
-        "correctAnswer": "Saturn"
-    },
-    {
-        "question": "What is the fastest land animal?",
-        "possibleAnswers": [
-            "Tiger",
-            "Lion",
-            "Leopard",
-            "Cheetah"
-        ],
-        "correctAnswer": "Cheetah"
-    },
-    {
-        "question": "Which U.S. state is known as the Sunshine State?",
-        "possibleAnswers": [
-            "Texas",
-            "California",
-            "Florida",
-            "Hawaii"
-        ],
-        "correctAnswer": "Florida"
-    },
-    {
-        "question": "Which U.S. state is known as the Sunshine State?",
-        "possibleAnswers": [
-            "Hawaii",
-            "Texas",
-            "California",
-            "Florida"
-        ],
-        "correctAnswer": "Florida"
-    },
-    {
-        "question": "Who painted the Mona Lisa?",
-        "possibleAnswers": [
-            "Leonardo da Vinci",
-            "Van Gogh",
-            "Michelangelo",
-            "Raphael"
-        ],
-        "correctAnswer": "Leonardo da Vinci"
-    },
-    {
-        "question": "Who wrote 'Hamlet'?",
-        "possibleAnswers": [
-            "Jane Austen",
-            "Charles Dickens",
-            "William Shakespeare",
-            "Mark Twain"
-        ],
-        "correctAnswer": "William Shakespeare"
-    },
-    {
-        "question": "What is the fastest land animal?",
-        "possibleAnswers": [
-            "Tiger",
-            "Leopard",
-            "Lion",
-            "Cheetah"
-        ],
-        "correctAnswer": "Cheetah"
-    },
-    {
-        "question": "Which U.S. state is known as the Sunshine State?",
-        "possibleAnswers": [
-            "Texas",
-            "Hawaii",
-            "California",
-            "Florida"
-        ],
-        "correctAnswer": "Florida"
-    },
-    {
-        "question": "Which element has the chemical symbol O?",
-        "possibleAnswers": [
-            "Oganesson",
-            "Osmium",
-            "Oxygen",
-            "Gold"
-        ],
-        "correctAnswer": "Oxygen"
-    },
-    {
-        "question": "What is the fastest land animal?",
-        "possibleAnswers": [
-            "Leopard",
-            "Cheetah",
-            "Tiger",
-            "Lion"
-        ],
-        "correctAnswer": "Cheetah"
-    },
-    {
-        "question": "What is the fastest land animal?",
-        "possibleAnswers": [
-            "Cheetah",
-            "Tiger",
-            "Leopard",
-            "Lion"
-        ],
-        "correctAnswer": "Cheetah"
-    },
-    {
-        "question": "What is the fastest land animal?",
-        "possibleAnswers": [
-            "Lion",
-            "Leopard",
-            "Tiger",
-            "Cheetah"
-        ],
-        "correctAnswer": "Cheetah"
-    },
-    {
-        "question": "Which U.S. state is known as the Sunshine State?",
-        "possibleAnswers": [
-            "California",
-            "Texas",
-            "Hawaii",
-            "Florida"
-        ],
-        "correctAnswer": "Florida"
-    },
-    {
-        "question": "Which U.S. state is known as the Sunshine State?",
-        "possibleAnswers": [
-            "Florida",
-            "Texas",
-            "Hawaii",
-            "California"
-        ],
-        "correctAnswer": "Florida"
-    },
-    {
-        "question": "Which planet has rings?",
-        "possibleAnswers": [
-            "Saturn",
-            "Mercury",
-            "Mars",
-            "Venus"
-        ],
-        "correctAnswer": "Saturn"
-    },
-    {
-        "question": "Which planet has rings?",
-        "possibleAnswers": [
-            "Mercury",
-            "Mars",
-            "Venus",
-            "Saturn"
-        ],
-        "correctAnswer": "Saturn"
-    },
-    {
-        "question": "Which U.S. state is known as the Sunshine State?",
-        "possibleAnswers": [
-            "Texas",
-            "California",
-            "Hawaii",
-            "Florida"
-        ],
-        "correctAnswer": "Florida"
-    },
-    {
-        "question": "Which U.S. state is known as the Sunshine State?",
-        "possibleAnswers": [
-            "Florida",
-            "Hawaii",
-            "California",
-            "Texas"
-        ],
-        "correctAnswer": "Florida"
-    },
-    {
-        "question": "Which element has the chemical symbol O?",
-        "possibleAnswers": [
-            "Osmium",
-            "Oganesson",
-            "Gold",
-            "Oxygen"
-        ],
-        "correctAnswer": "Oxygen"
-    },
-    {
-        "question": "What is the square root of 64?",
-        "possibleAnswers": [
-            "8",
-            "6",
-            "7",
-            "9"
-        ],
-        "correctAnswer": "8"
-    },
-    {
-        "question": "What is the fastest land animal?",
-        "possibleAnswers": [
-            "Lion",
-            "Cheetah",
-            "Tiger",
-            "Leopard"
-        ],
-        "correctAnswer": "Cheetah"
-    },
-    {
-        "question": "What is the capital of France?",
-        "possibleAnswers": [
-            "Rome",
-            "Madrid",
-            "Paris",
-            "Berlin"
-        ],
-        "correctAnswer": "Paris"
-    },
-    {
-        "question": "Who wrote 'Hamlet'?",
-        "possibleAnswers": [
-            "William Shakespeare",
-            "Jane Austen",
-            "Charles Dickens",
-            "Mark Twain"
-        ],
-        "correctAnswer": "William Shakespeare"
-    },
-    {
-        "question": "What is the fastest land animal?",
-        "possibleAnswers": [
-            "Cheetah",
-            "Leopard",
-            "Lion",
-            "Tiger"
-        ],
-        "correctAnswer": "Cheetah"
-    },
-    {
-        "question": "Which planet has rings?",
-        "possibleAnswers": [
-            "Mars",
-            "Mercury",
-            "Venus",
-            "Saturn"
-        ],
-        "correctAnswer": "Saturn"
-    },
-    {
-        "question": "What is the capital of France?",
-        "possibleAnswers": [
-            "Paris",
-            "Berlin",
-            "Rome",
-            "Madrid"
-        ],
-        "correctAnswer": "Paris"
-    },
-    {
-        "question": "What is the fastest land animal?",
-        "possibleAnswers": [
-            "Lion",
-            "Tiger",
-            "Cheetah",
-            "Leopard"
-        ],
-        "correctAnswer": "Cheetah"
-    },
-    {
-        "question": "Which U.S. state is known as the Sunshine State?",
-        "possibleAnswers": [
-            "California",
-            "Florida",
-            "Hawaii",
-            "Texas"
-        ],
-        "correctAnswer": "Florida"
-    },
-    {
-        "question": "Who painted the Mona Lisa?",
-        "possibleAnswers": [
-            "Michelangelo",
-            "Leonardo da Vinci",
-            "Raphael",
-            "Van Gogh"
-        ],
-        "correctAnswer": "Leonardo da Vinci"
-    },
-    {
-        "question": "Which U.S. state is known as the Sunshine State?",
-        "possibleAnswers": [
-            "Florida",
-            "Texas",
-            "California",
-            "Hawaii"
-        ],
-        "correctAnswer": "Florida"
-    },
-    {
-        "question": "What is the largest planet in our solar system?",
-        "possibleAnswers": [
             "Earth",
-            "Saturn",
-            "Mars",
-            "Jupiter"
+            "Titan"
         ],
-        "correctAnswer": "Jupiter"
+        "correctAnswer": "Pandora"
     },
     {
-        "question": "Which U.S. state is known as the Sunshine State?",
+        "question": "Which movie has the line 'I'll be back'?",
         "possibleAnswers": [
-            "Hawaii",
-            "Florida",
-            "California",
-            "Texas"
+            "The Terminator",
+            "Predator",
+            "RoboCop",
+            "Total Recall"
         ],
-        "correctAnswer": "Florida"
+        "correctAnswer": "The Terminator"
     },
     {
-        "question": "What is the square root of 64?",
+        "question": "Who directed 'The Matrix'?",
         "possibleAnswers": [
-            "7",
-            "8",
-            "6",
-            "9"
+            "The Wachowskis",
+            "Steven Spielberg",
+            "James Cameron",
+            "Christopher Nolan"
         ],
-        "correctAnswer": "8"
+        "correctAnswer": "The Wachowskis"
     },
     {
-        "question": "What is the capital of France?",
+        "question": "Which movie features a character named 'Jack Sparrow'?",
         "possibleAnswers": [
-            "Rome",
-            "Paris",
-            "Madrid",
-            "Berlin"
+            "Pirates of the Caribbean",
+            "The Goonies",
+            "Treasure Island",
+            "Hook"
         ],
-        "correctAnswer": "Paris"
+        "correctAnswer": "Pirates of the Caribbean"
     },
     {
-        "question": "Who painted the Mona Lisa?",
+        "question": "Which movie won Best Picture in 1994?",
         "possibleAnswers": [
-            "Van Gogh",
-            "Leonardo da Vinci",
-            "Michelangelo",
-            "Raphael"
+            "Forrest Gump",
+            "Pulp Fiction",
+            "The Shawshank Redemption",
+            "The Lion King"
         ],
-        "correctAnswer": "Leonardo da Vinci"
+        "correctAnswer": "Forrest Gump"
     },
+    //MATH
     {
-        "question": "Who wrote 'Hamlet'?",
+        "question": "What is 12 x 12?",
         "possibleAnswers": [
-            "Jane Austen",
-            "Charles Dickens",
-            "William Shakespeare",
-            "Mark Twain"
+            "144",
+            "124",
+            "132",
+            "154"
         ],
-        "correctAnswer": "William Shakespeare"
+        "correctAnswer": "144"
     },
     {
-        "question": "Which U.S. state is known as the Sunshine State?",
+        "question": "What is the value of π (pi) approximately?",
         "possibleAnswers": [
-            "Florida",
-            "California",
-            "Texas",
-            "Hawaii"
+            "3.14",
+            "2.71",
+            "1.62",
+            "3.41"
         ],
-        "correctAnswer": "Florida"
+        "correctAnswer": "3.14"
     },
     {
-        "question": "What is the square root of 64?",
-        "possibleAnswers": [
-            "7",
-            "6",
-            "9",
-            "8"
-        ],
-        "correctAnswer": "8"
-    },
-    {
-        "question": "Who wrote 'Hamlet'?",
-        "possibleAnswers": [
-            "William Shakespeare",
-            "Jane Austen",
-            "Mark Twain",
-            "Charles Dickens"
-        ],
-        "correctAnswer": "William Shakespeare"
-    },
-    {
-        "question": "What is the square root of 64?",
-        "possibleAnswers": [
-            "7",
-            "9",
-            "8",
-            "6"
-        ],
-        "correctAnswer": "8"
-    },
-    {
-        "question": "What is the fastest land animal?",
-        "possibleAnswers": [
-            "Leopard",
-            "Tiger",
-            "Lion",
-            "Cheetah"
-        ],
-        "correctAnswer": "Cheetah"
-    },
-    {
-        "question": "Which planet has rings?",
-        "possibleAnswers": [
-            "Mercury",
-            "Mars",
-            "Venus",
-            "Saturn"
-        ],
-        "correctAnswer": "Saturn"
-    },
-    {
-        "question": "What is the fastest land animal?",
-        "possibleAnswers": [
-            "Cheetah",
-            "Tiger",
-            "Lion",
-            "Leopard"
-        ],
-        "correctAnswer": "Cheetah"
-    },
-    {
-        "question": "Which planet has rings?",
-        "possibleAnswers": [
-            "Venus",
-            "Mars",
-            "Saturn",
-            "Mercury"
-        ],
-        "correctAnswer": "Saturn"
-    },
-    {
-        "question": "Who wrote 'Hamlet'?",
-        "possibleAnswers": [
-            "William Shakespeare",
-            "Charles Dickens",
-            "Jane Austen",
-            "Mark Twain"
-        ],
-        "correctAnswer": "William Shakespeare"
-    },
-    {
-        "question": "Which planet has rings?",
-        "possibleAnswers": [
-            "Saturn",
-            "Venus",
-            "Mercury",
-            "Mars"
-        ],
-        "correctAnswer": "Saturn"
-    },
-    {
-        "question": "What is the fastest land animal?",
-        "possibleAnswers": [
-            "Tiger",
-            "Cheetah",
-            "Lion",
-            "Leopard"
-        ],
-        "correctAnswer": "Cheetah"
-    },
-    {
-        "question": "Which U.S. state is known as the Sunshine State?",
-        "possibleAnswers": [
-            "Hawaii",
-            "California",
-            "Florida",
-            "Texas"
-        ],
-        "correctAnswer": "Florida"
-    },
-    {
-        "question": "Which U.S. state is known as the Sunshine State?",
-        "possibleAnswers": [
-            "California",
-            "Hawaii",
-            "Florida",
-            "Texas"
-        ],
-        "correctAnswer": "Florida"
-    },
-    {
-        "question": "What is the capital of France?",
-        "possibleAnswers": [
-            "Madrid",
-            "Paris",
-            "Rome",
-            "Berlin"
-        ],
-        "correctAnswer": "Paris"
-    },
-    {
-        "question": "Which U.S. state is known as the Sunshine State?",
-        "possibleAnswers": [
-            "Florida",
-            "Hawaii",
-            "Texas",
-            "California"
-        ],
-        "correctAnswer": "Florida"
-    },
-    {
-        "question": "What is the square root of 64?",
-        "possibleAnswers": [
-            "9",
-            "6",
-            "7",
-            "8"
-        ],
-        "correctAnswer": "8"
-    },
-    {
-        "question": "Who wrote 'Hamlet'?",
-        "possibleAnswers": [
-            "Jane Austen",
-            "Charles Dickens",
-            "Mark Twain",
-            "William Shakespeare"
-        ],
-        "correctAnswer": "William Shakespeare"
-    },
-    {
-        "question": "What is the fastest land animal?",
-        "possibleAnswers": [
-            "Cheetah",
-            "Tiger",
-            "Leopard",
-            "Lion"
-        ],
-        "correctAnswer": "Cheetah"
-    },
-    {
-        "question": "Which U.S. state is known as the Sunshine State?",
-        "possibleAnswers": [
-            "Florida",
-            "Texas",
-            "California",
-            "Hawaii"
-        ],
-        "correctAnswer": "Florida"
-    },
-    {
-        "question": "Who painted the Mona Lisa?",
-        "possibleAnswers": [
-            "Michelangelo",
-            "Leonardo da Vinci",
-            "Raphael",
-            "Van Gogh"
-        ],
-        "correctAnswer": "Leonardo da Vinci"
-    },
-    {
-        "question": "Which planet has rings?",
-        "possibleAnswers": [
-            "Venus",
-            "Mercury",
-            "Mars",
-            "Saturn"
-        ],
-        "correctAnswer": "Saturn"
-    },
-    {
-        "question": "What is the fastest land animal?",
-        "possibleAnswers": [
-            "Leopard",
-            "Tiger",
-            "Cheetah",
-            "Lion"
-        ],
-        "correctAnswer": "Cheetah"
-    },
-    {
-        "question": "Which element has the chemical symbol O?",
-        "possibleAnswers": [
-            "Oganesson",
-            "Gold",
-            "Oxygen",
-            "Osmium"
-        ],
-        "correctAnswer": "Oxygen"
-    },
-    {
-        "question": "What is the fastest land animal?",
-        "possibleAnswers": [
-            "Leopard",
-            "Lion",
-            "Cheetah",
-            "Tiger"
-        ],
-        "correctAnswer": "Cheetah"
-    },
-    {
-        "question": "Which U.S. state is known as the Sunshine State?",
-        "possibleAnswers": [
-            "Florida",
-            "Hawaii",
-            "Texas",
-            "California"
-        ],
-        "correctAnswer": "Florida"
-    },
-    {
-        "question": "Which U.S. state is known as the Sunshine State?",
-        "possibleAnswers": [
-            "Hawaii",
-            "Florida",
-            "Texas",
-            "California"
-        ],
-        "correctAnswer": "Florida"
-    },
-    {
-        "question": "What is the square root of 64?",
+        "question": "What is the square root of 81?",
         "possibleAnswers": [
             "9",
             "8",
             "7",
             "6"
         ],
-        "correctAnswer": "8"
+        "correctAnswer": "9"
     },
     {
-        "question": "Which planet has rings?",
+        "question": "What is 7 + 6?",
         "possibleAnswers": [
-            "Mercury",
-            "Mars",
-            "Venus",
-            "Saturn"
+            "13",
+            "14",
+            "12",
+            "11"
         ],
-        "correctAnswer": "Saturn"
+        "correctAnswer": "13"
     },
     {
-        "question": "Which U.S. state is known as the Sunshine State?",
+        "question": "What is 100 divided by 4?",
         "possibleAnswers": [
-            "Hawaii",
-            "Florida",
-            "Texas",
-            "California"
+            "25",
+            "20",
+            "24",
+            "30"
         ],
-        "correctAnswer": "Florida"
+        "correctAnswer": "25"
     },
     {
-        "question": "Which element has the chemical symbol O?",
+        "question": "What is the next prime number after 7?",
         "possibleAnswers": [
-            "Oxygen",
-            "Oganesson",
-            "Gold",
-            "Osmium"
-        ],
-        "correctAnswer": "Oxygen"
-    },
-    {
-        "question": "What is the capital of France?",
-        "possibleAnswers": [
-            "Paris",
-            "Berlin",
-            "Madrid",
-            "Rome"
-        ],
-        "correctAnswer": "Paris"
-    },
-    {
-        "question": "Who painted the Mona Lisa?",
-        "possibleAnswers": [
-            "Michelangelo",
-            "Leonardo da Vinci",
-            "Raphael",
-            "Van Gogh"
-        ],
-        "correctAnswer": "Leonardo da Vinci"
-    },
-    {
-        "question": "What is the fastest land animal?",
-        "possibleAnswers": [
-            "Lion",
-            "Tiger",
-            "Leopard",
-            "Cheetah"
-        ],
-        "correctAnswer": "Cheetah"
-    },
-    {
-        "question": "What is the capital of France?",
-        "possibleAnswers": [
-            "Madrid",
-            "Berlin",
-            "Paris",
-            "Rome"
-        ],
-        "correctAnswer": "Paris"
-    },
-    {
-        "question": "Which U.S. state is known as the Sunshine State?",
-        "possibleAnswers": [
-            "Texas",
-            "Hawaii",
-            "California",
-            "Florida"
-        ],
-        "correctAnswer": "Florida"
-    },
-    {
-        "question": "What is the fastest land animal?",
-        "possibleAnswers": [
-            "Lion",
-            "Cheetah",
-            "Tiger",
-            "Leopard"
-        ],
-        "correctAnswer": "Cheetah"
-    },
-    {
-        "question": "What is the capital of France?",
-        "possibleAnswers": [
-            "Berlin",
-            "Rome",
-            "Madrid",
-            "Paris"
-        ],
-        "correctAnswer": "Paris"
-    },
-    {
-        "question": "What is the fastest land animal?",
-        "possibleAnswers": [
-            "Lion",
-            "Tiger",
-            "Cheetah",
-            "Leopard"
-        ],
-        "correctAnswer": "Cheetah"
-    },
-    {
-        "question": "Which U.S. state is known as the Sunshine State?",
-        "possibleAnswers": [
-            "Texas",
-            "California",
-            "Florida",
-            "Hawaii"
-        ],
-        "correctAnswer": "Florida"
-    },
-    {
-        "question": "What is the square root of 64?",
-        "possibleAnswers": [
-            "7",
+            "11",
             "9",
-            "6",
-            "8"
+            "13",
+            "15"
         ],
-        "correctAnswer": "8"
+        "correctAnswer": "11"
     },
     {
-        "question": "What is the square root of 64?",
+        "question": "What is 15% of 200?",
         "possibleAnswers": [
-            "9",
-            "7",
-            "6",
-            "8"
+            "30",
+            "25",
+            "35",
+            "20"
         ],
-        "correctAnswer": "8"
+        "correctAnswer": "30"
     },
     {
-        "question": "What is the fastest land animal?",
+        "question": "If x + 3 = 7, what is x?",
         "possibleAnswers": [
-            "Leopard",
-            "Tiger",
-            "Cheetah",
-            "Lion"
-        ],
-        "correctAnswer": "Cheetah"
-    },
-    {
-        "question": "Which U.S. state is known as the Sunshine State?",
-        "possibleAnswers": [
-            "Texas",
-            "Hawaii",
-            "California",
-            "Florida"
-        ],
-        "correctAnswer": "Florida"
-    },
-    {
-        "question": "Which planet has rings?",
-        "possibleAnswers": [
-            "Venus",
-            "Mercury",
-            "Mars",
-            "Saturn"
-        ],
-        "correctAnswer": "Saturn"
-    },
-    {
-        "question": "What is the fastest land animal?",
-        "possibleAnswers": [
-            "Tiger",
-            "Leopard",
-            "Cheetah",
-            "Lion"
-        ],
-        "correctAnswer": "Cheetah"
-    },
-    {
-        "question": "What is the largest planet in our solar system?",
-        "possibleAnswers": [
-            "Mars",
-            "Saturn",
-            "Jupiter",
-            "Earth"
-        ],
-        "correctAnswer": "Jupiter"
-    },
-    {
-        "question": "Which planet has rings?",
-        "possibleAnswers": [
-            "Venus",
-            "Mars",
-            "Mercury",
-            "Saturn"
-        ],
-        "correctAnswer": "Saturn"
-    },
-    {
-        "question": "Which planet has rings?",
-        "possibleAnswers": [
-            "Venus",
-            "Mars",
-            "Saturn",
-            "Mercury"
-        ],
-        "correctAnswer": "Saturn"
-    },
-    {
-        "question": "Which U.S. state is known as the Sunshine State?",
-        "possibleAnswers": [
-            "Hawaii",
-            "California",
-            "Florida",
-            "Texas"
-        ],
-        "correctAnswer": "Florida"
-    },
-    {
-        "question": "What is the largest planet in our solar system?",
-        "possibleAnswers": [
-            "Earth",
-            "Mars",
-            "Jupiter",
-            "Saturn"
-        ],
-        "correctAnswer": "Jupiter"
-    },
-    {
-        "question": "Who painted the Mona Lisa?",
-        "possibleAnswers": [
-            "Michelangelo",
-            "Van Gogh",
-            "Leonardo da Vinci",
-            "Raphael"
-        ],
-        "correctAnswer": "Leonardo da Vinci"
-    },
-    {
-        "question": "What is the fastest land animal?",
-        "possibleAnswers": [
-            "Leopard",
-            "Lion",
-            "Cheetah",
-            "Tiger"
-        ],
-        "correctAnswer": "Cheetah"
-    },
-    {
-        "question": "Which planet has rings?",
-        "possibleAnswers": [
-            "Mercury",
-            "Saturn",
-            "Mars",
-            "Venus"
-        ],
-        "correctAnswer": "Saturn"
-    },
-    {
-        "question": "What is the fastest land animal?",
-        "possibleAnswers": [
-            "Tiger",
-            "Lion",
-            "Cheetah",
-            "Leopard"
-        ],
-        "correctAnswer": "Cheetah"
-    },
-    {
-        "question": "In what year did World War II end?",
-        "possibleAnswers": [
-            "1939",
-            "1963",
-            "1918",
-            "1945"
-        ],
-        "correctAnswer": "1945"
-    },
-    {
-        "question": "Which U.S. state is known as the Sunshine State?",
-        "possibleAnswers": [
-            "Texas",
-            "Florida",
-            "Hawaii",
-            "California"
-        ],
-        "correctAnswer": "Florida"
-    },
-    {
-        "question": "What is the fastest land animal?",
-        "possibleAnswers": [
-            "Lion",
-            "Leopard",
-            "Tiger",
-            "Cheetah"
-        ],
-        "correctAnswer": "Cheetah"
-    },
-    {
-        "question": "What is the fastest land animal?",
-        "possibleAnswers": [
-            "Cheetah",
-            "Lion",
-            "Tiger",
-            "Leopard"
-        ],
-        "correctAnswer": "Cheetah"
-    },
-    {
-        "question": "What is the fastest land animal?",
-        "possibleAnswers": [
-            "Lion",
-            "Tiger",
-            "Leopard",
-            "Cheetah"
-        ],
-        "correctAnswer": "Cheetah"
-    },
-    {
-        "question": "In what year did World War II end?",
-        "possibleAnswers": [
-            "1918",
-            "1939",
-            "1945",
-            "1963"
-        ],
-        "correctAnswer": "1945"
-    },
-    {
-        "question": "Which U.S. state is known as the Sunshine State?",
-        "possibleAnswers": [
-            "California",
-            "Texas",
-            "Florida",
-            "Hawaii"
-        ],
-        "correctAnswer": "Florida"
-    },
-    {
-        "question": "What is the square root of 64?",
-        "possibleAnswers": [
-            "9",
-            "8",
-            "7",
+            "4",
+            "3",
+            "5",
             "6"
         ],
-        "correctAnswer": "8"
+        "correctAnswer": "4"
     },
     {
-        "question": "Which U.S. state is known as the Sunshine State?",
+        "question": "What is the area of a rectangle with length 5 and width 3?",
         "possibleAnswers": [
-            "Florida",
-            "Texas",
-            "Hawaii",
-            "California"
-        ],
-        "correctAnswer": "Florida"
-    },
-    {
-        "question": "Which U.S. state is known as the Sunshine State?",
-        "possibleAnswers": [
-            "Texas",
-            "Hawaii",
-            "Florida",
-            "California"
-        ],
-        "correctAnswer": "Florida"
-    },
-    {
-        "question": "Which U.S. state is known as the Sunshine State?",
-        "possibleAnswers": [
-            "Hawaii",
-            "California",
-            "Florida",
-            "Texas"
-        ],
-        "correctAnswer": "Florida"
-    },
-    {
-        "question": "Who wrote 'Hamlet'?",
-        "possibleAnswers": [
-            "Jane Austen",
-            "William Shakespeare",
-            "Charles Dickens",
-            "Mark Twain"
-        ],
-        "correctAnswer": "William Shakespeare"
-    },
-    {
-        "question": "What is the fastest land animal?",
-        "possibleAnswers": [
-            "Tiger",
-            "Leopard",
-            "Lion",
-            "Cheetah"
-        ],
-        "correctAnswer": "Cheetah"
-    },
-    {
-        "question": "Which planet has rings?",
-        "possibleAnswers": [
-            "Saturn",
-            "Mars",
-            "Mercury",
-            "Venus"
-        ],
-        "correctAnswer": "Saturn"
-    },
-    {
-        "question": "What is the fastest land animal?",
-        "possibleAnswers": [
-            "Tiger",
-            "Cheetah",
-            "Leopard",
-            "Lion"
-        ],
-        "correctAnswer": "Cheetah"
-    },
-    {
-        "question": "Which U.S. state is known as the Sunshine State?",
-        "possibleAnswers": [
-            "California",
-            "Florida",
-            "Hawaii",
-            "Texas"
-        ],
-        "correctAnswer": "Florida"
-    },
-    {
-        "question": "Who wrote 'Hamlet'?",
-        "possibleAnswers": [
-            "William Shakespeare",
-            "Jane Austen",
-            "Charles Dickens",
-            "Mark Twain"
-        ],
-        "correctAnswer": "William Shakespeare"
-    },
-    {
-        "question": "Which U.S. state is known as the Sunshine State?",
-        "possibleAnswers": [
-            "California",
-            "Florida",
-            "Hawaii",
-            "Texas"
-        ],
-        "correctAnswer": "Florida"
-    },
-    {
-        "question": "What is the largest planet in our solar system?",
-        "possibleAnswers": [
-            "Mars",
-            "Jupiter",
-            "Earth",
-            "Saturn"
-        ],
-        "correctAnswer": "Jupiter"
-    },
-    {
-        "question": "Who painted the Mona Lisa?",
-        "possibleAnswers": [
-            "Michelangelo",
-            "Leonardo da Vinci",
-            "Van Gogh",
-            "Raphael"
-        ],
-        "correctAnswer": "Leonardo da Vinci"
-    },
-    {
-        "question": "Which element has the chemical symbol O?",
-        "possibleAnswers": [
-            "Gold",
-            "Oganesson",
-            "Oxygen",
-            "Osmium"
-        ],
-        "correctAnswer": "Oxygen"
-    },
-    {
-        "question": "What is the largest planet in our solar system?",
-        "possibleAnswers": [
-            "Mars",
-            "Earth",
-            "Saturn",
-            "Jupiter"
-        ],
-        "correctAnswer": "Jupiter"
-    },
-    {
-        "question": "What is the fastest land animal?",
-        "possibleAnswers": [
-            "Leopard",
-            "Cheetah",
-            "Lion",
-            "Tiger"
-        ],
-        "correctAnswer": "Cheetah"
-    },
-    {
-        "question": "Which element has the chemical symbol O?",
-        "possibleAnswers": [
-            "Oganesson",
-            "Osmium",
-            "Oxygen",
-            "Gold"
-        ],
-        "correctAnswer": "Oxygen"
-    },
-    {
-        "question": "Who painted the Mona Lisa?",
-        "possibleAnswers": [
-            "Raphael",
-            "Leonardo da Vinci",
-            "Michelangelo",
-            "Van Gogh"
-        ],
-        "correctAnswer": "Leonardo da Vinci"
-    },
-    {
-        "question": "Who painted the Mona Lisa?",
-        "possibleAnswers": [
-            "Raphael",
-            "Michelangelo",
-            "Leonardo da Vinci",
-            "Van Gogh"
-        ],
-        "correctAnswer": "Leonardo da Vinci"
-    },
-    {
-        "question": "Who painted the Mona Lisa?",
-        "possibleAnswers": [
-            "Michelangelo",
-            "Leonardo da Vinci",
-            "Van Gogh",
-            "Raphael"
-        ],
-        "correctAnswer": "Leonardo da Vinci"
-    },
-    {
-        "question": "What is the largest planet in our solar system?",
-        "possibleAnswers": [
-            "Mars",
-            "Earth",
-            "Saturn",
-            "Jupiter"
-        ],
-        "correctAnswer": "Jupiter"
-    },
-    {
-        "question": "Which element has the chemical symbol O?",
-        "possibleAnswers": [
-            "Gold",
-            "Oganesson",
-            "Osmium",
-            "Oxygen"
-        ],
-        "correctAnswer": "Oxygen"
-    },
-    {
-        "question": "What is the capital of France?",
-        "possibleAnswers": [
-            "Madrid",
-            "Paris",
-            "Rome",
-            "Berlin"
-        ],
-        "correctAnswer": "Paris"
-    },
-    {
-        "question": "Which U.S. state is known as the Sunshine State?",
-        "possibleAnswers": [
-            "Hawaii",
-            "California",
-            "Florida",
-            "Texas"
-        ],
-        "correctAnswer": "Florida"
-    },
-    {
-        "question": "Which U.S. state is known as the Sunshine State?",
-        "possibleAnswers": [
-            "Hawaii",
-            "Texas",
-            "California",
-            "Florida"
-        ],
-        "correctAnswer": "Florida"
-    },
-    {
-        "question": "Who painted the Mona Lisa?",
-        "possibleAnswers": [
-            "Raphael",
-            "Leonardo da Vinci",
-            "Van Gogh",
-            "Michelangelo"
-        ],
-        "correctAnswer": "Leonardo da Vinci"
-    },
-    {
-        "question": "Which planet has rings?",
-        "possibleAnswers": [
-            "Mars",
-            "Venus",
-            "Saturn",
-            "Mercury"
-        ],
-        "correctAnswer": "Saturn"
-    },
-    {
-        "question": "Which planet has rings?",
-        "possibleAnswers": [
-            "Saturn",
-            "Venus",
-            "Mars",
-            "Mercury"
-        ],
-        "correctAnswer": "Saturn"
-    },
-    {
-        "question": "What is the capital of France?",
-        "possibleAnswers": [
-            "Paris",
-            "Berlin",
-            "Rome",
-            "Madrid"
-        ],
-        "correctAnswer": "Paris"
-    },
-    {
-        "question": "What is the largest planet in our solar system?",
-        "possibleAnswers": [
-            "Mars",
-            "Saturn",
-            "Jupiter",
-            "Earth"
-        ],
-        "correctAnswer": "Jupiter"
-    },
-    {
-        "question": "What is the square root of 64?",
-        "possibleAnswers": [
+            "15",
             "8",
+            "10",
+            "12"
+        ],
+        "correctAnswer": "15"
+    },
+    {
+        "question": "What is the value of 2^4?",
+        "possibleAnswers": [
+            "16",
+            "8",
+            "12",
+            "14"
+        ],
+        "correctAnswer": "16"
+    },
+    {
+        "question": "What is the factorial of 3 (3!)?",
+        "possibleAnswers": [
+            "6",
+            "9",
+            "3",
+            "12"
+        ],
+        "correctAnswer": "6"
+    },
+    {
+        "question": "What is the sum of the interior angles of a triangle?",
+        "possibleAnswers": [
+            "180 degrees",
+            "90 degrees",
+            "360 degrees",
+            "270 degrees"
+        ],
+        "correctAnswer": "180 degrees"
+    },
+    {
+        "question": "What is the decimal equivalent of 1/4?",
+        "possibleAnswers": [
+            "0.25",
+            "0.5",
+            "0.75",
+            "0.2"
+        ],
+        "correctAnswer": "0.25"
+    },
+    {
+        "question": "What is the perimeter of a square with side length 6?",
+        "possibleAnswers": [
+            "24",
+            "12",
+            "36",
+            "18"
+        ],
+        "correctAnswer": "24"
+    },
+    {
+        "question": "What is the value of 9 squared?",
+        "possibleAnswers": [
+            "81",
+            "72",
+            "90",
+            "99"
+        ],
+        "correctAnswer": "81"
+    },
+    {
+        "question": "What is 0 divided by any non-zero number?",
+        "possibleAnswers": [
+            "0",
+            "Undefined",
+            "1",
+            "Infinity"
+        ],
+        "correctAnswer": "0"
+    },
+    {
+        "question": "Which of these is an irrational number?",
+        "possibleAnswers": [
+            "√2",
+            "1/2",
+            "0.5",
+            "2"
+        ],
+        "correctAnswer": "√2"
+    },
+    {
+        "question": "What is the next number in the sequence: 2, 4, 8, 16, ...?",
+        "possibleAnswers": [
+            "32",
+            "24",
+            "20",
+            "18"
+        ],
+        "correctAnswer": "32"
+    },
+    {
+        "question": "What is the cube root of 27?",
+        "possibleAnswers": [
+            "3",
             "9",
             "6",
-            "7"
+            "27"
         ],
-        "correctAnswer": "8"
+        "correctAnswer": "3"
     },
     {
-        "question": "Which U.S. state is known as the Sunshine State?",
+        "question": "What is the sum of 25 and 75?",
         "possibleAnswers": [
-            "Texas",
-            "Florida",
-            "Hawaii",
-            "California"
+            "100",
+            "90",
+            "110",
+            "95"
         ],
-        "correctAnswer": "Florida"
+        "correctAnswer": "100"
     },
+    //LITERATURE
     {
-        "question": "Which U.S. state is known as the Sunshine State?",
+        "question": "Who wrote 'To Kill a Mockingbird'?",
         "possibleAnswers": [
-            "Texas",
-            "Florida",
-            "California",
-            "Hawaii"
+            "Harper Lee",
+            "Mark Twain",
+            "F. Scott Fitzgerald",
+            "Ernest Hemingway"
         ],
-        "correctAnswer": "Florida"
+        "correctAnswer": "Harper Lee"
     },
     {
-        "question": "What is the largest planet in our solar system?",
+        "question": "Which Shakespeare play features the characters Rosencrantz and Guildenstern?",
         "possibleAnswers": [
-            "Earth",
-            "Saturn",
-            "Mars",
-            "Jupiter"
+            "Hamlet",
+            "Macbeth",
+            "Othello",
+            "King Lear"
         ],
-        "correctAnswer": "Jupiter"
+        "correctAnswer": "Hamlet"
     },
     {
-        "question": "What is the fastest land animal?",
+        "question": "What is the name of the wizarding school in the Harry Potter series?",
         "possibleAnswers": [
-            "Cheetah",
-            "Lion",
-            "Leopard",
-            "Tiger"
+            "Hogwarts",
+            "Beauxbatons",
+            "Durmstrang",
+            "Ilvermorny"
         ],
-        "correctAnswer": "Cheetah"
+        "correctAnswer": "Hogwarts"
     },
     {
-        "question": "What is the fastest land animal?",
+        "question": "Who is the author of '1984'?",
         "possibleAnswers": [
-            "Leopard",
-            "Cheetah",
-            "Tiger",
-            "Lion"
+            "George Orwell",
+            "Aldous Huxley",
+            "Ray Bradbury",
+            "J.D. Salinger"
         ],
-        "correctAnswer": "Cheetah"
+        "correctAnswer": "George Orwell"
     },
     {
-        "question": "What is the capital of France?",
+        "question": "Which novel starts with the line 'Call me Ishmael'?",
         "possibleAnswers": [
-            "Paris",
-            "Rome",
-            "Madrid",
-            "Berlin"
+            "Moby-Dick",
+            "The Great Gatsby",
+            "Pride and Prejudice",
+            "The Catcher in the Rye"
         ],
-        "correctAnswer": "Paris"
+        "correctAnswer": "Moby-Dick"
     },
     {
-        "question": "What is the capital of France?",
+        "question": "Who wrote 'Pride and Prejudice'?",
         "possibleAnswers": [
-            "Berlin",
-            "Paris",
-            "Rome",
-            "Madrid"
+            "Jane Austen",
+            "Charlotte Brontë",
+            "Emily Dickinson",
+            "Mary Shelley"
         ],
-        "correctAnswer": "Paris"
+        "correctAnswer": "Jane Austen"
     },
     {
-        "question": "What is the capital of France?",
+        "question": "What genre is 'The Hobbit'?",
         "possibleAnswers": [
-            "Paris",
-            "Rome",
-            "Madrid",
-            "Berlin"
+            "Fantasy",
+            "Science Fiction",
+            "Mystery",
+            "Historical Fiction"
         ],
-        "correctAnswer": "Paris"
+        "correctAnswer": "Fantasy"
     },
     {
-        "question": "Which U.S. state is known as the Sunshine State?",
+        "question": "Which epic poem was written by Homer?",
         "possibleAnswers": [
-            "Hawaii",
-            "California",
-            "Florida",
-            "Texas"
+            "The Odyssey",
+            "The Iliad",
+            "Beowulf",
+            "Paradise Lost"
         ],
-        "correctAnswer": "Florida"
+        "correctAnswer": "The Odyssey"
     },
     {
-        "question": "Which U.S. state is known as the Sunshine State?",
+        "question": "Who created the detective Sherlock Holmes?",
         "possibleAnswers": [
-            "California",
-            "Texas",
-            "Hawaii",
-            "Florida"
+            "Arthur Conan Doyle",
+            "Agatha Christie",
+            "Edgar Allan Poe",
+            "Raymond Chandler"
         ],
-        "correctAnswer": "Florida"
+        "correctAnswer": "Arthur Conan Doyle"
     },
     {
-        "question": "What is the capital of France?",
+        "question": "What is the name of the author who wrote 'The Chronicles of Narnia'?",
         "possibleAnswers": [
-            "Rome",
-            "Madrid",
-            "Berlin",
-            "Paris"
+            "C.S. Lewis",
+            "J.R.R. Tolkien",
+            "Lewis Carroll",
+            "Roald Dahl"
         ],
-        "correctAnswer": "Paris"
+        "correctAnswer": "C.S. Lewis"
     },
     {
-        "question": "What is the fastest land animal?",
+        "question": "Which author wrote the 'Game of Thrones' book series?",
         "possibleAnswers": [
-            "Lion",
-            "Cheetah",
-            "Leopard",
-            "Tiger"
+            "George R.R. Martin",
+            "J.K. Rowling",
+            "Tolkien",
+            "Brandon Sanderson"
         ],
-        "correctAnswer": "Cheetah"
+        "correctAnswer": "George R.R. Martin"
     },
     {
-        "question": "What is the fastest land animal?",
+        "question": "Who wrote 'The Great Gatsby'?",
         "possibleAnswers": [
-            "Cheetah",
-            "Lion",
-            "Tiger",
-            "Leopard"
+            "F. Scott Fitzgerald",
+            "Ernest Hemingway",
+            "John Steinbeck",
+            "William Faulkner"
         ],
-        "correctAnswer": "Cheetah"
+        "correctAnswer": "F. Scott Fitzgerald"
     },
     {
-        "question": "Which U.S. state is known as the Sunshine State?",
+        "question": "In which book would you find the character Atticus Finch?",
         "possibleAnswers": [
-            "Florida",
-            "California",
-            "Texas",
-            "Hawaii"
+            "To Kill a Mockingbird",
+            "The Catcher in the Rye",
+            "The Grapes of Wrath",
+            "Of Mice and Men"
         ],
-        "correctAnswer": "Florida"
+        "correctAnswer": "To Kill a Mockingbird"
     },
     {
-        "question": "What is the square root of 64?",
+        "question": "Who is the author of 'Frankenstein'?",
         "possibleAnswers": [
-            "9",
-            "8",
-            "7",
-            "6"
+            "Mary Shelley",
+            "Edgar Allan Poe",
+            "Bram Stoker",
+            "H.P. Lovecraft"
         ],
-        "correctAnswer": "8"
+        "correctAnswer": "Mary Shelley"
     },
     {
-        "question": "What is the fastest land animal?",
+        "question": "What literary device involves giving human traits to non-human things?",
         "possibleAnswers": [
-            "Tiger",
-            "Lion",
-            "Cheetah",
-            "Leopard"
+            "Personification",
+            "Metaphor",
+            "Simile",
+            "Alliteration"
         ],
-        "correctAnswer": "Cheetah"
+        "correctAnswer": "Personification"
     },
     {
-        "question": "Which U.S. state is known as the Sunshine State?",
+        "question": "What is the name of the dystopian novel by Ray Bradbury about book burning?",
         "possibleAnswers": [
-            "Hawaii",
-            "Texas",
-            "California",
-            "Florida"
+            "Fahrenheit 451",
+            "Brave New World",
+            "1984",
+            "The Handmaid’s Tale"
         ],
-        "correctAnswer": "Florida"
+        "correctAnswer": "Fahrenheit 451"
     },
     {
-        "question": "Who wrote 'Hamlet'?",
+        "question": "Who wrote 'The Catcher in the Rye'?",
+        "possibleAnswers": [
+            "J.D. Salinger",
+            "Harper Lee",
+            "Mark Twain",
+            "George Orwell"
+        ],
+        "correctAnswer": "J.D. Salinger"
+    },
+    {
+        "question": "Which author is famous for writing 'The Lord of the Rings'?",
+        "possibleAnswers": [
+            "J.R.R. Tolkien",
+            "C.S. Lewis",
+            "George R.R. Martin",
+            "Terry Pratchett"
+        ],
+        "correctAnswer": "J.R.R. Tolkien"
+    },
+    {
+        "question": "What type of poem has 14 lines and is often written in iambic pentameter?",
+        "possibleAnswers": [
+            "Sonnet",
+            "Haiku",
+            "Limerick",
+            "Free Verse"
+        ],
+        "correctAnswer": "Sonnet"
+    },
+    {
+        "question": "Who wrote 'The Adventures of Tom Sawyer'?",
         "possibleAnswers": [
             "Mark Twain",
-            "Charles Dickens",
-            "William Shakespeare",
-            "Jane Austen"
+            "Ernest Hemingway",
+            "John Steinbeck",
+            "F. Scott Fitzgerald"
         ],
-        "correctAnswer": "William Shakespeare"
+        "correctAnswer": "Mark Twain"
+    },
+    //GEOGRAPHY
+    {
+        "question": "What is the longest river in the world?",
+        "possibleAnswers": [
+            "Nile",
+            "Amazon",
+            "Yangtze",
+            "Mississippi"
+        ],
+        "correctAnswer": "Nile"
     },
     {
-        "question": "Which planet has rings?",
+        "question": "Which country has the most natural lakes?",
         "possibleAnswers": [
-            "Venus",
-            "Mars",
-            "Mercury",
-            "Saturn"
+            "Canada",
+            "Russia",
+            "Brazil",
+            "United States"
         ],
-        "correctAnswer": "Saturn"
+        "correctAnswer": "Canada"
     },
     {
-        "question": "Which U.S. state is known as the Sunshine State?",
+        "question": "What is the capital city of New Zealand?",
         "possibleAnswers": [
-            "Texas",
+            "Wellington",
+            "Auckland",
+            "Christchurch",
+            "Hamilton"
+        ],
+        "correctAnswer": "Wellington"
+    },
+    {
+        "question": "Which desert is the largest in the world by area?",
+        "possibleAnswers": [
+            "Antarctic Desert",
+            "Sahara",
+            "Arctic Desert",
+            "Gobi Desert"
+        ],
+        "correctAnswer": "Antarctic Desert"
+    },
+    {
+        "question": "Mount Kilimanjaro is located in which country?",
+        "possibleAnswers": [
+            "Tanzania",
+            "Kenya",
+            "Uganda",
+            "South Africa"
+        ],
+        "correctAnswer": "Tanzania"
+    },
+    {
+        "question": "Which country shares borders with the most other countries?",
+        "possibleAnswers": [
+            "China",
+            "Russia",
+            "Brazil",
+            "Germany"
+        ],
+        "correctAnswer": "China"
+    },
+    {
+        "question": "What is the smallest country in the world by land area?",
+        "possibleAnswers": [
+            "Vatican City",
+            "Monaco",
+            "Nauru",
+            "San Marino"
+        ],
+        "correctAnswer": "Vatican City"
+    },
+    {
+        "question": "Which U.S. state has the most active volcanoes?",
+        "possibleAnswers": [
+            "Alaska",
             "Hawaii",
             "California",
-            "Florida"
+            "Washington"
         ],
-        "correctAnswer": "Florida"
+        "correctAnswer": "Alaska"
     },
     {
-        "question": "What is the capital of France?",
+        "question": "What body of water separates Europe and Africa?",
         "possibleAnswers": [
-            "Madrid",
-            "Berlin",
-            "Rome",
-            "Paris"
+            "Mediterranean Sea",
+            "Red Sea",
+            "Atlantic Ocean",
+            "Black Sea"
         ],
-        "correctAnswer": "Paris"
+        "correctAnswer": "Mediterranean Sea"
     },
     {
-        "question": "What is the square root of 64?",
+        "question": "Which African country has the most pyramids?",
         "possibleAnswers": [
-            "7",
-            "8",
-            "6",
-            "9"
+            "Sudan",
+            "Egypt",
+            "Ethiopia",
+            "Libya"
         ],
-        "correctAnswer": "8"
+        "correctAnswer": "Sudan"
     },
     {
-        "question": "In what year did World War II end?",
+        "question": "What is the capital city of Finland?",
         "possibleAnswers": [
-            "1945",
-            "1963",
-            "1939",
-            "1918"
+            "Helsinki",
+            "Oslo",
+            "Copenhagen",
+            "Stockholm"
         ],
-        "correctAnswer": "1945"
+        "correctAnswer": "Helsinki"
     },
     {
-        "question": "Which planet has rings?",
+        "question": "Which river flows through Paris?",
         "possibleAnswers": [
-            "Saturn",
-            "Mercury",
+            "Seine",
+            "Rhône",
+            "Loire",
+            "Garonne"
+        ],
+        "correctAnswer": "Seine"
+    },
+    {
+        "question": "Which continent has the most countries?",
+        "possibleAnswers": [
+            "Africa",
+            "Asia",
+            "Europe",
+            "South America"
+        ],
+        "correctAnswer": "Africa"
+    },
+    {
+        "question": "What is the highest mountain in North America?",
+        "possibleAnswers": [
+            "Denali",
+            "Mount Logan",
+            "Mount Saint Elias",
+            "Mount Rainier"
+        ],
+        "correctAnswer": "Denali"
+    },
+    {
+        "question": "In which ocean is the Bermuda Triangle located?",
+        "possibleAnswers": [
+            "Atlantic",
+            "Pacific",
+            "Indian",
+            "Arctic"
+        ],
+        "correctAnswer": "Atlantic"
+    },
+    {
+        "question": "What country has the most time zones?",
+        "possibleAnswers": [
+            "France",
+            "Russia",
+            "United States",
+            "China"
+        ],
+        "correctAnswer": "France"
+    },
+    {
+        "question": "Which mountain range separates Europe and Asia?",
+        "possibleAnswers": [
+            "Ural Mountains",
+            "Alps",
+            "Carpathians",
+            "Caucasus"
+        ],
+        "correctAnswer": "Ural Mountains"
+    },
+    {
+        "question": "What is the largest island in the world?",
+        "possibleAnswers": [
+            "Greenland",
+            "New Guinea",
+            "Borneo",
+            "Madagascar"
+        ],
+        "correctAnswer": "Greenland"
+    },
+    {
+        "question": "Which country is known as the Land of the Rising Sun?",
+        "possibleAnswers": [
+            "Japan",
+            "China",
+            "Thailand",
+            "South Korea"
+        ],
+        "correctAnswer": "Japan"
+    },
+    {
+        "question": "Which European country does NOT border the Mediterranean Sea?",
+        "possibleAnswers": [
+            "Austria",
+            "Spain",
+            "Italy",
+            "Croatia"
+        ],
+        "correctAnswer": "Austria"
+    },
+    //SCIENCE
+    {
+        "question": "What is the chemical symbol for gold?",
+        "possibleAnswers": [
+            "Au",
+            "Ag",
+            "Gd",
+            "Pb"
+        ],
+        "correctAnswer": "Au"
+    },
+    {
+        "question": "Which planet has the longest day in our solar system?",
+        "possibleAnswers": [
             "Venus",
-            "Mars"
-        ],
-        "correctAnswer": "Saturn"
-    },
-    {
-        "question": "Which U.S. state is known as the Sunshine State?",
-        "possibleAnswers": [
-            "California",
-            "Texas",
-            "Hawaii",
-            "Florida"
-        ],
-        "correctAnswer": "Florida"
-    },
-    {
-        "question": "What is the largest planet in our solar system?",
-        "possibleAnswers": [
+            "Jupiter",
             "Mars",
-            "Saturn",
-            "Earth",
-            "Jupiter"
+            "Neptune"
         ],
-        "correctAnswer": "Jupiter"
+        "correctAnswer": "Venus"
     },
     {
-        "question": "What is the fastest land animal?",
+        "question": "What part of the cell contains DNA?",
         "possibleAnswers": [
-            "Cheetah",
-            "Leopard",
-            "Lion",
-            "Tiger"
+            "Nucleus",
+            "Cytoplasm",
+            "Mitochondria",
+            "Ribosome"
         ],
-        "correctAnswer": "Cheetah"
+        "correctAnswer": "Nucleus"
     },
     {
-        "question": "What is the fastest land animal?",
+        "question": "What gas do plants absorb from the atmosphere?",
         "possibleAnswers": [
-            "Cheetah",
-            "Tiger",
-            "Lion",
-            "Leopard"
-        ],
-        "correctAnswer": "Cheetah"
-    },
-    {
-        "question": "Who painted the Mona Lisa?",
-        "possibleAnswers": [
-            "Leonardo da Vinci",
-            "Raphael",
-            "Michelangelo",
-            "Van Gogh"
-        ],
-        "correctAnswer": "Leonardo da Vinci"
-    },
-    {
-        "question": "What is the fastest land animal?",
-        "possibleAnswers": [
-            "Lion",
-            "Tiger",
-            "Leopard",
-            "Cheetah"
-        ],
-        "correctAnswer": "Cheetah"
-    },
-    {
-        "question": "Which planet has rings?",
-        "possibleAnswers": [
-            "Mercury",
-            "Saturn",
-            "Mars",
-            "Venus"
-        ],
-        "correctAnswer": "Saturn"
-    },
-    {
-        "question": "Who painted the Mona Lisa?",
-        "possibleAnswers": [
-            "Raphael",
-            "Leonardo da Vinci",
-            "Van Gogh",
-            "Michelangelo"
-        ],
-        "correctAnswer": "Leonardo da Vinci"
-    },
-    {
-        "question": "What is the capital of France?",
-        "possibleAnswers": [
-            "Berlin",
-            "Paris",
-            "Madrid",
-            "Rome"
-        ],
-        "correctAnswer": "Paris"
-    },
-    {
-        "question": "What is the fastest land animal?",
-        "possibleAnswers": [
-            "Cheetah",
-            "Tiger",
-            "Leopard",
-            "Lion"
-        ],
-        "correctAnswer": "Cheetah"
-    },
-    {
-        "question": "What is the capital of France?",
-        "possibleAnswers": [
-            "Rome",
-            "Paris",
-            "Berlin",
-            "Madrid"
-        ],
-        "correctAnswer": "Paris"
-    },
-    {
-        "question": "Which U.S. state is known as the Sunshine State?",
-        "possibleAnswers": [
-            "California",
-            "Texas",
-            "Florida",
-            "Hawaii"
-        ],
-        "correctAnswer": "Florida"
-    },
-    {
-        "question": "Who painted the Mona Lisa?",
-        "possibleAnswers": [
-            "Leonardo da Vinci",
-            "Michelangelo",
-            "Raphael",
-            "Van Gogh"
-        ],
-        "correctAnswer": "Leonardo da Vinci"
-    },
-    {
-        "question": "Which U.S. state is known as the Sunshine State?",
-        "possibleAnswers": [
-            "Hawaii",
-            "Florida",
-            "Texas",
-            "California"
-        ],
-        "correctAnswer": "Florida"
-    },
-    {
-        "question": "Which planet has rings?",
-        "possibleAnswers": [
-            "Saturn",
-            "Venus",
-            "Mercury",
-            "Mars"
-        ],
-        "correctAnswer": "Saturn"
-    },
-    {
-        "question": "Which U.S. state is known as the Sunshine State?",
-        "possibleAnswers": [
-            "California",
-            "Hawaii",
-            "Texas",
-            "Florida"
-        ],
-        "correctAnswer": "Florida"
-    },
-    {
-        "question": "Which planet has rings?",
-        "possibleAnswers": [
-            "Mars",
-            "Saturn",
-            "Venus",
-            "Mercury"
-        ],
-        "correctAnswer": "Saturn"
-    },
-    {
-        "question": "Which element has the chemical symbol O?",
-        "possibleAnswers": [
+            "Carbon Dioxide",
             "Oxygen",
-            "Oganesson",
-            "Osmium",
-            "Gold"
+            "Nitrogen",
+            "Hydrogen"
         ],
-        "correctAnswer": "Oxygen"
+        "correctAnswer": "Carbon Dioxide"
     },
     {
-        "question": "Which U.S. state is known as the Sunshine State?",
+        "question": "What is the powerhouse of the cell?",
         "possibleAnswers": [
-            "Hawaii",
-            "California",
-            "Texas",
-            "Florida"
+            "Mitochondria",
+            "Nucleus",
+            "Golgi apparatus",
+            "Lysosome"
         ],
-        "correctAnswer": "Florida"
+        "correctAnswer": "Mitochondria"
     },
     {
-        "question": "What is the fastest land animal?",
+        "question": "Which element has the atomic number 6?",
         "possibleAnswers": [
-            "Leopard",
-            "Lion",
-            "Cheetah",
-            "Tiger"
+            "Carbon",
+            "Oxygen",
+            "Nitrogen",
+            "Helium"
         ],
-        "correctAnswer": "Cheetah"
+        "correctAnswer": "Carbon"
     },
     {
-        "question": "Which planet has rings?",
+        "question": "Who developed the theory of general relativity?",
         "possibleAnswers": [
-            "Mars",
-            "Venus",
-            "Saturn",
-            "Mercury"
+            "Albert Einstein",
+            "Isaac Newton",
+            "Nikola Tesla",
+            "Marie Curie"
         ],
-        "correctAnswer": "Saturn"
+        "correctAnswer": "Albert Einstein"
+    },
+    {
+        "question": "What is the hardest natural substance on Earth?",
+        "possibleAnswers": [
+            "Diamond",
+            "Quartz",
+            "Obsidian",
+            "Granite"
+        ],
+        "correctAnswer": "Diamond"
+    },
+    {
+        "question": "How many bones are in the adult human body?",
+        "possibleAnswers": [
+            "206",
+            "201",
+            "212",
+            "198"
+        ],
+        "correctAnswer": "206"
+    },
+    {
+        "question": "Which part of the brain controls balance and coordination?",
+        "possibleAnswers": [
+            "Cerebellum",
+            "Medulla",
+            "Cerebrum",
+            "Hypothalamus"
+        ],
+        "correctAnswer": "Cerebellum"
+    },
+    {
+        "question": "What is the most abundant gas in Earth's atmosphere?",
+        "possibleAnswers": [
+            "Nitrogen",
+            "Oxygen",
+            "Carbon Dioxide",
+            "Argon"
+        ],
+        "correctAnswer": "Nitrogen"
+    },
+    {
+        "question": "What type of bond holds water molecules together?",
+        "possibleAnswers": [
+            "Hydrogen bond",
+            "Ionic bond",
+            "Covalent bond",
+            "Metallic bond"
+        ],
+        "correctAnswer": "Hydrogen bond"
+    },
+    {
+        "question": "Which organ filters blood in the human body?",
+        "possibleAnswers": [
+            "Kidney",
+            "Liver",
+            "Heart",
+            "Lungs"
+        ],
+        "correctAnswer": "Kidney"
+    },
+    {
+        "question": "What is Newton's third law of motion?",
+        "possibleAnswers": [
+            "For every action, there is an equal and opposite reaction",
+            "Force equals mass times acceleration",
+            "An object in motion stays in motion",
+            "Energy cannot be created or destroyed"
+        ],
+        "correctAnswer": "For every action, there is an equal and opposite reaction"
+    },
+    {
+        "question": "What is the unit of electrical resistance?",
+        "possibleAnswers": [
+            "Ohm",
+            "Watt",
+            "Ampere",
+            "Volt"
+        ],
+        "correctAnswer": "Ohm"
+    },
+    {
+        "question": "Which particle in an atom has a negative charge?",
+        "possibleAnswers": [
+            "Electron",
+            "Proton",
+            "Neutron",
+            "Photon"
+        ],
+        "correctAnswer": "Electron"
+    },
+    {
+        "question": "Which blood type is known as the universal donor?",
+        "possibleAnswers": [
+            "O negative",
+            "A positive",
+            "B negative",
+            "AB positive"
+        ],
+        "correctAnswer": "O negative"
+    },
+    {
+        "question": "What device is used to measure atmospheric pressure?",
+        "possibleAnswers": [
+            "Barometer",
+            "Thermometer",
+            "Hygrometer",
+            "Anemometer"
+        ],
+        "correctAnswer": "Barometer"
+    },
+    {
+        "question": "What is the main gas found in the Sun?",
+        "possibleAnswers": [
+            "Hydrogen",
+            "Oxygen",
+            "Carbon",
+            "Nitrogen"
+        ],
+        "correctAnswer": "Hydrogen"
+    },
+    {
+        "question": "Which scientist proposed the three laws of planetary motion?",
+        "possibleAnswers": [
+            "Johannes Kepler",
+            "Galileo Galilei",
+            "Isaac Newton",
+            "Nicolaus Copernicus"
+        ],
+        "correctAnswer": "Johannes Kepler"
+    },
+    {
+        "question": "What is the freezing point of water in Fahrenheit?",
+        "possibleAnswers": [
+            "32",
+            "0",
+            "100",
+            "212"
+        ],
+        "correctAnswer": "32"
     }
 ]
+
+
+
+
+
