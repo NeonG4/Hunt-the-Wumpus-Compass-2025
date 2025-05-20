@@ -208,11 +208,12 @@ namespace UI_Class_Library
             Color bgColor = gameColors[map, 0];
             e.Graphics.Clear(bgColor);
             DrawText(e, "Question: blah blah blah", 41, titlePosition, Color.FromArgb(255, 255, 255));
-            Point[] hexagonPoints = HexagonH((int)(width/2.4f), height/10, 10, new Point((int)(width/3.97f), (int)(height/2.1f)));
+            Point[] hexagonPoints = HexagonH((int)(width/2.4f), height/10, (int)(height/27f), new Point((int)(width/3.97f), (int)(height/2.1f)));
             Point[] hexagonPoints1 = HexagonH((int)(width / 2.4f), height / 10, 10, new Point((int)(width / 1.35f), (int)(height / 2.1f)));
             Point[] hexagonPoints2 = HexagonH((int)(width / 2.4f), height / 10, 10, new Point((int)(width / 3.97f), (int)(height / 1.4f)));
             Point[] hexagonPoints3 = HexagonH((int)(width / 2.4f), height / 10, 10, new Point((int)(width / 1.35f), (int)(height / 1.4f)));
             Pen pen = new Pen(Color.FromArgb(255, 255, 255));
+            PointInShape(mouse, hexagonPoints3);
             e.Graphics.DrawPolygon(pen, hexagonPoints);
             e.Graphics.DrawPolygon(pen, hexagonPoints1);
             e.Graphics.DrawPolygon(pen, hexagonPoints2);

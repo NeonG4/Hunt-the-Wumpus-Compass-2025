@@ -99,8 +99,9 @@ namespace Game_Control
                     }
                 case GameState.PlayingGame:
                     {
+
                         triviaCount = 0;
-                        
+
                         // should render the game
                         // should process inputs based on game
                         int pPosition = _playerManager.CurrentRoom;
