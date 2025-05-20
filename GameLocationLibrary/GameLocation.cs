@@ -16,7 +16,7 @@ namespace GameLocationLibrary
         public List<Hazards> hazards = new List<Hazards>();
         public List<Hazards> allSpawnables = new List<Hazards>();
         Random random = new Random();
-        int wumpusspawn = 31;
+        int wumpusroom = 31;
         int playerspawn = 31;
 
         //Method that returns a list of hazards/the room they are located in
@@ -101,10 +101,15 @@ namespace GameLocationLibrary
                 if (tmp)
                 {
                     allSpawnables.Add(newWumpus);
-                    wumpusspawn = wumpusstart;
+                    wumpusroom = wumpusstart;
                     return wumpusstart;
                 }
             }
+        }
+
+        public int GetWumpusRoom()
+        {
+            return wumpusroom;
         }
         //returns a bool array of what hazards are in the current room (wumpus, bats, pit)
         public bool[] CheckForHazard(PlayerManager playerManager)
@@ -178,6 +183,29 @@ namespace GameLocationLibrary
             return hazardChecker;
         }
 
+        public int MoveWumpus(CaveManager caveManager)
+        {
+            //gets an array of adjacent rooms based on the current room of the player
+            int[] adjacentRooms = caveManager.GetAdjacentRooms(wumpusroom);
+            //gets an array of valid directions based on the curernt room of the player
+            bool[] validDirections = caveManager.GetDirectionsBoolArray(wumpusroom);
+            //cycles through the array of adjacent rooms to remove adjacent rooms that aren't valid directoins
+            for (int d = 0; d < adjacentRooms.Length; d++)
+            {
+                //checks if the direction matching the current adjacent room in the array is valid
+                if (validDirections[d] == false)
+                {
+                    //sets the invalid room to a invalid room
+                    adjacentRooms[d] = 31;
+                }
+            }
+            while (wumpusroom == 31)
+            {
+                wumpusroom = adjacentRooms[random.Next(0, 5)];
+            }
+            return wumpusroom;
+        }
+
     }
     public interface IGameLocation
     {
@@ -185,5 +213,7 @@ namespace GameLocationLibrary
         public int SpawnWumpus();
         public bool[] CheckForHazard(PlayerManager playerManager);
         public bool[] CheckForNearbyHazards(PlayerManager playerManager, CaveManager caveManager);
+        public int GetWumpusRoom();
+        public int MoveWumpus(CaveManager caveManager);
     }
 }
