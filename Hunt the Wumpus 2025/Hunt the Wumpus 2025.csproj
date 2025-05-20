@@ -16,6 +16,7 @@
     <None Remove="caveC-validDirections.csv" />
     <None Remove="caveD-validDirections.csv" />
     <None Remove="caveE-validDirections.csv" />
+    <None Remove="TriviaQuestions.json" />
   </ItemGroup>
 
   <ItemGroup>
@@ -40,6 +41,9 @@
     <Content Include="caveE-validDirections.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="TriviaQuestions.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
@@ -50,12 +54,6 @@
     <ProjectReference Include="..\CaveLibrary\CaveLibrary.csproj" />
     <ProjectReference Include="..\Game Control\Game Control.csproj" />
     <ProjectReference Include="..\PlayerLibrary\PlayerLibrary.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="TriviaQuestions.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 
 </Project>
