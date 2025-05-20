@@ -99,7 +99,7 @@ namespace Game_Control
                     }
                 case GameState.PlayingGame:
                     {
-
+                        gameState = GameState.GetTrivia;
                         triviaCount = 0;
 
                         // should render the game
