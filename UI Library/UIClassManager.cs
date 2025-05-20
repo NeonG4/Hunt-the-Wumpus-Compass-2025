@@ -20,13 +20,13 @@ namespace UI_Class_Library
             { // testing map colors
                 Color.FromArgb(7, 20, 40), // background color
                 Color.FromArgb(103, 78, 167), // center color
-                Color.FromArgb(7, 55, 99) // side panel color
+                Color.FromArgb(7, 55, 99), // side panel color
+                Color.FromArgb(50, 50, 50), // background color trivia
+                Color.FromArgb(150, 150, 150), // forecolor trivia highlighted
+                Color.FromArgb(125, 125, 125) // forecolor trivia
+                
             },
-            { // testing map colors
-                Color.FromArgb(50, 50, 50), // background color
-                Color.FromArgb(200, 200, 200), // center color
-                Color.FromArgb(125, 125, 125) // side panel color
-            },
+           
         };
         public UIClassManager()
         {
@@ -207,29 +207,53 @@ namespace UI_Class_Library
         }
         public bool[] RenderTrivia(PaintEventArgs e, string question, string[] trivia)
         {
-            //Renders Trivia Screen, needs lots of work
-            map = 1;
-            Point titlePosition = new Point(width / 2, 100);
-            Color bgColor = gameColors[map, 0];
-            Color forecolor = gameColors[map, 2];
-            e.Graphics.Clear(bgColor);
-            DrawText(e, "Question: " + question, 41, titlePosition, Color.FromArgb(255, 255, 255));
-            Point[] hexagonPoints = HexagonH((int)(width/2.4f), height/10, (int)(height/27f), new Point((int)(width/3.97f), (int)(height/2.1f)));
+
+            Color[] forecolor = [gameColors[map, 3], gameColors[map, 3], gameColors[map, 3], gameColors[map, 3]];
+            Point[] hexagonPoints = HexagonH((int)(width / 2.4f), height / 10, (int)(height / 27f), new Point((int)(width / 3.97f), (int)(height / 2.1f)));
             Point[] hexagonPoints1 = HexagonH((int)(width / 2.4f), height / 10, (int)(height / 27f), new Point((int)(width / 1.35f), (int)(height / 2.1f)));
             Point[] hexagonPoints2 = HexagonH((int)(width / 2.4f), height / 10, (int)(height / 27f), new Point((int)(width / 3.97f), (int)(height / 1.4f)));
             Point[] hexagonPoints3 = HexagonH((int)(width / 2.4f), height / 10, (int)(height / 27f), new Point((int)(width / 1.35f), (int)(height / 1.4f)));
-            Pen pen = new Pen(Color.FromArgb(0, 0, 0), width/300f);
-            Brush brush = new SolidBrush(forecolor);
-            PointInShape(mouse, hexagonPoints3);
+            if (PointInShape(mouse, hexagonPoints3))
+            {
+                forecolor[3] = gameColors[map, 4];
+            }
+            else if (PointInShape(mouse, hexagonPoints2))
+            {
+                forecolor[2] = gameColors[map, 4];
+            }
+            else if (PointInShape(mouse, hexagonPoints1))
+            {
+                forecolor[1] = gameColors[map, 4];
+            }
+            else if (PointInShape(mouse, hexagonPoints))
+            {
+                forecolor[0] = gameColors[map, 4];
+            }
+           
+            //Renders Trivia Screen, needs lots of work
+            map = 0;
+            Point titlePosition = new Point(width / 2, 100);
+            Color bgColor = gameColors[map, 0];
             
+            e.Graphics.Clear(bgColor);
+            DrawText(e, "Question: " + question, 41, titlePosition, Color.FromArgb(255, 255, 255));
+            
+            Pen pen = new Pen(Color.FromArgb(0, 0, 0), width/300f);
+            Brush brush = new SolidBrush(forecolor[0]);
+            Brush brush1 = new SolidBrush(forecolor[1]);
+            Brush brush2 = new SolidBrush(forecolor[2]);
+            Brush brush3= new SolidBrush(forecolor[3]);
             e.Graphics.FillPolygon(brush, hexagonPoints);
-            e.Graphics.FillPolygon(brush, hexagonPoints1);
-            e.Graphics.FillPolygon(brush, hexagonPoints2);
-            e.Graphics.FillPolygon(brush, hexagonPoints3);
+            e.Graphics.FillPolygon(brush1, hexagonPoints1);
+            e.Graphics.FillPolygon(brush2, hexagonPoints2);
+            e.Graphics.FillPolygon(brush3, hexagonPoints3);
             e.Graphics.DrawPolygon(pen, hexagonPoints);
             e.Graphics.DrawPolygon(pen, hexagonPoints1);
             e.Graphics.DrawPolygon(pen, hexagonPoints2);
             e.Graphics.DrawPolygon(pen, hexagonPoints3);
+            
+
+
             return [false];
         }
         private bool PointInShape(Point p, Point[] polygon)
