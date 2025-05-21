@@ -1,5 +1,4 @@
 [
-    //ART
     {
         "question": "Who painted the Mona Lisa?",
         "possibleAnswers": [
@@ -200,7 +199,6 @@
         ],
         "correctAnswer": "Assemblage"
     },
-    //TECHNOLOGY
     {
         "question": "What does CPU stand for?",
         "possibleAnswers": [
@@ -401,7 +399,6 @@
         ],
         "correctAnswer": "Sony"
     },
-    //SPORTS
     {
         "question": "Which country won the FIFA World Cup in 2018?",
         "possibleAnswers": [
@@ -602,7 +599,6 @@
         ],
         "correctAnswer": "Yellow"
     },
-    //HISTORY
     {
         "question": "Who was the first President of the United States?",
         "possibleAnswers": [
@@ -803,7 +799,6 @@
         ],
         "correctAnswer": "Margaret Thatcher"
     },
-    //MUSIC
     {
         "question": "Who composed the score for the movie 'Inception'?",
         "possibleAnswers": [
@@ -1004,7 +999,6 @@
         ],
         "correctAnswer": "Fast and lively"
     },
-    //MOVIES
     {
         "question": "Who directed 'Jaws'?",
         "possibleAnswers": [
@@ -1205,7 +1199,6 @@
         ],
         "correctAnswer": "Forrest Gump"
     },
-    //MATH
     {
         "question": "What is 12 x 12?",
         "possibleAnswers": [
@@ -1406,7 +1399,6 @@
         ],
         "correctAnswer": "100"
     },
-    //LITERATURE
     {
         "question": "Who wrote 'To Kill a Mockingbird'?",
         "possibleAnswers": [
@@ -1607,7 +1599,6 @@
         ],
         "correctAnswer": "Mark Twain"
     },
-    //GEOGRAPHY
     {
         "question": "What is the longest river in the world?",
         "possibleAnswers": [
@@ -1808,7 +1799,6 @@
         ],
         "correctAnswer": "Austria"
     },
-    //SCIENCE
     {
         "question": "What is the chemical symbol for gold?",
         "possibleAnswers": [

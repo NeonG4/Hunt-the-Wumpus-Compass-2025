@@ -1,5 +1,6 @@
 ﻿using System.Drawing;
 using System.Drawing.Text;
+using System.Net.Http.Headers;
 using PlayerLibrary;
 namespace UI_Class_Library
 {
@@ -25,8 +26,48 @@ namespace UI_Class_Library
                 Color.FromArgb(150, 150, 150), // forecolor trivia highlighted
                 Color.FromArgb(125, 125, 125) // forecolor trivia
                 
+            },{ // testing map colors
+                Color.FromArgb(7, 20, 40), // background color
+                Color.FromArgb(103, 78, 167), // center color
+                Color.FromArgb(7, 55, 99), // side panel color
+                Color.FromArgb(50, 50, 50), // background color trivia
+                Color.FromArgb(150, 150, 150), // forecolor trivia highlighted
+                Color.FromArgb(125, 125, 125) // forecolor trivia
+                
+            },{ // testing map colors
+                Color.FromArgb(7, 20, 40), // background color
+                Color.FromArgb(103, 78, 167), // center color
+                Color.FromArgb(7, 55, 99), // side panel color
+                Color.FromArgb(50, 50, 50), // background color trivia
+                Color.FromArgb(150, 150, 150), // forecolor trivia highlighted
+                Color.FromArgb(125, 125, 125) // forecolor trivia
+                
+            },{ // testing map colors
+                Color.FromArgb(7, 20, 40), // background color
+                Color.FromArgb(103, 78, 167), // center color
+                Color.FromArgb(7, 55, 99), // side panel color
+                Color.FromArgb(50, 50, 50), // background color trivia
+                Color.FromArgb(150, 150, 150), // forecolor trivia highlighted
+                Color.FromArgb(125, 125, 125) // forecolor trivia
+                
+            },{ // testing map colors
+                Color.FromArgb(7, 20, 40), // background color
+                Color.FromArgb(103, 78, 167), // center color
+                Color.FromArgb(7, 55, 99), // side panel color
+                Color.FromArgb(50, 50, 50), // background color trivia
+                Color.FromArgb(150, 150, 150), // forecolor trivia highlighted
+                Color.FromArgb(125, 125, 125) // forecolor trivia
+                
+            },{ // testing map colors
+                Color.FromArgb(7, 20, 40), // background color
+                Color.FromArgb(103, 78, 167), // center color
+                Color.FromArgb(7, 55, 99), // side panel color
+                Color.FromArgb(50, 50, 50), // background color trivia
+                Color.FromArgb(150, 150, 150), // forecolor trivia highlighted
+                Color.FromArgb(125, 125, 125) // forecolor trivia
+                
             },
-           
+
         };
         public UIClassManager()
         {
@@ -46,30 +87,65 @@ namespace UI_Class_Library
         public bool[] RenderGame(PaintEventArgs e, bool[] doorsOut, bool[] hazards, PlayerManager player)
         {
             int currentRoom = player.CurrentRoom;
-            map = 0; 
             Color bgColor = gameColors[map, 0];
             Color mainColor = gameColors[map, 1];
             Color sidePanel = gameColors[map, 2];
             e.Graphics.Clear(bgColor);
-            Rectangle rect = new Rectangle((int)(width * (2f / 3f)), 0, (int)(width * (2f / 3f)), height);
+            Rectangle rect = new Rectangle((int)(height), 0, (int)(width-height), height);
             SolidBrush brush = new SolidBrush(sidePanel);
-            e.Graphics.FillRectangle(brush, rect);
+            //e.Graphics.FillRectangle(brush, rect);
             SolidBrush hexagonBrush = new SolidBrush(mainColor);
             int radius = (int)(width * 0.2);
             Point centerHexagonPosition = new Point((int)(width * (1f / 3f)), (int)(height / 2f));
             e.Graphics.FillPolygon(hexagonBrush, HexagonPerfect(radius, centerHexagonPosition));
+            Bitmap bmp = new Bitmap("images/amythystabyss.jpg");
+            switch (map)
+            {
+                case 0:
+                    {
+                        bmp = new Bitmap("images/amythystabyss.jpg");
+                        break;
+                    }
+                case 1:
+                    {
+                        bmp = new Bitmap("images/greengrotto.jpg");
+                        break;
+                    }
+                case 2:
+                    {
+                        bmp = new Bitmap("images/tealtunnel.jpg");
+                        break;
+                    }
+                case 3:
+                    {
+                        bmp = new Bitmap("images/diamonddungeon.jpg");
+                        break;
+                    }
+                case 4:
+                    {
+                        bmp = new Bitmap("images/blackborehole.jpg");
+                        break;
+                    }
+            }
+            e.Graphics.DrawImage(bmp, new Rectangle(1, 1, height, height));
+            bmp.Dispose();
             // render the right panel
             SolidBrush bgBrush = new SolidBrush(Color.FromArgb(238, 238, 238));
-            Rectangle headerRect = new Rectangle((int) (width * (2f/3f) + 20), 20, (int) (width * (1f/3f) - 60), (int) (height * (2f/20f)));
-            Rectangle subHeaderRect = new Rectangle((int)(width * (2f / 3f) + 20), 25 + (int)(height * (2f / 20f)), (int)(width * (1f / 3f) - 60), (int)(height * (1f / 20f)));
-            Rectangle mapPanelRect = new Rectangle((int)(width * (2f / 3f) + 20) + 10 + (int)(width * 2f / 20f), 35 + (int)(height * (3f / 20f)), (int)(width * (1f / 3f) - 60) - (int)(width * 2f / 20f) - 10, (int)(height * 0.3));
-            Rectangle leftMapPanelRect = new Rectangle((int)(width * (2f / 3f) + 20), 35 + (int)(height * (3f / 20f)), (int) (width * 2f/20f), (int) (height * 0.3));
-            Rectangle chatBoxRect = new Rectangle((int)(width * (2f / 3f) + 20), (int) (height * 0.75) - 20, (int)(width * (1f / 3f) - 60), (int)(height * 0.25));
+            float padding = 4f;
+            int paddingPx = (int) (padding * (height / 54f));
+            int widthOfPanel = width - height;
+            int center = height + (int)(widthOfPanel / 2f);
+            RectangleF headerRect = RectangleAt(new Point(center, 200), widthOfPanel - 2 * paddingPx, 100); // for some reason renders offcentered
+            Pen line = new Pen(Color.FromArgb(255, 0, 0));
+            /*Rectangle subHeaderRect = new Rectangle(leftEdge, 25 + (int)(height * (2f / 20f)), widthOfPanel - 2 * paddingPx, (int)(height * (1f / 20f)));
+            Rectangle mapPanelRect = new Rectangle(leftEdge + (int)(widthOfPanel / 3f + paddingPx), 35 + (int)(height * (3f / 20f)), (int)(widthOfPanel * 2f / 3f + padding), (int)(height * 0.3));
+            Rectangle leftMapPanelRect = new Rectangle(leftEdge, 35 + (int)(height * (3f / 20f)), (int)(widthOfPanel / 3f - 2 * paddingPx), (int) (height * 0.3));
+            Rectangle chatBoxRect = new Rectangle(leftEdge, (int) (height * 0.75) - 20, widthOfPanel - 2 * paddingPx, (int)(height * 0.25));*/
             e.Graphics.FillRectangle(bgBrush, headerRect);
-            e.Graphics.FillRectangle(bgBrush, subHeaderRect);
+            /*e.Graphics.FillRectangle(bgBrush, subHeaderRect);
             e.Graphics.FillRectangle(bgBrush, leftMapPanelRect);
             e.Graphics.FillRectangle(bgBrush, mapPanelRect);
-            e.Graphics.FillRectangle(bgBrush, chatBoxRect);
+            e.Graphics.FillRectangle(bgBrush, chatBoxRect);*/
             Size roomSize = new Size(40, 40);
             SolidBrush roomBrush = new SolidBrush(Color.FromArgb(255, 255, 255));
             bool[] doorsClicked = [false, false, false, false, false, false];
@@ -131,8 +207,14 @@ namespace UI_Class_Library
                 Font font = new Font(comfortaaCollection.Families[0], 14);
                 SolidBrush fontBrush = new SolidBrush(Color.FromArgb(((i+1) * 25) + 100, ((i + 1) * 25) + 100, ((i + 1) * 25) + 100));
                 e.Graphics.DrawString(textBox[i], font, fontBrush, new Point(100, i * 30));
+                font.Dispose();
             }
+            e.Graphics.DrawLine(line, new Point(height, 0), new Point(height, height));
             return doorsClicked.Concat<bool>([hazards[0], hazards[1], hazards[2]]).ToArray<bool>();
+        }
+        private RectangleF RectangleAt(Point center, int rWidth, int rHeight)
+        {
+            return new RectangleF((center.X - rWidth / 2f), (center.Y - rHeight / 2f), rWidth, rHeight);
         }
         /// <summary>
         /// Renders the title screen where the user starts
