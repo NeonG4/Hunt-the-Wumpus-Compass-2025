@@ -103,7 +103,8 @@ namespace Game_Control
                     }
                 case GameState.PlayingGame:
                     {
-                        TriState passed = TriState.UseDefault;
+                        
+                       TriState passed = TriState.UseDefault;
                         triviaCount = 0;
                         if (triviaTotalQuestions > 0)
                         {
