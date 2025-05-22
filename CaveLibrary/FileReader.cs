@@ -13,7 +13,17 @@ namespace CaveLibrary
         /// <summary>
         /// Create an instance of the file reader
         /// </summary>
-        public FileReader() { }
+        public FileReader() 
+        {
+            //Read to files
+
+            adjacentRooms = ReadFromFile(FILE_ADJACENT_ROOMS);
+            validDirectionsA = ReadFromFile(FILE_VALID_DIRECTIONS_A);
+            validDirectionsB = ReadFromFile(FILE_VALID_DIRECTIONS_B);
+            validDirectionsC = ReadFromFile(FILE_VALID_DIRECTIONS_C);
+            validDirectionsD = ReadFromFile(FILE_VALID_DIRECTIONS_D);
+            validDirectionsE = ReadFromFile(FILE_VALID_DIRECTIONS_E);
+        }
 
         //File names
 
@@ -29,70 +39,34 @@ namespace CaveLibrary
         /// <summary>
         /// CSV file for rooms adjacent to each room
         /// </summary>
-        public List<int[]> adjacentRooms
-        {
-            get
-            {
-                return ReadFromFile(FILE_ADJACENT_ROOMS);
-            }
-        }
+        public List<int[]> adjacentRooms { get; set; }
 
         //Read from valid directions files
 
         /// <summary>
         /// CSV file for valid directions for each room in cave A
         /// </summary>
-        public List<int[]> validDirectionsA
-        {
-            get
-            {
-                return ReadFromFile(FILE_VALID_DIRECTIONS_A);
-            }
-        }
+        public List<int[]> validDirectionsA { get; set; }
 
         /// <summary>
         /// CSV file for valid directions for each room in cave B
         /// </summary>
-        public List<int[]> validDirectionsB
-        {
-            get
-            {
-                return ReadFromFile(FILE_VALID_DIRECTIONS_B);
-            }
-        }
+        public List<int[]> validDirectionsB { get; set; }
 
         /// <summary>
         /// CSV file for valid directions for each room in cave C
         /// </summary>
-        public List<int[]> validDirectionsC
-        {
-            get
-            {
-                return ReadFromFile(FILE_VALID_DIRECTIONS_C);
-            }
-        }
+        public List<int[]> validDirectionsC { get; set; }
 
         /// <summary>
         /// CSV file for valid directions for each room in cave D
         /// </summary>
-        public List<int[]> validDirectionsD
-        {
-            get
-            {
-                return ReadFromFile(FILE_VALID_DIRECTIONS_D);
-            }
-        }
+        public List<int[]> validDirectionsD { get; set; }
 
         /// <summary>
         /// CSV file for valid directions for each room in cave E
         /// </summary>
-        public List<int[]> validDirectionsE
-        {
-            get
-            {
-                return ReadFromFile(FILE_VALID_DIRECTIONS_E);
-            }
-        }
+        public List<int[]> validDirectionsE { get; set; }
 
         //Method to read a csv file to a List of int arrays
 
