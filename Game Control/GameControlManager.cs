@@ -103,8 +103,8 @@ namespace Game_Control
                     }
                 case GameState.PlayingGame:
                     {
-                        
-                       TriState passed = TriState.UseDefault;
+                        gameState = GameState.GetTrivia;
+                        TriState passed = TriState.UseDefault;
                         triviaCount = 0;
                         if (triviaTotalQuestions > 0)
                         {
@@ -180,10 +180,10 @@ namespace Game_Control
                                 }
                             }
                         }
-                        if (triviaCount == 0)
-                        {
-                            gameState = GameState.PlayingGame;
-                        }
+                      //  if (triviaCount == 0)
+                      //  {
+                        //    gameState = GameState.PlayingGame;
+                        //}
                         break;
                     }
                 case GameState.Died:

@@ -295,22 +295,22 @@ namespace UI_Class_Library
             Point[] hexagonPoints1 = HexagonH((int)(width / 2.4f), height / 10, (int)(height / 27f), new Point((int)(width / 1.35f), (int)(height / 2.1f)));
             Point[] hexagonPoints2 = HexagonH((int)(width / 2.4f), height / 10, (int)(height / 27f), new Point((int)(width / 3.97f), (int)(height / 1.4f)));
             Point[] hexagonPoints3 = HexagonH((int)(width / 2.4f), height / 10, (int)(height / 27f), new Point((int)(width / 1.35f), (int)(height / 1.4f)));
-            if (PointInShape(mouse, hexagonPoints3))
+            Point[][] HexagonArray = { hexagonPoints, hexagonPoints1, hexagonPoints2, hexagonPoints3 };
+            
+            for (int i = 0; i < 4; i++)
             {
-                forecolor[3] = gameColors[map, 4];
+                if (PointInShape(mouse, HexagonArray[i]))
+                {
+                    forecolor[i] = gameColors[map, 4];
+                    if (mouseDown)
+                    {
+
+                        mouseDown = false;
+                    }
+                }
             }
-            else if (PointInShape(mouse, hexagonPoints2))
-            {
-                forecolor[2] = gameColors[map, 4];
-            }
-            else if (PointInShape(mouse, hexagonPoints1))
-            {
-                forecolor[1] = gameColors[map, 4];
-            }
-            else if (PointInShape(mouse, hexagonPoints))
-            {
-                forecolor[0] = gameColors[map, 4];
-            }
+            
+ 
            
             //Renders Trivia Screen, needs lots of work
             map = 0;
