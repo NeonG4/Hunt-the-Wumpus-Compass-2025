@@ -306,6 +306,17 @@ namespace UI_Class_Library
                     {
 
                         mouseDown = false;
+                        bool[] answer = new bool[4];
+                        for (int j = 0; j < 4; j++)
+                        {
+                            if (j == i)
+                                answer[j] = true;
+                            else
+                            {
+                                answer[j] = false;
+                            }
+                        }
+                        return answer;
                     }
                 }
             }
