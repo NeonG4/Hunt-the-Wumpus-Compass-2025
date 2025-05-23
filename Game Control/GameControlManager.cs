@@ -30,6 +30,9 @@ namespace Game_Control
         int triviaCount = 0;
         int triviaCorrect = 0;
         int triviaTotalQuestions = 0;
+        int totalGoldCoins = 100;
+        int moveCount = 0;
+        bool angeredWumpus = false;
         public GameControl()
         {
             gameState = GameState.MainMenu;
@@ -140,6 +143,16 @@ namespace Game_Control
                         {
                             if (moved[i])
                             {
+                                if (angeredWumpus)
+                                {
+                                    _gameLocations.MoveWumpus(_cave);
+                                }
+                                moveCount++;
+                                if (totalGoldCoins > 0)
+                                {
+                                    totalGoldCoins --;
+                                    _playerManager.GoldCoins++;
+                                }
                                 _playerManager.CurrentRoom = _cave.GetNewRoomNumber(pPosition, i);
                             }
                         }
