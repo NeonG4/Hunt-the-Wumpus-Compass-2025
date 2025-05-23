@@ -336,15 +336,15 @@ namespace UI_Class_Library
             
  
            
-            //Renders Trivia Screen, needs lots of work
-            map = 0;
+         
+            
             Point titlePosition = new Point(width / 2, 100);
             Color bgColor = gameColors[map, 0];
             
             e.Graphics.Clear(bgColor);
             
-            DrawText(e, "Question: " + question, height/24, titlePosition, Color.FromArgb(255, 255, 255));
-            
+           
+
             Pen pen = new Pen(Color.FromArgb(0, 0, 0), width/300f);
             Brush brush = new SolidBrush(forecolor[0]);
             Brush brush1 = new SolidBrush(forecolor[1]);
@@ -358,7 +358,11 @@ namespace UI_Class_Library
             e.Graphics.DrawPolygon(pen, hexagonPoints1);
             e.Graphics.DrawPolygon(pen, hexagonPoints2);
             e.Graphics.DrawPolygon(pen, hexagonPoints3);
-            
+            DrawText(e, "Question: " + question, height / 50, titlePosition, Color.FromArgb(255, 255, 255));
+            DrawText(e, trivia[0], height / 50, new Point((int)(width / 3.97f), (int)(height / 2.1f)), Color.FromArgb(255, 255, 255));
+            DrawText(e, trivia[1], height / 50, new Point((int)(width / 1.35f), (int)(height / 2.1f)), Color.FromArgb(255, 255, 255));
+            DrawText(e, trivia[2], height / 50, new Point((int)(width / 3.97f), (int)(height / 1.4f)), Color.FromArgb(255, 255, 255));
+            DrawText(e, trivia[3], height / 50, new Point((int)(width / 1.35f), (int)(height / 1.4f)), Color.FromArgb(255, 255, 255));
 
 
             return [false];

@@ -103,9 +103,14 @@ namespace Game_Control
                     }
                 case GameState.PlayingGame:
                     {
-                       
+                        
+                        int pPosition = _playerManager.CurrentRoom;
+                        bool[] rooms = _cave.GetDirectionsBoolArray(pPosition);
+                        bool[] hazards = _gameLocations.CheckForHazard(_playerManager).Concat<bool>(_gameLocations.CheckForNearbyHazards(_playerManager, _cave)).ToArray<bool>(); 
+                        bool[] moved = _UIClassManager.RenderGame(e, rooms, hazards, _playerManager);
+                        
                         TriState passed = TriState.UseDefault;
-                        triviaCount = 0;
+                        triviaCount = 5;
                         if (triviaTotalQuestions > 0)
                         {
                             // just got back from trivia questions
@@ -114,6 +119,7 @@ namespace Game_Control
                                 if (triviaCorrect > 2)
                                 {
                                     passed = TriState.True;
+                                    _gameLocations.MoveWumpus(_cave);
                                 }
                                 else
                                 {
@@ -127,10 +133,9 @@ namespace Game_Control
                         }
                         // should render the game
                         // should process inputs based on game
-                        int pPosition = _playerManager.CurrentRoom;
-                        bool[] rooms = _cave.GetDirectionsBoolArray(pPosition);
-                        bool[] hazards = _gameLocations.CheckForHazard(_playerManager).Concat<bool>(_gameLocations.CheckForNearbyHazards(_playerManager, _cave)).ToArray<bool>();
-                        bool[] moved = _UIClassManager.RenderGame(e, rooms, hazards, _playerManager);
+                      
+                      
+                       
                         for (int i = 0; i < 6; i++)
                         {
                             if (moved[i])
@@ -147,7 +152,7 @@ namespace Game_Control
                         if (moved[7])
                         {
                             // user encountered bat
-                            throw new Exception("You have hit a bat");
+                            //throw new Exception("You have hit a bat");
                         }
                         if (moved[8])
                         {
@@ -169,6 +174,7 @@ namespace Game_Control
                         bool[] answers = _UIClassManager.RenderTrivia(e, triviaQuestion,triviaAnswers);
                         if (answers.Contains<bool>(true))
                         {
+                            _playerManager.GoldCoins--;
                             triviaCount--; // we want to move to the next question after the current question is answered
                             triviaQuestionIndex++;
                             for (int i = 0; i < triviaAnswers.Length; i++)
@@ -180,11 +186,15 @@ namespace Game_Control
                                 }
                             }
                         }
+                     //   if(_playerManager.GoldCoins == 0)
+                  //     {
+                     //       gameState = GameState.Died;
+                     //   }
                         if (triviaCount == 0)
-                        {
-                            gameState = GameState.PlayingGame;
-                        }
-                        break;
+                     {
+                           gameState = GameState.PlayingGame;
+                                                   }
+                       break;
                     }
                 case GameState.Died:
                     {
