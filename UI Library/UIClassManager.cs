@@ -329,6 +329,7 @@ namespace UI_Class_Library
             Color bgColor = gameColors[map, 0];
             
             e.Graphics.Clear(bgColor);
+            
             DrawText(e, "Question: " + question, height/24, titlePosition, Color.FromArgb(255, 255, 255));
             
             Pen pen = new Pen(Color.FromArgb(0, 0, 0), width/300f);

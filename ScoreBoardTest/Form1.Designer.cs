@@ -48,6 +48,9 @@
             addscore = new Button();
             addscoretobox = new Button();
             textBox1 = new TextBox();
+            label7 = new Label();
+            pictureBox1 = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -222,11 +225,31 @@
             textBox1.Size = new Size(100, 23);
             textBox1.TabIndex = 19;
             // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.BackColor = Color.Transparent;
+            label7.Location = new Point(660, 123);
+            label7.Name = "label7";
+            label7.Size = new Size(38, 15);
+            label7.TabIndex = 20;
+            label7.Text = "label7";
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = Properties.Resources.Screenshot_2025_05_22_150348;
+            pictureBox1.Location = new Point(599, 52);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(189, 185);
+            pictureBox1.TabIndex = 21;
+            pictureBox1.TabStop = false;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label7);
             Controls.Add(textBox1);
             Controls.Add(addscoretobox);
             Controls.Add(addscore);
@@ -247,9 +270,11 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
+            Controls.Add(pictureBox1);
             Name = "Form1";
             Text = "Form1";
             Load += Form1_Load;
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -276,5 +301,7 @@
         private Button addscore;
         private Button addscoretobox;
         private TextBox textBox1;
+        private Label label7;
+        private PictureBox pictureBox1;
     }
 }
