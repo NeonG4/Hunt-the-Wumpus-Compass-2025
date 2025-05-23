@@ -8,9 +8,13 @@ namespace UI_Class_Library
     {
         static float aspectRatio = 16f / 9f;
         public int width, height;
+
+
         public Point mouse = new Point();
         public bool mouseDown = false;
         public bool mouseDownBuffer = false;
+
+
         PrivateFontCollection comfortaaCollection = new PrivateFontCollection();
         List<string> textBox = new List<string>(); // should be capped at 5 items
         int lastMapLocation;
@@ -99,31 +103,37 @@ namespace UI_Class_Library
             Point centerHexagonPosition = new Point((int)(width * (1f / 3f)), (int)(height / 2f));
             e.Graphics.FillPolygon(hexagonBrush, HexagonPerfect(radius, centerHexagonPosition));
             Bitmap bmp = new Bitmap("images/amythystabyss.jpg");
+            string name = "Amethyst Abyss";
             switch (map)
             {
                 case 0:
                     {
                         bmp = new Bitmap("images/amythystabyss.jpg");
+                        name = "Amethyst Abyss";
                         break;
                     }
                 case 1:
                     {
                         bmp = new Bitmap("images/greengrotto.jpg");
+                        name = "Green Grotto";
                         break;
                     }
                 case 2:
                     {
                         bmp = new Bitmap("images/tealtunnel.jpg");
+                        name = "Teal Tunnel";
                         break;
                     }
                 case 3:
                     {
                         bmp = new Bitmap("images/diamonddungeon.jpg");
+                        name = "Diamond Dungeon";
                         break;
                     }
                 case 4:
                     {
                         bmp = new Bitmap("images/blackborehole.jpg");
+                        name = "Black Borehole";
                         break;
                     }
             }
@@ -135,16 +145,20 @@ namespace UI_Class_Library
             int paddingPx = (int) (padding * (height / 54f));
             int widthOfPanel = width - height;
             int center = height + (int)(widthOfPanel / 2f);
-            RectangleF headerRect = RectangleAt(new Point(center, 200), widthOfPanel - 2 * paddingPx, 100); // for some reason renders offcentered
-            Pen line = new Pen(Color.FromArgb(255, 0, 0));
-            /*Rectangle subHeaderRect = new Rectangle(leftEdge, 25 + (int)(height * (2f / 20f)), widthOfPanel - 2 * paddingPx, (int)(height * (1f / 20f)));
-            Rectangle mapPanelRect = new Rectangle(leftEdge + (int)(widthOfPanel / 3f + paddingPx), 35 + (int)(height * (3f / 20f)), (int)(widthOfPanel * 2f / 3f + padding), (int)(height * 0.3));
-            Rectangle leftMapPanelRect = new Rectangle(leftEdge, 35 + (int)(height * (3f / 20f)), (int)(widthOfPanel / 3f - 2 * paddingPx), (int) (height * 0.3));
+
+            Point headerCenter = new Point(center, (int)(height / 16f) + paddingPx);
+            RectangleF headerRect = RectangleAt(headerCenter, widthOfPanel - 2 * paddingPx, (int)((height / 16f * 3) - (paddingPx))); // for some reason renders off centered
+            Point subHeaderCenter = new Point(center, (int)(2.5 * height / 16f + paddingPx));
+            RectangleF subHeaderRect = RectangleAt(subHeaderCenter, widthOfPanel - 2 * paddingPx, (int)((height / 16f * 2) - (paddingPx)));
+            RectangleF mapPanelRect = new Rectangle(height + width/2, (int)(subHeaderCenter.Y + (int)((height / 16f * 2) + (paddingPx)) / 2), widthOfPanel / 3, widthOfPanel / 3);
+            /*Rectangle leftMapPanelRect = new Rectangle(leftEdge, 35 + (int)(height * (3f / 20f)), (int)(widthOfPanel / 3f - 2 * paddingPx), (int) (height * 0.3));
             Rectangle chatBoxRect = new Rectangle(leftEdge, (int) (height * 0.75) - 20, widthOfPanel - 2 * paddingPx, (int)(height * 0.25));*/
             e.Graphics.FillRectangle(bgBrush, headerRect);
-            /*e.Graphics.FillRectangle(bgBrush, subHeaderRect);
-            e.Graphics.FillRectangle(bgBrush, leftMapPanelRect);
+            DrawText(e, name, (int)(height / 23), headerCenter, Color.FromArgb(0, 0, 0));
+            e.Graphics.FillRectangle(bgBrush, subHeaderRect);
+            DrawText(e, "Hunt the Wumpus", (int)(height / 54), subHeaderCenter, Color.FromArgb(0, 0, 0));
             e.Graphics.FillRectangle(bgBrush, mapPanelRect);
+            /*e.Graphics.FillRectangle(bgBrush, leftMapPanelRect);
             e.Graphics.FillRectangle(bgBrush, chatBoxRect);*/
             Size roomSize = new Size(40, 40);
             SolidBrush roomBrush = new SolidBrush(Color.FromArgb(255, 255, 255));
@@ -209,7 +223,6 @@ namespace UI_Class_Library
                 e.Graphics.DrawString(textBox[i], font, fontBrush, new Point(100, i * 30));
                 font.Dispose();
             }
-            e.Graphics.DrawLine(line, new Point(height, 0), new Point(height, height));
             return doorsClicked.Concat<bool>([hazards[0], hazards[1], hazards[2]]).ToArray<bool>();
         }
         private RectangleF RectangleAt(Point center, int rWidth, int rHeight)
