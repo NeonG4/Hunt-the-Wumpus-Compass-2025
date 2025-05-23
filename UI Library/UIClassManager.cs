@@ -145,12 +145,21 @@ namespace UI_Class_Library
             int paddingPx = (int) (padding * (height / 54f));
             int widthOfPanel = width - height;
             int center = height + (int)(widthOfPanel / 2f);
-
             Point headerCenter = new Point(center, (int)(height / 16f) + paddingPx);
+            Point ArrowArea = new Point(center - 70, (int)(height / 1.4));
+            Point CoinArea = new Point(center + 100, (int)(height / 1.4));
+            SolidBrush roomBrush = new SolidBrush(Color.FromArgb(255, 255, 255));
+         
+
             RectangleF headerRect = RectangleAt(headerCenter, widthOfPanel - 2 * paddingPx, (int)((height / 16f * 3) - (paddingPx))); // for some reason renders off centered
             Point subHeaderCenter = new Point(center, (int)(2.5 * height / 16f + paddingPx));
-            RectangleF subHeaderRect = RectangleAt(subHeaderCenter, widthOfPanel - 2 * paddingPx, (int)((height / 16f * 2) - (paddingPx)));
+            RectangleF subHeaderRect = RectangleAt(subHeaderCenter, widthOfPanel - 2 * paddingPx, (int)((height / 16f * 3) - (paddingPx)));
             RectangleF mapPanelRect = new Rectangle(height + width/2, (int)(subHeaderCenter.Y + (int)((height / 16f * 2) + (paddingPx)) / 2), widthOfPanel / 3, widthOfPanel / 3);
+            //create the arrow and gold coins stuff in UI
+            RectangleF ArrowAreaRect = RectangleAt(ArrowArea, (int)(height / 8), (int)((height / 16f * 3) - (paddingPx)));
+            RectangleF CoinBackgroundRect = RectangleAt(CoinArea, (int)(height / 8), (int)((height / 16f * 3) - (paddingPx)));
+            e.Graphics.FillRectangle(roomBrush, CoinBackgroundRect);
+            e.Graphics.FillRectangle(roomBrush, ArrowAreaRect);
             /*Rectangle leftMapPanelRect = new Rectangle(leftEdge, 35 + (int)(height * (3f / 20f)), (int)(widthOfPanel / 3f - 2 * paddingPx), (int) (height * 0.3));
             Rectangle chatBoxRect = new Rectangle(leftEdge, (int) (height * 0.75) - 20, widthOfPanel - 2 * paddingPx, (int)(height * 0.25));*/
             e.Graphics.FillRectangle(bgBrush, headerRect);
@@ -161,7 +170,7 @@ namespace UI_Class_Library
             /*e.Graphics.FillRectangle(bgBrush, leftMapPanelRect);
             e.Graphics.FillRectangle(bgBrush, chatBoxRect);*/
             Size roomSize = new Size(40, 40);
-            SolidBrush roomBrush = new SolidBrush(Color.FromArgb(255, 255, 255));
+           
             bool[] doorsClicked = [false, false, false, false, false, false];
             // render the rooms around the hexagon
             for (int i = 0; i < 6; i++)
@@ -223,6 +232,7 @@ namespace UI_Class_Library
                 e.Graphics.DrawString(textBox[i], font, fontBrush, new Point(100, i * 30));
                 font.Dispose();
             }
+            
             return doorsClicked.Concat<bool>([hazards[0], hazards[1], hazards[2]]).ToArray<bool>();
         }
         private RectangleF RectangleAt(Point center, int rWidth, int rHeight)
@@ -301,8 +311,7 @@ namespace UI_Class_Library
             }
         }
         public bool[] RenderTrivia(PaintEventArgs e, string question, string[] trivia)
-        {
-
+        { 
             Color[] forecolor = [gameColors[map, 3], gameColors[map, 3], gameColors[map, 3], gameColors[map, 3]];
             Point[] hexagonPoints = HexagonH((int)(width / 2.4f), height / 10, (int)(height / 27f), new Point((int)(width / 3.97f), (int)(height / 2.1f)));
             Point[] hexagonPoints1 = HexagonH((int)(width / 2.4f), height / 10, (int)(height / 27f), new Point((int)(width / 1.35f), (int)(height / 2.1f)));
@@ -332,12 +341,7 @@ namespace UI_Class_Library
                         return answer;
                     }
                 }
-            }
-            
- 
-           
-         
-            
+            }  
             Point titlePosition = new Point(width / 2, 100);
             Color bgColor = gameColors[map, 0];
             
