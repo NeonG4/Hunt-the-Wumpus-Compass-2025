@@ -214,6 +214,31 @@ namespace Game_Control
                         // needs to render a game over screen
                         break;
                     }
+                case GameState.GetHighScores:
+                    {
+                        // needs to render highscores
+                        ScoreItem[] scoreData = _scoreboard.GetHighScores().ToArray();
+                        List<string> names = new List<string>();
+                        for (int i = 0; i < scoreData.Length; i++)
+                        {
+                            names.Add(scoreData[i].Name);
+                        }
+                        List<int> scores = new List<int>();
+                        for (int i = 0; i < scoreData.Length; i++)
+                        {
+                            scores.Add(scoreData[i].Score);
+                        }
+                        List<string> caveType = new List<string>();
+                        for (int i = 0; i < scoreData.Length; i++)
+                        {
+                            caveType.Add(scoreData[i].CaveType);
+                        }
+                        if (_UIClassManager.RenderHighScore(e, names.ToArray(), scores.ToArray(), caveType.ToArray()))
+                        {
+                            gameState = GameState.MainMenu;
+                        }
+                        break;
+                    }
             }
         }
     }
@@ -223,6 +248,7 @@ namespace Game_Control
         PlayingGame,
         GetTrivia,
         Died,
+        GetHighScores,
     }
     public interface IGameControl
     {

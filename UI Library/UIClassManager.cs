@@ -367,6 +367,11 @@ namespace UI_Class_Library
 
             return [false];
         }
+        public bool RenderHighScore(PaintEventArgs e, string[] names, int[] scores, string[] maps)
+        {
+            
+            return false;
+        }
         private bool PointInShape(Point p, Point[] polygon)
         {
             // PiP problem
