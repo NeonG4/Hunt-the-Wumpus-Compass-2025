@@ -1,6 +1,8 @@
-﻿using System.Drawing;
+﻿using System.Diagnostics.Eventing.Reader;
+using System.Drawing;
 using System.Drawing.Text;
 using System.Net.Http.Headers;
+using System.Text;
 using PlayerLibrary;
 namespace UI_Class_Library
 {
@@ -90,6 +92,8 @@ namespace UI_Class_Library
         /// <returns>Returns the inputs as well as if you encountered any hazards</returns>
         public bool[] RenderGame(PaintEventArgs e, bool[] doorsOut, bool[] hazards, PlayerManager player)
         {
+            bool[] outputs = [false, false, false, false, false, false, false, false, false];
+
             int currentRoom = player.CurrentRoom;
             Color bgColor = gameColors[map, 0];
             Color mainColor = gameColors[map, 1];
@@ -140,38 +144,65 @@ namespace UI_Class_Library
             e.Graphics.DrawImage(bmp, new Rectangle(1, 1, height, height));
             bmp.Dispose();
             // render the right panel
-            SolidBrush bgBrush = new SolidBrush(Color.FromArgb(238, 238, 238));
-            float padding = 4f;
-            int paddingPx = (int) (padding * (height / 54f));
+            float padding = 2f;
+            int paddingPx = (int)(padding * (height / 54f));
             int widthOfPanel = width - height;
-            int center = height + (int)(widthOfPanel / 2f);
-            Point headerCenter = new Point(center, (int)(height / 16f) + paddingPx);
-            Point ArrowArea = new Point(center - 70, (int)(height / 1.4));
-            Point CoinArea = new Point(center + 100, (int)(height / 1.4));
-            SolidBrush roomBrush = new SolidBrush(Color.FromArgb(255, 255, 255));
-         
+            Point topLeft = new Point(height, 0);
 
-            RectangleF headerRect = RectangleAt(headerCenter, widthOfPanel - 2 * paddingPx, (int)((height / 16f * 3) - (paddingPx))); // for some reason renders off centered
-            Point subHeaderCenter = new Point(center, (int)(2.5 * height / 16f + paddingPx));
-            RectangleF subHeaderRect = RectangleAt(subHeaderCenter, widthOfPanel - 2 * paddingPx, (int)((height / 16f * 3) - (paddingPx)));
-            RectangleF mapPanelRect = new Rectangle(height + width/2, (int)(subHeaderCenter.Y + (int)((height / 16f * 2) + (paddingPx)) / 2), widthOfPanel / 3, widthOfPanel / 3);
-            //create the arrow and gold coins stuff in UI
-            RectangleF ArrowAreaRect = RectangleAt(ArrowArea, (int)(height / 8), (int)((height / 16f * 3) - (paddingPx)));
-            RectangleF CoinBackgroundRect = RectangleAt(CoinArea, (int)(height / 8), (int)((height / 16f * 3) - (paddingPx)));
-            e.Graphics.FillRectangle(roomBrush, CoinBackgroundRect);
-            e.Graphics.FillRectangle(roomBrush, ArrowAreaRect);
-            /*Rectangle leftMapPanelRect = new Rectangle(leftEdge, 35 + (int)(height * (3f / 20f)), (int)(widthOfPanel / 3f - 2 * paddingPx), (int) (height * 0.3));
-            Rectangle chatBoxRect = new Rectangle(leftEdge, (int) (height * 0.75) - 20, widthOfPanel - 2 * paddingPx, (int)(height * 0.25));*/
-            e.Graphics.FillRectangle(bgBrush, headerRect);
+            RectangleF header = new RectangleF(topLeft.X + paddingPx, topLeft.Y + paddingPx, widthOfPanel - (2 * paddingPx), height / 5f);
+            e.Graphics.FillRectangle(new SolidBrush(gameColors[map, 4]), header);
+
+            RectangleF shootArrow = new RectangleF(topLeft.X + paddingPx, header.Y + header.Height + padding, (widthOfPanel - (paddingPx * 2)) / 4f, (widthOfPanel - (paddingPx * 2)) / 4f);
+            RectangleF coinCounter = new RectangleF(topLeft.X + (width - height) / 2f - (shootArrow.Width / 2f), header.Y + header.Height + padding, shootArrow.Width, shootArrow.Height);
+            RectangleF lastBox = new RectangleF(width - paddingPx - shootArrow.Width, header.Y + header.Height + padding, shootArrow.Width, shootArrow.Height);
+            if (shootArrow.Contains(mouse))
+            {
+                e.Graphics.FillRectangle(new SolidBrush(gameColors[map, 5]), shootArrow);
+                if (mouseDown)
+                {
+                    mouseDown = false;
+                    outputs[6] = true;
+                }
+            }
+            else
+            {
+                e.Graphics.FillRectangle(new SolidBrush(gameColors[map, 4]), shootArrow);
+            }
+            if (coinCounter.Contains(mouse))
+            {
+                e.Graphics.FillRectangle(new SolidBrush(gameColors[map, 5]), coinCounter);
+                if (mouseDown)
+                {
+                    mouseDown = false;
+                    outputs[7] = true;
+                }
+            }
+            else
+            {
+                e.Graphics.FillRectangle(new SolidBrush(gameColors[map, 4]), coinCounter);
+            }
+            if (lastBox.Contains(mouse))
+            {
+                e.Graphics.FillRectangle(new SolidBrush(gameColors[map, 5]), lastBox);
+                if (mouseDown)
+                {
+                    mouseDown = false;
+                    outputs[8] = true;
+                }
+            }
+            else
+            {
+                e.Graphics.FillRectangle(new SolidBrush(gameColors[map, 4]), lastBox);
+            }
+            
+
+            Point headerCenter = new Point(height + (int)(widthOfPanel / 2f), (int)(height / 16f) + paddingPx);
             DrawText(e, name, (int)(height / 23), headerCenter, Color.FromArgb(0, 0, 0));
-            e.Graphics.FillRectangle(bgBrush, subHeaderRect);
-            DrawText(e, "Hunt the Wumpus", (int)(height / 54), subHeaderCenter, Color.FromArgb(0, 0, 0));
-            e.Graphics.FillRectangle(bgBrush, mapPanelRect);
-            /*e.Graphics.FillRectangle(bgBrush, leftMapPanelRect);
-            e.Graphics.FillRectangle(bgBrush, chatBoxRect);*/
-            Size roomSize = new Size(40, 40);
+            DrawText(e, "Hunt the Wumpus", (int)(height / 54), new Point(headerCenter.X, (int)(headerCenter.Y + (height / 10f))), Color.FromArgb(0, 0, 0));
            
-            bool[] doorsClicked = [false, false, false, false, false, false];
+            // doorway rendering
+            Size roomSize = new Size(40, 40);
+            Brush roomBrush = new SolidBrush(Color.FromArgb(218, 218, 218));
             // render the rooms around the hexagon
             for (int i = 0; i < 6; i++)
             {
@@ -182,7 +213,7 @@ namespace UI_Class_Library
                     float distance = (float)Math.Sqrt((mouse.X - (rectRoom.X + 20)) * (mouse.X - (rectRoom.X + 20)) + (mouse.Y - (rectRoom.Y + 20)) * (mouse.Y - (rectRoom.Y + 20)));
                     if (distance < 20 && mouseDown)
                     {
-                        doorsClicked[i] = true;
+                        outputs[i] = true;
                         mouseDown = false;
                     }
                 }
@@ -233,7 +264,7 @@ namespace UI_Class_Library
                 font.Dispose();
             }
             
-            return doorsClicked.Concat<bool>([hazards[0], hazards[1], hazards[2]]).ToArray<bool>();
+            return outputs.Concat<bool>([hazards[0], hazards[1], hazards[2]]).ToArray<bool>();
         }
         private RectangleF RectangleAt(Point center, int rWidth, int rHeight)
         {
@@ -529,12 +560,32 @@ namespace UI_Class_Library
             }
             mouseDownBuffer = clicked; // from the last frame
         }
+        /// <summary>
+        /// Renders the death screen
+        /// </summary>
+        /// <param name="e"></param>
+        /// <returns>Playing again</returns>
+        public bool RenderDeath(PaintEventArgs e)
+        {
+            return false;
+        }
+        /// <summary>
+        /// Renders the high scores
+        /// </summary>
+        /// <param name="e"></param>
+        /// <returns>Returns to leave to main menu</returns>
+        public bool RenderHighscores(PaintEventArgs e, string[] names, string[] maps, string[] scores)
+        {
+            return false;
+        }
     }
     public interface IUIClassManager
     {
         public bool[] RenderGame(PaintEventArgs e, bool[] doorsOut, bool[] hazards, PlayerManager player);
         public void RenderMainMenu(PaintEventArgs e);
         public bool[] RenderTrivia(PaintEventArgs e, string question, string[] trivia);
+        public bool RenderDeath(PaintEventArgs e);
+        public bool RenderHighscores(PaintEventArgs e, string[] names, string[] maps, string[] scores);
         public bool[] GetInputs(); // returns an array of binary values, 0 if pressed, 1 if 0. Changes depending on scene
         public void UpdateScreenSize(int width, int height);
         public void UpdateMousePosition(Point mouse);
