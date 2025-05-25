@@ -153,8 +153,8 @@ namespace UI_Class_Library
             e.Graphics.FillRectangle(new SolidBrush(gameColors[map, 4]), header);
 
             RectangleF shootArrow = new RectangleF(topLeft.X + paddingPx, header.Y + header.Height + padding, (widthOfPanel - (paddingPx * 2)) / 4f, (widthOfPanel - (paddingPx * 2)) / 4f);
-            RectangleF coinCounter = new RectangleF(topLeft.X + (width - height) / 2f - (shootArrow.Width / 2f), header.Y + header.Height + padding, shootArrow.Width, shootArrow.Height);
-            RectangleF lastBox = new RectangleF(width - paddingPx - shootArrow.Width, header.Y + header.Height + padding, shootArrow.Width, shootArrow.Height);
+            RectangleF buyArrow = new RectangleF(topLeft.X + (width - height) / 2f - (shootArrow.Width / 2f), header.Y + header.Height + padding, shootArrow.Width, shootArrow.Height);
+            RectangleF buySecret = new RectangleF(width - paddingPx - shootArrow.Width, header.Y + header.Height + padding, shootArrow.Width, shootArrow.Height);
             if (shootArrow.Contains(mouse))
             {
                 e.Graphics.FillRectangle(new SolidBrush(gameColors[map, 5]), shootArrow);
@@ -168,9 +168,9 @@ namespace UI_Class_Library
             {
                 e.Graphics.FillRectangle(new SolidBrush(gameColors[map, 4]), shootArrow);
             }
-            if (coinCounter.Contains(mouse))
+            if (buyArrow.Contains(mouse))
             {
-                e.Graphics.FillRectangle(new SolidBrush(gameColors[map, 5]), coinCounter);
+                e.Graphics.FillRectangle(new SolidBrush(gameColors[map, 5]), buyArrow);
                 if (mouseDown)
                 {
                     mouseDown = false;
@@ -179,11 +179,11 @@ namespace UI_Class_Library
             }
             else
             {
-                e.Graphics.FillRectangle(new SolidBrush(gameColors[map, 4]), coinCounter);
+                e.Graphics.FillRectangle(new SolidBrush(gameColors[map, 4]), buyArrow);
             }
-            if (lastBox.Contains(mouse))
+            if (buySecret.Contains(mouse))
             {
-                e.Graphics.FillRectangle(new SolidBrush(gameColors[map, 5]), lastBox);
+                e.Graphics.FillRectangle(new SolidBrush(gameColors[map, 5]), buySecret);
                 if (mouseDown)
                 {
                     mouseDown = false;
@@ -192,7 +192,7 @@ namespace UI_Class_Library
             }
             else
             {
-                e.Graphics.FillRectangle(new SolidBrush(gameColors[map, 4]), lastBox);
+                e.Graphics.FillRectangle(new SolidBrush(gameColors[map, 4]), buySecret);
             }
             
 

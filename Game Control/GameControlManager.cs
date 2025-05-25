@@ -33,6 +33,8 @@ namespace Game_Control
         int totalGoldCoins = 100;
         int moveCount = 0;
         bool angeredWumpus = false;
+        bool arrowNocked = false;
+        TriviaState triviaState = TriviaState.Wumpus;
         public GameControl()
         {
             gameState = GameState.MainMenu;
@@ -110,38 +112,53 @@ namespace Game_Control
                         int pPosition = _playerManager.CurrentRoom;
                         bool[] rooms = _cave.GetDirectionsBoolArray(pPosition);
                         bool[] hazards = _gameLocations.CheckForHazard(_playerManager).Concat<bool>(_gameLocations.CheckForNearbyHazards(_playerManager, _cave)).ToArray<bool>(); 
-                        bool[] moved = _UIClassManager.RenderGame(e, rooms, hazards, _playerManager);
+                        bool[] outputs = _UIClassManager.RenderGame(e, rooms, hazards, _playerManager);
                         
-                        TriState passed = TriState.UseDefault;
-                        triviaCount = 5;
-                        if (triviaTotalQuestions > 0)
+                        if (triviaState != TriviaState.Empty)
                         {
                             // just got back from trivia questions
-                            if (triviaTotalQuestions == 5)
+                            if (triviaState == TriviaState.Wumpus)
                             {
                                 if (triviaCorrect > 2)
                                 {
-                                    passed = TriState.True;
                                     _gameLocations.MoveWumpus(_cave);
                                 }
                                 else
                                 {
-                                    passed = TriState.False;
+                                    gameState = GameState.Died;
+                                }
+                                
+                            }
+                            else if (triviaState == TriviaState.BuyingSecret)
+                            {
+                                if (triviaCorrect > 1)
+                                {
+                                    // buy a secret
+                                }
+                                else
+                                {
+                                    // don't buy a secret
+                                }
+                            }
+                            else if (triviaState == TriviaState.BuyingArrow)
+                            {
+                                if (triviaCorrect > 1)
+                                {
+                                    // buy an arrow
+                                }
+                                else
+                                {
+                                    // don't buy an arrow
                                 }
                             }
                         }
-                        if (passed == TriState.False)
-                        {
-                            gameState = GameState.Died;
-                        }
+                        triviaState = TriviaState.Empty;
+                        
                         // should render the game
                         // should process inputs based on game
-                      
-                      
-                       
                         for (int i = 0; i < 6; i++)
                         {
-                            if (moved[i])
+                            if (outputs[i])
                             {
                                 if (angeredWumpus)
                                 {
@@ -156,18 +173,42 @@ namespace Game_Control
                                 _playerManager.CurrentRoom = _cave.GetNewRoomNumber(pPosition, i);
                             }
                         }
-                        if (moved[6])
+                        if (outputs[6])
+                        {
+                            // shoot arrow
+                            if (_playerManager.Arrows > 0)
+                            {
+                                arrowNocked = true;
+                            }
+                        }
+                        if (outputs[7])
+                        {
+                            // buy arrow
+                            // buy arrow with 2/3 trivia questions answered correctly
+                            triviaState = TriviaState.BuyingArrow;
+                            gameState = GameState.GetTrivia;
+                        }
+                        if (outputs[8])
+                        {
+                            // buy secret
+                            // buy secret with 2/3 trivia questions answered correctly
+                            // secrets are things like where the bat is, pit is, if the wumpus is nearby, or the answer to a trivia question already asked
+                            triviaState = TriviaState.BuyingSecret;
+                            gameState = GameState.GetTrivia;
+                        }
+                        if (outputs[9])
                         {
                             // user encountered wumpus, ask 5 questions, and make sure that at least 3 are correct
                             // throw new Exception("You have hit the wumpus");
+                            triviaState = TriviaState.Wumpus;
                             gameState = GameState.GetTrivia;
                         }
-                        if (moved[7])
+                        if (outputs[10])
                         {
                             // user encountered bat
                             //throw new Exception("You have hit a bat");
                         }
-                        if (moved[8])
+                        if (outputs[11])
                         {
                             // user encountered pit
                             // throw new Exception("You have hit a pit");
@@ -199,14 +240,10 @@ namespace Game_Control
                                 }
                             }
                         }
-                     //   if(_playerManager.GoldCoins == 0)
-                  //     {
-                     //       gameState = GameState.Died;
-                     //   }
                         if (triviaCount == 0)
-                     {
-                           gameState = GameState.PlayingGame;
-                                                   }
+                        {
+                            gameState = GameState.PlayingGame;
+                        }
                        break;
                     }
                 case GameState.Died:
@@ -249,6 +286,13 @@ namespace Game_Control
         GetTrivia,
         Died,
         GetHighScores,
+    }
+    public enum TriviaState
+    {
+        Empty,
+        Wumpus,
+        BuyingArrow,
+        BuyingSecret,
     }
     public interface IGameControl
     {
