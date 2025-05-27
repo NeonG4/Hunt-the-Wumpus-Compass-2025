@@ -53,7 +53,12 @@
   <ItemGroup>
     <ProjectReference Include="..\CaveLibrary\CaveLibrary.csproj" />
     <ProjectReference Include="..\Game Control\Game Control.csproj" />
+    <ProjectReference Include="..\GameLocationLibrary\GameLocationLibrary.csproj" />
     <ProjectReference Include="..\PlayerLibrary\PlayerLibrary.csproj" />
+    <ProjectReference Include="..\ScoreBoard\ScoreBoard.csproj" />
+    <ProjectReference Include="..\SoundLibrary\SoundLibrary.csproj" />
+    <ProjectReference Include="..\Trivia\Trivia.csproj" />
+    <ProjectReference Include="..\UI Library\UI Library.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -72,6 +77,10 @@
     <None Update="images\tealtunnel.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="sounds\" />
   </ItemGroup>
 
 </Project>

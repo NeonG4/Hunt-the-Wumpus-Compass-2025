@@ -7,8 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hunt the Wumpus 2025", "Hun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Game Control", "Game Control\Game Control.csproj", "{9EB210B0-468F-4B63-998B-D64AA9DF0FE4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScoreBoardLibrary", "ScoreBoardLibrary\ScoreBoardLibrary.csproj", "{BAFE85AD-9746-4F73-AC6D-C3BBA85666D3}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameLocationLibrary", "GameLocationLibrary\GameLocationLibrary.csproj", "{36AA9498-D9A2-4023-8EB7-68A261F2D03F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI Library", "UI Library\UI Library.csproj", "{2F18627D-2BBD-4267-A3DB-B4586117E06E}"
@@ -27,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScoreBoard", "ScoreBoard\Sc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScoreBoardTest", "ScoreBoardTest\ScoreBoardTest.csproj", "{24071EB8-62CF-4F60-866D-4F643DDBE60F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoundLibrary", "SoundLibrary\SoundLibrary.csproj", "{086A2898-2180-451B-B550-E5543659ACE7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,10 +41,6 @@ Global
 		{9EB210B0-468F-4B63-998B-D64AA9DF0FE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9EB210B0-468F-4B63-998B-D64AA9DF0FE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9EB210B0-468F-4B63-998B-D64AA9DF0FE4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BAFE85AD-9746-4F73-AC6D-C3BBA85666D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BAFE85AD-9746-4F73-AC6D-C3BBA85666D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BAFE85AD-9746-4F73-AC6D-C3BBA85666D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BAFE85AD-9746-4F73-AC6D-C3BBA85666D3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{36AA9498-D9A2-4023-8EB7-68A261F2D03F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{36AA9498-D9A2-4023-8EB7-68A261F2D03F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{36AA9498-D9A2-4023-8EB7-68A261F2D03F}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -81,6 +77,10 @@ Global
 		{24071EB8-62CF-4F60-866D-4F643DDBE60F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{24071EB8-62CF-4F60-866D-4F643DDBE60F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{24071EB8-62CF-4F60-866D-4F643DDBE60F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{086A2898-2180-451B-B550-E5543659ACE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{086A2898-2180-451B-B550-E5543659ACE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{086A2898-2180-451B-B550-E5543659ACE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{086A2898-2180-451B-B550-E5543659ACE7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
