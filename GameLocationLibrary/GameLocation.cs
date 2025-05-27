@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -30,6 +31,32 @@ namespace GameLocationLibrary
             SpawnPlayer();
         }
         //Adds a new hazard of a specified type
+        
+        public int EncounterBat(PlayerManager playerManager)
+        {
+            int hazardIndex = -1;
+            for (int i = 0; i < hazards.Count; i++)
+            {
+                if (playerManager.CurrentRoom == hazards[i].room)
+                {
+                    hazardIndex = i;
+                    i = hazards.Count();
+                }
+            }
+            hazards.RemoveAt(hazardIndex);
+            for (int j = 0; j < allSpawnables.Count; j++)
+            {
+                if (playerManager.CurrentRoom == allSpawnables[j].room)
+                {
+                    hazardIndex = j;
+                    j = allSpawnables.Count();
+                }
+            }
+            allSpawnables.RemoveAt(hazardIndex);
+            AddHazard("Bats");
+            return SpawnPlayer();
+        }
+
         public void AddHazard(string hazard)
         {
             while (true)
@@ -63,7 +90,6 @@ namespace GameLocationLibrary
             {
                 int playerstart = random.Next(0, 30);
                 //Generates a random integer that represents a random room 
-                Hazards newPlayer = new Hazards("Player", playerstart);
                 bool tmp = true;
                 //Cycles through the list of hazards/wumpus until the random room is a unique value
                 for (int i = 0; i < allSpawnables.Count; i++)
@@ -215,5 +241,6 @@ namespace GameLocationLibrary
         public bool[] CheckForNearbyHazards(PlayerManager playerManager, CaveManager caveManager);
         public int GetWumpusRoom();
         public int MoveWumpus(CaveManager caveManager);
+        public int EncounterBat(PlayerManager playerManager);
     }
 }
