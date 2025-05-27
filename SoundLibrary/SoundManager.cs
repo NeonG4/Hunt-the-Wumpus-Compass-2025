@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -10,19 +11,26 @@ namespace SoundLibrary
 {
     public class SoundManager : ISoundManager
     {
+        SoundPlayer music = new SoundPlayer();
         public void StartSound(string soundName)
         {
-            throw new NotImplementedException();
+            SoundPlayer sound = new SoundPlayer($"{soundName}");
+            sound.Play();
         }
-
+        public void StartMusic(string soundName)
+        {
+            music = new SoundPlayer(soundName);
+            music.Play();
+        }
         public void StopAllSounds()
         {
-            throw new NotImplementedException();
+            music.Stop();
         }
     }
     public interface ISoundManager
     {
         public void StartSound(string soundName);
         public void StopAllSounds();
+        public void StartMusic(string soundName);
     }
 }
