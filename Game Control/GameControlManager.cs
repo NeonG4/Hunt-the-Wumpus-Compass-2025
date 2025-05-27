@@ -106,7 +106,7 @@ namespace Game_Control
                     }
                 case GameState.PlayingGame:
                     {
-                        
+                       // gameState = GameState.GetHighScores;
                         int pPosition = _playerManager.CurrentRoom;
                         bool[] rooms = _cave.GetDirectionsBoolArray(pPosition);
                         bool[] hazards = _gameLocations.CheckForHazard(_playerManager).Concat<bool>(_gameLocations.CheckForNearbyHazards(_playerManager, _cave)).ToArray<bool>(); 
@@ -216,8 +216,9 @@ namespace Game_Control
                     }
                 case GameState.GetHighScores:
                     {
-                        // needs to render highscores
-                        ScoreItem[] scoreData = _scoreboard.GetHighScores().ToArray();
+                      
+                       // needs to render highscores
+                       ScoreItem[] scoreData = _scoreboard.GetHighScores().ToArray();
                         List<string> names = new List<string>();
                         for (int i = 0; i < scoreData.Length; i++)
                         {
