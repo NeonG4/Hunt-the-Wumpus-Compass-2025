@@ -7,9 +7,9 @@ using CaveLibrary;
 using GameLocationLibrary;
 using PlayerLibrary;
 using UI_Class_Library;
-using ScoreBoardLibrary;
 using System.Windows.Forms;
 using System.Media;
+using ScoreBoard;
 using Hunt_the_Wumpus_2025;
 using System.Diagnostics.Contracts;
 using Microsoft.VisualBasic;
@@ -217,7 +217,7 @@ namespace Game_Control
                 case GameState.GetHighScores:
                     {
                         // needs to render highscores
-                        ScoreItem[] scoreData = _scoreboard.GetHighScores().ToArray();
+                        ScoreItem[] scoreData = _scoreboard.GetList().ToArray();
                         List<string> names = new List<string>();
                         for (int i = 0; i < scoreData.Length; i++)
                         {
