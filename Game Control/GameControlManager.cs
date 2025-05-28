@@ -35,29 +35,19 @@ namespace Game_Control
         bool angeredWumpus = false;
         bool arrowNocked = false;
         TriviaState triviaState = TriviaState.Empty;
-        public GameControl()
+        public GameControl() 
         {
-            gameState = GameState.MainMenu;
-             _gameLocations = new GameLocation(); // randomly generated positions
-            _scoreboard = new Scoreboard();
             _UIClassManager = new UIClassManager();
-            _triviaManager = new TriviaManager();
-            _playerManager = new PlayerManager(0); // use _gamelocations to get a valid spot to place the player 
         }
-        public void StartGame(int map, int startingRoom)
+        public void StartGame(int map)
         {
             // should start up a game
-            int m, g;
-            if (map == -1)
-            {
-                Random random = new Random();
-                m = random.Next(0, 4);
-            }
-            if (startingRoom == -1)
-            {
-                Random random = new Random();
-                g = random.Next(0, 29);
-            }
+            gameState = GameState.MainMenu;
+            _gameLocations = new GameLocation(); // randomly generated positions
+            _scoreboard = new Scoreboard();
+            _triviaManager = new TriviaManager();
+            _playerManager = new PlayerManager(_gameLocations.playerspawn); // use _gamelocations to get a valid spot to place the player 
+            _cave = new CaveManager(map);
 
         }
         public void StopGame()
@@ -97,7 +87,7 @@ namespace Game_Control
                                 else if (inputs[3]) { caveNumber = 2; }
                                 else if (inputs[4]) { caveNumber = 3; }
                                 else { caveNumber = 4; }
-                                _cave = new CaveManager(caveNumber); // pass in the room number
+                                StartGame(caveNumber);
                                 gameState = GameState.PlayingGame; // add a gamestate here for cutscenes
                                 _playerManager.CurrentRoom = _gameLocations.SpawnPlayer();
                             }
@@ -354,7 +344,7 @@ namespace Game_Control
     }
     public interface IGameControl
     {
-        public void StartGame(int map, int startingRoom);
+        public void StartGame(int map);
         public void StopGame();
         public void RestartGame(int map, int startingRoom);
         public void Tick(PaintEventArgs e);

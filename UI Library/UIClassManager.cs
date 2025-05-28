@@ -74,16 +74,15 @@ namespace UI_Class_Library
         /// <returns>Returns the inputs as well as if you encountered any hazards</returns>
         public bool[] RenderGame(PaintEventArgs e, bool[] doorsOut, bool[] hazards, bool arrowNocked, PlayerManager player)
         {
+            // renders the game
             Map currentMap = maps[map];
             Color sidePanel = currentMap.backgroundColor;
-            
             SolidBrush brush = new SolidBrush(sidePanel);
             SolidBrush gameSelected = new SolidBrush(currentMap.highlights);
             SolidBrush gameUnselected = new SolidBrush(currentMap.foregroundColor);
             SolidBrush roomBrush = new SolidBrush(Color.FromArgb(218, 218, 218));
 
-
-
+            // very messy, I'd rewrite this
             bool[] outputs = [false, false, false, false, false, false, false, false, false];
 
             int currentRoom = player.CurrentRoom;
@@ -105,7 +104,7 @@ namespace UI_Class_Library
             RectangleF header = new RectangleF(topLeft.X + paddingPx, topLeft.Y + paddingPx, widthOfPanel - (2 * paddingPx), height / 5f);
             e.Graphics.FillRectangle(gameUnselected, header);
 
-            RectangleF shootArrow = new RectangleF(topLeft.X + paddingPx, header.Y + header.Height + padding, (widthOfPanel - (paddingPx * 2)) / 4f, (widthOfPanel - (paddingPx * 2)) / 4f);
+            RectangleF shootArrow = new RectangleF(topLeft.X + paddingPx, header.Y + header.Height + padding, (widthOfPanel - 3 * paddingPx) / 3f, (widthOfPanel - 3 * paddingPx) / 3f);
             RectangleF buyArrow = new RectangleF(topLeft.X + (width - height) / 2f - (shootArrow.Width / 2f), header.Y + header.Height + padding, shootArrow.Width, shootArrow.Height);
             RectangleF buySecret = new RectangleF(width - paddingPx - shootArrow.Width, header.Y + header.Height + padding, shootArrow.Width, shootArrow.Height);
             
@@ -215,11 +214,13 @@ namespace UI_Class_Library
                     textBox.RemoveAt(0);
                 }
             }
+            int fontSize = 24 * (height / 540);
+            RectangleF textBoxRect = new RectangleF(height, height - 5 * fontSize, widthOfPanel - paddingPx * 2, (height - paddingPx) - (int)((fontSize + (.5 * paddingPx)) * (5 + 1)));
+            e.Graphics.FillRectangle(new SolidBrush(Color.Black), textBoxRect);
             // renders the textbox 
             for (int i = 0; i < textBox.Count; i++)
             {
-                int fontSize = 24 * (height / 540);
-                textBox[(textBox.Count - 1) - i].RenderText(e, new Point(height + paddingPx, (height - paddingPx) - ((fontSize + paddingPx)* (i+1))), fontSize);
+                textBox[(textBox.Count - 1) - i].RenderText(e, new Point(height + paddingPx, (height - paddingPx) - (int)((fontSize + (.5 * paddingPx)) * (i + 1))), fontSize, Color.FromArgb(255 - (50 * i), 255 - (50 * i), 255 - (50 * i)));
             }
             brush.Dispose();
             gameSelected.Dispose();
@@ -645,7 +646,7 @@ namespace UI_Class_Library
             img = null;
             comfortaaCollection.AddFontFile("Comfortaa-Light.ttf");
         }
-        public void RenderText(PaintEventArgs e, Point pos, float size)
+        public void RenderText(PaintEventArgs e, Point pos, float size, Color color)
         {
             if (img != null) 
             { 
@@ -657,7 +658,7 @@ namespace UI_Class_Library
                 return;
             }
             Font font = new Font(comfortaaCollection.Families[0], size);
-            SolidBrush textBrush = new SolidBrush(Color.FromArgb(240, 240, 240));
+            SolidBrush textBrush = new SolidBrush(color);
             e.Graphics.DrawString(text, font, textBrush, pos);
 
         }
