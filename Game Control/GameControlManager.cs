@@ -109,10 +109,6 @@ namespace Game_Control
                 case GameState.PlayingGame:
                     {
                        // gameState = GameState.GetHighScores;
-                        int pPosition = _playerManager.CurrentRoom;
-                        bool[] rooms = _cave.GetDirectionsBoolArray(pPosition);
-                        bool[] hazards = _gameLocations.CheckForHazard(_playerManager).Concat<bool>(_gameLocations.CheckForNearbyHazards(_playerManager, _cave)).ToArray<bool>();
-                        bool[] outputs = _UIClassManager.RenderGame(e, rooms, hazards, _playerManager);
                         
                         if (triviaState != TriviaState.Empty)
                         {
@@ -167,7 +163,13 @@ namespace Game_Control
                             }
                         }
                         triviaState = TriviaState.Empty;
-                        
+
+
+                        int pPosition = _playerManager.CurrentRoom;
+                        bool[] rooms = _cave.GetDirectionsBoolArray(pPosition);
+                        bool[] hazards = _gameLocations.CheckForHazard(_playerManager).Concat<bool>(_gameLocations.CheckForNearbyHazards(_playerManager, _cave)).ToArray<bool>();
+                        bool[] outputs = _UIClassManager.RenderGame(e, rooms, hazards, _playerManager);
+
                         // should render the game
                         // should process inputs based on game
                         for (int i = 0; i < 6; i++)
@@ -239,11 +241,14 @@ namespace Game_Control
                             triviaCount = 5;
                             triviaCorrect = 0;
                             gameState = GameState.GetTrivia;
+                            _UIClassManager.AddToChat(ChatType.EncounteredWumpus);
                         }
                         if (outputs[10])
                         {
                             // user encountered bat
                             //throw new Exception("You have hit a bat");
+                            _gameLocations.EncounterBat(_playerManager);
+                            _UIClassManager.AddToChat(ChatType.EncounteredBat);
                             
                         }
                         if (outputs[11])
@@ -255,6 +260,7 @@ namespace Game_Control
                             triviaTotalQuestions = 3;
                             triviaCount = 3;
                             triviaCorrect = 0;
+                            _UIClassManager.AddToChat(ChatType.EncounteredPit);
                         }
                         break;
                     }
@@ -279,7 +285,7 @@ namespace Game_Control
                                 }
                             }
                         }
-                        if (triviaCount == 1)
+                        if (triviaCount == 0)
                         {
                             gameState = GameState.PlayingGame;
                         }

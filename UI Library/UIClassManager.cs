@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Drawing.Text;
 using System.Net.Http.Headers;
+using System.Runtime.Serialization;
 using System.Text;
 using PlayerLibrary;
 using static System.Formats.Asn1.AsnWriter;
@@ -23,7 +24,7 @@ namespace UI_Class_Library
         Bitmap tealImage = new Bitmap("images/tealtunnel.jpg");
 
         PrivateFontCollection comfortaaCollection = new PrivateFontCollection();
-        List<string> textBox = new List<string>(); // should be capped at 5 items
+        List<TextBoxText> textBox = new List<TextBoxText>(); // should be capped at 5 items
         int lastMapLocation;
         public int map = -1;
         private List<bool> inputs = new List<bool>();
@@ -251,15 +252,15 @@ namespace UI_Class_Library
                 lastMapLocation = currentRoom;
                 if (hazards[3])
                 {
-                    textBox.Add("Wumpus");
+                    AddToChat(ChatType.NearbyWumpus);
                 }
                 if (hazards[4])
                 {
-                    textBox.Add("Bat");
+                    AddToChat(ChatType.NearbyBat);
                 }
                 if (hazards[5])
                 {
-                    textBox.Add("Pit");
+                    AddToChat(ChatType.NearbyPit);
                 }
             }
             if (textBox.Count > 5)
@@ -272,11 +273,7 @@ namespace UI_Class_Library
             // renders the textbox 
             for (int i = 0; i < textBox.Count(); i++)
             {
-                Font font = new Font(comfortaaCollection.Families[0], 14);
-                SolidBrush fontBrush = new SolidBrush(Color.FromArgb(((i+1) * 25) + 100, ((i + 1) * 25) + 100, ((i + 1) * 25) + 100));
-                e.Graphics.DrawString(textBox[i], font, fontBrush, new Point(100, i * 30));
-                font.Dispose();
-                fontBrush.Dispose();
+                textBox[i].RenderText(e, new Point(0, i * 40), 24);
             }
             brush.Dispose();
             hexagonBrush.Dispose();
@@ -429,6 +426,59 @@ namespace UI_Class_Library
             
             return false;
         }
+        public void AddToChat(ChatType chatType)
+        {
+            AddToChat(chatType, string.Empty);
+        }
+
+        public void AddToChat(ChatType chatType, string text) 
+        {
+            TextBoxText textText;
+            switch (chatType)
+            {
+                case (ChatType.Text):
+                    {
+                        textText = new TextBoxText(text);
+                        break;
+                    }
+                case ChatType.NearbyBat:
+                    {
+                        textText = new TextBoxText("You hear a noise...");
+                        break;
+                    }
+                case ChatType.NearbyPit:
+                    {
+                        textText = new TextBoxText("You feel a draft...");
+                        break;
+                    }
+                case ChatType.NearbyWumpus:
+                    {
+                        textText = new TextBoxText("You smell an oder...");
+                        break;
+                    }
+                case ChatType.EncounteredBat:
+                    {
+                        textText = new TextBoxText("You've hit a bat", new Bitmap("images/bat_teal.png"));
+                        break;
+                    }
+                case ChatType.EncounteredPit:
+                    {
+                        textText = new TextBoxText("You've fallen into a pit");
+                        break;
+                    }
+                case ChatType.EncounteredWumpus:
+                    {
+                        textText = new TextBoxText("You encountered the wumpus", new Bitmap("images/wumpus_teal.png"));
+                        break;
+                    }
+                default:
+                    {
+                        throw new Exception("Unexpected switch case");
+                    }
+            }
+            textBox.Add(textText);
+        }
+
         private bool PointInShape(Point p, Point[] polygon)
         {
             // PiP problem
@@ -618,6 +668,50 @@ namespace UI_Class_Library
             return false;
         }
     }
+    public class TextBoxText
+    {
+        static PrivateFontCollection comfortaaCollection = new PrivateFontCollection();
+        public string text;
+        public Image? img;
+        public TextBoxText(string text, Bitmap? image)
+        {
+            this.text = text;
+            img = image;
+            comfortaaCollection.AddFontFile("Comfortaa-Light.ttf");
+        }
+        public TextBoxText(string text)
+        {
+            this.text = text;
+            img = null;
+            comfortaaCollection.AddFontFile("Comfortaa-Light.ttf");
+        }
+        public void RenderText(PaintEventArgs e, Point pos, float size)
+        {
+            if (img != null) 
+            { 
+                e.Graphics.DrawImage(img, new RectangleF(pos, new SizeF(size, size)));
+                pos.X += (int)size;
+            }
+            if (text == string.Empty)
+            {
+                return;
+            }
+            Font font = new Font(comfortaaCollection.Families[0], size);
+            SolidBrush textBrush = new SolidBrush(Color.FromArgb(240, 240, 240));
+            e.Graphics.DrawString(text, font, textBrush, pos);
+
+        }
+    }
+    public enum ChatType
+    {
+        Text,
+        NearbyBat,
+        NearbyWumpus,
+        NearbyPit,
+        EncounteredBat,
+        EncounteredWumpus,
+        EncounteredPit,
+    }
     public interface IUIClassManager
     {
         public bool[] RenderGame(PaintEventArgs e, bool[] doorsOut, bool[] hazards, PlayerManager player);
@@ -626,6 +720,7 @@ namespace UI_Class_Library
         public bool RenderDeath(PaintEventArgs e, int score);
         public bool RenderWin(PaintEventArgs e, int score, string name);
         public bool RenderHighscores(PaintEventArgs e, string[] names, string[] maps, string[] scores);
+        public void AddToChat(ChatType c);
         public bool[] GetInputs(); // returns an array of binary values, 0 if pressed, 1 if 0. Changes depending on scene
         public void UpdateScreenSize(int width, int height);
         public void UpdateMousePosition(Point mouse);
