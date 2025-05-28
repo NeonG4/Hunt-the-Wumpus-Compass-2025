@@ -12,15 +12,17 @@ namespace UI_Class_Library
     {
         public Bitmap map, bat, wumpus;
         public Color backgroundColor;
+        public Color foregroundColor;
         public Color highlights;
         public string mapName;
-        public Map(string mapName, string map, string bat, string wumpus, Color backgroundColor, Color highlights)
+        public Map(string mapName, string map, string bat, string wumpus, Color backgroundColor, Color foregroundColor, Color highlights)
         {
             this.map = new Bitmap($"images/{map}");
             this.bat = new Bitmap($"images/{bat}");
             this.wumpus = new Bitmap($"images/{wumpus}");
             this.backgroundColor = backgroundColor;
             this.highlights = highlights;
+            this.foregroundColor = foregroundColor;
             this.mapName = mapName;
         }
         public void Dispose()
@@ -40,11 +42,11 @@ namespace UI_Class_Library
         public bool mouseDown = false;
         public bool mouseDownBuffer = false;
         Map[] maps = [
-            new Map("Amythyst Abyss", "amythystabyss.jpg", "bat_amethyst.png", "wumpus_amethyst.png", Color.FromArgb(137, 45, 145), Color.FromArgb(203, 95, 212)),
-            new Map("Green Grotto", "greengrotto.jpg", "bat_green.png", "wumpus_green.png", Color.FromArgb(82, 128, 82), Color.FromArgb(108, 168, 108)),
-            new Map("Teal Tunnel", "tealtunnel.jpg", "bat_teal.png", "wumpus_teal.png", Color.FromArgb(32, 109, 133), Color.FromArgb(81, 173, 201)),
-            new Map("Diamond Dungeon", "diamonddungeon.jpg", "bat_diamond.png", "wumpus_diamond.png", Color.FromArgb(27, 116, 117), Color.FromArgb(62, 180, 181)),
-            new Map("Black Borehole", "blackborehole.jpg", "bat_black.png", "wumpus_black.png", Color.FromArgb(41, 37, 36), Color.FromArgb(74, 47, 40)),
+            new Map("Amythyst Abyss", "amythystabyss.jpg", "bat_amethyst.png", "wumpus_amethyst.png", Color.FromArgb(137, 45, 145), Color.FromArgb(237, 145, 245), Color.FromArgb(203, 95, 212)),
+            new Map("Green Grotto", "greengrotto.jpg", "bat_green.png", "wumpus_green.png", Color.FromArgb(82, 128, 82), Color.FromArgb(182, 228, 182), Color.FromArgb(108, 168, 108)),
+            new Map("Teal Tunnel", "tealtunnel.jpg", "bat_teal.png", "wumpus_teal.png", Color.FromArgb(32, 109, 133), Color.FromArgb(132, 209, 233), Color.FromArgb(81, 173, 201)),
+            new Map("Diamond Dungeon", "diamonddungeon.jpg", "bat_diamond.png", "wumpus_diamond.png", Color.FromArgb(27, 116, 117), Color.FromArgb(127, 216, 217), Color.FromArgb(62, 180, 181)),
+            new Map("Black Borehole", "blackborehole.jpg", "bat_black.png", "wumpus_black.png", Color.FromArgb(41, 37, 36), Color.FromArgb(141, 137, 136), Color.FromArgb(74, 47, 40)),
             ];
 
         PrivateFontCollection comfortaaCollection = new PrivateFontCollection();
@@ -52,59 +54,7 @@ namespace UI_Class_Library
         int lastMapLocation;
         public int map = -1;
         private List<bool> inputs = new List<bool>();
-        Color[,] gameColors =
-        {
-            { // testing map colors
-                Color.FromArgb(7, 20, 40), // background color
-                Color.FromArgb(103, 78, 167), // center color
-                Color.FromArgb(7, 55, 99), // side panel color
-                Color.FromArgb(50, 50, 50), // background color trivia
-                Color.FromArgb(150, 150, 150), // forecolor trivia highlighted
-                Color.FromArgb(125, 125, 125) // forecolor trivia
-                
-            },{ // testing map colors
-                Color.FromArgb(7, 20, 40), // background color
-                Color.FromArgb(103, 78, 167), // center color
-                Color.FromArgb(7, 55, 99), // side panel color
-                Color.FromArgb(50, 50, 50), // background color trivia
-                Color.FromArgb(150, 150, 150), // forecolor trivia highlighted
-                Color.FromArgb(125, 125, 125) // forecolor trivia
-                
-            },{ // testing map colors
-                Color.FromArgb(7, 20, 40), // background color
-                Color.FromArgb(103, 78, 167), // center color
-                Color.FromArgb(7, 55, 99), // side panel color
-                Color.FromArgb(50, 50, 50), // background color trivia
-                Color.FromArgb(150, 150, 150), // forecolor trivia highlighted
-                Color.FromArgb(125, 125, 125) // forecolor trivia
-                
-            },{ // testing map colors
-                Color.FromArgb(7, 20, 40), // background color
-                Color.FromArgb(103, 78, 167), // center color
-                Color.FromArgb(7, 55, 99), // side panel color
-                Color.FromArgb(50, 50, 50), // background color trivia
-                Color.FromArgb(150, 150, 150), // forecolor trivia highlighted
-                Color.FromArgb(125, 125, 125) // forecolor trivia
-                
-            },{ // testing map colors
-                Color.FromArgb(7, 20, 40), // background color
-                Color.FromArgb(103, 78, 167), // center color
-                Color.FromArgb(7, 55, 99), // side panel color
-                Color.FromArgb(50, 50, 50), // background color trivia
-                Color.FromArgb(150, 150, 150), // forecolor trivia highlighted
-                Color.FromArgb(125, 125, 125) // forecolor trivia
-                
-            },{ // testing map colors
-                Color.FromArgb(7, 20, 40), // background color
-                Color.FromArgb(103, 78, 167), // center color
-                Color.FromArgb(7, 55, 99), // side panel color
-                Color.FromArgb(50, 50, 50), // background color trivia
-                Color.FromArgb(150, 150, 150), // forecolor trivia highlighted
-                Color.FromArgb(125, 125, 125) // forecolor trivia
-                
-            },
-
-        };
+        
         public UIClassManager()
         {
             // standard size of a google slide, same size that this game is
@@ -127,8 +77,8 @@ namespace UI_Class_Library
             Color sidePanel = currentMap.backgroundColor;
             
             SolidBrush brush = new SolidBrush(sidePanel);
-            SolidBrush gameSelected = new SolidBrush(gameColors[map, 5]);
-            SolidBrush gameUnselected = new SolidBrush(gameColors[map, 4]);
+            SolidBrush gameSelected = new SolidBrush(currentMap.highlights);
+            SolidBrush gameUnselected = new SolidBrush(currentMap.foregroundColor);
             SolidBrush roomBrush = new SolidBrush(Color.FromArgb(218, 218, 218));
 
 
@@ -136,7 +86,7 @@ namespace UI_Class_Library
             bool[] outputs = [false, false, false, false, false, false, false, false, false];
 
             int currentRoom = player.CurrentRoom;
-            Color bgColor = gameColors[map, 0];
+            Color bgColor = currentMap.backgroundColor;
             e.Graphics.Clear(bgColor);
             Rectangle rect = new Rectangle((int)(height), 0, (int)(width-height), height);
             int radius = (int)(width * 0.2);
@@ -258,19 +208,16 @@ namespace UI_Class_Library
                 }
             }
             // renders the textbox 
-            for (int i = 0; i < textBox.Count(); i++)
+            for (int i = 0; i < textBox.Count; i++)
             {
-                textBox[i].RenderText(e, new Point(0, i * 40), 24);
+                int fontSize = 24 * (height / 540);
+                textBox[(textBox.Count - 1) - i].RenderText(e, new Point(height + paddingPx, (height - paddingPx) - ((fontSize + paddingPx)* (i+1))), fontSize);
             }
             brush.Dispose();
             gameSelected.Dispose();
             gameUnselected.Dispose();
             roomBrush.Dispose();
             return outputs.Concat<bool>([hazards[0], hazards[1], hazards[2]]).ToArray<bool>();
-        }
-        private RectangleF RectangleAt(Point center, int rWidth, int rHeight)
-        {
-            return new RectangleF((center.X - rWidth / 2f), (center.Y - rHeight / 2f), rWidth, rHeight);
         }
         /// <summary>
         /// Renders the title screen where the user starts
@@ -347,8 +294,9 @@ namespace UI_Class_Library
             }
         }
         public bool[] RenderTrivia(PaintEventArgs e, string question, string[] trivia)
-        { 
-            Color[] forecolor = [gameColors[map, 3], gameColors[map, 3], gameColors[map, 3], gameColors[map, 3]];
+        {
+            Map currentMap = maps[map];
+            Color[] forecolor = [currentMap.foregroundColor, currentMap.foregroundColor, currentMap.foregroundColor, currentMap.foregroundColor];
             Point[] hexagonPoints = HexagonH((int)(width / 2.4f), height / 10, (int)(height / 27f), new Point((int)(width / 3.97f), (int)(height / 2.1f)));
             Point[] hexagonPoints1 = HexagonH((int)(width / 2.4f), height / 10, (int)(height / 27f), new Point((int)(width / 1.35f), (int)(height / 2.1f)));
             Point[] hexagonPoints2 = HexagonH((int)(width / 2.4f), height / 10, (int)(height / 27f), new Point((int)(width / 3.97f), (int)(height / 1.4f)));
@@ -359,7 +307,7 @@ namespace UI_Class_Library
             {
                 if (PointInShape(mouse, HexagonArray[i]))
                 {
-                    forecolor[i] = gameColors[map, 4];
+                    forecolor[i] = currentMap.highlights;
                     if (mouseDown)
                     {
 
@@ -379,7 +327,7 @@ namespace UI_Class_Library
                 }
             }  
             Point titlePosition = new Point(width / 2, 100);
-            Color bgColor = gameColors[map, 0];
+            Color bgColor = currentMap.backgroundColor;
             
             e.Graphics.Clear(bgColor);
             
@@ -412,11 +360,19 @@ namespace UI_Class_Library
             
             return false;
         }
+        /// <summary>
+        /// Adds a ChatType to the textbox
+        /// </summary>
+        /// <param name="chatType">ChatType</param>
         public void AddToChat(ChatType chatType)
         {
             AddToChat(chatType, string.Empty);
         }
-
+        /// <summary>
+        /// Adds a ChatType to the class
+        /// </summary>
+        /// <param name="chatType">ChatType</param>
+        /// <param name="text">The text if ChatType.Text is selected</param>
         public void AddToChat(ChatType chatType, string text) 
         {
             TextBoxText textText;
