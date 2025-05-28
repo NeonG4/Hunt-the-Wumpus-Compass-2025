@@ -211,8 +211,32 @@ namespace GameLocationLibrary
 
         public int MoveWumpus(CaveManager caveManager)
         {
-            //gets an array of adjacent rooms based on the current room of the player
-            int[] adjacentRooms = caveManager.GetAdjacentRooms(wumpusroom);
+            // neecs to move the wumpus, and update the wumpus position in the list
+            List<int> adjacentRooms = caveManager.GetAdjacentRooms(wumpusroom).ToList<int>();
+            List<bool> validDirections = caveManager.GetDirectionsBoolArray(wumpusroom).ToList<bool>();
+            for (int d = 0; d < adjacentRooms.Count; d++)
+            {
+                if (!validDirections[d])
+                {
+                    adjacentRooms.RemoveAt(d);
+                    validDirections.RemoveAt(d);
+                }
+            }
+            int previousWumpusRoom = wumpusroom;
+            Random rand = new Random();
+            wumpusroom = adjacentRooms[rand.Next(0, adjacentRooms.Count - 1)];
+            for (int i = 0; i < allSpawnables.Count; i++)
+            {
+                if (allSpawnables[i].hazard == "Wumpus")
+                {
+                    allSpawnables[i] = new Hazards("Wumpus", wumpusroom);
+                }
+            }
+            
+
+            /*
+                //gets an array of adjacent rooms based on the current room of the player
+                int[] adjacentRooms = caveManager.GetAdjacentRooms(wumpusroom);
             //gets an array of valid directions based on the curernt room of the player
             bool[] validDirections = caveManager.GetDirectionsBoolArray(wumpusroom);
             //cycles through the array of adjacent rooms to remove adjacent rooms that aren't valid directoins
@@ -236,12 +260,11 @@ namespace GameLocationLibrary
                 if (wumpusroom == allSpawnables[i].room)
                 {
                     wumpusIndex = i;
-                    i = allSpawnables.Count();
                 }
             }
             allSpawnables.RemoveAt(wumpusIndex);
             Hazards newWumpus = new Hazards("Wumpus", wumpusroom);
-            allSpawnables.Add(newWumpus);
+            allSpawnables.Add(newWumpus);*/
             return wumpusroom;
         }
 
