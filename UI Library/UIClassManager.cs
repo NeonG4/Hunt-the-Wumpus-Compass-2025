@@ -453,7 +453,7 @@ namespace UI_Class_Library
                     }
                 case ChatType.NearbyWumpus:
                     {
-                        textText = new TextBoxText("You smell an oder...");
+                        textText = new TextBoxText("You smell an odor...");
                         break;
                     }
                 case ChatType.EncounteredBat:
