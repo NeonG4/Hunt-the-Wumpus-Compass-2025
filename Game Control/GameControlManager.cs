@@ -170,7 +170,7 @@ namespace Game_Control
                         int pPosition = _playerManager.CurrentRoom;
                         bool[] rooms = _cave.GetDirectionsBoolArray(pPosition);
                         bool[] hazards = _gameLocations.CheckForHazard(_playerManager).Concat<bool>(_gameLocations.CheckForNearbyHazards(_playerManager, _cave)).ToArray<bool>();
-                        bool[] outputs = _UIClassManager.RenderGame(e, rooms, hazards, _playerManager);
+                        bool[] outputs = _UIClassManager.RenderGame(e, rooms, hazards, arrowNocked, _playerManager);
 
                         // should render the game
                         // should process inputs based on game

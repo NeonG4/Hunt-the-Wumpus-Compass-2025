@@ -37,11 +37,12 @@ namespace UI_Class_Library
         static float aspectRatio = 16f / 9f;
         public int width, height;
 
-
+        Bitmap crossbow = new Bitmap("images/crossbow_icon.png");
+        Bitmap crossbowLoaded = new Bitmap("images/loaded_crossbow_icon.png");
         public Point mouse = new Point();
         public bool mouseDown = false;
         public bool mouseDownBuffer = false;
-        Map[] maps = [
+        static Map[] maps = [
             new Map("Amythyst Abyss", "amythystabyss.jpg", "bat_amethyst.png", "wumpus_amethyst.png", Color.FromArgb(137, 45, 145), Color.FromArgb(237, 145, 245), Color.FromArgb(203, 95, 212)),
             new Map("Green Grotto", "greengrotto.jpg", "bat_green.png", "wumpus_green.png", Color.FromArgb(82, 128, 82), Color.FromArgb(182, 228, 182), Color.FromArgb(108, 168, 108)),
             new Map("Teal Tunnel", "tealtunnel.jpg", "bat_teal.png", "wumpus_teal.png", Color.FromArgb(32, 109, 133), Color.FromArgb(132, 209, 233), Color.FromArgb(81, 173, 201)),
@@ -71,7 +72,7 @@ namespace UI_Class_Library
         /// <param name="hazards">bool[6] of hazards</param>
         /// <param name="player">the current player</param>
         /// <returns>Returns the inputs as well as if you encountered any hazards</returns>
-        public bool[] RenderGame(PaintEventArgs e, bool[] doorsOut, bool[] hazards, PlayerManager player)
+        public bool[] RenderGame(PaintEventArgs e, bool[] doorsOut, bool[] hazards, bool arrowNocked, PlayerManager player)
         {
             Map currentMap = maps[map];
             Color sidePanel = currentMap.backgroundColor;
@@ -147,7 +148,14 @@ namespace UI_Class_Library
             {
                 e.Graphics.FillRectangle(gameUnselected, buySecret);
             }
-            
+            if (arrowNocked)
+            {
+                e.Graphics.DrawImage(crossbowLoaded, shootArrow);
+            }
+            else
+            {
+                e.Graphics.DrawImage(crossbow, shootArrow);
+            }
 
             Point headerCenter = new Point(height + (int)(widthOfPanel / 2f), (int)(height / 16f) + paddingPx);
             DrawText(e, name, (int)(height / 23), headerCenter, Color.FromArgb(0, 0, 0));
@@ -666,7 +674,7 @@ namespace UI_Class_Library
     }
     public interface IUIClassManager
     {
-        public bool[] RenderGame(PaintEventArgs e, bool[] doorsOut, bool[] hazards, PlayerManager player);
+        public bool[] RenderGame(PaintEventArgs e, bool[] doorsOut, bool[] hazards, bool arrowNocked, PlayerManager player);
         public void RenderMainMenu(PaintEventArgs e);
         public bool[] RenderTrivia(PaintEventArgs e, string question, string[] trivia);
         public bool RenderDeath(PaintEventArgs e, int score);
