@@ -41,6 +41,7 @@ namespace GameLocationLibrary
             }
 
         }
+
         private void AddHazard(string hazard)
         {
             while (true)

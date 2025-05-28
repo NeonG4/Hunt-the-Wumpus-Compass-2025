@@ -309,6 +309,9 @@ namespace UI_Class_Library
             Point[] titleHexagon = HexagonH(800, 100, 40, titlePosition);
             e.Graphics.FillPolygon(shapeBrush, titleHexagon);
             e.Graphics.DrawPolygon(outlineBrush, titleHexagon);
+            Pen Scorebrushs = new Pen(Color.FromArgb(0, 0, 0), 4);
+            RectangleF rect = new RectangleF((int)(width/ 2.526f), (int)(height/2f),(int) (width/4.8f), (int)(height/15.428));
+            e.Graphics.DrawRectangle(Scorebrushs, rect);
             DrawText(e, "Hunt the Wumpus", 41, titlePosition, Color.FromArgb(0, 0, 0));
             // renders subtext
             DrawText(e, "David Stall / Nathan Choy / Camilla Meija / Maxim Delyagin / Azeem Egizi", 12, new Point(width / 2, 200), Color.FromArgb(255, 255, 255));

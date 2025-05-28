@@ -7,9 +7,9 @@ using CaveLibrary;
 using GameLocationLibrary;
 using PlayerLibrary;
 using UI_Class_Library;
-using ScoreBoardLibrary;
 using System.Windows.Forms;
 using System.Media;
+using ScoreBoard;
 using Hunt_the_Wumpus_2025;
 using System.Diagnostics.Contracts;
 using Microsoft.VisualBasic;
@@ -108,7 +108,7 @@ namespace Game_Control
                     }
                 case GameState.PlayingGame:
                     {
-                        
+                       // gameState = GameState.GetHighScores;
                         int pPosition = _playerManager.CurrentRoom;
                         bool[] rooms = _cave.GetDirectionsBoolArray(pPosition);
                         bool[] hazards = _gameLocations.CheckForHazard(_playerManager).Concat<bool>(_gameLocations.CheckForNearbyHazards(_playerManager, _cave)).ToArray<bool>();
@@ -301,8 +301,8 @@ namespace Game_Control
                     }
                 case GameState.GetHighScores:
                     {
-                        // renders high scores
-                        ScoreItem[] scoreData = _scoreboard.GetHighScores().ToArray();
+                        // needs to render highscores
+                        ScoreItem[] scoreData = _scoreboard.GetList().ToArray();
                         List<string> names = new List<string>();
                         for (int i = 0; i < scoreData.Length; i++)
                         {
