@@ -40,13 +40,13 @@
             // 
             // FormGame
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(942, 493);
+            ClientSize = new Size(824, 370);
             DoubleBuffered = true;
-            Margin = new Padding(3, 4, 3, 4);
             Name = "FormGame";
             Text = "FormGame";
+            FormClosing += FormGame_FormClosing;
             Paint += FormGame_Paint;
             MouseDown += FormGame_MouseDown;
             MouseMove += FormGame_MouseMove;

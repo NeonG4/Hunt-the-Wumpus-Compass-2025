@@ -8,7 +8,29 @@ using PlayerLibrary;
 using static System.Formats.Asn1.AsnWriter;
 namespace UI_Class_Library
 {
-    public class UIClassManager : IUIClassManager
+    public class Map : IDisposable
+    {
+        public Bitmap map, bat, wumpus;
+        public Color backgroundColor;
+        public Color highlights;
+        public string mapName;
+        public Map(string mapName, string map, string bat, string wumpus, Color backgroundColor, Color highlights)
+        {
+            this.map = new Bitmap($"images/{map}");
+            this.bat = new Bitmap($"images/{bat}");
+            this.wumpus = new Bitmap($"images/{wumpus}");
+            this.backgroundColor = backgroundColor;
+            this.highlights = highlights;
+            this.mapName = mapName;
+        }
+        public void Dispose()
+        {
+            map.Dispose();
+            bat.Dispose();
+            wumpus.Dispose();
+        }
+    }
+    public class UIClassManager : IUIClassManager, IDisposable
     {
         static float aspectRatio = 16f / 9f;
         public int width, height;
@@ -17,11 +39,13 @@ namespace UI_Class_Library
         public Point mouse = new Point();
         public bool mouseDown = false;
         public bool mouseDownBuffer = false;
-        Bitmap amethystImage = new Bitmap("images/amythystabyss.jpg");
-        Bitmap blackImage = new Bitmap("images/blackborehole.jpg");
-        Bitmap diamondImage = new Bitmap("images/diamonddungeon.jpg");
-        Bitmap greenImage = new Bitmap("images/greengrotto.jpg");
-        Bitmap tealImage = new Bitmap("images/tealtunnel.jpg");
+        Map[] maps = [
+            new Map("Amythyst Abyss", "amythystabyss.jpg", "bat_amethyst.png", "wumpus_amethyst.png", Color.FromArgb(137, 45, 145), Color.FromArgb(203, 95, 212)),
+            new Map("Green Grotto", "greengrotto.jpg", "bat_green.png", "wumpus_green.png", Color.FromArgb(82, 128, 82), Color.FromArgb(108, 168, 108)),
+            new Map("Teal Tunnel", "tealtunnel.jpg", "bat_teal.png", "wumpus_teal.png", Color.FromArgb(32, 109, 133), Color.FromArgb(81, 173, 201)),
+            new Map("Diamond Dungeon", "diamonddungeon.jpg", "bat_diamond.png", "wumpus_diamond.png", Color.FromArgb(27, 116, 117), Color.FromArgb(62, 180, 181)),
+            new Map("Black Borehole", "blackborehole.jpg", "bat_black.png", "wumpus_black.png", Color.FromArgb(41, 37, 36), Color.FromArgb(74, 47, 40)),
+            ];
 
         PrivateFontCollection comfortaaCollection = new PrivateFontCollection();
         List<TextBoxText> textBox = new List<TextBoxText>(); // should be capped at 5 items
@@ -88,6 +112,7 @@ namespace UI_Class_Library
             height = 540;
             comfortaaCollection.AddFontFile("Comfortaa-Light.ttf"); // adds the font file
         }
+        
         /// <summary>
         /// Renders the game state, returns the inputs
         /// </summary>
@@ -98,11 +123,10 @@ namespace UI_Class_Library
         /// <returns>Returns the inputs as well as if you encountered any hazards</returns>
         public bool[] RenderGame(PaintEventArgs e, bool[] doorsOut, bool[] hazards, PlayerManager player)
         {
-            Color mainColor = gameColors[map, 1];
-            Color sidePanel = gameColors[map, 2];
+            Map currentMap = maps[map];
+            Color sidePanel = currentMap.backgroundColor;
             
             SolidBrush brush = new SolidBrush(sidePanel);
-            SolidBrush hexagonBrush = new SolidBrush(mainColor);
             SolidBrush gameSelected = new SolidBrush(gameColors[map, 5]);
             SolidBrush gameUnselected = new SolidBrush(gameColors[map, 4]);
             SolidBrush roomBrush = new SolidBrush(Color.FromArgb(218, 218, 218));
@@ -117,47 +141,10 @@ namespace UI_Class_Library
             Rectangle rect = new Rectangle((int)(height), 0, (int)(width-height), height);
             int radius = (int)(width * 0.2);
             Point centerHexagonPosition = new Point((int)(width * (1f / 3f)), (int)(height / 2f));
-            e.Graphics.FillPolygon(hexagonBrush, HexagonPerfect(radius, centerHexagonPosition));
-            Bitmap bmp;
-            string name;
-            switch (map)
-            {
-                case 0:
-                    {
-                        bmp = amethystImage;
-                        name = "Amethyst Abyss";
-                        break;
-                    }
-                case 1:
-                    {
-                        bmp = greenImage;
-                        name = "Green Grotto";
-                        break;
-                    }
-                case 2:
-                    {
-                        bmp = tealImage;
-                        name = "Teal Tunnel";
-                        break;
-                    }
-                case 3:
-                    {
-                        bmp = diamondImage;
-                        name = "Diamond Dungeon";
-                        break;
-                    }
-                case 4:
-                    {
-                        bmp = blackImage;
-                        name = "Black Borehole";
-                        break;
-                    }
-                default:
-                    {
-                        throw new Exception($"Invalid map number: {map}");
-                    }
-            }
-            e.Graphics.DrawImage(bmp, new Rectangle(1, 1, height, height));
+            Bitmap bmp = currentMap.map;
+            string name = currentMap.mapName;
+            
+            e.Graphics.DrawImage(bmp, new Rectangle(0, 0, height, height));
             // render the right panel
             float padding = 2f;
             int paddingPx = (int)(padding * (height / 54f));
@@ -276,7 +263,6 @@ namespace UI_Class_Library
                 textBox[i].RenderText(e, new Point(0, i * 40), 24);
             }
             brush.Dispose();
-            hexagonBrush.Dispose();
             gameSelected.Dispose();
             gameUnselected.Dispose();
             roomBrush.Dispose();
@@ -666,6 +652,16 @@ namespace UI_Class_Library
         {
             DrawText(e, $"You won! {score}", 42, new Point(width / 2, height / 2), Color.FromArgb(0, 0, 0));
             return false;
+        }
+        /// <summary>
+        /// Disposes the unmanaged memory
+        /// </summary>
+        public void Dispose()
+        {
+            for (int i = 0; i < maps.Length; i++)
+            {
+                maps[i].Dispose();   
+            }
         }
     }
     public class TextBoxText

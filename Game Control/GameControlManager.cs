@@ -63,6 +63,7 @@ namespace Game_Control
         public void StopGame()
         {
             // stops the game
+            _UIClassManager.Dispose();
         }
         public void RestartGame(int map, int startingRoom)
         {

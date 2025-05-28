@@ -56,5 +56,11 @@ namespace Hunt_the_Wumpus_2025
         {
             gc._UIClassManager.UpdateMouseClicked(false);
         }
+
+        private void FormGame_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // needed for unmanaged memory
+            gc.StopGame();
+        }
     }
 }
