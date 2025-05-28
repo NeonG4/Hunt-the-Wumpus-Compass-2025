@@ -118,6 +118,7 @@ namespace Game_Control
                                 if (triviaCorrect > 2)
                                 {
                                     _gameLocations.MoveWumpus(_cave);
+                                    angeredWumpus = true;
                                 }
                                 else
                                 {

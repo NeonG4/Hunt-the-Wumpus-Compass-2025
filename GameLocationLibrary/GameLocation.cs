@@ -225,6 +225,7 @@ namespace GameLocationLibrary
                     adjacentRooms[d] = 31;
                 }
             }
+            wumpusroom = adjacentRooms[random.Next(0, 5)];
             while (wumpusroom == 31)
             {
                 wumpusroom = adjacentRooms[random.Next(0, 5)];
