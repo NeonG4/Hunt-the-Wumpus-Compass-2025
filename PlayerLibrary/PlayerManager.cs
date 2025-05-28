@@ -16,7 +16,7 @@ namespace PlayerLibrary
         /// <param name="startingRoom">Room from which the player starts (from GL)</param>
         public PlayerManager(int startingRoom)
         {
-            Arrows = 0;
+            Arrows = 3;
             GoldCoins = 0;
             MoveCount = 0;
             KilledWumpus = false;

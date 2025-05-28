@@ -17,7 +17,7 @@ namespace GameLocationLibrary
         public List<Hazards> allSpawnables = new List<Hazards>();
         Random random = new Random();
         int wumpusroom = 31;
-        int playerspawn = 31;
+        public int playerspawn = 31;
 
         //Method that returns a list of hazards/the room they are located in
         public GameLocation()

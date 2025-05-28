@@ -4,6 +4,7 @@ using System.Drawing.Text;
 using System.Net.Http.Headers;
 using System.Text;
 using PlayerLibrary;
+using static System.Formats.Asn1.AsnWriter;
 namespace UI_Class_Library
 {
     public class UIClassManager : IUIClassManager
@@ -15,7 +16,11 @@ namespace UI_Class_Library
         public Point mouse = new Point();
         public bool mouseDown = false;
         public bool mouseDownBuffer = false;
-
+        Bitmap amethystImage = new Bitmap("images/amythystabyss.jpg");
+        Bitmap blackImage = new Bitmap("images/blackborehole.jpg");
+        Bitmap diamondImage = new Bitmap("images/diamonddungeon.jpg");
+        Bitmap greenImage = new Bitmap("images/greengrotto.jpg");
+        Bitmap tealImage = new Bitmap("images/tealtunnel.jpg");
 
         PrivateFontCollection comfortaaCollection = new PrivateFontCollection();
         List<string> textBox = new List<string>(); // should be capped at 5 items
@@ -92,57 +97,66 @@ namespace UI_Class_Library
         /// <returns>Returns the inputs as well as if you encountered any hazards</returns>
         public bool[] RenderGame(PaintEventArgs e, bool[] doorsOut, bool[] hazards, PlayerManager player)
         {
+            Color mainColor = gameColors[map, 1];
+            Color sidePanel = gameColors[map, 2];
+            
+            SolidBrush brush = new SolidBrush(sidePanel);
+            SolidBrush hexagonBrush = new SolidBrush(mainColor);
+            SolidBrush gameSelected = new SolidBrush(gameColors[map, 5]);
+            SolidBrush gameUnselected = new SolidBrush(gameColors[map, 4]);
+            SolidBrush roomBrush = new SolidBrush(Color.FromArgb(218, 218, 218));
+
+
+
             bool[] outputs = [false, false, false, false, false, false, false, false, false];
 
             int currentRoom = player.CurrentRoom;
             Color bgColor = gameColors[map, 0];
-            Color mainColor = gameColors[map, 1];
-            Color sidePanel = gameColors[map, 2];
             e.Graphics.Clear(bgColor);
             Rectangle rect = new Rectangle((int)(height), 0, (int)(width-height), height);
-            SolidBrush brush = new SolidBrush(sidePanel);
-            //e.Graphics.FillRectangle(brush, rect);
-            SolidBrush hexagonBrush = new SolidBrush(mainColor);
             int radius = (int)(width * 0.2);
             Point centerHexagonPosition = new Point((int)(width * (1f / 3f)), (int)(height / 2f));
             e.Graphics.FillPolygon(hexagonBrush, HexagonPerfect(radius, centerHexagonPosition));
-            Bitmap bmp = new Bitmap("images/amythystabyss.jpg");
-            string name = "Amethyst Abyss";
+            Bitmap bmp;
+            string name;
             switch (map)
             {
                 case 0:
                     {
-                        bmp = new Bitmap("images/amythystabyss.jpg");
+                        bmp = amethystImage;
                         name = "Amethyst Abyss";
                         break;
                     }
                 case 1:
                     {
-                        bmp = new Bitmap("images/greengrotto.jpg");
+                        bmp = greenImage;
                         name = "Green Grotto";
                         break;
                     }
                 case 2:
                     {
-                        bmp = new Bitmap("images/tealtunnel.jpg");
+                        bmp = tealImage;
                         name = "Teal Tunnel";
                         break;
                     }
                 case 3:
                     {
-                        bmp = new Bitmap("images/diamonddungeon.jpg");
+                        bmp = diamondImage;
                         name = "Diamond Dungeon";
                         break;
                     }
                 case 4:
                     {
-                        bmp = new Bitmap("images/blackborehole.jpg");
+                        bmp = blackImage;
                         name = "Black Borehole";
                         break;
                     }
+                default:
+                    {
+                        throw new Exception($"Invalid map number: {map}");
+                    }
             }
             e.Graphics.DrawImage(bmp, new Rectangle(1, 1, height, height));
-            bmp.Dispose();
             // render the right panel
             float padding = 2f;
             int paddingPx = (int)(padding * (height / 54f));
@@ -150,14 +164,15 @@ namespace UI_Class_Library
             Point topLeft = new Point(height, 0);
 
             RectangleF header = new RectangleF(topLeft.X + paddingPx, topLeft.Y + paddingPx, widthOfPanel - (2 * paddingPx), height / 5f);
-            e.Graphics.FillRectangle(new SolidBrush(gameColors[map, 4]), header);
+            e.Graphics.FillRectangle(gameUnselected, header);
 
             RectangleF shootArrow = new RectangleF(topLeft.X + paddingPx, header.Y + header.Height + padding, (widthOfPanel - (paddingPx * 2)) / 4f, (widthOfPanel - (paddingPx * 2)) / 4f);
             RectangleF buyArrow = new RectangleF(topLeft.X + (width - height) / 2f - (shootArrow.Width / 2f), header.Y + header.Height + padding, shootArrow.Width, shootArrow.Height);
             RectangleF buySecret = new RectangleF(width - paddingPx - shootArrow.Width, header.Y + header.Height + padding, shootArrow.Width, shootArrow.Height);
+            
             if (shootArrow.Contains(mouse))
             {
-                e.Graphics.FillRectangle(new SolidBrush(gameColors[map, 5]), shootArrow);
+                e.Graphics.FillRectangle(gameSelected, shootArrow);
                 if (mouseDown)
                 {
                     mouseDown = false;
@@ -166,11 +181,11 @@ namespace UI_Class_Library
             }
             else
             {
-                e.Graphics.FillRectangle(new SolidBrush(gameColors[map, 4]), shootArrow);
+                e.Graphics.FillRectangle(gameUnselected, shootArrow);
             }
             if (buyArrow.Contains(mouse))
             {
-                e.Graphics.FillRectangle(new SolidBrush(gameColors[map, 5]), buyArrow);
+                e.Graphics.FillRectangle(gameSelected, buyArrow);
                 if (mouseDown)
                 {
                     mouseDown = false;
@@ -179,11 +194,11 @@ namespace UI_Class_Library
             }
             else
             {
-                e.Graphics.FillRectangle(new SolidBrush(gameColors[map, 4]), buyArrow);
+                e.Graphics.FillRectangle(gameUnselected, buyArrow);
             }
             if (buySecret.Contains(mouse))
             {
-                e.Graphics.FillRectangle(new SolidBrush(gameColors[map, 5]), buySecret);
+                e.Graphics.FillRectangle(gameSelected, buySecret);
                 if (mouseDown)
                 {
                     mouseDown = false;
@@ -192,7 +207,7 @@ namespace UI_Class_Library
             }
             else
             {
-                e.Graphics.FillRectangle(new SolidBrush(gameColors[map, 4]), buySecret);
+                e.Graphics.FillRectangle(gameUnselected, buySecret);
             }
             
 
@@ -202,8 +217,7 @@ namespace UI_Class_Library
            
             // doorway rendering
             Size roomSize = new Size(40, 40);
-            Brush roomBrush = new SolidBrush(Color.FromArgb(218, 218, 218));
-            // render the rooms around the hexagon
+           // render the rooms around the hexagon
             for (int i = 0; i < 6; i++)
             {
                 if (doorsOut[i])
@@ -216,9 +230,9 @@ namespace UI_Class_Library
                         outputs[i] = true;
                         mouseDown = false;
                     }
+                    
                 }
             }
-            bool[] nearbyHazards = [false, false, false];
             // also needs to render hazards
             if (hazards[0]) // wumpus in room
             {
@@ -262,8 +276,13 @@ namespace UI_Class_Library
                 SolidBrush fontBrush = new SolidBrush(Color.FromArgb(((i+1) * 25) + 100, ((i + 1) * 25) + 100, ((i + 1) * 25) + 100));
                 e.Graphics.DrawString(textBox[i], font, fontBrush, new Point(100, i * 30));
                 font.Dispose();
+                fontBrush.Dispose();
             }
-            
+            brush.Dispose();
+            hexagonBrush.Dispose();
+            gameSelected.Dispose();
+            gameUnselected.Dispose();
+            roomBrush.Dispose();
             return outputs.Concat<bool>([hazards[0], hazards[1], hazards[2]]).ToArray<bool>();
         }
         private RectangleF RectangleAt(Point center, int rWidth, int rHeight)
@@ -445,6 +464,8 @@ namespace UI_Class_Library
             float height = font.GetHeight();
             float width = e.Graphics.MeasureString(text, font).Width;
             e.Graphics.DrawString(text, font, textBrush, new Point((int)(position.X - width / 2), (int)(position.Y - height/2)));
+            font.Dispose();
+            textBrush.Dispose();
         }
         /// <summary>
         /// Returns the 6 verticies of a hexagon
@@ -565,8 +586,10 @@ namespace UI_Class_Library
         /// </summary>
         /// <param name="e"></param>
         /// <returns>Playing again</returns>
-        public bool RenderDeath(PaintEventArgs e)
+        public bool RenderDeath(PaintEventArgs e, int score)
         {
+            DrawText(e, $"You lost... {score}", 42, new Point(width / 2, height / 2), Color.FromArgb(0, 0, 0));
+
             return false;
         }
         /// <summary>
@@ -576,6 +599,19 @@ namespace UI_Class_Library
         /// <returns>Returns to leave to main menu</returns>
         public bool RenderHighscores(PaintEventArgs e, string[] names, string[] maps, string[] scores)
         {
+
+            return false;
+        }
+        /// <summary>
+        /// Renders the win screen
+        /// </summary>
+        /// <param name="e"></param>
+        /// <param name="score">The user's score</param>
+        /// <param name="name">The user's name</param>
+        /// <returns>Returns true to head back to main menu</returns>
+        public bool RenderWin(PaintEventArgs e, int score, string name)
+        {
+            DrawText(e, $"You won! {score}", 42, new Point(width / 2, height / 2), Color.FromArgb(0, 0, 0));
             return false;
         }
     }
@@ -584,7 +620,8 @@ namespace UI_Class_Library
         public bool[] RenderGame(PaintEventArgs e, bool[] doorsOut, bool[] hazards, PlayerManager player);
         public void RenderMainMenu(PaintEventArgs e);
         public bool[] RenderTrivia(PaintEventArgs e, string question, string[] trivia);
-        public bool RenderDeath(PaintEventArgs e);
+        public bool RenderDeath(PaintEventArgs e, int score);
+        public bool RenderWin(PaintEventArgs e, int score, string name);
         public bool RenderHighscores(PaintEventArgs e, string[] names, string[] maps, string[] scores);
         public bool[] GetInputs(); // returns an array of binary values, 0 if pressed, 1 if 0. Changes depending on scene
         public void UpdateScreenSize(int width, int height);
