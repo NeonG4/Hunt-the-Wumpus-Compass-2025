@@ -230,6 +230,18 @@ namespace GameLocationLibrary
             {
                 wumpusroom = adjacentRooms[random.Next(0, 5)];
             }
+            int wumpusIndex = -1;
+            for (int i = 0; i < allSpawnables.Count; i++)
+            {
+                if (wumpusroom == allSpawnables[i].room)
+                {
+                    wumpusIndex = i;
+                    i = allSpawnables.Count();
+                }
+            }
+            allSpawnables.RemoveAt(wumpusIndex);
+            Hazards newWumpus = new Hazards("Wumpus", wumpusroom);
+            allSpawnables.Add(newWumpus);
             return wumpusroom;
         }
 
