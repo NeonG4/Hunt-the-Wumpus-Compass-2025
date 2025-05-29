@@ -82,6 +82,7 @@ namespace UI_Class_Library
         /// <returns>Returns the inputs as well as if you encountered any hazards</returns>
         public bool[] RenderGame(PaintEventArgs e, bool[] doorsOut, bool[] hazards, bool arrowNocked, PlayerManager player)
         {
+            bool renderMouseData = false;
             // renders the game
             Map currentMap = maps[map];
             Color sidePanel = currentMap.backgroundColor;
@@ -152,9 +153,8 @@ namespace UI_Class_Library
             }
             if (buyArrow.Contains(mouse))
             {
+                renderMouseData = true;
                 e.Graphics.FillRectangle(gameSelected, buyArrow);
-                e.Graphics.FillRectangle(gameSelected, new Rectangle(mouse, new Size(50, 30)));
-                DrawText(e, player.Arrows.ToString(), 25, new Point(mouse.X + 25, mouse.Y + 15), Color.White);
                 if (mouseDown)
                 {
                     mouseDown = false;
@@ -223,6 +223,11 @@ namespace UI_Class_Library
             for (int i = 0; i < textBox.Count; i++)
             {
                 textBox[(textBox.Count - 1) - i].RenderText(e, new Point(height + paddingPx, (height - paddingPx) - (int)((fontSize + (.5 * paddingPx)) * (i + 1))), fontSize, Color.FromArgb(255 - (50 * i), 255 - (50 * i), 255 - (50 * i)));
+            }
+            if (renderMouseData)
+            {
+                DrawText(e, player.Arrows.ToString(), 25, new Point(mouse.X + 28, mouse.Y + 18), Color.Gray);
+                DrawText(e, player.Arrows.ToString(), 25, new Point(mouse.X + 25, mouse.Y + 15), Color.White);
             }
             brush.Dispose();
             gameSelected.Dispose();
