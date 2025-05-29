@@ -129,19 +129,6 @@ namespace UI_Class_Library
             {
                 e.Graphics.FillRectangle(gameUnselected, shootArrow);
             }
-            if (buyArrow.Contains(mouse))
-            {
-                e.Graphics.FillRectangle(gameSelected, buyArrow);
-                if (mouseDown)
-                {
-                    mouseDown = false;
-                    outputs[7] = true;
-                }
-            }
-            else
-            {
-                e.Graphics.FillRectangle(gameUnselected, buyArrow);
-            }
             if (buySecret.Contains(mouse))
             {
                 e.Graphics.FillRectangle(gameSelected, buySecret);
@@ -163,6 +150,22 @@ namespace UI_Class_Library
             {
                 e.Graphics.DrawImage(crossbow, shootArrow);
             }
+            if (buyArrow.Contains(mouse))
+            {
+                e.Graphics.FillRectangle(gameSelected, buyArrow);
+                e.Graphics.FillRectangle(gameSelected, new Rectangle(mouse, new Size(50, 30)));
+                DrawText(e, player.Arrows.ToString(), 25, new Point(mouse.X + 25, mouse.Y + 15), Color.White);
+                if (mouseDown)
+                {
+                    mouseDown = false;
+                    outputs[7] = true;
+                }
+            }
+            else
+            {
+                e.Graphics.FillRectangle(gameUnselected, buyArrow);
+            }
+
             e.Graphics.DrawImage(arrows, buyArrow);
             Point headerCenter = new Point(height + (int)(widthOfPanel / 2f), (int)(height / 16f) + paddingPx);
             DrawText(e, name, (int)(height / 23), headerCenter, Color.FromArgb(0, 0, 0));
