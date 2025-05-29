@@ -286,7 +286,7 @@ namespace Game_Control
                 case GameState.Died:
                     {
                         // renders game over screen
-                        _playerManager.KilledWumpus = false;
+                        _playerManager.KilledWumpus = false; // probably best to put this elsewhere
                         _UIClassManager.RenderDeath(e, _playerManager.Score);
                         break;
                     }

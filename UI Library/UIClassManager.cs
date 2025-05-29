@@ -46,6 +46,7 @@ namespace UI_Class_Library
             ];
         Bitmap crossbow = new Bitmap("images/crossbow_icon.png");
         Bitmap crossbowLoaded = new Bitmap("images/loaded_crossbow_icon.png");
+        Bitmap arrows = new Bitmap("images/arrows_icon.png");
         public Point mouse = new Point();
         public bool mouseDown = false;
         public bool mouseDownBuffer = false;
@@ -89,7 +90,7 @@ namespace UI_Class_Library
             SolidBrush gameUnselected = new SolidBrush(currentMap.foregroundColor);
             SolidBrush roomBrush = new SolidBrush(Color.FromArgb(218, 218, 218));
 
-            // very messy, I'd rewrite this
+            // very messy, should rewrite this
             bool[] outputs = [false, false, false, false, false, false, false, false, false];
 
             int currentRoom = player.CurrentRoom;
@@ -162,7 +163,7 @@ namespace UI_Class_Library
             {
                 e.Graphics.DrawImage(crossbow, shootArrow);
             }
-
+            e.Graphics.DrawImage(arrows, buyArrow);
             Point headerCenter = new Point(height + (int)(widthOfPanel / 2f), (int)(height / 16f) + paddingPx);
             DrawText(e, name, (int)(height / 23), headerCenter, Color.FromArgb(0, 0, 0));
             DrawText(e, "Hunt the Wumpus", (int)(height / 54), new Point(headerCenter.X, (int)(headerCenter.Y + (height / 10f))), Color.FromArgb(0, 0, 0));
@@ -362,6 +363,14 @@ namespace UI_Class_Library
 
             return [false];
         }
+        /// <summary>
+        /// Renders the high score game state
+        /// </summary>
+        /// <param name="e">PaintEventArgs e</param>
+        /// <param name="names">An array of names </param>
+        /// <param name="scores">An array of scores</param>
+        /// <param name="maps">An array of map names</param>
+        /// <returns>true if leave to main menu</returns>
         public bool RenderHighScore(PaintEventArgs e, string[] names, int[] scores, string[] maps)
         {
             
