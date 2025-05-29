@@ -499,7 +499,7 @@ namespace UI_Class_Library
                     }
                 case ChatType.EncounteredBat:
                     {
-                        textText = new TextBoxText("You've hit a bat", new Bitmap("images/bat_teal.png"));
+                        textText = new TextBoxText("You've run into a bat", new Bitmap("images/bat_teal.png"));
                         break;
                     }
                 case ChatType.EncounteredPit:
