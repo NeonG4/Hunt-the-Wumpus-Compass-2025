@@ -17,8 +17,8 @@ namespace GameLocationLibrary
         public List<Hazards> hazards = new List<Hazards>();
         public List<Hazards> allSpawnables = new List<Hazards>();
         Random random = new Random();
-        int wumpusroom = 31;
-        public int playerspawn = 31;
+        int wumpusroom = 30;
+        public int playerspawn = 30;
 
         //Method that returns a list of hazards/the room they are located in
         public GameLocation()
@@ -115,6 +115,7 @@ namespace GameLocationLibrary
             while (true)
             {
                 int wumpusstart = random.Next(0, 30);
+                wumpusroom = wumpusstart;
                 //Generates a random integer that represents a random room 
                 Hazards newWumpus = new Hazards("Wumpus", wumpusstart);
                 bool tmp = true;
