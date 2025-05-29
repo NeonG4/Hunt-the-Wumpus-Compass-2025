@@ -136,6 +136,7 @@ namespace Game_Control
                                 if (triviaCorrect > 1)
                                 {
                                     // buy a secret
+                                    _UIClassManager.AddToChat(ChatType.Text, "Hint: " + _triviaManager.getTriviaData(triviaQuestionIndex - 1).correctAnswer);
                                 }
                                 else
                                 {
@@ -277,6 +278,10 @@ namespace Game_Control
                         if (answers.Contains<bool>(true))
                         {
                             _playerManager.GoldCoins--;
+                            if (_playerManager.GoldCoins < 0)
+                            {
+                                gameState = GameState.Died;
+                            }
                             triviaCount--; // we want to move to the next question after the current question is answered
                             triviaQuestionIndex++;
                             for (int i = 0; i < triviaAnswers.Length; i++)
