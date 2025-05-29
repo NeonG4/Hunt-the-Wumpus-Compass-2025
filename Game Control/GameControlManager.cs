@@ -39,13 +39,13 @@ namespace Game_Control
         public GameControl() 
         {
             _UIClassManager = new UIClassManager();
+            _scoreboard = new Scoreboard();
         }
         public void StartGame(int map)
         {
             // should start up a game
             gameState = GameState.MainMenu;
             _gameLocations = new GameLocation(); // randomly generated positions
-            _scoreboard = new Scoreboard();
             _triviaManager = new TriviaManager();
             _playerManager = new PlayerManager(_gameLocations.playerspawn); // use _gamelocations to get a valid spot to place the player 
             _cave = new CaveManager(map);
@@ -310,6 +310,7 @@ namespace Game_Control
                     }
                 case GameState.GetHighScores:
                     {
+                        
                         // needs to render highscores
                         ScoreItem[] scoreData = _scoreboard.GetList().ToArray();
                         List<string> names = new List<string>();
