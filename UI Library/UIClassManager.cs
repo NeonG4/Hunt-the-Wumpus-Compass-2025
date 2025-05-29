@@ -44,6 +44,7 @@ namespace UI_Class_Library
             new Bitmap("images/door_4.png"),
             new Bitmap("images/door_5.png")
             ];
+        Bitmap coins = new Bitmap("images/gold_coins_icon.png");
         Bitmap crossbow = new Bitmap("images/crossbow_icon.png");
         Bitmap crossbowLoaded = new Bitmap("images/loaded_crossbow_icon.png");
         Bitmap arrows = new Bitmap("images/arrows_icon.png");
@@ -283,6 +284,8 @@ namespace UI_Class_Library
             int fontSize = 24 * (height / 540);
             int textBoxRectYPosition = height - (int)(height / 2.5);
             RectangleF textBoxRect = new RectangleF(height, textBoxRectYPosition, widthOfPanel, height - textBoxRectYPosition);
+            e.Graphics.DrawImage(coins, new Rectangle(height + paddingPx, textBoxRectYPosition - 60, 50, 50));
+            DrawText(e, player.GoldCoins.ToString(), 20, new Point(height + paddingPx + 50 + paddingPx, textBoxRectYPosition - 25), Color.White);
             e.Graphics.FillRectangle(new SolidBrush(Color.Black), textBoxRect);
             // renders the textbox 
             for (int i = 0; i < textBox.Count; i++)
