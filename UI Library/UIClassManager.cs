@@ -36,7 +36,14 @@ namespace UI_Class_Library
     {
         static float aspectRatio = 16f / 9f;
         public int width, height;
-
+        Bitmap[] doors = [
+            new Bitmap("images/door_0.png"),
+            new Bitmap("images/door_1.png"),
+            new Bitmap("images/door_2.png"),
+            new Bitmap("images/door_3.png"),
+            new Bitmap("images/door_4.png"),
+            new Bitmap("images/door_5.png")
+            ];
         Bitmap crossbow = new Bitmap("images/crossbow_icon.png");
         Bitmap crossbowLoaded = new Bitmap("images/loaded_crossbow_icon.png");
         public Point mouse = new Point();
@@ -161,16 +168,18 @@ namespace UI_Class_Library
             DrawText(e, "Hunt the Wumpus", (int)(height / 54), new Point(headerCenter.X, (int)(headerCenter.Y + (height / 10f))), Color.FromArgb(0, 0, 0));
            
             // doorway rendering
-            Size roomSize = new Size(40, 40);
+            Size roomSize = new Size(80, 80);
            // render the rooms around the hexagon
             for (int i = 0; i < 6; i++)
             {
                 if (doorsOut[i])
                 {
-                    Rectangle rectRoom = new Rectangle(new Point((int)(centerHexagonPosition.X + radius * Math.Cos((-2 + i) * Math.PI / 3 + Math.PI / 6)), (int)(centerHexagonPosition.Y + radius * Math.Sin((-2 + i) * Math.PI / 3 + Math.PI / 6))), roomSize);
+                    Rectangle rectRoom = new Rectangle(new Point((int)(centerHexagonPosition.X + radius * Math.Cos((-2 + i) * Math.PI / 3 + Math.PI / 6)) - roomSize.Width / 2, (int)(centerHexagonPosition.Y + radius * Math.Sin((-2 + i) * Math.PI / 3 + Math.PI / 6)) - roomSize.Height / 2), roomSize);
                     e.Graphics.FillEllipse(roomBrush, rectRoom);
-                    float distance = (float)Math.Sqrt((mouse.X - (rectRoom.X + 20)) * (mouse.X - (rectRoom.X + 20)) + (mouse.Y - (rectRoom.Y + 20)) * (mouse.Y - (rectRoom.Y + 20)));
-                    if (distance < 20 && mouseDown)
+
+                    e.Graphics.DrawImage(doors[i], new Rectangle(0, 0, height, height));
+                    float distance = (float)Math.Sqrt((mouse.X - (rectRoom.X + roomSize.Width)) * (mouse.X - (rectRoom.X + roomSize.Width)) + (mouse.Y - (rectRoom.Y + roomSize.Height)) * (mouse.Y - (rectRoom.Y + roomSize.Height)));
+                    if (distance < roomSize.Width && mouseDown)
                     {
                         outputs[i] = true;
                         mouseDown = false;
@@ -179,18 +188,6 @@ namespace UI_Class_Library
                 }
             }
             // also needs to render hazards
-            if (hazards[0]) // wumpus in room
-            {
-                DrawText(e, "Wumpus", 20, centerHexagonPosition, Color.FromArgb(255, 255, 255));
-            }
-            if (hazards[1]) // bat in room
-            {
-                DrawText(e, "Bat", 20, centerHexagonPosition, Color.FromArgb(255, 255, 255));
-            }
-            if (hazards[2]) // pit in room
-            {
-                DrawText(e, "Pit", 20, centerHexagonPosition, Color.FromArgb(255, 255, 255));
-            }
             if (lastMapLocation != currentRoom) 
             {
                 lastMapLocation = currentRoom;
@@ -215,7 +212,8 @@ namespace UI_Class_Library
                 }
             }
             int fontSize = 24 * (height / 540);
-            RectangleF textBoxRect = new RectangleF(height, height - 5 * fontSize, widthOfPanel - paddingPx * 2, (height - paddingPx) - (int)((fontSize + (.5 * paddingPx)) * (5 + 1)));
+            int textBoxRectYPosition = height - (int)(height / 2.5);
+            RectangleF textBoxRect = new RectangleF(height, textBoxRectYPosition, widthOfPanel, height - textBoxRectYPosition);
             e.Graphics.FillRectangle(new SolidBrush(Color.Black), textBoxRect);
             // renders the textbox 
             for (int i = 0; i < textBox.Count; i++)
