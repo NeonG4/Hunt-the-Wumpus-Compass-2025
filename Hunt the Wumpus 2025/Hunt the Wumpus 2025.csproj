@@ -119,6 +119,9 @@
     <None Update="images\loaded_crossbow_icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="images\question_icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="images\tealtunnel.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

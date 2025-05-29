@@ -47,6 +47,7 @@ namespace UI_Class_Library
         Bitmap crossbow = new Bitmap("images/crossbow_icon.png");
         Bitmap crossbowLoaded = new Bitmap("images/loaded_crossbow_icon.png");
         Bitmap arrows = new Bitmap("images/arrows_icon.png");
+        Bitmap question = new Bitmap("images/question_icon.png");
         public Point mouse = new Point();
         public bool mouseDown = false;
         public bool mouseDownBuffer = false;
@@ -167,6 +168,7 @@ namespace UI_Class_Library
             }
 
             e.Graphics.DrawImage(arrows, buyArrow);
+            e.Graphics.DrawImage(question, buySecret);
             Point headerCenter = new Point(height + (int)(widthOfPanel / 2f), (int)(height / 16f) + paddingPx);
             DrawText(e, name, (int)(height / 23), headerCenter, Color.FromArgb(0, 0, 0));
             DrawText(e, "Hunt the Wumpus", (int)(height / 54), new Point(headerCenter.X, (int)(headerCenter.Y + (height / 10f))), Color.FromArgb(0, 0, 0));
