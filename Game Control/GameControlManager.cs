@@ -54,6 +54,7 @@ namespace Game_Control
         {
             // stops the game
             _UIClassManager.Dispose();
+            _UIClassManager = new UIClassManager();
         }
         public void RestartGame(int map, int startingRoom)
         {
