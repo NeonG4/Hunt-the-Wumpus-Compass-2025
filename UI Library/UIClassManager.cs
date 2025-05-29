@@ -234,7 +234,7 @@ namespace UI_Class_Library
         /// Renders the title screen where the user starts
         /// </summary>
         /// <param name="e">PaintEventArgs passed through Paint Form Event</param>
-        public void RenderMainMenu(PaintEventArgs e)
+        public bool RenderMainMenu(PaintEventArgs e)
         {
             inputs.Clear();
             for (int i = 0; i < 6; i++) { inputs.Add(false); }
@@ -258,7 +258,7 @@ namespace UI_Class_Library
             {
                 if (mouseDown)
                 {
-                    
+                    return true;
                 }
             }
                     e.Graphics.DrawRectangle(Scorebrushs, rect);
@@ -315,6 +315,7 @@ namespace UI_Class_Library
             {
                 inputs[map + 1] = true;
             }
+            return false;
         }
         public bool[] RenderTrivia(PaintEventArgs e, string question, string[] trivia)
         {
@@ -698,7 +699,7 @@ namespace UI_Class_Library
     public interface IUIClassManager
     {
         public bool[] RenderGame(PaintEventArgs e, bool[] doorsOut, bool[] hazards, bool arrowNocked, PlayerManager player);
-        public void RenderMainMenu(PaintEventArgs e);
+        public bool RenderMainMenu(PaintEventArgs e);
         public bool[] RenderTrivia(PaintEventArgs e, string question, string[] trivia);
         public bool RenderDeath(PaintEventArgs e, int score);
         public bool RenderWin(PaintEventArgs e, int score, string name);

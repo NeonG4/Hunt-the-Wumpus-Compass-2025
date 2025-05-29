@@ -73,7 +73,8 @@ namespace Game_Control
                     {
                         if (ClickedScoreboard)
                         { 
-                            gameState = GameState.GetHighScores; 
+                            gameState = GameState.GetHighScores;
+                            return;
                         }
                     
                         if (inputs.Length == 6)
@@ -102,7 +103,11 @@ namespace Game_Control
                         }
 
                         // renders main menu
-                        _UIClassManager.RenderMainMenu(e);
+                        if (_UIClassManager.RenderMainMenu(e))
+                        {
+                            gameState = GameState.GetHighScores;
+                        }
+                        
                         break;
                     }
                 case GameState.PlayingGame:
