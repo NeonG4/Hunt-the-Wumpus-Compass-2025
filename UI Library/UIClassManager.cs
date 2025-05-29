@@ -181,7 +181,7 @@ namespace UI_Class_Library
                 e.Graphics.FillEllipse(roomBrush, rectRoom);
 
                 e.Graphics.DrawImage(doors[0], new Rectangle(0, 0, height, height));
-                float distance = (float)Math.Sqrt((mouse.X - (rectRoom.X + roomSize.Width)) * (mouse.X - (rectRoom.X + roomSize.Width)) + (mouse.Y - (rectRoom.Y + roomSize.Height)) * (mouse.Y - (rectRoom.Y + roomSize.Height)));
+                float distance = (float)Math.Sqrt((mouse.X - (rectRoom.X + roomSize.Width)) * (mouse.X - (rectRoom.X + roomSize.Width)) + (mouse.Y - (rectRoom.Y + roomSize.Height)) * (mouse.Y - (rectRoom.Y + roomSize.Height))) + 20;
                 if (distance < roomSize.Width && mouseDown)
                 {
                     outputs[0] = true;
@@ -194,7 +194,7 @@ namespace UI_Class_Library
                 e.Graphics.FillEllipse(roomBrush, rectRoom);
 
                 e.Graphics.DrawImage(doors[1], new Rectangle(0, 0, height, height));
-                float distance = (float)Math.Sqrt((mouse.X - (rectRoom.X + roomSize.Width)) * (mouse.X - (rectRoom.X + roomSize.Width)) + (mouse.Y - (rectRoom.Y + roomSize.Height)) * (mouse.Y - (rectRoom.Y + roomSize.Height)));
+                float distance = (float)Math.Sqrt((mouse.X - (rectRoom.X + roomSize.Width)) * (mouse.X - (rectRoom.X + roomSize.Width)) + (mouse.Y - (rectRoom.Y + roomSize.Height)) * (mouse.Y - (rectRoom.Y + roomSize.Height))) + 20;
                 if (distance < roomSize.Width && mouseDown)
                 {
                     outputs[1] = true;
@@ -207,7 +207,7 @@ namespace UI_Class_Library
                 e.Graphics.FillEllipse(roomBrush, rectRoom);
 
                 e.Graphics.DrawImage(doors[2], new Rectangle(0, 0, height, height));
-                float distance = (float)Math.Sqrt((mouse.X - (rectRoom.X + roomSize.Width)) * (mouse.X - (rectRoom.X + roomSize.Width)) + (mouse.Y - (rectRoom.Y + roomSize.Height)) * (mouse.Y - (rectRoom.Y + roomSize.Height)));
+                float distance = (float)Math.Sqrt((mouse.X - (rectRoom.X + roomSize.Width)) * (mouse.X - (rectRoom.X + roomSize.Width)) + (mouse.Y - (rectRoom.Y + roomSize.Height)) * (mouse.Y - (rectRoom.Y + roomSize.Height))) + 20;
                 if (distance < roomSize.Width && mouseDown)
                 {
                     outputs[2] = true;
@@ -220,7 +220,7 @@ namespace UI_Class_Library
                 e.Graphics.FillEllipse(roomBrush, rectRoom);
 
                 e.Graphics.DrawImage(doors[3], new Rectangle(0, 0, height, height));
-                float distance = (float)Math.Sqrt((mouse.X - (rectRoom.X + roomSize.Width)) * (mouse.X - (rectRoom.X + roomSize.Width)) + (mouse.Y - (rectRoom.Y + roomSize.Height)) * (mouse.Y - (rectRoom.Y + roomSize.Height)));
+                float distance = (float)Math.Sqrt((mouse.X - (rectRoom.X + roomSize.Width)) * (mouse.X - (rectRoom.X + roomSize.Width)) + (mouse.Y - (rectRoom.Y + roomSize.Height)) * (mouse.Y - (rectRoom.Y + roomSize.Height))) + 20;
                 if (distance < roomSize.Width && mouseDown)
                 {
                     outputs[3] = true;
@@ -233,7 +233,7 @@ namespace UI_Class_Library
                 e.Graphics.FillEllipse(roomBrush, rectRoom);
 
                 e.Graphics.DrawImage(doors[4], new Rectangle(0, 0, height, height));
-                float distance = (float)Math.Sqrt((mouse.X - (rectRoom.X + roomSize.Width)) * (mouse.X - (rectRoom.X + roomSize.Width)) + (mouse.Y - (rectRoom.Y + roomSize.Height)) * (mouse.Y - (rectRoom.Y + roomSize.Height)));
+                float distance = (float)Math.Sqrt((mouse.X - (rectRoom.X + roomSize.Width)) * (mouse.X - (rectRoom.X + roomSize.Width)) + (mouse.Y - (rectRoom.Y + roomSize.Height)) * (mouse.Y - (rectRoom.Y + roomSize.Height))) + 20;
                 if (distance < roomSize.Width && mouseDown)
                 {
                     outputs[4] = true;
@@ -246,7 +246,7 @@ namespace UI_Class_Library
                 e.Graphics.FillEllipse(roomBrush, rectRoom);
 
                 e.Graphics.DrawImage(doors[5], new Rectangle(0, 0, height, height));
-                float distance = (float)Math.Sqrt((mouse.X - (rectRoom.X + roomSize.Width)) * (mouse.X - (rectRoom.X + roomSize.Width)) + (mouse.Y - (rectRoom.Y + roomSize.Height)) * (mouse.Y - (rectRoom.Y + roomSize.Height)));
+                float distance = (float)Math.Sqrt((mouse.X - (rectRoom.X + roomSize.Width)) * (mouse.X - (rectRoom.X + roomSize.Width)) + (mouse.Y - (rectRoom.Y + roomSize.Height)) * (mouse.Y - (rectRoom.Y + roomSize.Height))) + 20;
                 if (distance < roomSize.Width && mouseDown)
                 {
                     outputs[5] = true;
