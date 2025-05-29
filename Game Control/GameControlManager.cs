@@ -32,6 +32,7 @@ namespace Game_Control
         int triviaCorrect = 0;
         int triviaTotalQuestions = 0;
         int totalGoldCoins = 100;
+        bool ClickedScoreboard = false;
         bool angeredWumpus = false;
         bool arrowNocked = false;
         TriviaState triviaState = TriviaState.Empty;
@@ -63,12 +64,18 @@ namespace Game_Control
         public void Tick(PaintEventArgs e)
         {
             bool[] inputs = _UIClassManager.GetInputs();
+           
             // progress the game based on the input array
             // inputs changes based on the game state
             switch (gameState)
             {
                 case GameState.MainMenu:
                     {
+                        if (ClickedScoreboard)
+                        { 
+                            gameState = GameState.GetHighScores; 
+                        }
+                    
                         if (inputs.Length == 6)
                         {
                             // should process inputs based on main menu

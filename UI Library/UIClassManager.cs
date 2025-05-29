@@ -251,9 +251,17 @@ namespace UI_Class_Library
             Pen Scorebrushs = new Pen(Color.FromArgb(0, 0, 0), 4);
             RectangleF rect = new RectangleF((int)(width/ 2.526f), (int)(height/1.9f),(int) (width/4.8f), (int)(height/15.428));
             Point scoreposition = new Point(width/2,(int)(height/1.78f));
-            e.Graphics.DrawRectangle(Scorebrushs, rect);
+            if (rect.Contains(mouse))
+            {
+                if (mouseDown)
+                {
+                    
+                }
+            }
+                    e.Graphics.DrawRectangle(Scorebrushs, rect);
             e.Graphics.FillRectangle(shapeBrush, rect);
             DrawText(e, "ScoreBoard", 11, scoreposition,Color.FromArgb(0, 0, 0));
+           
             DrawText(e, "Hunt the Wumpus", 41, titlePosition, Color.FromArgb(0, 0, 0));
             // renders subtext
             DrawText(e, "David Stall / Nathan Choy / Camilla Meija / Maxim Delyagin / Azeem Egizi", 12, new Point(width / 2, 200), Color.FromArgb(255, 255, 255));
