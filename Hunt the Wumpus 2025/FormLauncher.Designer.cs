@@ -39,6 +39,8 @@
             buttonTestUI = new Button();
             buttonTestAll = new Button();
             buttonStartWumpus = new Button();
+            textBoxName = new TextBox();
+            labelName = new Label();
             groupBoxTesting.SuspendLayout();
             SuspendLayout();
             // 
@@ -154,20 +156,38 @@
             // buttonStartWumpus
             // 
             buttonStartWumpus.Font = new Font("Stencil", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            buttonStartWumpus.Location = new Point(214, 29);
+            buttonStartWumpus.Location = new Point(214, 53);
             buttonStartWumpus.Margin = new Padding(3, 2, 3, 2);
             buttonStartWumpus.Name = "buttonStartWumpus";
-            buttonStartWumpus.Size = new Size(154, 201);
+            buttonStartWumpus.Size = new Size(154, 177);
             buttonStartWumpus.TabIndex = 8;
             buttonStartWumpus.Text = "Start Wumpus Game";
             buttonStartWumpus.UseVisualStyleBackColor = true;
             buttonStartWumpus.Click += StartGame;
+            // 
+            // textBoxName
+            // 
+            textBoxName.Location = new Point(214, 25);
+            textBoxName.Name = "textBoxName";
+            textBoxName.Size = new Size(154, 23);
+            textBoxName.TabIndex = 9;
+            // 
+            // labelName
+            // 
+            labelName.AutoSize = true;
+            labelName.Location = new Point(214, 7);
+            labelName.Name = "labelName";
+            labelName.Size = new Size(42, 15);
+            labelName.TabIndex = 10;
+            labelName.Text = "Name:";
             // 
             // FormLaucher
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(398, 255);
+            Controls.Add(labelName);
+            Controls.Add(textBoxName);
             Controls.Add(buttonStartWumpus);
             Controls.Add(groupBoxTesting);
             Controls.Add(label1);
@@ -191,5 +211,7 @@
         private Button buttonTestCave;
         private Button buttonTestGameLocation;
         private Button buttonStartWumpus;
+        private TextBox textBoxName;
+        private Label labelName;
     }
 }
