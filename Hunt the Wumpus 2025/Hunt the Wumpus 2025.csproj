@@ -16,6 +16,9 @@
     <None Remove="caveC-validDirections.csv" />
     <None Remove="caveD-validDirections.csv" />
     <None Remove="caveE-validDirections.csv" />
+    <None Remove="sounds\wumpusgrotto.wav" />
+    <None Remove="sounds\wumpuslagoon.wav" />
+    <None Remove="sounds\wumpusmenu.wav" />
     <None Remove="TriviaQuestions.json" />
   </ItemGroup>
 
@@ -39,6 +42,15 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="caveE-validDirections.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="sounds\wumpusgrotto.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="sounds\wumpuslagoon.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="sounds\wumpusmenu.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="TriviaQuestions.json">

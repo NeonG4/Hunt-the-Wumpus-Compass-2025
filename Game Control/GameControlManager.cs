@@ -10,6 +10,7 @@ using UI_Class_Library;
 using System.Windows.Forms;
 using System.Media;
 using ScoreBoard;
+using SoundLibrary;
 using Hunt_the_Wumpus_2025;
 using System.Diagnostics.Contracts;
 using Microsoft.VisualBasic;
@@ -35,8 +36,10 @@ namespace Game_Control
         bool ClickedScoreboard = false;
         bool angeredWumpus = false;
         bool arrowNocked = false;
+        bool mainMenuMusicPlaying = false;
         public string playerName;
         TriviaState triviaState = TriviaState.Empty;
+        SoundManager _soundManager = new SoundManager();
         public GameControl() 
         {
             _UIClassManager = new UIClassManager();
@@ -50,6 +53,7 @@ namespace Game_Control
             _triviaManager = new TriviaManager();
             _playerManager = new PlayerManager(_gameLocations.playerspawn); // use _gamelocations to get a valid spot to place the player 
             _cave = new CaveManager(map);
+            
 
         }
         public void StopGame()
@@ -66,6 +70,11 @@ namespace Game_Control
             {
                 case GameState.MainMenu:
                     {
+                        if (!mainMenuMusicPlaying)
+                        {
+                            _soundManager.StartMusic("sounds/wumpusmenu.wav");
+                            mainMenuMusicPlaying = true;
+                        }
                         bool[] inputs = _UIClassManager.GetInputs();
                         if (ClickedScoreboard)
                         { 
@@ -85,10 +94,12 @@ namespace Game_Control
                             }
                             if (inputs[1] || inputs[2] || inputs[3] || inputs[4] || inputs[5])
                             {
+                                _soundManager.StopAllSounds();
+
                                 // a map is selected, choose and change the scene, load the map from memory, and start the game
                                 int caveNumber;
-                                if (inputs[1]) { caveNumber = 0; }
-                                else if (inputs[2]) { caveNumber = 1; }
+                                if (inputs[1]) { caveNumber = 0; _soundManager.StartMusic("sounds/wumpuslagoon.wav"); }
+                                else if (inputs[2]) { caveNumber = 1; _soundManager.StartMusic("sounds/wumpusgrotto.wav"); }
                                 else if (inputs[3]) { caveNumber = 2; }
                                 else if (inputs[4]) { caveNumber = 3; }
                                 else { caveNumber = 4; }
@@ -294,6 +305,7 @@ namespace Game_Control
                     }
                 case GameState.Died:
                     {
+                        _soundManager.StopAllSounds();
                         // renders game over screen
                         _playerManager.KilledWumpus = false; // probably best to put this elsewhere
                         _UIClassManager.RenderDeath(e, _playerManager.Score);
@@ -301,6 +313,7 @@ namespace Game_Control
                     }
                 case GameState.Win:
                     {
+                        _soundManager.StopAllSounds();
                         // renders win screen
                         _playerManager.KilledWumpus = true;
                         _UIClassManager.RenderWin(e, _playerManager.Score, "Name");
