@@ -487,8 +487,8 @@ namespace UI_Class_Library
                 e.Graphics.FillPolygon(sd, points[i]);
                 if (names.Length > i)
                 {
-                    DrawText(e, names[i], 40, hexaPoint, Color.Black);
-                    DrawText(e, scores[i].ToString(), 30, new Point(hexaPoint.X + width / 4 - 100, hexaPoint.Y + 5), Color.Black);
+                    DrawText(e, names[i], 40, hexaPoint, Color.White);
+                    DrawText(e, scores[i].ToString(), 30, new Point(hexaPoint.X + width / 4 - 100, hexaPoint.Y + 5), Color.White);
                 }
             }
 
@@ -518,11 +518,11 @@ namespace UI_Class_Library
                 {
                     sd = new SolidBrush(this.maps[4].backgroundColor);
                 }
-                e.Graphics.FillPolygon(sd, points[i]);
+                e.Graphics.FillPolygon(sd, points[i + 5]);
                 if (names.Length > i + 5)
                 {
-                    DrawText(e, names[i + 5], 40, hexaPoint, Color.Black);
-                    DrawText(e, scores[i + 5].ToString(), 30, new Point(hexaPoint.X + width / 4 - 100, hexaPoint.Y + 5), Color.Black);
+                    DrawText(e, names[i + 5], 40, hexaPoint, Color.White);
+                    DrawText(e, scores[i + 5].ToString(), 30, new Point(hexaPoint.X + width / 4 - 100, hexaPoint.Y + 5), Color.White);
                 }
             }
             return false;
