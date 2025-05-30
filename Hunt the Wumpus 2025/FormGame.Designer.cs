@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormGame));
             timerTicker = new System.Windows.Forms.Timer(components);
             SuspendLayout();
             // 
@@ -44,8 +45,9 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(824, 370);
             DoubleBuffered = true;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FormGame";
-            Text = "FormGame";
+            Text = "Hunt The Wumpus - Maxim The Dream Team";
             FormClosing += FormGame_FormClosing;
             Paint += FormGame_Paint;
             MouseDown += FormGame_MouseDown;
