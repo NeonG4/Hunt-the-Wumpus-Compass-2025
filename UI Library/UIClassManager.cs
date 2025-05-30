@@ -525,7 +525,20 @@ namespace UI_Class_Library
                     DrawText(e, scores[i + 5].ToString(), 30, new Point(hexaPoint.X + width / 4 - 100, hexaPoint.Y + 5), Color.White);
                 }
             }
-            return false;
+            Rectangle rect = new Rectangle(5, 5, 20, 20);
+            Color selectedColor = Color.FromArgb(50, 100, 150);
+            bool ret = false;
+            if (rect.Contains(mouse))
+            {
+                selectedColor = Color.FromArgb(75, 125, 200);
+                if (mouseDown)
+                {
+                    ret = true;
+                    mouseDown = false;
+                }
+            }
+            e.Graphics.FillRectangle(new SolidBrush(selectedColor), rect);
+            return ret;
         }
         /// <summary>
         /// Adds a ChatType to the textbox
