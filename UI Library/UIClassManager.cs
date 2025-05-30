@@ -175,7 +175,7 @@ namespace UI_Class_Library
             DrawText(e, "Hunt the Wumpus", (int)(height / 54), new Point(headerCenter.X, (int)(headerCenter.Y + (height / 10f))), Color.FromArgb(0, 0, 0));
            
             // doorway rendering
-            Size roomSize = new Size(95, 95);
+            Size roomSize = new Size(85, 85);
            // render the rooms around the hexagon
 
             if (doorsOut[0])
@@ -183,7 +183,7 @@ namespace UI_Class_Library
                 Rectangle rectRoom = new Rectangle(new Point((int)(centerHexagonPosition.X + radius * Math.Cos((-2 + 0) * Math.PI / 3 + Math.PI / 6)) - roomSize.Width / 2 - 10, (int)(centerHexagonPosition.Y + radius * Math.Sin((-2 + 0) * Math.PI / 3 + Math.PI / 6)) - roomSize.Height / 2 + 10), roomSize);
 
                 e.Graphics.DrawImage(doors[0], new Rectangle(0, 0, height, height));
-                float distance = (float)Math.Sqrt((mouse.X - (rectRoom.X + roomSize.Width)) * (mouse.X - (rectRoom.X + roomSize.Width)) + (mouse.Y - (rectRoom.Y + roomSize.Height)) * (mouse.Y - (rectRoom.Y + roomSize.Height))) + 5;
+                float distance = (float)Math.Sqrt((mouse.X - (rectRoom.X + 0.25 * roomSize.Width)) * (mouse.X - (rectRoom.X + 0.25 * roomSize.Width)) + (mouse.Y - (rectRoom.Y + 0.25 * roomSize.Height)) * (mouse.Y - (rectRoom.Y + 0.25 * roomSize.Height))) + 5;
                 if (distance < roomSize.Width && mouseDown)
                 {
                     outputs[0] = true;
@@ -195,7 +195,7 @@ namespace UI_Class_Library
                 Rectangle rectRoom = new Rectangle(new Point((int)(centerHexagonPosition.X + radius * Math.Cos((-2 + 1) * Math.PI / 3 + Math.PI / 6)) - roomSize.Width / 2 - 10, (int)(centerHexagonPosition.Y + radius * Math.Sin((-2 + 1) * Math.PI / 3 + Math.PI / 6)) - roomSize.Height / 2 + 10), roomSize);
 
                 e.Graphics.DrawImage(doors[1], new Rectangle(0, 0, height, height));
-                float distance = (float)Math.Sqrt((mouse.X - (rectRoom.X + roomSize.Width)) * (mouse.X - (rectRoom.X + roomSize.Width)) + (mouse.Y - (rectRoom.Y + roomSize.Height)) * (mouse.Y - (rectRoom.Y + roomSize.Height))) + 5;
+                float distance = (float)Math.Sqrt((mouse.X - (rectRoom.X + 0.25 * roomSize.Width)) * (mouse.X - (rectRoom.X + 0.25 * roomSize.Width)) + (mouse.Y - (rectRoom.Y + 0.25 * roomSize.Height)) * (mouse.Y - (rectRoom.Y + 0.25 * roomSize.Height))) + 5;
                 if (distance < roomSize.Width && mouseDown)
                 {
                     outputs[1] = true;
@@ -207,7 +207,7 @@ namespace UI_Class_Library
                 Rectangle rectRoom = new Rectangle(new Point((int)(centerHexagonPosition.X + radius * Math.Cos((-2 + 2) * Math.PI / 3 + Math.PI / 6)) - roomSize.Width / 2 - 17, (int)(centerHexagonPosition.Y + radius * Math.Sin((-2 + 2) * Math.PI / 3 + Math.PI / 6)) - roomSize.Height / 2), roomSize);
 
                 e.Graphics.DrawImage(doors[2], new Rectangle(0, 0, height, height));
-                float distance = (float)Math.Sqrt((mouse.X - (rectRoom.X + roomSize.Width)) * (mouse.X - (rectRoom.X + roomSize.Width)) + (mouse.Y - (rectRoom.Y + roomSize.Height)) * (mouse.Y - (rectRoom.Y + roomSize.Height))) + 5;
+                float distance = (float)Math.Sqrt((mouse.X - (rectRoom.X + 0.25 * roomSize.Width)) * (mouse.X - (rectRoom.X + 0.25 * roomSize.Width)) + (mouse.Y - (rectRoom.Y + 0.25 * roomSize.Height)) * (mouse.Y - (rectRoom.Y + 0.25 * roomSize.Height))) + 5;
                 if (distance < roomSize.Width && mouseDown)
                 {
                     outputs[2] = true;
@@ -219,7 +219,7 @@ namespace UI_Class_Library
                 Rectangle rectRoom = new Rectangle(new Point((int)(centerHexagonPosition.X + radius * Math.Cos((-2 + 3) * Math.PI / 3 + Math.PI / 6)) - roomSize.Width / 2, (int)(centerHexagonPosition.Y + radius * Math.Sin((-2 + 3) * Math.PI / 3 + Math.PI / 6)) - roomSize.Height / 2), roomSize);
 
                 e.Graphics.DrawImage(doors[3], new Rectangle(0, 0, height, height));
-                float distance = (float)Math.Sqrt((mouse.X - (rectRoom.X + roomSize.Width)) * (mouse.X - (rectRoom.X + roomSize.Width)) + (mouse.Y - (rectRoom.Y + roomSize.Height)) * (mouse.Y - (rectRoom.Y + roomSize.Height))) + 5;
+                float distance = (float)Math.Sqrt((mouse.X - (rectRoom.X + 0.25 * roomSize.Width)) * (mouse.X - (rectRoom.X + 0.25 * roomSize.Width)) + (mouse.Y - (rectRoom.Y + 0.25 * roomSize.Height)) * (mouse.Y - (rectRoom.Y + 0.25 * roomSize.Height))) + 5;
                 if (distance < roomSize.Width && mouseDown)
                 {
                     outputs[3] = true;
@@ -231,7 +231,7 @@ namespace UI_Class_Library
                 Rectangle rectRoom = new Rectangle(new Point((int)(centerHexagonPosition.X + radius * Math.Cos((-2 + 4) * Math.PI / 3 + Math.PI / 6)) - roomSize.Width / 2 - 62, (int)(centerHexagonPosition.Y + radius * Math.Sin((-2 + 4) * Math.PI / 3 + Math.PI / 6)) - roomSize.Height / 2), roomSize);
 
                 e.Graphics.DrawImage(doors[4], new Rectangle(0, 0, height, height));
-                float distance = (float)Math.Sqrt((mouse.X - (rectRoom.X + roomSize.Width)) * (mouse.X - (rectRoom.X + roomSize.Width)) + (mouse.Y - (rectRoom.Y + roomSize.Height)) * (mouse.Y - (rectRoom.Y + roomSize.Height))) + 5;
+                float distance = (float)Math.Sqrt((mouse.X - (rectRoom.X + 0.25 * roomSize.Width)) * (mouse.X - (rectRoom.X + 0.25 * roomSize.Width)) + (mouse.Y - (rectRoom.Y + 0.25 * roomSize.Height)) * (mouse.Y - (rectRoom.Y + 0.25 * roomSize.Height))) + 5;
                 if (distance < roomSize.Width && mouseDown)
                 {
                     outputs[4] = true;
@@ -243,7 +243,7 @@ namespace UI_Class_Library
                 Rectangle rectRoom = new Rectangle(new Point((int)(centerHexagonPosition.X + radius * Math.Cos((-2 + 5) * Math.PI / 3 + Math.PI / 6)) - roomSize.Width / 2 - 48, (int)(centerHexagonPosition.Y + radius * Math.Sin((-2 + 5) * Math.PI / 3 + Math.PI / 6)) - roomSize.Height / 2 - 17), roomSize);
 
                 e.Graphics.DrawImage(doors[5], new Rectangle(0, 0, height, height));
-                float distance = (float)Math.Sqrt((mouse.X - (rectRoom.X + roomSize.Width)) * (mouse.X - (rectRoom.X + roomSize.Width)) + (mouse.Y - (rectRoom.Y + roomSize.Height)) * (mouse.Y - (rectRoom.Y + roomSize.Height))) + 5;
+                float distance = (float)Math.Sqrt((mouse.X - (rectRoom.X + 0.25 * roomSize.Width)) * (mouse.X - (rectRoom.X + 0.25 * roomSize.Width)) + (mouse.Y - (rectRoom.Y + 0.25 * roomSize.Height)) * (mouse.Y - (rectRoom.Y + 0.25 * roomSize.Height))) + 5;
                 if (distance < roomSize.Width && mouseDown)
                 {
                     outputs[5] = true;
