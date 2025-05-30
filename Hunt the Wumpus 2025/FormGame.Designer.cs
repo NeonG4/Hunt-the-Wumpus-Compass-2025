@@ -49,6 +49,7 @@
             Name = "FormGame";
             Text = "Hunt The Wumpus - Maxim The Dream Team";
             FormClosing += FormGame_FormClosing;
+            Load += FormGame_Load;
             Paint += FormGame_Paint;
             MouseDown += FormGame_MouseDown;
             MouseMove += FormGame_MouseMove;

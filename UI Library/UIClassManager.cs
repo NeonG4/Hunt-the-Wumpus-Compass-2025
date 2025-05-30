@@ -772,7 +772,6 @@ namespace UI_Class_Library
         public bool RenderWin(PaintEventArgs e, int score, string name);
         public bool RenderHighscores(PaintEventArgs e, string[] names, string[] maps, string[] scores);
         public void AddToChat(ChatType c);
-        public bool[] GetInputs(); // returns an array of binary values, 0 if pressed, 1 if 0. Changes depending on scene
         public void UpdateScreenSize(int width, int height);
         public void UpdateMousePosition(Point mouse);
         public void UpdateMouseClicked(bool clicked);

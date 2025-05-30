@@ -35,6 +35,7 @@ namespace Game_Control
         bool ClickedScoreboard = false;
         bool angeredWumpus = false;
         bool arrowNocked = false;
+        public string playerName;
         TriviaState triviaState = TriviaState.Empty;
         public GameControl() 
         {
@@ -57,26 +58,21 @@ namespace Game_Control
             _UIClassManager.Dispose();
             _UIClassManager = new UIClassManager();
         }
-        public void RestartGame(int map, int startingRoom)
-        {
-            // should restart the game, this means to reset all data
-        }
         public void Tick(PaintEventArgs e)
         {
-            bool[] inputs = _UIClassManager.GetInputs();
-           
             // progress the game based on the input array
             // inputs changes based on the game state
             switch (gameState)
             {
                 case GameState.MainMenu:
                     {
+                        bool[] inputs = _UIClassManager.GetInputs();
                         if (ClickedScoreboard)
                         { 
                             gameState = GameState.GetHighScores;
                             return;
                         }
-                    
+                        
                         if (inputs.Length == 6)
                         {
                             // should process inputs based on main menu
@@ -101,7 +97,7 @@ namespace Game_Control
                                 _playerManager.CurrentRoom = _gameLocations.SpawnPlayer();
                             }
                         }
-
+                        
                         // renders main menu
                         if (_UIClassManager.RenderMainMenu(e))
                         {
@@ -308,6 +304,38 @@ namespace Game_Control
                         // renders win screen
                         _playerManager.KilledWumpus = true;
                         _UIClassManager.RenderWin(e, _playerManager.Score, "Name");
+                        string name = "name";
+                        string caveName = "Amethyst";
+                        switch (_UIClassManager.map)
+                        {
+                            case 0:
+                                {
+                                    caveName = "Amethyst Abyss";
+                                    break;
+                                }
+                            case 1:
+                                {
+                                    caveName = "Green Grotto";
+                                    break;
+                                }
+                            case 2:
+                                {
+                                    caveName = "Teal Tunnel";
+                                    break;
+                                }
+                            case 3:
+                                {
+                                    caveName = "Diamond Dungeon";
+                                    break;
+                                }
+                            case 4:
+                                {
+                                    caveName = "Black Borehole";
+                                    break;
+                                }
+                        }
+                        _scoreboard.AddHighScore(name, caveName, _playerManager.MoveCount, _playerManager.GoldCoins, _playerManager.Arrows, true);
+                        _scoreboard.SaveTofile();
                         break;
                     }
                 case GameState.GetHighScores:
@@ -360,7 +388,6 @@ namespace Game_Control
     {
         public void StartGame(int map);
         public void StopGame();
-        public void RestartGame(int map, int startingRoom);
         public void Tick(PaintEventArgs e);
     }
 }

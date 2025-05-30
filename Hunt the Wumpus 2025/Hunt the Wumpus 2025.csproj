@@ -142,8 +142,4 @@
     </None>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="sounds\" />
-  </ItemGroup>
-
 </Project>

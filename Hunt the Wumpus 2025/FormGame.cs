@@ -14,7 +14,7 @@ namespace Hunt_the_Wumpus_2025
     public partial class FormGame : Form
     {
         private bool ready = false;
-        private GameControl gc;
+        public GameControl gc;
         public FormGame()
         {
             InitializeComponent();
@@ -61,6 +61,11 @@ namespace Hunt_the_Wumpus_2025
         {
             // needed for unmanaged memory
             gc.StopGame();
+        }
+
+        private void FormGame_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
