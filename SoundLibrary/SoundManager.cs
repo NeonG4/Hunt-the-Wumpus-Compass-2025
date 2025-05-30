@@ -11,10 +11,12 @@ namespace SoundLibrary
 {
     public class SoundManager : ISoundManager
     {
+        public SoundManager() { }
+
         SoundPlayer music = new SoundPlayer();
         public void StartSound(string soundName)
         {
-            SoundPlayer sound = new SoundPlayer($"{soundName}");
+            SoundPlayer sound = new SoundPlayer(soundName);
             sound.Play();
         }
         public void StartMusic(string soundName)
