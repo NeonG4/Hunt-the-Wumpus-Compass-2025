@@ -17,7 +17,7 @@ namespace PlayerLibrary
         public PlayerManager(int startingRoom)
         {
             Arrows = 3;
-            GoldCoins = 0;
+            GoldCoins = 5;
             MoveCount = 0;
             KilledWumpus = false;
 
