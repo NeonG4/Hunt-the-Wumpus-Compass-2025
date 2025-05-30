@@ -454,9 +454,77 @@ namespace UI_Class_Library
         /// <param name="scores">An array of scores</param>
         /// <param name="maps">An array of map names</param>
         /// <returns>true if leave to main menu</returns>
-        public bool RenderHighScore(PaintEventArgs e, string[] names, int[] scores, string[] maps)
+
+        public bool RenderHighscores(PaintEventArgs e, string[] names, string[] maps, int[] scores)
         {
-            
+            e.Graphics.Clear(Color.FromArgb(76, 76, 76));
+            Point[][] points = new Point[10][];
+            for (int i = 0; i < 5; i++)
+            {
+                Point hexaPoint = new Point(width / 4 + 40, height / 4 + 80 * i);
+                points[i] = HexagonH(width / 2 - 80, 50, 20, hexaPoint);
+                SolidBrush sd;
+                if (maps[i] == "Amethyst Abyss")
+                {
+                    sd = new SolidBrush(this.maps[0].backgroundColor);
+                }
+                else if (maps[i] == "Green Grotto")
+                {
+                    sd = new SolidBrush(this.maps[1].backgroundColor);
+                }
+                else if (maps[i] == "Teal Tunnel")
+                {
+                    sd = new SolidBrush(this.maps[2].backgroundColor);
+                }
+                else if (maps[i] == "Diamond Dungeon")
+                {
+                    sd = new SolidBrush(this.maps[3].backgroundColor);
+                }
+                else 
+                {
+                    sd = new SolidBrush(this.maps[4].backgroundColor);
+                }
+                e.Graphics.FillPolygon(sd, points[i]);
+                if (names.Length > i)
+                {
+                    DrawText(e, names[i], 40, hexaPoint, Color.Black);
+                    DrawText(e, scores[i].ToString(), 30, new Point(hexaPoint.X + width / 4 - 100, hexaPoint.Y + 5), Color.Black);
+                }
+            }
+
+            for (int i = 0; i < 5; i++)
+            {
+                Point hexaPoint = new Point(width / 4 + width / 2, height / 4 + 80 * i);
+                points[i + 5] = HexagonH(width / 2 - 80, 50, 20, hexaPoint);
+                e.Graphics.FillPolygon(new SolidBrush(Color.FromArgb(255, 255, 255)), points[i + 5]);
+                SolidBrush sd;
+                if (maps[i + 5] == "Amethyst Abyss")
+                {
+                    sd = new SolidBrush(this.maps[0].backgroundColor);
+                }
+                else if (maps[i + 5] == "Green Grotto")
+                {
+                    sd = new SolidBrush(this.maps[1].backgroundColor);
+                }
+                else if (maps[i + 5] == "Teal Tunnel")
+                {
+                    sd = new SolidBrush(this.maps[2].backgroundColor);
+                }
+                else if (maps[i + 5] == "Diamond Dungeon")
+                {
+                    sd = new SolidBrush(this.maps[3].backgroundColor);
+                }
+                else
+                {
+                    sd = new SolidBrush(this.maps[4].backgroundColor);
+                }
+                e.Graphics.FillPolygon(sd, points[i]);
+                if (names.Length > i + 5)
+                {
+                    DrawText(e, names[i + 5], 40, hexaPoint, Color.Black);
+                    DrawText(e, scores[i + 5].ToString(), 30, new Point(hexaPoint.X + width / 4 - 100, hexaPoint.Y + 5), Color.Black);
+                }
+            }
             return false;
         }
         /// <summary>
@@ -687,16 +755,6 @@ namespace UI_Class_Library
             return false;
         }
         /// <summary>
-        /// Renders the high scores
-        /// </summary>
-        /// <param name="e"></param>
-        /// <returns>Returns to leave to main menu</returns>
-        public bool RenderHighscores(PaintEventArgs e, string[] names, string[] maps, string[] scores)
-        {
-
-            return false;
-        }
-        /// <summary>
         /// Renders the win screen
         /// </summary>
         /// <param name="e"></param>
@@ -770,7 +828,7 @@ namespace UI_Class_Library
         public bool[] RenderTrivia(PaintEventArgs e, string question, string[] trivia);
         public bool RenderDeath(PaintEventArgs e, int score);
         public bool RenderWin(PaintEventArgs e, int score, string name);
-        public bool RenderHighscores(PaintEventArgs e, string[] names, string[] maps, string[] scores);
+        public bool RenderHighscores(PaintEventArgs e, string[] names, string[] maps, int[] scores);
         public void AddToChat(ChatType c);
         public void UpdateScreenSize(int width, int height);
         public void UpdateMousePosition(Point mouse);

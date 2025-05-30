@@ -358,7 +358,7 @@ namespace Game_Control
                         {
                             caveType.Add(scoreData[i].CaveType);
                         }
-                        if (_UIClassManager.RenderHighScore(e, names.ToArray(), scores.ToArray(), caveType.ToArray()))
+                        if (_UIClassManager.RenderHighscores(e, names.ToArray(), caveType.ToArray(), scores.ToArray()))
                         {
                             gameState = GameState.MainMenu;
                         }
