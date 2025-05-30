@@ -183,15 +183,12 @@ namespace Game_Control
                                 _playerManager.CurrentRoom = _cave.GetNewRoomNumber(pPosition, i);
                                 if (arrowNocked)
                                 {
+                                    angeredWumpus = true;
                                     arrowNocked = false;
                                     if (_gameLocations.GetWumpusRoom() ==  _playerManager.CurrentRoom)
                                     {
                                         gameState = GameState.Win;
                                         return;
-                                    }
-                                    else
-                                    {
-                                        angeredWumpus = true;
                                     }
                                 }
                                 if (angeredWumpus)

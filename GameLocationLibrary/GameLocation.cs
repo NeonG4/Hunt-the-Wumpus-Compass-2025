@@ -212,6 +212,10 @@ namespace GameLocationLibrary
 
         public int MoveWumpus(CaveManager caveManager)
         {
+            if (wumpusroom == 31)
+            {
+                throw new Exception("Wrong wumpus room number");
+            }
             // neecs to move the wumpus, and update the wumpus position in the list
             List<int> adjacentRooms = caveManager.GetAdjacentRooms(wumpusroom).ToList<int>();
             List<bool> validDirections = caveManager.GetDirectionsBoolArray(wumpusroom).ToList<bool>();
@@ -221,6 +225,7 @@ namespace GameLocationLibrary
                 {
                     adjacentRooms.RemoveAt(d);
                     validDirections.RemoveAt(d);
+                    d--;
                 }
             }
             int previousWumpusRoom = wumpusroom;
@@ -233,7 +238,10 @@ namespace GameLocationLibrary
                     allSpawnables[i] = new Hazards("Wumpus", wumpusroom);
                 }
             }
-            
+            if (wumpusroom == 31)
+            {
+                throw new Exception("Wrong wumpus room number");
+            }
 
             /*
                 //gets an array of adjacent rooms based on the current room of the player
