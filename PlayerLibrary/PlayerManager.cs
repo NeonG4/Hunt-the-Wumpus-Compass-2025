@@ -62,11 +62,11 @@ namespace PlayerLibrary
             {
                 if (KilledWumpus)
                 {
-                    return (int)((1000 + 25 * GoldCoins + 75 * Arrows - 50 * MoveCount) * 1.5);
+                    return (int)((500 + 16 * GoldCoins + 22 * Arrows - 12 * MoveCount) * 1.5);
                 }
                 else
                 {
-                    return 1000 + 25 * GoldCoins + 75 * Arrows - 50 * MoveCount;
+                    return 500 + 16 * GoldCoins + 22 * Arrows - 12 * MoveCount;
                 }
             }
         }
