@@ -53,7 +53,7 @@ namespace UI_Class_Library
         public bool mouseDown = false;
         public bool mouseDownBuffer = false;
         Map[] maps = [
-            new Map("Amythyst Abyss", "amythystabyss.jpg", "bat_amethyst.png", "wumpus_amethyst.png", Color.FromArgb(137, 45, 145), Color.FromArgb(237, 145, 245), Color.FromArgb(203, 95, 212)),
+            new Map("Amethyst Abyss", "amythystabyss.jpg", "bat_amethyst.png", "wumpus_amethyst.png", Color.FromArgb(137, 45, 145), Color.FromArgb(237, 145, 245), Color.FromArgb(203, 95, 212)),
             new Map("Green Grotto", "greengrotto.jpg", "bat_green.png", "wumpus_green.png", Color.FromArgb(82, 128, 82), Color.FromArgb(182, 228, 182), Color.FromArgb(108, 168, 108)),
             new Map("Teal Tunnel", "tealtunnel.jpg", "bat_teal.png", "wumpus_teal.png", Color.FromArgb(32, 109, 133), Color.FromArgb(132, 209, 233), Color.FromArgb(81, 173, 201)),
             new Map("Diamond Dungeon", "diamonddungeon.jpg", "bat_diamond.png", "wumpus_diamond.png", Color.FromArgb(27, 116, 117), Color.FromArgb(127, 216, 217), Color.FromArgb(62, 180, 181)),
