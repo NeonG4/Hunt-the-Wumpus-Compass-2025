@@ -30,7 +30,10 @@ namespace ScoreBoard
             WumpusDead = wumpusDead;
         }
         public ScoreItem() { }
-
+        public bool Equals(ScoreItem score)
+        {
+            return Name == score.Name && Score == score.Score && CaveType == score.CaveType;
+        }
     }
 }
 

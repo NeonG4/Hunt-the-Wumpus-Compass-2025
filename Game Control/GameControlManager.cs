@@ -62,6 +62,7 @@ namespace Game_Control
             // stops the game
             _UIClassManager.Dispose();
             _UIClassManager = new UIClassManager();
+            _soundManager.StopAllSounds();
         }
         public void Tick(PaintEventArgs e)
         {
@@ -137,6 +138,7 @@ namespace Game_Control
                                 else
                                 {
                                     gameState = GameState.Died;
+                                    _UIClassManager.RenderDeath(e, _playerManager.Score);
                                     return;
                                 }
                                 
@@ -174,6 +176,7 @@ namespace Game_Control
                                 else
                                 {
                                     gameState = GameState.Died;
+                                    _UIClassManager.RenderDeath(e, _playerManager.Score);
                                     return;
                                 }
                             }
@@ -188,8 +191,9 @@ namespace Game_Control
                         // should process inputs based on game
                         for (int i = 0; i < 6; i++)
                         {
-                            if (outputs[i])
+                            if (outputs[i]) // turn taken
                             {
+                                _UIClassManager.AddToChat(ChatType.Blank);
                                 _playerManager.CurrentRoom = _cave.GetNewRoomNumber(pPosition, i);
                                 if (arrowNocked)
                                 {
@@ -198,6 +202,7 @@ namespace Game_Control
                                     if (_gameLocations.GetWumpusRoom() ==  _playerManager.CurrentRoom)
                                     {
                                         gameState = GameState.Win;
+                                        _UIClassManager.RenderWin(e, _playerManager.Score, playerName); 
                                         return;
                                     }
                                 }
@@ -397,6 +402,7 @@ namespace Game_Control
                             }
                             gameState = GameState.MainMenu;
                             _UIClassManager.RenderMainMenu(e);
+                            StopGame();
                             return;
                         }
                         break;

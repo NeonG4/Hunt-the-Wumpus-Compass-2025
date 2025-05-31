@@ -282,9 +282,14 @@ namespace UI_Class_Library
             DrawText(e, player.GoldCoins.ToString(), 20, new Point(height + paddingPx + 50 + paddingPx, textBoxRectYPosition - 25), Color.White);
             e.Graphics.FillRectangle(new SolidBrush(Color.Black), textBoxRect);
             // renders the textbox 
-            for (int i = 0; i < textBox.Count; i++)
+            
+            for (int i = 0, j = 0; i < textBox.Count; i++)
             {
-                textBox[(textBox.Count - 1) - i].RenderText(e, new Point(height + paddingPx, (height - paddingPx) - (int)((fontSize + (.5 * paddingPx)) * (i + 1))), fontSize, Color.FromArgb(255 - (50 * i), 255 - (50 * i), 255 - (50 * i)));
+                bool renderedProperly = textBox[(textBox.Count - 1) - i].RenderText(e, new Point(height + paddingPx, (height - paddingPx) - (int)((fontSize + (.5 * paddingPx)) * ((i-j) + 1))), fontSize, Color.FromArgb(255 - (50 * i), 255 - (50 * i), 255 - (50 * i)));
+                if (!renderedProperly)
+                {
+                    j++;
+                }
             }
             if (renderMouseData)
             {
@@ -459,12 +464,17 @@ namespace UI_Class_Library
         {
             e.Graphics.Clear(Color.FromArgb(76, 76, 76));
             Point[][] points = new Point[10][];
+            
             for (int i = 0; i < 5; i++)
             {
                 Point hexaPoint = new Point(width / 4 + 40, height / 4 + 80 * i);
                 points[i] = HexagonH(width / 2 - 80, 50, 20, hexaPoint);
                 SolidBrush sd;
-                if (maps[i] == "Amethyst Abyss")
+                if (names.Count() <= i)
+                {
+                    sd = new SolidBrush(Color.FromArgb(227, 227, 227));
+                }
+                else if (maps[i] == "Amethyst Abyss")
                 {
                     sd = new SolidBrush(this.maps[0].backgroundColor);
                 }
@@ -486,10 +496,9 @@ namespace UI_Class_Library
                 }
                 e.Graphics.FillPolygon(sd, points[i]);
                 if (names.Length > i)
-                
                 {
-                    DrawText(e, names[i], 40, hexaPoint, Color.White);
-                    DrawText(e, scores[i].ToString(), 30, new Point(hexaPoint.X + width / 4 - 100, hexaPoint.Y + 5), Color.White);
+                    DrawText(e, names[i], 30, hexaPoint, Color.White);
+                    DrawText(e, scores[i].ToString(), 20, new Point(hexaPoint.X + width / 4 - 100, hexaPoint.Y + 5), Color.White);
                 }
             }
 
@@ -499,19 +508,23 @@ namespace UI_Class_Library
                 points[i + 5] = HexagonH(width / 2 - 80, 50, 20, hexaPoint);
                 e.Graphics.FillPolygon(new SolidBrush(Color.FromArgb(255, 255, 255)), points[i + 5]);
                 SolidBrush sd;
-                if (maps[i] == "Amethyst Abyss")
+                if (names.Count() <= i + 5)
+                {
+                    sd = new SolidBrush(Color.FromArgb(227, 227, 227));
+                }
+                else if (maps[i + 5] == "Amethyst Abyss")
                 {
                     sd = new SolidBrush(this.maps[0].backgroundColor);
                 }
-                else if (maps[i] == "Green Grotto")
+                else if (maps[i + 5] == "Green Grotto")
                 {
                     sd = new SolidBrush(this.maps[1].backgroundColor);
                 }
-                else if (maps[i] == "Teal Tunnel")
+                else if (maps[i + 5] == "Teal Tunnel")
                 {
                     sd = new SolidBrush(this.maps[2].backgroundColor);
                 }
-                else if (maps[i] == "Diamond Dungeon")
+                else if (maps[i + 5] == "Diamond Dungeon")
                 {
                     sd = new SolidBrush(this.maps[3].backgroundColor);
                 }
@@ -522,8 +535,8 @@ namespace UI_Class_Library
                 e.Graphics.FillPolygon(sd, points[i + 5]);
                 if (names.Length > i + 5)
                 {
-                    DrawText(e, names[i + 5], 40, hexaPoint, Color.White);
-                    DrawText(e, scores[i + 5].ToString(), 30, new Point(hexaPoint.X + width / 4 - 100, hexaPoint.Y + 5), Color.White);
+                    DrawText(e, names[i + 5], 30, hexaPoint, Color.White);
+                    DrawText(e, scores[i + 5].ToString(), 20, new Point(hexaPoint.X + width / 4 - 100, hexaPoint.Y + 5), Color.White);
                 }
             }
             Rectangle rect = new Rectangle(5, 5, 20, 20);
@@ -594,6 +607,11 @@ namespace UI_Class_Library
                 case ChatType.EncounteredWumpus:
                     {
                         textText = new TextBoxText("You encountered the wumpus", new Bitmap("images/wumpus_teal.png"));
+                        break;
+                    }
+                case ChatType.Blank:
+                    {
+                        textText = new TextBoxText("");
                         break;
                     }
                 default:
@@ -843,7 +861,15 @@ namespace UI_Class_Library
             img = null;
             comfortaaCollection.AddFontFile("Comfortaa-Light.ttf");
         }
-        public void RenderText(PaintEventArgs e, Point pos, float size, Color color)
+        /// <summary>
+        /// Renders the textbox text
+        /// </summary>
+        /// <param name="e">PaintEventArgs</param>
+        /// <param name="pos">The position for the text</param>
+        /// <param name="size">The font size</param>
+        /// <param name="color">The color of the text</param>
+        /// <returns>Returns if rendered</returns>
+        public bool RenderText(PaintEventArgs e, Point pos, float size, Color color)
         {
             if (img != null) 
             { 
@@ -852,11 +878,12 @@ namespace UI_Class_Library
             }
             if (text == string.Empty)
             {
-                return;
+                return false;
             }
             Font font = new Font(comfortaaCollection.Families[0], size);
             SolidBrush textBrush = new SolidBrush(color);
             e.Graphics.DrawString(text, font, textBrush, pos);
+            return true;
 
         }
     }
@@ -869,6 +896,7 @@ namespace UI_Class_Library
         EncounteredBat,
         EncounteredWumpus,
         EncounteredPit,
+        Blank, // a buffer
     }
     public interface IUIClassManager
     {

@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using System.IO;
 using System.Runtime.InteropServices;
+using System.Runtime.InteropServices.Marshalling;
 
 namespace ScoreBoard
 {
@@ -120,27 +121,32 @@ namespace ScoreBoard
         {
             //adds high scores to wherver you want to store them in the ui
             //first we calculate the high scores
-           int score = CalculateHighScore(turns, gold, arrows, wumpus);
+            int score = CalculateHighScore(turns, gold, arrows, wumpus);
+            ScoreItem userScore = new ScoreItem(name, score, cave_type, turns, gold, arrows, wumpus);
             //see if we need to add it
-           if (score > items[items.Count - 1].Score || items.Count < 10)
+            for (int i = 0; i < items.Count; i++)
             {
-
-                items.Add(new ScoreItem(name, score, cave_type,turns, gold, arrows, wumpus));
+                if (items[i].Equals(userScore))
+                {
+                    return;
+                }
+            }
+            if (items.Count < 10)
+            {
+                items.Add(userScore);
                 SortHighScore();
-                
+            }
+            else if (score > items[items.Count - 1].Score)
+            {
+                items.Add(userScore);
+                SortHighScore();
             }
            //removes extra entries if needed
             if (items.Count > 10)
             { 
                 items.RemoveAt(items.Count - 1); 
             }
-            
-            
             SaveTofile();
-
-
-
-
         }
         public List<ScoreItem> GetList()
         {

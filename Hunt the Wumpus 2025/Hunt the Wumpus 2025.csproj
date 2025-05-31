@@ -74,6 +74,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Highscore.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="images\amythystabyss.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
