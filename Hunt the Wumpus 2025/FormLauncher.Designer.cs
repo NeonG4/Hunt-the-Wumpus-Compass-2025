@@ -29,137 +29,25 @@
         private void InitializeComponent()
         {
             label1 = new Label();
-            groupBoxTesting = new GroupBox();
-            buttonTestSound = new Button();
-            buttonTestPlayer = new Button();
-            buttonTestTrivia = new Button();
-            buttonTestHighscore = new Button();
-            buttonTestCave = new Button();
-            buttonTestGameLocation = new Button();
-            buttonTestUI = new Button();
-            buttonTestAll = new Button();
             buttonStartWumpus = new Button();
             textBoxName = new TextBox();
             labelName = new Label();
-            groupBoxTesting.SuspendLayout();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(50, 35);
+            label1.Location = new Point(57, 47);
             label1.Name = "label1";
-            label1.Size = new Size(0, 15);
+            label1.Size = new Size(0, 20);
             label1.TabIndex = 0;
-            // 
-            // groupBoxTesting
-            // 
-            groupBoxTesting.Controls.Add(buttonTestSound);
-            groupBoxTesting.Controls.Add(buttonTestPlayer);
-            groupBoxTesting.Controls.Add(buttonTestTrivia);
-            groupBoxTesting.Controls.Add(buttonTestHighscore);
-            groupBoxTesting.Controls.Add(buttonTestCave);
-            groupBoxTesting.Controls.Add(buttonTestGameLocation);
-            groupBoxTesting.Controls.Add(buttonTestUI);
-            groupBoxTesting.Controls.Add(buttonTestAll);
-            groupBoxTesting.Location = new Point(10, 9);
-            groupBoxTesting.Margin = new Padding(3, 2, 3, 2);
-            groupBoxTesting.Name = "groupBoxTesting";
-            groupBoxTesting.Padding = new Padding(3, 2, 3, 2);
-            groupBoxTesting.Size = new Size(179, 232);
-            groupBoxTesting.TabIndex = 1;
-            groupBoxTesting.TabStop = false;
-            groupBoxTesting.Text = "Testing Components";
-            // 
-            // buttonTestSound
-            // 
-            buttonTestSound.Location = new Point(5, 199);
-            buttonTestSound.Margin = new Padding(3, 2, 3, 2);
-            buttonTestSound.Name = "buttonTestSound";
-            buttonTestSound.Size = new Size(163, 22);
-            buttonTestSound.TabIndex = 7;
-            buttonTestSound.Text = "Test Sound";
-            buttonTestSound.UseVisualStyleBackColor = true;
-            // 
-            // buttonTestPlayer
-            // 
-            buttonTestPlayer.Location = new Point(5, 172);
-            buttonTestPlayer.Margin = new Padding(3, 2, 3, 2);
-            buttonTestPlayer.Name = "buttonTestPlayer";
-            buttonTestPlayer.Size = new Size(163, 22);
-            buttonTestPlayer.TabIndex = 6;
-            buttonTestPlayer.Text = "Test Player";
-            buttonTestPlayer.UseVisualStyleBackColor = true;
-            // 
-            // buttonTestTrivia
-            // 
-            buttonTestTrivia.Location = new Point(5, 146);
-            buttonTestTrivia.Margin = new Padding(3, 2, 3, 2);
-            buttonTestTrivia.Name = "buttonTestTrivia";
-            buttonTestTrivia.Size = new Size(163, 22);
-            buttonTestTrivia.TabIndex = 5;
-            buttonTestTrivia.Text = "Test Trivia";
-            buttonTestTrivia.UseVisualStyleBackColor = true;
-            // 
-            // buttonTestHighscore
-            // 
-            buttonTestHighscore.Location = new Point(5, 120);
-            buttonTestHighscore.Margin = new Padding(3, 2, 3, 2);
-            buttonTestHighscore.Name = "buttonTestHighscore";
-            buttonTestHighscore.Size = new Size(163, 22);
-            buttonTestHighscore.TabIndex = 4;
-            buttonTestHighscore.Text = "Test Highscore";
-            buttonTestHighscore.UseVisualStyleBackColor = true;
-            // 
-            // buttonTestCave
-            // 
-            buttonTestCave.Location = new Point(5, 94);
-            buttonTestCave.Margin = new Padding(3, 2, 3, 2);
-            buttonTestCave.Name = "buttonTestCave";
-            buttonTestCave.Size = new Size(163, 22);
-            buttonTestCave.TabIndex = 3;
-            buttonTestCave.Text = "Test Cave";
-            buttonTestCave.UseVisualStyleBackColor = true;
-            buttonTestCave.Click += buttonTestCave_Click;
-            // 
-            // buttonTestGameLocation
-            // 
-            buttonTestGameLocation.Location = new Point(5, 70);
-            buttonTestGameLocation.Margin = new Padding(3, 2, 3, 2);
-            buttonTestGameLocation.Name = "buttonTestGameLocation";
-            buttonTestGameLocation.Size = new Size(163, 22);
-            buttonTestGameLocation.TabIndex = 2;
-            buttonTestGameLocation.Text = "Test Game Location";
-            buttonTestGameLocation.UseVisualStyleBackColor = true;
-            buttonTestGameLocation.Click += buttonTestGameLocation_Click;
-            // 
-            // buttonTestUI
-            // 
-            buttonTestUI.Location = new Point(5, 44);
-            buttonTestUI.Margin = new Padding(3, 2, 3, 2);
-            buttonTestUI.Name = "buttonTestUI";
-            buttonTestUI.Size = new Size(163, 22);
-            buttonTestUI.TabIndex = 1;
-            buttonTestUI.Text = "Test UI";
-            buttonTestUI.UseVisualStyleBackColor = true;
-            // 
-            // buttonTestAll
-            // 
-            buttonTestAll.Location = new Point(5, 20);
-            buttonTestAll.Margin = new Padding(3, 2, 3, 2);
-            buttonTestAll.Name = "buttonTestAll";
-            buttonTestAll.Size = new Size(163, 22);
-            buttonTestAll.TabIndex = 0;
-            buttonTestAll.Text = "Test All";
-            buttonTestAll.UseVisualStyleBackColor = true;
             // 
             // buttonStartWumpus
             // 
             buttonStartWumpus.Font = new Font("Stencil", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            buttonStartWumpus.Location = new Point(214, 53);
-            buttonStartWumpus.Margin = new Padding(3, 2, 3, 2);
+            buttonStartWumpus.Location = new Point(227, 9);
             buttonStartWumpus.Name = "buttonStartWumpus";
-            buttonStartWumpus.Size = new Size(154, 177);
+            buttonStartWumpus.Size = new Size(176, 55);
             buttonStartWumpus.TabIndex = 8;
             buttonStartWumpus.Text = "Start Wumpus Game";
             buttonStartWumpus.UseVisualStyleBackColor = true;
@@ -167,33 +55,33 @@
             // 
             // textBoxName
             // 
-            textBoxName.Location = new Point(214, 25);
+            textBoxName.Location = new Point(21, 33);
+            textBoxName.Margin = new Padding(3, 4, 3, 4);
             textBoxName.Name = "textBoxName";
-            textBoxName.Size = new Size(154, 23);
+            textBoxName.Size = new Size(175, 27);
             textBoxName.TabIndex = 9;
             // 
             // labelName
             // 
             labelName.AutoSize = true;
-            labelName.Location = new Point(214, 7);
+            labelName.Location = new Point(21, 9);
             labelName.Name = "labelName";
-            labelName.Size = new Size(42, 15);
+            labelName.Size = new Size(52, 20);
             labelName.TabIndex = 10;
             labelName.Text = "Name:";
             // 
             // FormLaucher
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(398, 255);
+            ClientSize = new Size(455, 90);
             Controls.Add(labelName);
             Controls.Add(textBoxName);
             Controls.Add(buttonStartWumpus);
-            Controls.Add(groupBoxTesting);
             Controls.Add(label1);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "FormLaucher";
             Text = "Launcher";
-            groupBoxTesting.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -201,15 +89,6 @@
         #endregion
 
         private Label label1;
-        private GroupBox groupBoxTesting;
-        private Button buttonTestUI;
-        private Button buttonTestAll;
-        private Button buttonTestSound;
-        private Button buttonTestPlayer;
-        private Button buttonTestTrivia;
-        private Button buttonTestHighscore;
-        private Button buttonTestCave;
-        private Button buttonTestGameLocation;
         private Button buttonStartWumpus;
         private TextBox textBoxName;
         private Label labelName;

@@ -54,7 +54,7 @@ namespace Game_Control
             _triviaManager = new TriviaManager();
             _playerManager = new PlayerManager(_gameLocations.playerspawn); // use _gamelocations to get a valid spot to place the player 
             _cave = new CaveManager(map);
-            
+            _soundManager = new SoundManager();
 
         }
         public void StopGame()
@@ -63,6 +63,7 @@ namespace Game_Control
             _UIClassManager.Dispose();
             _UIClassManager = new UIClassManager();
             _soundManager.StopAllSounds();
+            _soundManager.Dispose();
         }
         public void Tick(PaintEventArgs e)
         {

@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace SoundLibrary
 {
-    public class SoundManager : ISoundManager
+    public class SoundManager : ISoundManager, IDisposable
     {
         public SoundManager() { }
 
@@ -27,6 +27,11 @@ namespace SoundLibrary
         public void StopAllSounds()
         {
             music.Stop();
+        }
+        public void Dispose()
+        {
+            music.Stop();
+            music.Dispose();
         }
     }
     public interface ISoundManager
