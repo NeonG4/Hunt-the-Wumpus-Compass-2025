@@ -317,6 +317,9 @@ namespace Game_Control
                                 _UIClassManager.inputs[i] = false;
                             }
                             gameState = GameState.MainMenu;
+                            _UIClassManager.RenderMainMenu(e);
+                            StopGame();
+                            return;
                         }
                         string caveName = "Amethyst";
                         switch (_UIClassManager.map)
@@ -394,6 +397,7 @@ namespace Game_Control
                             }
                             gameState = GameState.MainMenu;
                             _UIClassManager.RenderMainMenu(e);
+                            return;
                         }
                         break;
                     }
