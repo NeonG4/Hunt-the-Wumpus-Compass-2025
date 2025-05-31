@@ -24,16 +24,6 @@ namespace ScoreBoard
             if (fileinfo.Exists)
             {
                 ReadFromFile();
-                items[0] = new ScoreItem("name", 8, "Cave", 0, 0, 0, false);
-                items[1] = new ScoreItem("name", 3, "Cave", 0, 0, 0, false);
-                items[2] = new ScoreItem("name", 3, "Cave", 0, 0, 0, false);
-                items[3] = new ScoreItem("name", 2, "Cave", 0, 0, 0, false);
-                items[4] = new ScoreItem("name", 4, "Cave", 0, 0, 0, false);
-                items[5] = new ScoreItem("name", 5, "Cave", 0, 0, 0, false);
-                items[6] = new ScoreItem("name", 0, "Cave", 0, 0, 0, false);
-                items[7] = new ScoreItem("name", 1, "Cave", 0, 0, 0, false);
-                items[8] = new ScoreItem("name", 8, "Cave", 0, 0, 0, false);
-                items[9] = new ScoreItem("name", 7, "Cave", 0, 0, 0, false);
                 SortHighScore();
             }
             else 
