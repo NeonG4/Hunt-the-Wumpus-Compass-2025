@@ -56,6 +56,7 @@ namespace Game_Control
             _cave = new CaveManager(map);
             _soundManager = new SoundManager();
 
+            triviaQuestionIndex = _triviaManager.triviaIndex;
         }
         public void StopGame()
         {

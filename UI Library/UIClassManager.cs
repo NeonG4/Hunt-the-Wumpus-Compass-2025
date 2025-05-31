@@ -280,6 +280,7 @@ namespace UI_Class_Library
             RectangleF textBoxRect = new RectangleF(height, textBoxRectYPosition, widthOfPanel, height - textBoxRectYPosition);
             e.Graphics.DrawImage(coins, new Rectangle(height + paddingPx, textBoxRectYPosition - 60, 50, 50));
             DrawText(e, player.GoldCoins.ToString(), 20, new Point(height + paddingPx + 50 + paddingPx, textBoxRectYPosition - 25), Color.White);
+            DrawText(e, "Moves: " + player.MoveCount.ToString(), 20, new Point(height + paddingPx + 200 + paddingPx, textBoxRectYPosition - 25), Color.White);
             e.Graphics.FillRectangle(new SolidBrush(Color.Black), textBoxRect);
             // renders the textbox 
             

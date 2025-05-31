@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Text.Json;
 
@@ -8,11 +9,14 @@ namespace Hunt_the_Wumpus_2025
     public class TriviaManager
     {
         private List<TriviaQuestion> TriviaList { get; set; }
+        public int triviaIndex {  get; set; }
 
         string filePath = "TriviaQuestions.json";
         public TriviaManager()
         {
             this.Deserialize();
+            Random rand = new Random();
+            triviaIndex = rand.Next(99);
         }
 
         public TriviaQuestion getTriviaData(int i)
@@ -66,6 +70,8 @@ namespace Hunt_the_Wumpus_2025
             }
         }
     }
+
+
 
     public class TriviaQuestion 
     {
