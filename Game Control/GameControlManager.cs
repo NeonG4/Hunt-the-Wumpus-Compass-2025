@@ -15,6 +15,7 @@ using Hunt_the_Wumpus_2025;
 using System.Diagnostics.Contracts;
 using Microsoft.VisualBasic;
 using System.ComponentModel.Design;
+using System.Xml.Linq;
 
 namespace Game_Control
 {
@@ -37,7 +38,7 @@ namespace Game_Control
         bool angeredWumpus = false;
         bool arrowNocked = false;
         bool mainMenuMusicPlaying = false;
-        public string playerName;
+        public string playerName = "name";
         TriviaState triviaState = TriviaState.Empty;
         SoundManager _soundManager = new SoundManager();
         public GameControl() 
@@ -72,6 +73,7 @@ namespace Game_Control
                     {
                         if (!mainMenuMusicPlaying)
                         {
+                            _soundManager.StopAllSounds();
                             _soundManager.StartMusic("sounds/wumpusmenu.wav");
                             mainMenuMusicPlaying = true;
                         }
@@ -94,15 +96,16 @@ namespace Game_Control
                             }
                             if (inputs[1] || inputs[2] || inputs[3] || inputs[4] || inputs[5])
                             {
+                                mainMenuMusicPlaying = false;
                                 _soundManager.StopAllSounds();
 
                                 // a map is selected, choose and change the scene, load the map from memory, and start the game
                                 int caveNumber;
                                 if (inputs[1]) { caveNumber = 0; _soundManager.StartMusic("sounds/wumpuslagoon.wav"); }
                                 else if (inputs[2]) { caveNumber = 1; _soundManager.StartMusic("sounds/wumpusgrotto.wav"); }
-                                else if (inputs[3]) { caveNumber = 2; }
-                                else if (inputs[4]) { caveNumber = 3; }
-                                else { caveNumber = 4; }
+                                else if (inputs[3]) { caveNumber = 2; _soundManager.StartMusic("sounds/wumpusgrotto.wav"); }
+                                else if (inputs[4]) { caveNumber = 3; _soundManager.StartMusic("sounds/wumpuslagoon.wav"); }
+                                else { caveNumber = 4; _soundManager.StartMusic("sounds/wumpusgrotto.wav"); }
                                 StartGame(caveNumber);
                                 gameState = GameState.PlayingGame; // add a gamestate here for cutscenes
                                 _playerManager.CurrentRoom = _gameLocations.SpawnPlayer();
@@ -305,19 +308,16 @@ namespace Game_Control
                     }
                 case GameState.Died:
                     {
-                        _soundManager.StopAllSounds();
                         // renders game over screen
                         _playerManager.KilledWumpus = false; // probably best to put this elsewhere
-                        _UIClassManager.RenderDeath(e, _playerManager.Score);
-                        break;
-                    }
-                case GameState.Win:
-                    {
-                        _soundManager.StopAllSounds();
-                        // renders win screen
-                        _playerManager.KilledWumpus = true;
-                        _UIClassManager.RenderWin(e, _playerManager.Score, "Name");
-                        string name = "name";
+                        if (_UIClassManager.RenderDeath(e, _playerManager.Score))
+                        {
+                            for (int i = 0; i <= 5; i++)
+                            {
+                                _UIClassManager.inputs[i] = false;
+                            }
+                            gameState = GameState.MainMenu;
+                        }
                         string caveName = "Amethyst";
                         switch (_UIClassManager.map)
                         {
@@ -347,8 +347,54 @@ namespace Game_Control
                                     break;
                                 }
                         }
-                        _scoreboard.AddHighScore(name, caveName, _playerManager.MoveCount, _playerManager.GoldCoins, _playerManager.Arrows, true);
+                        _scoreboard.AddHighScore(playerName, caveName, _playerManager.MoveCount, _playerManager.GoldCoins, _playerManager.Arrows, true);
                         _scoreboard.SaveTofile();
+                        break;
+                    }
+                case GameState.Win:
+                    {
+                        // renders win screen
+                        _playerManager.KilledWumpus = true;
+                        string caveName = "Amethyst";
+                        switch (_UIClassManager.map)
+                        {
+                            case 0:
+                                {
+                                    caveName = "Amethyst Abyss";
+                                    break;
+                                }
+                            case 1:
+                                {
+                                    caveName = "Green Grotto";
+                                    break;
+                                }
+                            case 2:
+                                {
+                                    caveName = "Teal Tunnel";
+                                    break;
+                                }
+                            case 3:
+                                {
+                                    caveName = "Diamond Dungeon";
+                                    break;
+                                }
+                            case 4:
+                                {
+                                    caveName = "Black Borehole";
+                                    break;
+                                }
+                        }
+                        _scoreboard.AddHighScore(playerName, caveName, _playerManager.MoveCount, _playerManager.GoldCoins, _playerManager.Arrows, true);
+                        _scoreboard.SaveTofile();
+                        if (_UIClassManager.RenderWin(e, _playerManager.Score, "Name"))
+                        {
+                            for (int i = 0; i <= 5; i++)
+                            {
+                                _UIClassManager.inputs[i] = false;
+                            }
+                            gameState = GameState.MainMenu;
+                            _UIClassManager.RenderMainMenu(e);
+                        }
                         break;
                     }
                 case GameState.GetHighScores:

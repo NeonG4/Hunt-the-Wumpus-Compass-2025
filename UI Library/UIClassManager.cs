@@ -64,7 +64,7 @@ namespace UI_Class_Library
         List<TextBoxText> textBox = new List<TextBoxText>(); // should be capped at 5 items
         int lastMapLocation;
         public int map = -1;
-        private List<bool> inputs = new List<bool>();
+        public List<bool> inputs = new List<bool>();
         
         public UIClassManager()
         {
@@ -486,6 +486,7 @@ namespace UI_Class_Library
                 }
                 e.Graphics.FillPolygon(sd, points[i]);
                 if (names.Length > i)
+                
                 {
                     DrawText(e, names[i], 40, hexaPoint, Color.White);
                     DrawText(e, scores[i].ToString(), 30, new Point(hexaPoint.X + width / 4 - 100, hexaPoint.Y + 5), Color.White);
@@ -498,19 +499,19 @@ namespace UI_Class_Library
                 points[i + 5] = HexagonH(width / 2 - 80, 50, 20, hexaPoint);
                 e.Graphics.FillPolygon(new SolidBrush(Color.FromArgb(255, 255, 255)), points[i + 5]);
                 SolidBrush sd;
-                if (maps[i + 5] == "Amethyst Abyss")
+                if (maps[i] == "Amethyst Abyss")
                 {
                     sd = new SolidBrush(this.maps[0].backgroundColor);
                 }
-                else if (maps[i + 5] == "Green Grotto")
+                else if (maps[i] == "Green Grotto")
                 {
                     sd = new SolidBrush(this.maps[1].backgroundColor);
                 }
-                else if (maps[i + 5] == "Teal Tunnel")
+                else if (maps[i] == "Teal Tunnel")
                 {
                     sd = new SolidBrush(this.maps[2].backgroundColor);
                 }
-                else if (maps[i + 5] == "Diamond Dungeon")
+                else if (maps[i] == "Diamond Dungeon")
                 {
                     sd = new SolidBrush(this.maps[3].backgroundColor);
                 }
@@ -526,11 +527,11 @@ namespace UI_Class_Library
                 }
             }
             Rectangle rect = new Rectangle(5, 5, 20, 20);
-            Color selectedColor = Color.FromArgb(50, 100, 150);
+            Color selectedColor = Color.Red;
             bool ret = false;
             if (rect.Contains(mouse))
             {
-                selectedColor = Color.FromArgb(75, 125, 200);
+                selectedColor = Color.DarkRed;
                 if (mouseDown)
                 {
                     ret = true;
@@ -538,6 +539,8 @@ namespace UI_Class_Library
                 }
             }
             e.Graphics.FillRectangle(new SolidBrush(selectedColor), rect);
+            e.Graphics.DrawLine(new Pen(Color.Black), new PointF(rect.X, rect.Y), new PointF(rect.X + rect.Width, rect.Y + rect.Height));
+            e.Graphics.DrawLine(new Pen(Color.Black), new PointF(rect.X + rect.Width, rect.Y), new PointF(rect.X, rect.Y + rect.Height));
             return ret;
         }
         /// <summary>
@@ -763,9 +766,26 @@ namespace UI_Class_Library
         /// <returns>Playing again</returns>
         public bool RenderDeath(PaintEventArgs e, int score)
         {
-            DrawText(e, $"You lost... {score}", 42, new Point(width / 2, height / 2), Color.FromArgb(0, 0, 0));
+            e.Graphics.Clear(Color.DarkRed);
+            
+            DrawText(e, $"You lost... {score}", 42, new Point(width / 2, height / 2), Color.FromArgb(250,250,250));
 
-            return false;
+            Rectangle rect = new Rectangle(5, 5, 20, 20);
+            Color selectedColor = Color.Red;
+            bool ret = false;
+            if (rect.Contains(mouse))
+            {
+                selectedColor = Color.DarkRed;
+                if (mouseDown)
+                {
+                    ret = true;
+                    mouseDown = false;
+                }
+            }
+            e.Graphics.FillRectangle(new SolidBrush(selectedColor), rect);
+            e.Graphics.DrawLine(new Pen(Color.Black), new PointF(rect.X, rect.Y), new PointF(rect.X + rect.Width, rect.Y + rect.Height));
+            e.Graphics.DrawLine(new Pen(Color.Black), new PointF(rect.X+rect.Width, rect.Y), new PointF(rect.X, rect.Y + rect.Height));
+            return ret;
         }
         /// <summary>
         /// Renders the win screen
@@ -776,8 +796,24 @@ namespace UI_Class_Library
         /// <returns>Returns true to head back to main menu</returns>
         public bool RenderWin(PaintEventArgs e, int score, string name)
         {
-            DrawText(e, $"You won! {score}", 42, new Point(width / 2, height / 2), Color.FromArgb(0, 0, 0));
-            return false;
+            e.Graphics.Clear(Color.ForestGreen);
+            DrawText(e, $"You won! {score}", 42, new Point(width / 2, height / 2), Color.FromArgb(250,250,250));
+            Rectangle rect = new Rectangle(5, 5, 20, 20);
+            Color selectedColor = Color.Red;
+            bool ret = false;
+            if (rect.Contains(mouse))
+            {
+                selectedColor = Color.DarkRed;
+                if (mouseDown)
+                {
+                    ret = true;
+                    mouseDown = false;
+                }
+            }
+            e.Graphics.FillRectangle(new SolidBrush(selectedColor), rect);
+            e.Graphics.DrawLine(new Pen(Color.Black), new PointF(rect.X, rect.Y), new PointF(rect.X + rect.Width, rect.Y + rect.Height));
+            e.Graphics.DrawLine(new Pen(Color.Black), new PointF(rect.X + rect.Width, rect.Y), new PointF(rect.X, rect.Y + rect.Height));
+            return ret;
         }
         /// <summary>
         /// Disposes the unmanaged memory
