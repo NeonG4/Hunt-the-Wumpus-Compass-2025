@@ -51,7 +51,6 @@ namespace ScoreBoard
        /// <param name="arrows">how many arrows you end with</param>
        /// <param name="wumpus">bool checks whether wumpus died or not</param>
        /// <returns></returns>
-
         public int CalculateHighScore(int turns, int coins, int arrows, bool wumpus)
         {
             if (wumpus)
@@ -63,11 +62,14 @@ namespace ScoreBoard
                 return (500 + 16 * coins + 22 * arrows - 12 * turns) * 20;
             }
         }
+        /// <summary>
+        /// Reads to the score list from the Highscore file
+        /// </summary>
         public void ReadFromFile()
         {
            //reads from file
             StreamReader streamReader = new StreamReader(HighScoresData);
-            string line = streamReader.ReadLine();
+            string? line = streamReader.ReadLine();
 
             while (line != null)
             {
@@ -84,32 +86,22 @@ namespace ScoreBoard
                 items.Add(contact);
                 line = streamReader.ReadLine();
             }
-
-
             streamReader.Close();
-           
-
-
-
         }
-      public void SaveTofile()
+        public void SaveTofile()
         {
          //saves new entries to file
             StreamWriter streamwriter = new StreamWriter(HighScoresData);
-
             foreach (ScoreItem contact in items)
             {
-
                 string record = contact.Name + "," + contact.Score + "," + contact.CaveType + "," + contact.Turns + "," + contact.Gold + "," + contact.Arrows + "," + contact.WumpusDead;
                 streamwriter.WriteLine(record);
-
             }
             streamwriter.Flush();
             streamwriter.Close();
-
         }
         /// <summary>
-        /// 
+        /// Adds a high score to the highscore file if it is valid
         /// </summary>
         /// <param name="name">Name of player</param>
         /// <param name="cave_type">The cave in which the game was played</param>
