@@ -38,6 +38,8 @@ namespace Game_Control
         bool angeredWumpus = false;
         bool arrowNocked = false;
         bool mainMenuMusicPlaying = false;
+        bool winMusicPlaying = false;
+        bool loseMusicPlaying = false;
         public string playerName = "name";
         TriviaState triviaState = TriviaState.Empty;
         SoundManager _soundManager = new SoundManager();
@@ -81,6 +83,8 @@ namespace Game_Control
                             _soundManager.StopAllSounds();
                             _soundManager.StartMusic("sounds/wumpusmenu.wav");
                             mainMenuMusicPlaying = true;
+                            winMusicPlaying = false;
+                            loseMusicPlaying = false;
                         }
                         bool[] inputs = _UIClassManager.GetInputs();
                         if (ClickedScoreboard)
@@ -151,8 +155,9 @@ namespace Game_Control
                             {
                                 if (triviaCorrect > 1)
                                 {
-                                    // buy a secret
-                                    _UIClassManager.AddToChat(ChatType.Text, "Hint: " + _triviaManager.getTriviaData(triviaQuestionIndex - 1).correctAnswer);
+                                    // buy a secret, gives trivia answer either previous or next 4 questions
+                                    int howManyQuestionsInTheFutureOrBack = rand.Next(-1, 3);
+                                    _UIClassManager.AddToChat(ChatType.Text, "Hint: " + _triviaManager.getTriviaData(triviaQuestionIndex + howManyQuestionsInTheFutureOrBack).correctAnswer);
                                 }
                                 else
                                 {
@@ -334,6 +339,13 @@ namespace Game_Control
                     }
                 case GameState.Died:
                     {
+                        if (!loseMusicPlaying)
+                        {
+                            _soundManager.StopAllSounds();
+                            _soundManager.StartMusic("sounds/wumpuslose.wav");
+                            loseMusicPlaying = true;
+                        }
+
                         // renders game over screen
                         _playerManager.KilledWumpus = false; // probably best to put this elsewhere
                         if (_UIClassManager.RenderDeath(e, _playerManager.Score))
@@ -382,6 +394,13 @@ namespace Game_Control
                     }
                 case GameState.Win:
                     {
+                        if (!winMusicPlaying)
+                        {
+                            _soundManager.StopAllSounds();
+                            _soundManager.StartMusic("sounds/wumpuswin.wav");
+                            winMusicPlaying = true;
+                        }
+                        
                         // renders win screen
                         _playerManager.KilledWumpus = true;
                         string caveName = "Amethyst";
