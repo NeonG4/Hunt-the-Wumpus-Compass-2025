@@ -263,7 +263,8 @@ namespace Game_Control
                         {
                             // user encountered bat
                             //throw new Exception("You have hit a bat");
-                            _gameLocations.EncounterBat(_playerManager);
+                            int newPlayer = _gameLocations.EncounterBat(_playerManager);
+                            _playerManager.CurrentRoom = newPlayer;
                             _UIClassManager.AddToChat(ChatType.EncounteredBat);
                             
                         }

@@ -873,7 +873,7 @@ namespace UI_Class_Library
         {
             if (img != null) 
             { 
-                e.Graphics.DrawImage(img, new RectangleF(pos, new SizeF(size, size)));
+                e.Graphics.DrawImage(img, new RectangleF(new Point(pos.X, pos.Y + 10), new SizeF(size, size)));
                 pos.X += (int)size;
             }
             if (text == string.Empty)
