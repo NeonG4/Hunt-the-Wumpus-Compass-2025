@@ -347,7 +347,7 @@ namespace Game_Control
                                     break;
                                 }
                         }
-                        _scoreboard.AddHighScore(playerName, caveName, _playerManager.MoveCount, _playerManager.GoldCoins, _playerManager.Arrows, true);
+                        _scoreboard.AddHighScore(playerName, caveName, _playerManager.MoveCount, _playerManager.GoldCoins, _playerManager.Arrows, false);
                         _scoreboard.SaveTofile();
                         break;
                     }
