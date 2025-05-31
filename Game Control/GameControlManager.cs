@@ -41,6 +41,8 @@ namespace Game_Control
         public string playerName = "name";
         TriviaState triviaState = TriviaState.Empty;
         SoundManager _soundManager = new SoundManager();
+        Random rand = new Random();
+        bool triviaRandomizedAlready = false;
         public GameControl() 
         {
             _UIClassManager = new UIClassManager();
@@ -290,6 +292,19 @@ namespace Game_Control
                         string[] triviaAnswers = _triviaManager.getPossibleAnswers(triviaQuestionIndex);
                         string correctAnswer = _triviaManager.getCorrectAnswer(triviaQuestionIndex);
                         bool[] answers = _UIClassManager.RenderTrivia(e, triviaQuestion,triviaAnswers);
+                        if (!triviaRandomizedAlready)
+                        {
+                            for (int i = triviaAnswers.Length - 1; i > 0; i--)
+                            {
+                                int randomIndex = rand.Next(i + 1);
+                                string temp = triviaAnswers[i];
+                                triviaAnswers[i] = triviaAnswers[randomIndex];
+                                triviaAnswers[randomIndex] = temp;
+                            }
+
+                            triviaRandomizedAlready = true;
+                        }
+
                         if (answers.Contains<bool>(true))
                         {
                             _playerManager.GoldCoins--;
@@ -309,6 +324,7 @@ namespace Game_Control
                                     i = 4;
                                 }
                             }
+                            triviaRandomizedAlready = false;
                         }
                         if (triviaCount == 0)
                         {
