@@ -1,4 +1,5 @@
-﻿using System.Diagnostics.Eventing.Reader;
+﻿using System;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Drawing.Text;
 using System.Net.Http.Headers;
@@ -34,7 +35,7 @@ namespace UI_Class_Library
     }
     public class UIClassManager : IUIClassManager, IDisposable
     {
-        static float aspectRatio = 16f / 9f;
+        float aspectRatio = 16f / 9f;
         public int width, height;
         Bitmap[] doors = [
             new Bitmap("images/door_0.png"),
@@ -392,6 +393,7 @@ namespace UI_Class_Library
         }
         public bool[] RenderTrivia(PaintEventArgs e, string question, string[] trivia)
         {
+            
             Map currentMap = maps[map];
             Color[] forecolor = [currentMap.foregroundColor, currentMap.foregroundColor, currentMap.foregroundColor, currentMap.foregroundColor];
             Point[] hexagonPoints = HexagonH((int)(width / 2.4f), height / 10, (int)(height / 27f), new Point((int)(width / 3.97f), (int)(height / 2.1f)));
@@ -407,12 +409,12 @@ namespace UI_Class_Library
                     forecolor[i] = currentMap.highlights;
                     if (mouseDown)
                     {
-
+                        
                         mouseDown = false;
                         bool[] answer = new bool[4];
                         for (int j = 0; j < 4; j++)
                         {
-                            if (j == i)
+                            if (i == j)
                                 answer[j] = true;
                             else
                             {

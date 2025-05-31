@@ -293,9 +293,11 @@ namespace Game_Control
                         if (answers.Contains<bool>(true))
                         {
                             _playerManager.GoldCoins--;
-                            if (_playerManager.GoldCoins < 0)
+                            if (_playerManager.GoldCoins < 1)
                             {
                                 gameState = GameState.Died;
+                                _UIClassManager.RenderDeath(e, _playerManager.Score);
+                                return;
                             }
                             triviaCount--; // we want to move to the next question after the current question is answered
                             triviaQuestionIndex++;
