@@ -37,6 +37,7 @@ namespace UI_Class_Library
     {
         float aspectRatio = 16f / 9f;
         public int width, height;
+        public int vwidth, vheight;
         Bitmap[] doors = [
             new Bitmap("images/door_0.png"),
             new Bitmap("images/door_1.png"),
@@ -72,6 +73,16 @@ namespace UI_Class_Library
             // standard size of a google slide, same size that this game is
             width = 960;
             height = 540;
+            if (width / height > aspectRatio)
+            {
+                vheight = height;
+                vwidth = (int)(height * aspectRatio);
+            }
+            else
+            {
+                vwidth = width;
+                vheight = (int)(width / aspectRatio);
+            }
             comfortaaCollection.AddFontFile("Comfortaa-Light.ttf"); // adds the font file
         }
         
@@ -100,25 +111,25 @@ namespace UI_Class_Library
             int currentRoom = player.CurrentRoom;
             Color bgColor = currentMap.backgroundColor;
             e.Graphics.Clear(bgColor);
-            Rectangle rect = new Rectangle((int)(height), 0, (int)(width-height), height);
-            int radius = (int)(width * 0.203);
-            Point centerHexagonPosition = new Point((int)(width * (1f / 3f)), (int)(height / 2f));
+            Rectangle rect = new Rectangle((int)(vheight), 0, (int)(vwidth-vheight), vheight);
+            int radius = (int)(vwidth * 0.203);
+            Point centerHexagonPosition = new Point((int)(vwidth * (1f / 3f)), (int)(vheight / 2f));
             Bitmap bmp = currentMap.map;
             string name = currentMap.mapName;
             
-            e.Graphics.DrawImage(bmp, new Rectangle(0, 0, height, height));
+            e.Graphics.DrawImage(bmp, new Rectangle(0, 0, vheight, vheight));
             // render the right panel
             float padding = 2f;
-            int paddingPx = (int)(padding * (height / 54f));
-            int widthOfPanel = width - height;
-            Point topLeft = new Point(height, 0);
+            int paddingPx = (int)(padding * (vheight / 54f));
+            int widthOfPanel = vwidth - vheight;
+            Point topLeft = new Point(vheight, 0);
 
-            RectangleF header = new RectangleF(topLeft.X + paddingPx, topLeft.Y + paddingPx, widthOfPanel - (2 * paddingPx), height / 5f);
+            RectangleF header = new RectangleF(topLeft.X + paddingPx, topLeft.Y + paddingPx, widthOfPanel - (2 * paddingPx), vheight / 5f);
             e.Graphics.FillRectangle(gameUnselected, header);
 
             RectangleF shootArrow = new RectangleF(topLeft.X + paddingPx, header.Y + header.Height + padding, (widthOfPanel - 3 * paddingPx) / 3f, (widthOfPanel - 3 * paddingPx) / 3f);
-            RectangleF buyArrow = new RectangleF(topLeft.X + (width - height) / 2f - (shootArrow.Width / 2f), header.Y + header.Height + padding, shootArrow.Width, shootArrow.Height);
-            RectangleF buySecret = new RectangleF(width - paddingPx - shootArrow.Width, header.Y + header.Height + padding, shootArrow.Width, shootArrow.Height);
+            RectangleF buyArrow = new RectangleF(topLeft.X + (vwidth - vheight) / 2f - (shootArrow.Width / 2f), header.Y + header.Height + padding, shootArrow.Width, shootArrow.Height);
+            RectangleF buySecret = new RectangleF(vwidth - paddingPx - shootArrow.Width, header.Y + header.Height + padding, shootArrow.Width, shootArrow.Height);
             
             if (shootArrow.Contains(mouse))
             {
@@ -312,7 +323,7 @@ namespace UI_Class_Library
         {
             inputs.Clear();
             for (int i = 0; i < 6; i++) { inputs.Add(false); }
-            float scaleFactor = width / 940f;
+            float scaleFactor = vwidth / 940f;
             SolidBrush shapeBrush = new SolidBrush(Color.FromArgb(217, 217, 217));
             Pen outlineBrush = new Pen(Color.FromArgb(0, 0, 0), 4);
             e.Graphics.Clear(Color.FromArgb(76, 76, 76));
@@ -320,14 +331,15 @@ namespace UI_Class_Library
             //DebugOnlyRenderGridPoints(e, 20); // makes it easy to draw on the screen
 
             // renders title header
-            Point titlePosition = new Point(width / 2, 100);
+            Point titlePosition = new Point(vwidth / 2, 100);
             Point[] titleHexagon = HexagonH(800, 100, 40, titlePosition);
             e.Graphics.FillPolygon(shapeBrush, titleHexagon);
             e.Graphics.DrawPolygon(outlineBrush, titleHexagon);
+
             //scoreboard button
             Pen Scorebrushs = new Pen(Color.FromArgb(0, 0, 0), 4);
-            RectangleF rect = new RectangleF((int)(width/ 2.526f), (int)(height/1.9f),(int) (width/4.8f), (int)(height/15.428));
-            Point scoreposition = new Point(width/2,(int)(height/1.78f));
+            RectangleF rect = new RectangleF((int)(vwidth/ 2.526f), (int)(vheight/1.9f),(int) (vwidth/4.8f), (int)(vheight/15.428));
+            Point scoreposition = new Point(vwidth/2,(int)(vheight/1.78f));
             if (rect.Contains(mouse))
             {
                 if (mouseDown)
@@ -338,11 +350,12 @@ namespace UI_Class_Library
                     e.Graphics.DrawRectangle(Scorebrushs, rect);
             e.Graphics.FillRectangle(shapeBrush, rect);
             DrawText(e, "ScoreBoard", 11, scoreposition,Color.FromArgb(0, 0, 0));
-           
             DrawText(e, "Hunt the Wumpus", 41, titlePosition, Color.FromArgb(0, 0, 0));
+
             // renders subtext
-            DrawText(e, "David Stall / Nathan Choy / Camilla Meija / Maxim Delyagin / Azeem Egizi", 12, new Point(width / 2, 200), Color.FromArgb(255, 255, 255));
-            DrawText(e, "Made for Microsoft’s 2025 Hunt the Wumpus Challenge", 18, new Point(width / 2, 250), Color.FromArgb(255, 255, 255));
+            DrawText(e, "David Stall / Nathan Choy / Camilla Meija / Maxim Delyagin / Azeem Egizi", 12, new Point(vwidth / 2, 200), Color.FromArgb(255, 255, 255));
+            DrawText(e, "Made for Microsoft’s 2025 Hunt the Wumpus Challenge", 18, new Point(vwidth / 2, 250), Color.FromArgb(255, 255, 255));
+            
             // render maps
             string[] mapNames = ["Amethyst Abyss", "Green Grotto", "Teal Tunnel", "Diamond Dungeon", "Black Borehole"];
             SolidBrush purpleBrush = new SolidBrush(Color.FromArgb(142, 124, 195));
@@ -352,11 +365,11 @@ namespace UI_Class_Library
             SolidBrush blackBrush = new SolidBrush(Color.FromArgb(67, 67, 67));
             SolidBrush[] brushes = [purpleBrush, greenBrush, tealBrush, cyanBrush, blackBrush];
             int spacing = (int)(80 * scaleFactor);
-            int mapWidth = (int)((width / 5f)-(spacing*(4f/5f)));
+            int mapWidth = (int)((vwidth / 5f)-(spacing*(4f/5f)));
             for (int i = 0; i < 5; i++)
             {
-                Point position = new Point(i * (mapWidth + spacing) + (mapWidth / 2), height);
-                Point[] hexagon = HexagonV(mapWidth, (int) (height * 0.8), (int)(height * 0.08), position);
+                Point position = new Point(i * (mapWidth + spacing) + (mapWidth / 2), vheight);
+                Point[] hexagon = HexagonV(mapWidth, (int) (vheight * 0.8), (int)(vheight * 0.08), position);
                 if (PointInShape(mouse, hexagon))
                 {
                     int r, g, b;
@@ -396,10 +409,10 @@ namespace UI_Class_Library
             
             Map currentMap = maps[map];
             Color[] forecolor = [currentMap.foregroundColor, currentMap.foregroundColor, currentMap.foregroundColor, currentMap.foregroundColor];
-            Point[] hexagonPoints = HexagonH((int)(width / 2.4f), height / 10, (int)(height / 27f), new Point((int)(width / 3.97f), (int)(height / 2.1f)));
-            Point[] hexagonPoints1 = HexagonH((int)(width / 2.4f), height / 10, (int)(height / 27f), new Point((int)(width / 1.35f), (int)(height / 2.1f)));
-            Point[] hexagonPoints2 = HexagonH((int)(width / 2.4f), height / 10, (int)(height / 27f), new Point((int)(width / 3.97f), (int)(height / 1.4f)));
-            Point[] hexagonPoints3 = HexagonH((int)(width / 2.4f), height / 10, (int)(height / 27f), new Point((int)(width / 1.35f), (int)(height / 1.4f)));
+            Point[] hexagonPoints = HexagonH((int)(vwidth / 2.4f), vheight / 10, (int)(vheight / 27f), new Point((int)(vwidth / 3.97f), (int)(vheight / 2.1f)));
+            Point[] hexagonPoints1 = HexagonH((int)(vwidth / 2.4f), vheight / 10, (int)(vheight / 27f), new Point((int)(vwidth / 1.35f), (int)(vheight / 2.1f)));
+            Point[] hexagonPoints2 = HexagonH((int)(vwidth / 2.4f), vheight / 10, (int)(vheight / 27f), new Point((int)(vwidth / 3.97f), (int)(vheight / 1.4f)));
+            Point[] hexagonPoints3 = HexagonH((int)(vwidth / 2.4f), vheight / 10, (int)(vheight / 27f), new Point((int)(vwidth / 1.35f), (int)(vheight / 1.4f)));
             Point[][] HexagonArray = { hexagonPoints, hexagonPoints1, hexagonPoints2, hexagonPoints3 };
             
             for (int i = 0; i < 4; i++)
@@ -425,14 +438,14 @@ namespace UI_Class_Library
                     }
                 }
             }  
-            Point titlePosition = new Point(width / 2, 100);
+            Point titlePosition = new Point(vwidth / 2, 100);
             Color bgColor = currentMap.backgroundColor;
             
             e.Graphics.Clear(bgColor);
             
            
 
-            Pen pen = new Pen(Color.FromArgb(0, 0, 0), width/300f);
+            Pen pen = new Pen(Color.FromArgb(0, 0, 0), vwidth/300f);
             Brush brush = new SolidBrush(forecolor[0]);
             Brush brush1 = new SolidBrush(forecolor[1]);
             Brush brush2 = new SolidBrush(forecolor[2]);
@@ -445,11 +458,11 @@ namespace UI_Class_Library
             e.Graphics.DrawPolygon(pen, hexagonPoints1);
             e.Graphics.DrawPolygon(pen, hexagonPoints2);
             e.Graphics.DrawPolygon(pen, hexagonPoints3);
-            DrawText(e, "Question: " + question, height / 50, titlePosition, Color.FromArgb(255, 255, 255));
-            DrawText(e, trivia[0], height / 50, new Point((int)(width / 3.97f), (int)(height / 2.1f)), Color.FromArgb(255, 255, 255));
-            DrawText(e, trivia[1], height / 50, new Point((int)(width / 1.35f), (int)(height / 2.1f)), Color.FromArgb(255, 255, 255));
-            DrawText(e, trivia[2], height / 50, new Point((int)(width / 3.97f), (int)(height / 1.4f)), Color.FromArgb(255, 255, 255));
-            DrawText(e, trivia[3], height / 50, new Point((int)(width / 1.35f), (int)(height / 1.4f)), Color.FromArgb(255, 255, 255));
+            DrawText(e, "Question: " + question, vheight / 50, titlePosition, Color.FromArgb(255, 255, 255));
+            DrawText(e, trivia[0], vheight / 50, new Point((int)(vwidth / 3.97f), (int)(vheight / 2.1f)), Color.FromArgb(255, 255, 255));
+            DrawText(e, trivia[1], vheight / 50, new Point((int)(vwidth / 1.35f), (int)(vheight / 2.1f)), Color.FromArgb(255, 255, 255));
+            DrawText(e, trivia[2], vheight / 50, new Point((int)(vwidth / 3.97f), (int)(vheight / 1.4f)), Color.FromArgb(255, 255, 255));
+            DrawText(e, trivia[3], vheight / 50, new Point((int)(vwidth / 1.35f), (int)(vheight / 1.4f)), Color.FromArgb(255, 255, 255));
 
 
             return [false];
@@ -470,8 +483,8 @@ namespace UI_Class_Library
             
             for (int i = 0; i < 5; i++)
             {
-                Point hexaPoint = new Point(width / 4 + 40, height / 4 + 80 * i);
-                points[i] = HexagonH(width / 2 - 80, 50, 20, hexaPoint);
+                Point hexaPoint = new Point(vwidth / 4 + 40, vheight / 4 + 80 * i);
+                points[i] = HexagonH(vwidth / 2 - 80, 50, 20, hexaPoint);
                 SolidBrush sd;
                 if (names.Count() <= i)
                 {
@@ -507,8 +520,8 @@ namespace UI_Class_Library
 
             for (int i = 0; i < 5; i++)
             {
-                Point hexaPoint = new Point(width / 4 + width / 2, height / 4 + 80 * i);
-                points[i + 5] = HexagonH(width / 2 - 80, 50, 20, hexaPoint);
+                Point hexaPoint = new Point(vwidth / 4 + vwidth / 2, vheight / 4 + 80 * i);
+                points[i + 5] = HexagonH(vwidth / 2 - 80, 50, 20, hexaPoint);
                 e.Graphics.FillPolygon(new SolidBrush(Color.FromArgb(255, 255, 255)), points[i + 5]);
                 SolidBrush sd;
                 if (names.Count() <= i + 5)
@@ -749,11 +762,21 @@ namespace UI_Class_Library
         public void UpdateScreenSize(int width, int height)
         {
             this.width = width;
-            this.height = (int) (width * (1/aspectRatio));
+            this.height = height;
             if (width < 960 || height < 540)
             {
                 this.width = 960;
                 this.height = 540;
+            }
+            if ((float)width / height > aspectRatio)
+            {
+                this.vwidth = (int)(height * aspectRatio);
+                this.vheight = height;
+            }
+             else
+            {
+                this.vheight = (int)(width * (1/aspectRatio));
+                this.vwidth = width;
             }
         }
         /// <summary>

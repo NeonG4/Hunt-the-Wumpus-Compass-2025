@@ -26,10 +26,15 @@ namespace Hunt_the_Wumpus_2025
             if (ready)
             {
                 // ticks the game control
+                
                 gc.Tick(e);
+                
                 gc._UIClassManager.UpdateScreenSize(this.Width, this.Height);
-                this.Width = gc._UIClassManager.width;
-                this.Height = gc._UIClassManager.height + (this.RectangleToScreen(this.ClientRectangle).Top - this.Top); // accounts for windows bar
+                // game control is the manager for the form, update the black box size there
+                /*
+                gc.vwidth = gc._UIClassManager.width;
+                gc.vheight = gc._UIClassManager.height + (this.RectangleToScreen(this.ClientRectangle).Top - this.Top); // accounts for windows bar
+            */
             }
         }
 

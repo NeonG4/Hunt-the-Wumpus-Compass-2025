@@ -45,6 +45,7 @@ namespace Game_Control
         SoundManager _soundManager = new SoundManager();
         Random rand = new Random();
         bool triviaRandomizedAlready = false;
+
         public GameControl() 
         {
             _UIClassManager = new UIClassManager();
